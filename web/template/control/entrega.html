@@ -1,0 +1,159 @@
+
+
+<div >
+   <br/><br/>
+</div>
+<div class="section-body" ng-controller="EntregaController as entrega" >
+    <div class="row">
+        <div class="card panel" id="UnidadesCardForm">
+            <div class="card-head card-head-sm collapsed style-primary-light" align="center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
+                <header >ENTREGA DE EQUIPOS{{5+7}}  </header>
+            </div>
+
+            <div >
+                <!-- BEGIN VALIDATION FORM WIZARD -->
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <form class="form" ng-init="control.init()" novalidate="novalidate" id="formFolio" name="formFolio">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <div class="form-group" ng-controller="AutComFolioCtrl">
+                                            <script type="text/ng-template" id="customTemplate.html">
+                                                <a>
+                                                    <i>({{match.model.id}})</i>
+                                                </a>
+                                            </script>
+                                            <input  style="font-size:20px; text-align:center "  name="folio" ng-model="entrega.reporte.data.id"  typeahead-editable="false" typeahead="datos.id for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required>
+                                            <label for="folio" class="control-label">Ingresa el folio del reporte{{entrega.reporte.data.id}} </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <button class="btn  btn-primary ink-reaction" ng-click="entrega.buscar()"  >Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!--
+                         {{entrega.reporte}}
+                        -->
+                        {{entrega.reporte.data}}
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+
+
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <div class="col-lg-offset-1 col-md-9">
+                            <table class="table table-bordered  no-margin table-hover" >
+                                <thead>
+                                <tr class="success">
+                                    <th><strong>Folio</strong></th>
+                                    <th><strong>Estatus</strong></th>
+                                    <th><strong>Tipo</strong></th>
+                                    <th><strong>Responsable</strong></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td rowspan="4" style="font-size:25px; font-family: bold; text-align:center; vertical-align: middle;  ">{{entrega.reporte.data.id}}</td>
+                                    <td>Estatus:<strong>&nbsp;&nbsp;{{entrega.reporte.data.status}}</strong></td>
+                                    <td>Tipo Equipo:<strong>&nbsp;&nbsp;{{entrega.reporte.data.descripcion}}</strong></td>
+                                    <td>Asignado a:<strong>&nbsp;&nbsp;{{entrega.reporte.data.usuario}}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Fecha de Recepcion: <strong>&nbsp;&nbsp;{{entrega.reporte.data.finicio}}</strong></td>
+                                    <td>Marca:<strong>&nbsp;&nbsp;{{entrega.reporte.data.marca}}</strong></td>
+                                    <td>Fecha de Termino:<strong>&nbsp;&nbsp;{{entrega.reporte.data.ftermino}}</strong></td>
+
+                                </tr>
+                                <tr>
+                                    <td>Unidad:<strong>&nbsp;&nbsp;{{entrega.reporte.data.unidad}}</strong></td>
+                                    <td>Modelo:<strong>&nbsp;&nbsp;{{entrega.reporte.data.modelo}}</strong></td>
+
+                                </tr>
+                                <tr >
+                                    <td>Area:<strong>&nbsp;&nbsp;{{entrega.reporte.data.area}}</strong></td>
+                                    <td>Serie:<strong>&nbsp;&nbsp;{{entrega.reporte.data.serie}}</strong></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-sm-2">
+                        <div class="form-group">
+                            <br/><br/>
+                            <br/><br/>
+                            <br/>
+                            <button class="btn  btn-primary ink-reaction"  ng-click="entrega.entrega()"  name="entregar" id="entregar" type="submit">Entregar</button>
+                        </div>
+                        </div>
+
+                        <!--Empieza entrega de Equipo-->
+                        <div class="row" style="padding-left: 8%"  ng-show="entrega.show">
+                            <div class="col-sm-8">
+                                <form class="form" ng-init="entrega.init()"  novalidate="novalidate" id="formEntrega" name="formEntrega">
+                                        <br/><br/>
+                                        <div class="row"   >
+                                            <div class="col-sm-5">
+                                                <div class="form-group control-width-normal">
+                                                    <div class="input-group date" id="demo-date">
+                                                        <div class="input-group-content">
+                                                            <input   id="fecha" ng-model="entrega.reporte.data.fecha" class="form-control" required>
+                                                            <label>Fecha de entrega: </label>
+                                                        </div>
+                                                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    <div class="input-group">
+
+                                                        <div class="input-group-content">
+                                                            <input    name="recibido" ng-model="entrega.reporte.data.recibido" id="recibido" class="form-control" data-rule-minlength="2" required>
+                                                            <label for="folio" class="control-label">Recibido por: </label>
+                                                         </div>
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-user fa-lg"></i></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <br/>
+
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <button class="btn btn-flat btn-primary ink-reaction"  name="cancelar" id="cancelar" type="submit">Cancelar</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-2">
+                                                <div class="form-group">
+                                                    <button class="btn  btn-primary ink-reaction"  name="enviar" id="enviar" type="submit">Guardar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </form>
+
+                            </div><!--end .col -->
+                        </div><!--end .row -->
+                        <!--Termina entrega de Equipo-->
+
+                    </div>
+                </div>
+            </div>
+            <br/><br/>
+        </div>
+    </div>
+</div>
+
+
+
+
