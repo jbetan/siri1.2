@@ -41,7 +41,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 
             <div class="section-body contain-lg" ng-controller="formsController as forms">
                 <div class="row text-center">
-                        <p>Elige el equipo que deseas reportar:</p>
+                        <p>Elige el equipo que sis deseas reportar:</p>
                     <center>
                     <div style="width: 35%;">
                         <ul class="nav nav-pills">
