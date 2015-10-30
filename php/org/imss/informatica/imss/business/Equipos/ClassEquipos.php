@@ -12,55 +12,31 @@ class ClassEquipos extends class_mysqlconnector
     public function setReporte($array)
     { $this->array = $array;}
 
+
+
     public function getIP($ip)
     {
         print_r("SELECT CURDATE()");
         $this->setKey("IP", $ip);
         $arreglo = $this->devuelve_filas_indexlabel("reporte_equipos");
-        if(is_array($arreglo))
-        {
+        if(is_array($arreglo)){
             return $arreglo[0];
         }
-        else
-        {
+        else{
             return array();
         }
 
     }
-    public function saveReporte($array)
-    {
 
-        $this->EjecutarConsulta("SET NAMES 'latin1'");
-        $this->setKey("id", $array["id"]);
-        $find = $this->devuelve_filas_indexlabel("reporte_equipos");
-        if ($find) {
-            $this->setKey("id", $array["id"]);
-            $this->setValue("unidades", $array["unidades"]);
-            $this->setValue("areas", $array["areas"]);
-            $this->setValue("tipo", $array["tipo"]);
-            $this->setValue("marca", $array["marca"]);
-            $this->setValue("modelo", $array["modelo"]);
-            $this->setValue("serie", $array["serie"]);
-            $this->setValue("IP", $array["IP"]);
-            $this->setValue("problema", $array["desc_problema"]);
-            $this->IniciarTransaccion();
-            if ($this->insertar("reporte_equipos")) {
-                $this->CometerTransaccion();
-                return true;
-            }
-            $this->DeshacerTransaccion();
-            return false;
-        }
-    }
 
 
     public function saveReporteAutocomplete($array)
     {
-        $folio = "e15";
+        $folio = "E15";
         $this->IniciarTransaccion();
         $this->setValue("ipcaptura", $array["IPADDRESS"]);
-        $this->setValue("id_unidad", "5");
-        $this->setValue("idarea", "5");
+        $this->setValue("id_unidad", "5"); //Falta que lo busque en la tabla  unidad
+        $this->setValue("idarea", "5"); //Falta que lo busque en la tabla area
         $this->setValue("personaquereporta", $array["Qreporta"]);
         $this->setValue("problema", $array["problema"]);
         $this->setValue("telefono", $array["telefono"]);

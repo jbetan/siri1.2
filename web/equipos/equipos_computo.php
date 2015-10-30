@@ -34,24 +34,23 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                 <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span></h2></div>
     </header>
     <!-- BEGIN CONTENT-->
-    <div id="contentV2">
-
-        <!-- BEGIN 404 MESSAGE -->
+    <div id="contentV2">    
         <section ng-controller="EquiposController as equipos">
-
             <div class="section-body contain-lg" ng-controller="formsController as forms">
                 <div class="row text-center">
-                        <p>Elige el equipo que deseas reportar:</p>
+                    <p>Elige el equipo que deseas reportar:</p>
                     <center>
                     <div style="width: 35%;">
                         <ul class="nav nav-pills">
-                                <li ng-class="{active:forms.isSelected(1)}"><button class="btn btn-raised ink-reaction btn-default-light" ng-click="forms.selectTab(1)" type="submit">REPORTAR MI EQUIPO</button></li>
-                                <li ng-class="{active:forms.isSelected(2)}"><button class="btn ink-reaction btn-default-dark" ng-click="forms.selectTab(2)">REPORTAR OTRO EQUIPO</button></li>
+                            <li ng-class="{active:forms.isSelected(1)}"><button class="btn btn-raised ink-reaction btn-default-light" ng-click="forms.selectTab(1)" type="submit">REPORTAR MI EQUIPO</button></li>
+                            <li ng-class="{active:forms.isSelected(2)}"><button class="btn ink-reaction btn-default-dark" ng-click="forms.selectTab(2)">REPORTAR OTRO EQUIPO</button></li>
                         </ul>
                     </div>
                     </center>
                 </div>
                 <br/>
+
+                <!--Inicia Reportar mi Equipo-->
                 <div class="row">
                     <div ng-show="forms.isSelected(1)">
                         <br/>
@@ -145,7 +144,14 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                             </form>
                         </div>
                     </div>
-                    </div>
+                    <br><br><br>
+                    {{forms.consulta.data}}
+                </div>
+                    <!--Termina Reportar mi Equipo-->
+
+                    
+
+
                     <div ng-show="forms.isSelected(2)">
                     <div class="col-lg-12">
                         <p>{{equipos.equipo.data.NAME}}</p>
