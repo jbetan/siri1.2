@@ -32,56 +32,105 @@ class ClassEquipos extends class_mysqlconnector
 
     public function saveReporteAutocomplete($array)
     {
-        $folio = "E15";
+        //print_r($array);
+
         $this->IniciarTransaccion();
+         //Tabla Reporte
+        $this->setValue("fechaRecep","CURDATE()");
+        $this->setValue("horaRecep", "CURTIME()");
+        $folio = "E15";
+        $this->setValue("folio", $folio);
         $this->setValue("ipcaptura", $array["IPADDRESS"]);
-        $this->setValue("id_unidad", "5"); //Falta que lo busque en la tabla  unidad
+        $this->setValue("id_unidad", "5"); //Falta que lo busque en la tabla  unidad         
         $this->setValue("idarea", "5"); //Falta que lo busque en la tabla area
         $this->setValue("personaquereporta", $array["Qreporta"]);
         $this->setValue("problema", $array["problema"]);
         $this->setValue("telefono", $array["telefono"]);
         $this->setValue("extencion", $array["extencion"]);
         $this->setValue("correo", $array["correo"]);
-        $this->setValue("folio", $folio);
-        $this->setValue("fechaEnt","CURDATE()");
-        $this->setValue("horaEnt", "CURTIME()");
-        $T_reporte = $this->insertar("reporte");
+        $this->setValue("contraCorreo", $array["passCorreo"]);      
+/*val*/ $T_reporte = $this->insertar("reporte");
 
-        $reporte_id =$this->devuelve_filas_indexlabel("reporte","id","order by id desc LIMIT 1");
        
-        $this->setValue("idreporte", $reporte_id['id']);
-        $this->setValue("ipcaptura", $array["IPADDRESS"]);
-        $telecom = $this->insertar("telecom");
+        $sql= "SELECT id FROM reporte ORDER BY id DESC LIMIT 1 ";
+        $res = $this->EjecutarConsulta($sql);
+        $reporte_id= @mysql_fetch_assoc($res);
+        echo $reporte_id["id"];
+   
+     
+     
 
-        $this->setValue("idreporte", $reporte_id['id']);
-        $this->setValue("ipusuario", $array["IPADDRESS"]);
-        $this->setValue("idaplicativo", $array["1"]);
-        $sistemasrep = $this->insertar("sistemasrep");
+        //Tabla AtencionReportes
+        $this->setValue("idreporte", $reporte_id["id"]);
+        $this->setValue("idstatus", "6");
+        $atencion_reporte = $this->insertar("atencionreportes");
 
-        $this->setValue("idreporte", $reporte_id['id']);
-        $this->setValue("ip", $array["IPADDRESS"]);
-        $this->setValue("idmarca", $array['1']);
-        $telecom = $this->insertar("impresorarep");
+         if ($atencion_reporte) {
+            print_r("atenc _repr");
+        }
 
-        $this->setValue("idreporte", $reporte_id['id']);
-        $this->setValue("cuenta", $array['usuario']);
-        $this->setValue("contraseña", $array['usuario_pw']);
-        $this->setValue("idmarca", $array["5"]);
-        $this->setValue("idmodelo", $array["modelo"]);
-        $equipo_rep = $this->insertar("equiporep");
+           //Tabla Equipo ReportadoS             
+        $this->setValue("idreporte",   $reporte_id["id"]);
+        echo "1";
+        $this->setValue("cuenta",      $array["usuario"]);
+         echo "2";
+        $this->setValue("contrasena",  $array["passUser"]);
+         echo "3";
+        $this->setValue("idmarca",     "5");
+         echo "4";
+        $this->setValue("idmodelo",    $array["SMODEL"]);
+         echo "5";
+        $this->setValue("mac",         $array["MACADDR"]);
+        echo "6";
+        $eq_r = $this->insertar("equiporep");
+        echo "7";
 
-        $this->setValue("idreporte", $reporte_id['id']);
-        $this->setValue("idstatus", $array['6']);
-        $atencion_reporte = $this->insertar("atencionreporte");
+        if ($eq_r) {
+            print_r("funciona");
+        }else{
+            echo "8";
+        }
 
-        $this->setValue("idequipo", $array['5']);
-        $this->setValue("idreporte", $reporte_id['id']);
+        //Tabla Equipos
+        $this->setValue("idtipo", "5");//Buscar en la tabla_tipo
+        $this->setValue("idmarca", "5");//Mismo problema como en le anterior
+        $this->setValue("modelo", $array['SMODEL']);
+        $this->setValue("numdeserie", $array['ASSETTAG']);
+        $this->setValue("etiqueta", "proximamente");
+         $tabla_equipos = $this->insertar("equipos");
+
+          if ($tabla_equipos) {
+            print_r("tabla equipo");
+        }
+
+
+        $sql= "SELECT id FROM equipos ORDER BY id DESC LIMIT 1 ";
+        try{
+            $res = $this->EjecutarConsulta($sql);
+        }catch (Exception $e){
+            throw $e;
+        }
+
+        $equipo_id= @mysql_fetch_assoc($res);
+
+
+       
+        //Guardamos en la tabla equipos recibidos
+        $this->setValue("idequipo",  $equipo_id["id"]);
+        $this->setValue("idreporte", $reporte_id["id"]);
         $equipos_recibidos = $this->insertar("equiposrecibidos");
+         if ($equipos_recibidos) {
+            print_r("equipo_recibido");
+        }
+     
 
-        if($T_reporte and $equipo_rep and $atencion_reporte and $equipos_recibidos){
+        if($T_reporte and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos)
+        {
+            print_r("Transaccion completa");
             $this->CometerTransaccion();
             return true;
         }
+        print_r("Transaccion incompleta");
         $this->DeshacerTransaccion();
         return false;
        
