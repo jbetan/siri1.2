@@ -1,0 +1,1 @@
+Ya guarda solo que le tube q modificar las tablas "equiposrecibidos" y la tabla "equiporep" solo flata qeu levuelvan a poner  las relacionn d eclave foranea a cad atabla 

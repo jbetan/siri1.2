@@ -49,8 +49,9 @@ class ClassEquipos extends class_mysqlconnector
         $this->setValue("extencion", $array["extencion"]);
         $this->setValue("correo", $array["correo"]);
         $this->setValue("contraCorreo", $array["passCorreo"]);      
-/*val*/ $T_reporte = $this->insertar("reporte");
+        $T_reporte = $this->insertar("reporte");
 
+      
        
         $sql= "SELECT id FROM reporte ORDER BY id DESC LIMIT 1 ";
         $res = $this->EjecutarConsulta($sql);
@@ -65,31 +66,17 @@ class ClassEquipos extends class_mysqlconnector
         $this->setValue("idstatus", "6");
         $atencion_reporte = $this->insertar("atencionreportes");
 
-         if ($atencion_reporte) {
-            print_r("atenc _repr");
-        }
-
-           //Tabla Equipo ReportadoS             
+        //Tabla Equipo ReportadoS             
         $this->setValue("idreporte",   $reporte_id["id"]);
-        echo "1";
         $this->setValue("cuenta",      $array["usuario"]);
-         echo "2";
         $this->setValue("contrasena",  $array["passUser"]);
-         echo "3";
-        $this->setValue("idmarca",     "5");
-         echo "4";
-        $this->setValue("idmodelo",    $array["SMODEL"]);
-         echo "5";
+        $this->setValue("idmarca",     5);
+        $this->setValue("modelo",    $array["SMODEL"]);
         $this->setValue("mac",         $array["MACADDR"]);
-        echo "6";
         $eq_r = $this->insertar("equiporep");
-        echo "7";
+      
 
-        if ($eq_r) {
-            print_r("funciona");
-        }else{
-            echo "8";
-        }
+       
 
         //Tabla Equipos
         $this->setValue("idtipo", "5");//Buscar en la tabla_tipo
@@ -99,10 +86,7 @@ class ClassEquipos extends class_mysqlconnector
         $this->setValue("etiqueta", "proximamente");
          $tabla_equipos = $this->insertar("equipos");
 
-          if ($tabla_equipos) {
-            print_r("tabla equipo");
-        }
-
+        
 
         $sql= "SELECT id FROM equipos ORDER BY id DESC LIMIT 1 ";
         try{
@@ -119,18 +103,15 @@ class ClassEquipos extends class_mysqlconnector
         $this->setValue("idequipo",  $equipo_id["id"]);
         $this->setValue("idreporte", $reporte_id["id"]);
         $equipos_recibidos = $this->insertar("equiposrecibidos");
-         if ($equipos_recibidos) {
-            print_r("equipo_recibido");
-        }
-     
+      
 
         if($T_reporte and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos)
         {
             print_r("Transaccion completa");
             $this->CometerTransaccion();
-            return true;
+            return true;     
+            
         }
-        print_r("Transaccion incompleta");
         $this->DeshacerTransaccion();
         return false;
        
