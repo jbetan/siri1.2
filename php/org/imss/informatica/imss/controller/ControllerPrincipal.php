@@ -73,7 +73,6 @@ class ControllerPrincipal {
     }
 
     public function page(){
-        echo "page";
         include($this->_absPath.$this->_route);
     }
 

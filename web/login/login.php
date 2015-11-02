@@ -62,7 +62,7 @@
 								</div><!--end .row -->
 							</form>
 						</div><!--end .col -->
-						<div class="col-sm-5 col-sm-offset-1 text-center">
+					<!--	<div class="col-sm-5 col-sm-offset-1 text-center">
 							<br><br>
 								<h3 class="text-light">
 									No tienes cuenta?
@@ -70,9 +70,9 @@
 								<a class="btn btn-block btn-raised btn-primary" href="#">Pasos para solicitarla</a>
 								<br><br>
 
-								</div><!--end .col -->
-							</div><!--end .row -->
-						</div><!--end .card-body -->
+								</div><!--end .col
+							</div>--><!--end .row -->
+						</div>--><!--end .card-body -->
 					</div><!--end .card -->
 				</section>
 				<!-- END LOGIN SECTION -->
