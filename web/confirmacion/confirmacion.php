@@ -29,13 +29,7 @@
 $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 ?>
 <div id="base">
-    <header>
-        <div style="margin-right: 10%" class="text-lg text-right"><span class="text-bold">TU</span> DIRECCION <span class="text-bold">IP</span> es: <span class=""><?php echo $_SERVER['REMOTE_ADDR'] ?></span></div>
-        <br/><br/>
-        <div class="text-center" style="margin-top: -50px; position: relative"><h2 style="position: relative">Atención a Usuarios
-            <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span></h2></div>
-    </header>
-    <!-- BEGIN CONTENT-->
+       <!-- BEGIN CONTENT-->
     <div id="contentV2">
 
         <!-- BEGIN 404 MESSAGE -->
@@ -88,10 +82,10 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 <label for="IP">Dirección IP</label>
                             </div>
                             <div class="form-group">
-                                <textarea name="problema" id="" rows="3" class="form-control"></textarea>
+                                <input type="text" name="problema" id="" class="form-control" />
                                 <label for="tipo">Descripción del problema</label>
                                 <br/>
-                                <div class="text-center"><a href="equipos" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
+                                <div class="text-center"><a href="equipoReporte" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
                             </div>
                         </div>
                         </form>
