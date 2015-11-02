@@ -98,17 +98,17 @@ class ClassAsignacion extends  class_mysqlconnector
 
     public function findReporteById($id) {
 
-        $sql = "select r.id as idr, r.personaquereporta, r.id_unidad, at.id as idat, r.ipcaptura, r.problema, tr.nombretipo, r.folio, r.fechaRecep as finicio, u.nombre as unidad, a.nombre as area, e.modelo, e.numdeserie as serie, m.descripcion as marca, tp.descripcion ";
+        $sql = "select r.id as idr, r.personaquereporta, r.id_unidad, at.id as idat, r.ipcaptura, r.problema, r.folio, r.fechaRecep as finicio, u.nombre as unidad, a.nombre as area, e.modelo, e.numdeserie as serie, m.descripcion as marca, tp.descripcion ";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
         $sql .="JOIN area as a               ON r.idarea = a.id ";
         $sql .="JOIN unidad as u             ON r.id_unidad = u.id ";
         $sql .="JOIN equiposrecibidos as er  ON r.id = er.idreporte ";
         $sql .="JOIN equipos as e            ON er.idequipo = e.id ";
-        $sql .="JOIN status as st            ON at.idstatus = st.id ";
+/*ped*/ $sql .="JOIN status as st            ON at.idstatus = st.id ";
         $sql .="JOIN marca as m              ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp              ON e.idtipo = tp.id ";
-        $sql .="JOIN tiporeporte as tr       ON r.idtiporeporte = tr.id ";
+        //$sql .="JOIN tiporeporte as tr       ON r.idtiporeporte = tr.id ";
         $sql .="WHERE r.id = $id LIMIT 1";
         try{
             $res = $this->EjecutarConsulta($sql);
@@ -140,12 +140,16 @@ class ClassAsignacion extends  class_mysqlconnector
         $fila['idtec']=$idtec;
         $fila['valtec']=$valtec;
 
+      //  print_r($fila);
         if($fila) {
             return $fila;
         }
         return array();
 
     }
+
+
+
 
     public function getDtcReportes()
     {
