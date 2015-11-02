@@ -87,17 +87,17 @@ class ClassEdicion extends  class_mysqlconnector
 
 
 
+
     public function findUsuarioByTipo($nivel, $subnivel) {
 
-       // $sql = "select nombre, id from usuario where nive";
-        /*
-         * // Código js
-                function myFunction( param1, param2, param3 ){
-                 param3 = (param3) ? param3 : 'blue';
-                 // ...
-                 return param1 + ' ' + param2 + ' ' + param3;
-                }
-         */
+         $fila = $this->devuelve_filas_indexlabel("usuario", "nombre,id");
+        if($fila) {
+            return $fila;
+        }
+        return array();
+
+  /*      $sql = "select nombre, id from usuario";
+        
 
         try{
             $res = $this->EjecutarConsulta($sql);
@@ -107,10 +107,13 @@ class ClassEdicion extends  class_mysqlconnector
 
         $fila = @mysql_fetch_assoc($res);
         if($fila) {
+            //print_r($fila);
             return $fila;
         }
-        return array();
+        return array();*/
     }
+
+
 
     public function findActivities() {
         $fila = $this->devuelve_filas_indexlabel("actividades", "*");

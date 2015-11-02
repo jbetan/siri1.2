@@ -35,7 +35,7 @@
         };
 
         vm.getUsuario = function(){
-            EdicionService.findUsuariosByTipo(vm.reporte.data.nivel, vm.reporte.data.subnivel,function(){});
+            EdicionService.getUsuario(function(){});
             vm.usuario = EdicionService.usuario;
         };
 

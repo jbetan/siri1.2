@@ -53,12 +53,12 @@
             return $promese;
         };
 
-        service.findUsuariosByTipo = function(nivel, subnivel, callback){
+        service.getUsuario = function(callback){
             console.log("provider");
-            $promese = $http.get("edicionController?buscarUsuario=1&nivel&subnivel");
+            $promese = $http.get("edicionController?buscarUsuario=1");
             $promese.then(function(data) {
-                //console.log("provider User");
-               // console.log(data.data);
+                console.log("provider User");
+               console.log(data.data);
                 service.usuario.data = data.data;
             });
             $promese.success(function() {
