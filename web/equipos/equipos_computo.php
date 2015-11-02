@@ -139,7 +139,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 <br/>
                                 <div class="text-center col-sm-12">
                                     <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
-                                    &nbsp;&nbsp; <button type="submit" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
+                                    &nbsp;&nbsp; <button id="Enviar" type="submit" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
                                 </div>
                             </form>
                         </div>

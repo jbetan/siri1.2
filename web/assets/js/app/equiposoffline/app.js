@@ -83,10 +83,18 @@
                     console.log(vm.consulta.data);
                     equiposoffline.guardarReporteAutocomplete(vm.consulta.data).success(function (data) { //<- guardar reporte,
                     });
+                    if(vm.consulta.data == ""){
+                        console.log("no entra");
+                    }else{
+                        $('#Enviar').click(function(){
+                            $("#contentV2").load('confirmacion');
+                        });
+
+                    }
                 }
             });
-        }
 
+        };
         vm.init=function(){
             setTimeout(function () {
                 window.materialadmin.App.initialize();

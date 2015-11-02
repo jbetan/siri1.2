@@ -1,1 +1,93 @@
-<h1>Activos</h1>
+
+
+<div class="section-body" ng-controller="ActivosController as activos">
+
+
+
+
+    <h1>Activos {{5+3}}</h1>
+
+{{activos.reportes.data.status}}
+
+
+    <table>
+
+
+        <thead style="background-color: lightgray;">
+        <tr>
+            <td style="width: 30px;"></td>
+            <td>folio</td>
+            <td>estatus</td>
+            <td></td>
+        </tr>
+        </thead>
+
+
+
+        <tr ng-repeat-start="reporte in activos.reportes.data"   >
+
+
+
+
+            <!--Inicia el rojo-->
+            <td ng-if="activos.resportes.data.status == ''"  class="danger">
+                <button ng-if="post.expanded" ng-click="post.expanded = false">-</button>
+                <button ng-if="!post.expanded" ng-click="post.expanded = true">+</button>
+            </td>
+            <td ng-if="activos.resportes.data.status == ''"  class="danger">{{activos.resportes.data.status}}</td>
+            <td ng-if="activos.resportes.data.status == ''" class="danger"> {{activos.resportes.data.ClaseTipo}}</td>
+            <!--Termina el rojo-->
+
+            <!--Inicia el azul-->
+            <td ng-if="resporte.status == 'Garantia'"  class="info">
+                <button ng-if="post.expanded" ng-click="post.expanded = false">-</button>
+                <button ng-if="!post.expanded" ng-click="post.expanded = true">+</button>
+            </td>
+            <td ng-if="resporte.status == 'Garantia'" class="info">{{resporte.status }}</td>
+            <td ng-if="resporte.status == 'Garantia'" class="info"> {{resporte.ClaseTipo}}</td>
+            <td ng-if="resporte.status == 'Garantia'" class="info"> {{resporte.data}}</td>
+
+            <!--Termina el azul-->
+
+
+            <!--Inicia el verde-->
+            <td ng-if="activos.resportes.data.status == 'Listo'" class="success">
+                <button ng-if="post.expanded" ng-click="post.expanded = false">-</button>
+                <button ng-if="!post.expanded" ng-click="post.expanded = true">+</button>
+            </td>
+            <td ng-if="activos.resportes.data.status == 'Listo'" class="success">{{activos.resportes.data }}</td>
+            <td ng-if="activos.resportes.data.status == 'Listo'" class="success"> {{activos.resportes.data.ClaseTipo}}</td>
+            <!--Termina el verde-->
+        </tr>
+
+
+
+
+
+
+        <tr ng-if="post.expanded" style="text-align:center" >
+            <td> eliminar</td>
+
+
+            <td colspan="4" style="background-color: lightgray;" >Datos </td>
+
+
+        </tr>
+
+        <tr ng-if="post.expanded" ng-repeat-end="">
+
+            <td>editar</td> <td>informe</td> <td> agregar</td>
+            <td colspan="4">{{post.ded}}</td>
+
+
+        </tr>
+
+
+    </table>
+
+        </div>
+
+
+
+
+

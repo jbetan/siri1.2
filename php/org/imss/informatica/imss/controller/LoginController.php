@@ -29,7 +29,7 @@ class LoginController extends ControllerPrincipal{
 
 }
 
-$loginPage = new LoginController("login/login.php", "ADMIN CONTRARECIBOS - Login");
+$loginPage = new LoginController("login/login.php", "SIRI - Login");
 //$loginPage->validateAccess();
 session_name("EnterAccessCFERecibos");
 session_start();
