@@ -15,6 +15,7 @@
         'auto-module',
         'entrega-Module',
         "edicion-Module",
+        "activos-Module",
         "asigmacion-Module",
         "Asignar-Module"
     ]);
@@ -132,7 +133,7 @@
             //Control de Reportes
             .when("/activos", {
                 templateUrl: "activos",
-                controller: ""
+                controller: "ActivosController"
             })
 
             .when("/edicion", {

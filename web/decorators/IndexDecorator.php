@@ -603,6 +603,9 @@
 <script src="<?=$this->contextPath?>/web/assets/js/app/control/entrega/entregaProvider.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/control/edicion/app.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/control/edicion/edicionProvider.js"></script>
+<!--//activos-->
+<script src="<?=$this->contextPath?>/web/assets/js/app/control/activos/app.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/app/control/activos/activosProvider.js"></script>
 <!-- END JAVASCRIPT DEL Control -->
 
 <!-- BEGIN JAVASCRIPT DEL Asignacion -->
