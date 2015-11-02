@@ -36,10 +36,8 @@ class ClassEquipos extends class_mysqlconnector
 
         $this->IniciarTransaccion();
          //Tabla Reporte
-        $this->setValue("fechaRecep","CURDATE()");
-        $this->setValue("horaRecep", "CURTIME()");
-        $folio = "E15";
-        $this->setValue("folio", $folio);
+        $this->setValue("fechaRecep", date("Y-m-d"));
+        $this->setValue("horaRecep", date("H:i:s"));
         $this->setValue("ipcaptura", $array["IPADDRESS"]);
         $this->setValue("id_unidad", "5"); //Falta que lo busque en la tabla  unidad         
         $this->setValue("idarea", "5"); //Falta que lo busque en la tabla area
@@ -57,11 +55,19 @@ class ClassEquipos extends class_mysqlconnector
         $res = $this->EjecutarConsulta($sql);
         $reporte_id= @mysql_fetch_assoc($res);
         echo $reporte_id["id"];
-   
+
+       //Insertamos el folio automatico
+       $folio = "E15-".$reporte_id["id"];
+       print_r($folio);
+       $this->setKey("id", $reporte_id["id"]);
+       $this->setValue("folio", $folio);
+       $rep_update = $this->actualizar("reporte");
+
+
      
      
 
-        //Tabla AtencionReportes
+        //Tabla atencionreportes
         $this->setValue("idreporte", $reporte_id["id"]);
         $this->setValue("idstatus", "6");
         $atencion_reporte = $this->insertar("atencionreportes");
@@ -83,7 +89,7 @@ class ClassEquipos extends class_mysqlconnector
         $this->setValue("idmarca", "5");//Mismo problema como en le anterior
         $this->setValue("modelo", $array['SMODEL']);
         $this->setValue("numdeserie", $array['ASSETTAG']);
-        $this->setValue("etiqueta", "proximamente");
+        $this->setValue("etiqueta", "no definido");
          $tabla_equipos = $this->insertar("equipos");
 
         
@@ -105,7 +111,7 @@ class ClassEquipos extends class_mysqlconnector
         $equipos_recibidos = $this->insertar("equiposrecibidos");
       
 
-        if($T_reporte and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos)
+        if($T_reporte and $rep_update and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos)
         {
             print_r("Transaccion completa");
             $this->CometerTransaccion();
