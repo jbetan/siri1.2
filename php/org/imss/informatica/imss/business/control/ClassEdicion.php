@@ -163,7 +163,10 @@ class ClassEdicion extends  class_mysqlconnector
     // empieza activos 1:02 am
     public function getReportes() {
 
-        $sql = "select r.id as idr, r.personaquereporta,  at.id as idat, r.ipcaptura, tr.nombreTipo, cl.descripcion as claseTipo,  r.prioridad, r.problema, st.nombre as status, tr.nombretipo, r.folio, r.fechaRecep as finicio, at.fechaTerm as ftermino, u.nombre as unidad, a.nombre as area, e.modelo, e.numdeserie as serie, m.descripcion as marca, tp.descripcion, us.nombre as usuario, catus.nivel, subcatus.nivel as subnivel ";
+        $sql = "select r.id as idr, r.folio, r.personaquereporta,  r.prioridad,  r.problema, ";
+        $sql .="st.nombre as status,  r.folio,  r.fechaRecep as finicio,  at.fechaTerm as ftermino, ";
+        $sql .="u.nombre as unidad,  a.nombre as area,  e.modelo,  e.numdeserie as serie, ";
+        $sql .="m.descripcion as marca,  tp.descripcion,  us.nombre as usuario ";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
         $sql .="JOIN area as a    ON r.idarea = a.id ";
@@ -174,26 +177,26 @@ class ClassEdicion extends  class_mysqlconnector
         $sql .="JOIN marca as m   ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
         $sql .="JOIN usuario as us  ON r.idusuario = us.id ";
-        $sql .="JOIN categoriau as catus ON  us.idcategoria = catus.id  ";
-        $sql .="JOIN categoriau as subcatus ON  us.subcategoria = subcatus.id  ";
-        $sql .="JOIN tiporeporte as tr  ON r.idtiporeporte = tr.id ";
-        $sql .="JOIN clase as cl  ON r.idClase = cl.id ";
-        // $sql .="WHERE r.id = $id LIMIT 1";
-
+       
+     
+       
         try{
             $res = $this->EjecutarConsulta($sql);
         }catch (Exception $e){
             throw $e;
         }
 
-        $fila = @mysql_fetch_assoc($res);
+        $k = 0;
+        while($fila = @mysql_fetch_assoc($res)){  
+            $valores[$k++] = $fila;                       
+         }
+       
+        if(isset($valores)) return $valores;
 
-        if($fila) {
-            return $fila;
-        }
-        return array();
+      
 
     }
 
 
 }//Finaliza la clase Entrega
+
