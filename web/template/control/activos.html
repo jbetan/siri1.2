@@ -5,12 +5,17 @@
 <h1>Activos {{5+3}}</h1>
 
 
-
-
-    <table>
+    <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
+        <header>REPORTES ABIERTOS Y ASIGNADOS</header>
+        <div class="tools">
+            <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+ </br>
+    <table id="accordion1-2">
         <thead style="background-color: lightgray;">
             <tr>
-              <td style="width: 30px;"></td>
+              <td style="width: 200px;"></td>
               <td>FOLIO</td>
               <td>ESTATUS</td>
               <td>TIPO</td>
@@ -24,7 +29,7 @@
             <!--inicia Listo-->
             <td ng-if="reporte.status == 'Listo'" class="alert alert-success"> 
             <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-            <button ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"> + </button>
             </td>
             <td ng-if="reporte.status == 'Listo'" class="alert alert-success">{{reporte.folio}}</td> 
             <td ng-if="reporte.status == 'Listo'" class="alert alert-success">{{reporte.status}}</td>
@@ -33,15 +38,48 @@
             <!--termina Listo--> 
 
              <!--inicia Garantia-->
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-warning"> 
+            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info">
             <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-            <button ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
             </td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-warning">{{reporte.folio}}</td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-warning"> {{reporte.status}}</td> 
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-warning"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-warning"> {{reporte.usuario}}</td>  
-            <!--termina Garantia--> 
+            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info"> {{reporte.usuario}}</td>
+            <!--termina Garantia-->
+
+            <!--inicia reparacion-->
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning">
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            </td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning"> {{reporte.usuario}}</td>
+            <!--termina reparacion-->
+
+            <!--inicia nuevo-->
+            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            </td>
+            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.usuario}}</td>
+            <!--termina nuevo-->
+
+            <!--inicia reparacion-->
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger">
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            </td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger"> {{reporte.usuario}}</td>
+            <!--termina reparacion-->
 
         </tr> <!--Aqui termina el ng-repeat-start -->  
 
@@ -49,29 +87,294 @@
 
         <tr ng-if="reporte.post.expanded" ng-repeat-end>
             
-           <td colspan="2"></td>
+           <td colspan=""> <div class="col-sm-2">
+               <div class="btn-group open">
+                   <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
+                       <i class="fa fa-star"></i>
+                   </button>
+                   <ul class="dropdown-menu dropdown-menu" role="menu">
+
+                       <li><a href="http://localhost:8080/siri1.2/app#/edicion?folio=reporte.folio?id=3">editar</a>  </li>
+
+                       <li class="divider"></li>
+                       <li><a href="http://localhost:8080/siri1.2/app#/entrega?folio=reporte.folio">Entrega</a> </li>
+                   </ul>
+               </div>
+           </div>
+           </td>
+
            <td  colspan="1">
+
             <strong>Estatus:</strong>{{reporte.status}} <br/>
-            <strong>Fecha de Recepcion:</strong><br/>
-            <strong>Unidad:</strong><br/>
-            <strong>Area:</strong><br/>
+            <strong>Fecha de Recepcion:</strong><br/> </td>
+            <td>
+            <strong>Unidad:</strong> {{reporte.unidad}} </br>
+                <strong>Persona </strong> {{reporte.personaquereporta}} <br>
+            <strong>Area:</strong> {{reporte.area}} <br>
+
 
            </td>
-           <td>
+             <td>
             <strong>Tipo:</strong>{{reporte.descripcion}}<br/>
-            <strong>Marca:</strong><br/>
-            <strong>Modelo:</strong><br/>
-            <strong>Serie:</strong><br/>
+            <strong>Marca:</strong>{{reporte.marca}} <br/>
+             </td>
+            <td>
+            <strong>Modelo:</strong> {{reporte.modelo}} <br>
+            <strong>Serie:</strong> {{reporte.serie}} <br>
            </td>
-           <td><strong>Asignado a:</strong> {{reporte.usuario}}</td>        
+           <td><strong>Asignado a:</strong> {{reporte.usuario}}</td>
+            <td colspan="2">   </td>
        </tr>
+
+
+
+
 
    
     </table>
-
-
-
+ <div class="text-default-bright">
+    {{activos.reportes.data}}
 </div>
+    <!--empieza descripcion del reporte -->
+<!--
+    <div class="row">
+        <div class="card panel">
+            <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1-2" data-target="#accordion1-4">
+                <header><strong>DESCRIPCIÓN DEL REPORTE </strong></header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div id="accordion1-4" >
+                <!-- BEGIN VALIDATION FORM WIZARD
+                <div class="row"><br/>
+                    <div class="col-lg-12">
+                        <form class="form">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="activos.reportes.data.folio" disabled/>
+                                    <label>Folio</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="unidades" ng-model="activos.reportes.data.unidad" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.unidades}" ng-model="equipos.equipo.data.unidades"required   disabled/>
+                                    <label>Unidad</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="areas" ng-model="activos.reportes.data.area" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.areas}" ng-model="equipos.equipo.data.areas"required  disabled/>
+                                    <label>Área</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="tipo" ng-model="activos.reportes.data.personaquereporta" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo"required  disabled/>
+                                    <label>Persona que reporto:</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group ">
+                                    <input type="text" name="tipo" ng-model="activos.reportes.data.descripcion" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo"required  disabled/>
+                                    <label>Tipo</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="marca" ng-model="activos.reportes.data.marca" class="form-control ng-dirty ng-invalid ng-valid"  ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="equipos.equipo.data.marca" required disabled/>
+                                    <label>Marca</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="modelo" ng-model="activos.reportes.data.modelo" class="form-control ng-dirty ng-invalid ng-valid"  ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="equipos.equipo.data.modelo" required disabled/>
+                                    <label>Modelo</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="serie" ng-model="activos.reportes.data.serie" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.serie}" ng-model="equipos.equipo.data.serie" required  disabled/>
+                                    <label>Número de Serie</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="activos.reportes.data.finicio" disabled/>
+                                    <label>Fecha</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="IP" ng-model="activos.reportes.data.ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.IP}" ng-model="equipos.equipo.data.IP" required disabled/>
+                                    <label>Dirección IP</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="desc_problema" ng-model="activos.reportes.data.problema"  class="form-control ng-dirty ng-valid" rows="6"  required=""></textarea>
+                                    <label >* Descripción del problema</label>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div><!--end .panel -->
+    </div>
+
+
+    <!--  termina descripcion del reporte -->
+
+<!--
+    <!-- EMPIEZA EDICION  -->
+<!--
+
+    <div class="row">
+        <div class="card panel">
+            <div class="card-head card-head-sm collapsed style-accent text-center" data-toggle="collapse" data-parent="#accordion1-3" data-target="#accordion1-3">
+                <header>CONTROLL </header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div id="accordion1-3" >
+                <!-- BEGIN VALIDATION FORM WIZARD --><!--
+                <div class="row" ><br/>
+                    <div class="col-lg-12">
+                        <form class="form" ng-init="edicion.init()"  novalidate="novalidate" id="formReporte" name="formReporte" >
+
+                            <div class="col-lg-12 form-group">
+                                <p>Clasificar</p>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  ng-click="edicion.si()"  name="clasificar" value="reporte"/>
+                                        <span>Reporte</span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  ng-click="edicion.no()"  name="clasificar" value="solicitud"/>
+                                        <span>Solicitud</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-12">
+                                <div class=" form-group" >
+                                    <select name="tipo" id="tipo" class="form-control  tabs-accent" ng-model="edicion.reporte.data.nombretipo" required disabled>
+                                        <option selected></option>
+                                        <option value="Aplicativos/Sistemas" >Aplicativos / Sistemas</option>
+                                        <option value="Antivirus y Seguridad">Antivirus y Seguridad</option>
+                                        <option value="Telecomunicaciones">Telecomunicaciones</option>
+                                        <option value="Correo/Cuenta">Correo / Cuenta</option>
+                                        <option value="Información General">Información General</option>
+                                        <option value="Soporte Tecnico">Soporte Técnico</option>
+                                    </select>
+                                    <label for="tipo">Tipo</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select  class="form-control" ng-model="edicion.reporte.data.claseTipo" required disabled>
+                                        <option selected></option>
+                                    </select>
+                                    <label >Clase {{edicion.reporte.data.claseTipo}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select name="prioridad" id="prioridad" class="form-control" ng-model="edicion.reporte.data.prioridad" required disabled>
+                                        <option selected></option>
+                                        <option value="Unidad">Unidad</option>
+                                        <option value="Oficina">Oficina</option>
+                                        <option value="Usuario">Usuario</option>
+                                    </select>
+                                    <label for="prioridad">Prioridad</label>
+                                </div>
+                            </div>
+                            <!-- NO va porque no esta definido que se va hacer con el dato
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select id="tipo_usuario" name="tipo_usuario" class="form-control" ng-model="edicion.reporte.data.tipo_usuario" required>
+                                        <option selected></option>
+                                        <option value="Asignado Unidad">Asignado Unidad</option>
+                                        <option value="Usuario Externo">Usuario Externo</option>
+                                    </select>
+                                    <label for="tipo_usuario">Tipo de Usuario</label>
+                                </div>
+                            </div>
+
+
+
+
+                            <!--Empieza Escalar de Equipo
+                            <div ng-show="edicion.show">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class=" form-group">
+                                            &nbsp;&nbsp;*Como el equipo no ha sido solucionado, se tendra que escalar a la siguiente persona.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <select   id="usuario" class="form-control" ng-model="edicion.reporte.data.usuarioD" required>
+                                            <option selected></option>
+                                            <option  ng-repeat="nom in edicion.usuario.data " name="usuario" >{{nom.nombre}}</option>
+                                        </select>
+                                        <label >Nombre</label>
+                                        {{edicion.usuario.data}}
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div><!--end .row
+                            <!--Termina Escalar de Equipo
+
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad" required >
+                                        <option selected></option>
+                                        <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
+                                    </select>
+                                    <label >Actividad realizada</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <input   name="comentario" ng-model="edicion.reporte.data.comentario" id="comentario" class="form-control" data-rule-minlength="2" required>
+                                    <label for="folio" class="control-label">Comentario </label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class=" form-group">
+                                        <select name="estatus" id="estatus" class="form-control" ng-model="edicion.reporte.data.status" required>
+                                            <option selected></option>
+                                            <option value="Garantia">Garantía</option>
+                                            <option value="En reparacion">En Reparación</option>
+                                            <option value="Entregado">Entregado</option>
+                                            <option value="Listo">Listo</option>
+                                        </select>
+                                        <label for="estatus">Estatus</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card-actionbar-row"><br/>
+                                        <button type="reset" class="btn btn-raised ink-reaction btn-default" >Cancelar</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="submit" name="enviar" id="enviar" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div><!--end .panel -->
+
+    </div>
+
+
+</div> <!-- cierra el angular  -->
 
 
 <!--
