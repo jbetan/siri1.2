@@ -136,11 +136,11 @@
                 controller: "ActivosController"
             })
 
-            .when("/edicion", {
+            .when('/edicion/:folio', {
                 templateUrl: "edicion",
                 controller: "EdicionController"
             })
-            .when("/entrega", {
+            .when('/entrega/:folio', {
                 templateUrl: "entrega",
                 controller: "EntregaController"
             })

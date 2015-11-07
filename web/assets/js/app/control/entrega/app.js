@@ -3,11 +3,32 @@
  */
 (function() {
     var app = angular.module("entrega-Module", ["entrega-provider"]);
-    app.controller("EntregaController", function($compile, $scope, EntregaService){
+    app.controller("EntregaController", function($compile,  $http, $routeParams, $scope, EntregaService){
     var vm = this;
     vm.show = false;
     vm.reporte = {data:undefined};
-        $scope.submit=undefined;
+    $scope.submit=undefined;
+
+
+    /*
+    Traer reporte obtenido de activos
+    =====================
+    */
+    vm.folio = "'"+$routeParams.folio+"'";
+    vm.folioImp = $routeParams.folio;
+    getReportes();
+    function getReportes () {
+        console.info("funcion cargar datos");
+        $promese = $http.get("entregaController?getReporteEntrega=1&folio="+vm.folio);
+        $promese.then(function(data) {
+        console.log('Actividades',data.data);
+        vm.reporte.data = data.data;
+        vm.reporte.data.id = vm.folioImp; 
+        });
+        return $promese;
+    };
+
+
 
         vm.submit = function() {
             if($scope.submit == undefined) {

@@ -19,7 +19,7 @@
     "nivel": "1000",
     "nombre": "Edicion",
     "descripcion": "",
-    "lnk": "#\/edicion",
+    "lnk": "#\/edicion/0",
     "icon": "md md-home",
     "id_menu": "1",
     "id_role": "1"
@@ -33,7 +33,7 @@
     "nivel": "1000",
     "nombre": "Entrega",
     "descripcion": "",
-    "lnk": "#\/entrega",
+    "lnk": "#\/entrega/0",
     "icon": "md md-web",
     "id_menu": "1",
     "id_role": "1"
