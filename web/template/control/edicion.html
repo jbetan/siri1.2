@@ -1,0 +1,285 @@
+<?php
+echo "El método que ha usado fue: ",$_SERVER[REQUEST_METHOD],
+$folio = $_GET['folio']
+    $a = $_REQUEST['folio'];
+    echo '$a'
+    echo $a
+    ?>
+<? echo "Hola Mundo1"; ?>
+
+<?php echo "Hola Mundo2"; ?>
+
+<SCRIPT LANGUAGE="php"> echo "Hola Mundo3"; </SCRIPT>
+
+<?php
+
+echo $folio . "<br>";
+
+?>
+
+<div >
+
+
+
+</div>
+<div class="section-body" ng-controller="EdicionController as edicion">
+
+    <div class="section-header">
+        <div class="col-lg-12">
+            <form class="form" ng-init="control.init()" novalidate="novalidate" id="formFolio" name="formFolio">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group" ng-controller="AutComFolioCtrl">
+                            <script type="text/ng-template" id="customTemplate.html">
+                                <a>
+                                    <i>({{match.model.id}})</i>
+                                </a>
+                            </script>
+                            <input type="text" style="font-size:20px; text-align:center " value=""  name="folio" ng-model="edicion.reporte.data.id"  typeahead-editable="false" typeahead="datos.id for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required />
+                            <label for="folio" class="control-label">Ingresa el folio a entregar  </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <button class="btn  btn-primary ink-reaction" ng-click="edicion.buscar()"  >Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <br/><br/>
+
+    <div class="row">
+        <div class="card panel">
+            <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1-2" data-target="#accordion1-2">
+                <header><strong>DESCRIPCIÓN DEL REPORTE / SOLICITUD {{5 + 7}}</strong></header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div id="accordion1-2" >
+                <!-- BEGIN VALIDATION FORM WIZARD -->
+                <div class="row"><br/>
+                    <div class="col-lg-12">
+                        <form class="form">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="edicion.reporte.data.folio" disabled/>
+                                    <label>Folio</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="unidades" ng-model="edicion.reporte.data.unidad" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.unidades}" ng-model="equipos.equipo.data.unidades"required   disabled/>
+                                    <label>Unidad</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="areas" ng-model="edicion.reporte.data.area" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.areas}" ng-model="equipos.equipo.data.areas"required  disabled/>
+                                    <label>Área</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="tipo" ng-model="edicion.reporte.data.personaquereporta" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo"required  disabled/>
+                                    <label>Persona que reporto:</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group ">
+                                    <input type="text" name="tipo" ng-model="edicion.reporte.data.descripcion" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo"required  disabled/>
+                                    <label>Tipo</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="marca" ng-model="edicion.reporte.data.marca" class="form-control ng-dirty ng-invalid ng-valid"  ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="equipos.equipo.data.marca" required disabled/>
+                                    <label>Marca</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="modelo" ng-model="edicion.reporte.data.modelo" class="form-control ng-dirty ng-invalid ng-valid"  ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="equipos.equipo.data.modelo" required disabled/>
+                                    <label>Modelo</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="serie" ng-model="edicion.reporte.data.serie" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.serie}" ng-model="equipos.equipo.data.serie" required  disabled/>
+                                    <label>Número de Serie</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="edicion.reporte.data.finicio" disabled/>
+                                    <label>Fecha</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="IP" ng-model="edicion.reporte.data.ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.IP}" ng-model="equipos.equipo.data.IP" required disabled/>
+                                    <label>Dirección IP</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="desc_problema" ng-model="edicion.reporte.data.problema"  class="form-control ng-dirty ng-valid" rows="6"  required=""></textarea>
+                                    <label >* Descripción del problema</label>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div><!--end .panel -->
+    </div>
+
+    <div class="row">
+        <div class="card panel">
+            <div class="card-head card-head-sm collapsed style-accent text-center" data-toggle="collapse" data-parent="#accordion1-3" data-target="#accordion1-3">
+                <header>CONTROL  </header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div id="accordion1-3" >
+                <!-- BEGIN VALIDATION FORM WIZARD -->
+                <div class="row" ><br/>
+                    <div class="col-lg-12">
+                        <form class="form" ng-init="edicion.init()"  novalidate="novalidate" id="formReporte" name="formReporte" >
+                            <!---->
+
+
+
+                           <!-- -->
+                            <div class="col-lg-12">
+                                <div class=" form-group" >
+                                    <select name="tipo" id="tipo" class="form-control  tabs-accent" ng-model="edicion.reporte.data.nombretipo" required disabled>
+                                        <option selected></option>
+                                        <option value="Aplicativos/Sistemas" >Aplicativos / Sistemas</option>
+                                        <option value="Antivirus y Seguridad">Antivirus y Seguridad</option>
+                                        <option value="Telecomunicaciones">Telecomunicaciones</option>
+                                        <option value="Correo/Cuenta">Correo / Cuenta</option>
+                                        <option value="Información General">Información General</option>
+                                        <option value="Soporte Tecnico">Soporte Técnico</option>
+                                    </select>
+                                    <label for="tipo">Tipo</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select  class="form-control" ng-model="edicion.reporte.data.claseTipo" required disabled>
+                                        <option selected></option>
+                                    </select>
+                                    <label >Clase {{edicion.reporte.data.claseTipo}}</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select name="prioridad" id="prioridad" class="form-control" ng-model="edicion.reporte.data.prioridad" required disabled>
+                                        <option selected></option>
+                                        <option value="Unidad">Unidad</option>
+                                        <option value="Oficina">Oficina</option>
+                                        <option value="Usuario">Usuario</option>
+                                    </select>
+                                    <label for="prioridad">Prioridad</label>
+                                </div>
+                            </div>
+                            <!-- NO va porque no esta definido que se va hacer con el dato
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select id="tipo_usuario" name="tipo_usuario" class="form-control" ng-model="edicion.reporte.data.tipo_usuario" required>
+                                        <option selected></option>
+                                        <option value="Asignado Unidad">Asignado Unidad</option>
+                                        <option value="Usuario Externo">Usuario Externo</option>
+                                    </select>
+                                    <label for="tipo_usuario">Tipo de Usuario</label>
+                                </div>
+                            </div>
+                            -->
+
+                            <div class="col-lg-12 form-group">
+                                <p>Solucionado</p>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  ng-click="edicion.si()"  name="sol" value="SI"/>
+                                        <span>SI</span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  ng-click="edicion.no()"  name="sol" value="NO"/>
+                                        <span>NO</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!--Empieza Escalar de Equipo-->
+                            <div ng-show="edicion.show">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class=" form-group">
+                                            &nbsp;&nbsp;*Como el equipo no ha sido solucionado, se tendra que escalar a la siguiente persona.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                            <select   id="usuario" class="form-control" ng-model="edicion.reporte.data.usuarioD" required>
+                                                <option selected></option>
+                                                <option  ng-repeat="nom in edicion.usuario.data " name="usuario" >{{nom.nombre}}</option>
+                                            </select>
+                                            <label >Nombre</label>
+                                            {{edicion.usuario.data}}
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div><!--end .row -->
+                            <!--Termina Escalar de Equipo-->
+
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad" required >
+                                        <option selected></option>
+                                        <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
+                                    </select>
+                                    <label >Actividad realizada</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class=" form-group">
+                                    <input   name="comentario" ng-model="edicion.reporte.data.comentario" id="comentario" class="form-control" data-rule-minlength="2" required>
+                                    <label for="folio" class="control-label">Comentario </label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-4">
+                                    <div class=" form-group">
+                                        <select name="estatus" id="estatus" class="form-control" ng-model="edicion.reporte.data.status" required>
+                                            <option selected></option>
+                                            <option value="Garantia">Garantía</option>
+                                            <option value="En reparacion">En Reparación</option>
+                                            <option value="Entregado">Entregado</option>
+                                            <option value="Listo">Listo</option>
+                                        </select>
+                                        <label for="estatus">Estatus</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="card-actionbar-row"><br/>
+                                        <button type="reset" class="btn btn-raised ink-reaction btn-default" >Cancelar</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="submit" name="enviar" id="enviar" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div><!--end .panel -->
+        {{edicion.reporte.data}}
+        <br/>
+        {{edicion.usuario.data}}
+    </div>
+</div>
