@@ -27,9 +27,12 @@ if($_GET["getFolio"]){
     exit(json_encode($edicion->findActivities()));
 } // para la de activos
 elseif($_GET['getReporte']) //Activos
-{
-    exit(json_encode($edicion->getReportes())); //llamamos el metodo de getReportes
+{    exit(json_encode($edicion->getReportes()));} //llamamos el metodo de getReportes
+ //De Activos a Edicion
+elseif($_GET['getReporteEdicion']) //Activos
+{   exit(json_encode($edicion->findReporteByFolio($_REQUEST["folio"]))); 
 }
+
 
 
 

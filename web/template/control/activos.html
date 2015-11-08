@@ -85,19 +85,20 @@
 
       
 
-        <tr ng-if="reporte.post.expanded" ng-repeat-end>
-            
+        <tr ng-if="reporte.post.expanded" ng-repeat-end>            
            <td colspan=""> <div class="col-sm-2">
                <div class="btn-group open">
-                   <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
+                  <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
                        <i class="fa fa-star"></i>
                    </button>
                    <ul class="dropdown-menu dropdown-menu" role="menu">
-
-                       <li><a href="http://localhost:8080/siri1.2/app#/edicion?folio=reporte.folio?id=3">editar</a>  </li>
-
-                       <li class="divider"></li>
-                       <li><a href="http://localhost:8080/siri1.2/app#/entrega?folio=reporte.folio">Entrega</a> </li>
+                     <li>
+                        <a href="app#/edicion/{{reporte.folio}}">editar</a>  
+                     </li>
+                     <li class="divider"></li>
+                       <li>
+                        <a href="app#/entrega/{{reporte.folio}}">Entrega</a> 
+                       </li>
                    </ul>
                </div>
            </div>
