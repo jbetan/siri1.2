@@ -40,9 +40,7 @@ elseif ($_GET['buscarClase'])
     exit(json_encode($as->findClase()));
 }elseif ($_GET['getReportes'])
 {
-    $as -> vista();
-    $as -> setDtcReportes();
-    $data = $as -> getReportesByDataTable($_REQUEST["draw"], $_REQUEST["columns"], $_REQUEST["order"], $_REQUEST["start"], $_REQUEST["length"], $_REQUEST["search"]["value"]);
+     $data = $as->getReportes();
     exit(json_encode($data));
 
 }

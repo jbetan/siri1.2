@@ -31,7 +31,7 @@
 
 
         //*******************Guardar Reporte*****************
-        vm.submit = function() {
+            vm.submit = function() {
             if($scope.submit == undefined) {
                 console.info("Guardar");
                 $scope.submit = $("#formReporte").validate({
