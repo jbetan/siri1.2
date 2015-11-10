@@ -28,7 +28,7 @@
 
 		<!-- BEGIN LOGIN SECTION -->
 		<section class="section-account">
-			<div class="img-backdrop" style="background-image: url('<?=$this->contextPath?>/web/assets/img/fondo.jpg')"></div>
+			<div class="img-backdrop" style="background-image: url('<?=$this->contextPath?>/web/assets/img/fondo2.jpg')"></div>
 			<div class="spacer"></div>
 			<div class="card contain-sm style-transparent">
 				<div class="card-body">
@@ -40,11 +40,11 @@
 							<form class="form floating-label" action="<?=$this->contextPath."/".$this->getActionForm()?>" accept-charset="utf-8" method="post">
 								<div class="form-group">
 									<input type="text" class="form-control" id="username" name="username">
-									<label for="username">Usuario</label>
+									<label for="username">Usuario <i class="fa fa-user"></i></label>
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control" id="password" name="password" autocomplete="off">
-									<label for="password">Contrase&ntilde;a</label>
+									<label for="password">Contrase&ntilde;a <i class="fa fa-asterisk"></i></label>
 									<p class="help-block"><a href="#">Olvidaste tu contrase&ntilde;a?</a></p>
 								</div>
 								<br/>
@@ -57,7 +57,7 @@
 										</div>
 									</div><!--end .col -->
 									<div class="col-xs-6 text-right">
-										<button class="btn btn-primary btn-raised" type="submit">Login</button>
+										<button class="btn btn-primary btn-raised" type="submit">Login <i class="fa fa-unlock-alt"></i></button>
 									</div><!--end .col -->
 								</div><!--end .row -->
 							</form>
