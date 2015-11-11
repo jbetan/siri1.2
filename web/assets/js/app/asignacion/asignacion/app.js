@@ -9,6 +9,8 @@
        // vm.reporte ={data:"john"};
         vm.claseA = {data:undefined};
         vm.usuario = undefined;
+        vm.mes="hola";
+        vm.edit = edit;
 
         //*******************Guardar Reporte*****************
         vm.submit = function() {
@@ -133,8 +135,26 @@
                 DTColumnBuilder.newColumn('numdeserie').withTitle('# DE SERIE'),
                 DTColumnBuilder.newColumn('ipcaptura').withTitle('DIRECCION IP'),
                 DTColumnBuilder.newColumn('problema').withTitle('PROBLEMA'),
-                DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible()
+                DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible(),
+                DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+                .renderWith(actionsHtml)
                 ];
+
+                function edit (id) {
+                    vm.mes = 'You are trying to edit the row with IDSSS: ';
+                   
+                      
+                }
+
+
+                function actionsHtml(data, type, full, meta) {
+                 return '<button class="btn btn-warning" ng-click="as.edit()">' +
+                            '<i class="fa fa-edit"></i>' +
+                        '</button>';
+        }
+
+
+
                 //***************Termina Data-Table**************
 
         vm.init = function() {

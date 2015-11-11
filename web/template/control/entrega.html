@@ -7,7 +7,8 @@
     <div class="row">
         <div class="card panel" id="UnidadesCardForm">
             <div class="card-head card-head-sm collapsed style-primary-light" align="center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
-                <header >ENTREGA DE EQUIPOS{{5+7}}  </header>
+                <header >ENTREGA DE EQUIPOS
+                </header>
             </div>
 
             <div >
@@ -24,13 +25,18 @@
                                                     <i>({{match.model.id}})</i>
                                                 </a>
                                             </script>
+
                                             <input  style="font-size:20px; text-align:center "  name="folio" ng-model="entrega.reporte.data.id"  typeahead-editable="false" typeahead="datos.folio for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required>
-                                            <label for="folio" class="control-label">Ingresa el folio del reporte </label>
+                                            <label for="folio" class="control-label">
+                                               <i class="fa fa-tag"></i> Ingresa el folio del reporte 
+                                            </label>
+
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
                                         <div class="form-group">
-                                            <button class="btn  btn-primary ink-reaction" ng-click="entrega.buscar()"  >Buscar</button>
+                                            <button class="btn  btn-primary ink-reaction" ng-click="entrega.buscar()"  > <i class="fa fa-search"></i>Buscar 
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -38,8 +44,7 @@
                         </form>
                         <!--
                          {{entrega.reporte}}
-                        -->
-                        <!-- {{entrega.reporte.data}} -->
+
                     </div><!--end .col -->
                 </div><!--end .row -->
                 <!-- END VALIDATION FORM WIZARD -->
@@ -51,10 +56,12 @@
                             <table class="table table-bordered  no-margin table-hover" >
                                 <thead>
                                 <tr class="success">
-                                    <th><strong>Folio</strong></th>
-                                    <th><strong>Estatus</strong></th>
-                                    <th><strong>Tipo</strong></th>
-                                    <th><strong>Responsable</strong></th>
+                                    <th><strong>Folio <i class="fa fa-tag"></i>
+                                    </strong></th>
+                                    <th><strong>Estatus<i class="fa fa-heartbeat"></i>
+                                    </strong></th>
+                                    <th><strong>Tipo <i class="fa fa-desktop"></i></strong></th>
+                                    <th><strong>Responsable <i class="fa fa-user"></i></strong></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -65,9 +72,9 @@
                                     <td>Asignado a:<strong>&nbsp;&nbsp;{{entrega.reporte.data.usuario}}</strong></td>
                                 </tr>
                                 <tr>
-                                    <td>Fecha de Recepcion: <strong>&nbsp;&nbsp;{{entrega.reporte.data.finicio}}</strong></td>
+                                    <td>Fecha de Recepción: <strong>&nbsp;&nbsp;{{entrega.reporte.data.finicio}}</strong></td>
                                     <td>Marca:<strong>&nbsp;&nbsp;{{entrega.reporte.data.marca}}</strong></td>
-                                    <td>Fecha de Termino:<strong>&nbsp;&nbsp;{{entrega.reporte.data.ftermino}}</strong></td>
+                                    <td>Fecha de Término:<strong>&nbsp;&nbsp;{{entrega.reporte.data.ftermino}}</strong></td>
 
                                 </tr>
                                 <tr>
@@ -76,7 +83,7 @@
 
                                 </tr>
                                 <tr >
-                                    <td>Area:<strong>&nbsp;&nbsp;{{entrega.reporte.data.area}}</strong></td>
+                                    <td>Área:<strong>&nbsp;&nbsp;{{entrega.reporte.data.area}}</strong></td>
                                     <td>Serie:<strong>&nbsp;&nbsp;{{entrega.reporte.data.serie}}</strong></td>
                                 </tr>
 
@@ -88,7 +95,7 @@
                             <br/><br/>
                             <br/><br/>
                             <br/>
-                            <button class="btn  btn-primary ink-reaction"  ng-click="entrega.entrega()"  name="entregar" id="entregar" type="submit">Entregar</button>
+                            <button class="btn  btn-primary ink-reaction"  ng-click="entrega.entrega()"  name="entregar" id="entregar" type="submit">Entregar <i class="fa fa-check-square-o"></i></button>
                         </div>
                         </div>
 

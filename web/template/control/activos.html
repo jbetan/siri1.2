@@ -2,24 +2,28 @@
 
 <div class="section-body" ng-controller="ActivosController as activos">
 
-<h1>Activos {{5+3}}</h1>
+<h1 > </h1>
 
 
-    <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
-        <header>REPORTES ABIERTOS Y ASIGNADOS</header>
+    <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2" >
+        <header> REPORTES ABIERTOS Y ASIGNADOS</header>
         <div class="tools">
-            <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+            <a class="btn btn-icon-toggle"><i class="cart-plus "></i></a>
         </div>
     </div>
  </br>
-    <table id="accordion1-2">
-        <thead style="background-color: lightgray;">
+
+    <table  class="col-md-12" >
+        <thead class="style-default-dark">
             <tr>
               <td style="width: 200px;"></td>
-              <td>FOLIO</td>
-              <td>ESTATUS</td>
-              <td>TIPO</td>
-              <td>RESPONSABLE</td>
+              <td>FOLIO <i class="fa fa-tag"></i>
+              </td>
+              <td>ESTATUS <i class="fa fa-heartbeat"></i>
+              </td>
+              <td>TIPO <i class="fa fa-laptop"></i></td>
+              <td>RESPONSABLE <i class="fa fa-user"></i>
+              </td>
               <td></td>
             </tr>  
          </thead>
@@ -27,42 +31,44 @@
         <tr ng-repeat-start="reporte in activos.reportes.data"><!--Aqui empieza el ng-repeat-start -->  
 
             <!--inicia Listo-->
-            <td ng-if="reporte.status == 'Listo'" class="alert alert-success"> 
-            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"> + </button>
+            <td ng-if="reporte.status == 'Listo'" class="alert style-success">
+            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
+            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i> </button>
             </td>
-            <td ng-if="reporte.status == 'Listo'" class="alert alert-success">{{reporte.folio}}</td> 
-            <td ng-if="reporte.status == 'Listo'" class="alert alert-success">{{reporte.status}}</td>
-            <td ng-if="reporte.status == 'Listo'" class="alert alert-success">{{reporte.descripcion}}</td> 
-            <td ng-if="reporte.status == 'Listo'" class="alert alert-success">{{reporte.usuario}}</td>  
+            <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.status}}</td>
+            <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.usuario}}</td>
             <!--termina Listo--> 
 
              <!--inicia Garantia-->
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info">
-            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            <td ng-if="reporte.status == 'Garantia'" class="alert style-info">
+            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i>
+            </button>
+            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i>
+            </button>
             </td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info">{{reporte.folio}}</td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info"> {{reporte.status}}</td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert alert-info"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert style-info">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.usuario}}</td>
             <!--termina Garantia-->
 
             <!--inicia reparacion-->
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning">
-                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning">
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i></button>
             </td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning">{{reporte.folio}}</td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning"> {{reporte.status}}</td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-warning"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.usuario}}</td>
             <!--termina reparacion-->
 
             <!--inicia nuevo-->
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">
-                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i></button>
             </td>
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.status}}</td>
@@ -71,14 +77,14 @@
             <!--termina nuevo-->
 
             <!--inicia reparacion-->
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger">
-                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false">-</button>
-                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true">+</button>
+            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger">
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i></button>
             </td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger">{{reporte.folio}}</td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger"> {{reporte.status}}</td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'reparacion'" class="alert alert-danger"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger">{{reporte.folio}}</td>
+            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.status}}</td>
+            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.descripcion}}</td>
+            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.usuario}}</td>
             <!--termina reparacion-->
 
         </tr> <!--Aqui termina el ng-repeat-start -->  
@@ -86,44 +92,59 @@
       
 
         <tr ng-if="reporte.post.expanded" ng-repeat-end>            
-           <td colspan=""> <div class="col-sm-2">
+           <td colspan="1"> <div class="col-sm-1">
                <div class="btn-group open">
                   <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
-                       <i class="fa fa-star"></i>
+                       <i class="fa fa-plus-square fa-2x"></i>
                    </button>
                    <ul class="dropdown-menu dropdown-menu" role="menu">
                      <li>
+
+                        <a class="ink-reaction" href="app#/edicion/{{reporte.folio}}">editar <i class="fa fa-pencil-square-o fa-2x"></i></a>
+
                         <a class="btn btn-warning" href="app#/edicion/{{reporte.folio}}"> </a>  
+
                      </li>
                      <li class="divider"></li>
                        <li>
-                        <a href="app#/entrega/{{reporte.folio}}">Entrega</a> 
+                        <a class="ink-reaction" href="app#/entrega/{{reporte.folio}}">Entregar <i class="fa fa-check-square-o fa-2x"></i>
+                        </a>
                        </li>
                    </ul>
                </div>
            </div>
            </td>
 
-           <td  colspan="1">
+           <td  colspan="1" >
 
-            <strong>Estatus:</strong>{{reporte.status}} <br/>
-            <strong>Fecha de Recepcion:</strong><br/> </td>
+               <strong>Unidad:</strong> {{reporte.unidad}} <br/>
+            <strong>Fecha de Recepción:</strong><br/>
+               <strong>Persona </strong> {{reporte.personaquereporta}}
+           </td>
             <td>
-            <strong>Unidad:</strong> {{reporte.unidad}} </br>
-                <strong>Persona </strong> {{reporte.personaquereporta}} <br>
-            <strong>Area:</strong> {{reporte.area}} <br>
+                <strong>Estatus:</strong>{{reporte.status}}<br/>
+                <strong>Prioridad </strong> {{reporte.prioridad}}</br>
+
+                <strong class=" style-dange">Problema
+                </strong> {{reporte.problema}} <br/>
+            <strong>Área:</strong> {{reporte.area}} <br>
 
 
            </td>
              <td>
-            <strong>Tipo:</strong>{{reporte.descripcion}}<br/>
-            <strong>Marca:</strong>{{reporte.marca}} <br/>
+                 <strong>Tipo:</strong>{{reporte.descripcion}}<br/>
+                 <strong>Marca:</strong>{{reporte.marca}} <br/>
+             <strong>Modelo:</strong> {{reporte.modelo}}<br/>
+                 <strong>Serie:</strong> {{reporte.serie}}
              </td>
             <td>
-            <strong>Modelo:</strong> {{reporte.modelo}} <br>
-            <strong>Serie:</strong> {{reporte.serie}} <br>
+
+                <strong>Asignado a:</strong> {{reporte.usuario}}<br/>
+                <strong>Fecha Inicio:</strong> {{reporte.finicio}} <br/>
+                <strong>Fecha Término:</strong> {{reporte.ftermino}}
            </td>
-           <td><strong>Asignado a:</strong> {{reporte.usuario}}</td>
+
+
             <td colspan="2">   </td>
        </tr>
 

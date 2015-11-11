@@ -126,7 +126,7 @@ class ClassEntrega extends  class_mysqlconnector
         $sql .="JOIN marca as m   ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
         $sql .="JOIN usuario as us  ON r.idusuario = us.id ";
-        $sql .="WHERE r.folio ='$id' and at.idstatus = 3  LIMIT 1";
+        $sql .="WHERE r.folio ='$id' and  at.idstatus = 3  LIMIT 1";
 
         try{
             $res = $this->EjecutarConsulta($sql);
