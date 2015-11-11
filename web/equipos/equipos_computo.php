@@ -30,8 +30,11 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
         <div style="margin-right: 10%" class="text-lg text-right"><span class="text-bold">TU</span> DIRECCION <span class="text-bold">IP</span> es: <span class=""><?php $ip= gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
         echo $ip ;?></span></div>
         <br/><br/>
-        <div class="text-center" style="margin-top: -50px; position: relative"><h2 style="position: relative">Atención a Usuarios
-                <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span></h2></div>
+        <div class="text-center" style="margin-top: -50px; position: relative">
+            <h2 style="position: relative">Atención a Usuarios
+                <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span>
+            </h2>
+        </div>
     </header>
     <!-- BEGIN CONTENT-->
     <div id="contentV2">    
@@ -42,8 +45,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                     <center>
                     <div style="width: 35%;">
                         <ul class="nav nav-pills">
-                            <li ng-class="{active:forms.isSelected(1)}"><button class="btn btn-raised ink-reaction btn-default-light" ng-click="forms.selectTab(1)" type="submit">REPORTAR MI EQUIPO</button></li>
-                            <li ng-class="{active:forms.isSelected(2)}"><button class="btn ink-reaction btn-default-dark" ng-click="forms.selectTab(2)">REPORTAR OTRO EQUIPO</button></li>
+                            <li ng-class="{active:forms.isSelected(1)}"><button class="btn btn-raised ink-reaction btn-default-light" ng-click="forms.selectTab1()" id="tab1" type="submit">REPORTAR MI EQUIPO</button></li>
+                            <li ng-class="{active:forms.isSelected(2)}"><button class="btn ink-reaction btn-default-dark" ng-click="forms.selectTab2()" id="tab2">REPORTAR OTRO EQUIPO</button></li>
                         </ul>
                     </div>
                     </center>
@@ -52,115 +55,127 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 
                 <!--Inicia Reportar mi Equipo-->
                 <div class="row">
-                    <div ng-show="forms.isSelected(1)">
+                    <div id="form1">
                         <br/>
                         <div>
                             <form method="post" class="form" name="datosForm" id="datosForm" ng-init="forms.init()">
                                 <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input type="text" name="unidades" ng-model="forms.consulta.data.NAME" class="form-control ng-dirty ng-invalid ng-valid" required   disabled/>
-                                        <label for="">Unidad</label>
+                                    <div class="form-group" ng-controller="UnidadesController as Ctrl_U">
+                                        {{nombre}}
+                                        <input type="text" name="unidades" ng-click="Ctrl_U.getListaUnidades();" ng-model="forms.consulta.data.unidad" class="auto form-control ng-dirty ng-invalid ng-valid" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" required />
+                                        <label for=""><span class="text-danger">* </span>Unidad</label>
                                     </div>
                                     <div class="form-group" ng-controller="AreaController">
                                         <input type="text" name="areas" ng-model="forms.consulta.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" typeahead-editable="false" typeahead="area.nombre for area in area | filter:$viewValue | limitTo:10" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">Área</label>
+                                        <label for=""><span class="text-danger">* </span>Área</label>
                                     </div>
                                     <div class="form-group" ng-controller="TipoController">
-                                        <input type="text" name="tipo" ng-model="forms.consulta.data.TIPO" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">Tipo</label>
+                                        <input type="text" name="tipo" ng-model="forms.consulta.data.Tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}"  typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                        <label for=""><span class="text-danger">* </span>Tipo</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group ">
-                                        <input type="text" name="marca" ng-model="forms.consulta.data.SMANUFACTURER" class="form-control ng-dirty ng-invalid ng-valid"  required disabled/>
-                                        <label for="">Marca</label>
+                                    <div class="form-group " ng-controller="marcaController">
+                                        <input type="text" name="marca" ng-model="forms.consulta.data.marca" class="form-control ng-dirty ng-invalid ng-valid" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" required />
+                                        <label for=""><span class="text-danger">* </span>Marca</label>
                                     </div>
                                     <div class="form-group ">
                                         <input type="text" name="modelo" ng-model="forms.consulta.data.SMODEL" class="form-control ng-dirty ng-invalid ng-valid"  required disabled/>
-                                        <label for="">Modelo</label>
+                                        <label for=""><span class="text-danger">* </span>Modelo</label>
                                     </div>
                                     <div class="form-group ">
-                                        <input type="text" name="serie" ng-model="forms.consulta.data.ASSETTAG" class="form-control ng-dirty ng-invalid ng-valid" required  disabled/>
-                                        <label for="">Número de Serie</label>
+                                        <input type="text" name="serie" ng-model="forms.consulta.data.ASSETTAG" class="form-control ng-dirty ng-invalid ng-valid"  required/>
+                                        <label for=""><span class="text-danger">* </span>Número de Serie</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="usuario" id="help1" ng-model="forms.consulta.data.usuario" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">Usuario</label>
+                                    <div class="form-group ">
+                                        <input type="text" name="usuario" id="help1" ng-model="forms.consulta.data.USERID" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                        <label for=""><span class="text-danger">* </span>Usuario</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="password" name="usuario_pw" ng-model="forms.consulta.data.passUser" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group ">
+                                        <input type="password" name="usuario_pw" ng-model="forms.consulta.data.passUser" id="help1" class="form-control ng-dirty ng-invalid ng-valid"/>
                                         <label for="">Contraseña</label>
                                     </div>
-                                    <div class="form-group floating-label">
+                                    <div class="form-group ">
                                         <input type="text" name="telefono" id="help1" ng-model="forms.consulta.data.telefono" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">Telefono</label>
+                                        <label for=""><span class="text-danger">* </span>Telefono</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="correo" id="help1" ng-model="forms.consulta.data.correo" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group ">
+                                        <input type="email" name="correo" id="help1" ng-model="forms.consulta.data.correo" class="form-control ng-dirty ng-invalid ng-valid" />
                                         <label for="">Correo</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="password" name="correo_pw" id="help1" ng-model="forms.consulta.data.passCorreo" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group ">
+                                        <input type="password" name="correo_pw" id="help1" ng-model="forms.consulta.data.passCorreo" class="form-control ng-dirty ng-invalid ng-valid" />
                                         <label for="">Contraseña Correo</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="extension" id="help1" ng-model="forms.consulta.data.extencion" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group ">
+                                        <input type="text" name="extension" id="help1" ng-model="forms.consulta.data.extencion" class="form-control ng-dirty ng-invalid ng-valid" />
                                         <label for="">Extensión</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group floating-label">
+                                    <div class="form-group ">
                                         <input type="text" name="persona_reporta" id="help1" ng-model="forms.consulta.data.Qreporta" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">¿Quien Reporta?</label>
+                                        <label for=""><span class="text-danger">* </span>¿Quien Reporta?</label>
                                     </div>
                                     <div class="form-group">
-                                        <select name="problema" ng-model="forms.consulta.data.problema" class="form-control ng-dirty ng-invalid ng-valid">
-                                        <option>SE APAGA</option>
-                                        <option>TIENE VIRUS</option>
-                                        <option>NO INICIA SESION</option>
-                                        <option>NO SIRVE EL CD</option>
-                                        <option>PROBLEMA OFFICE</option>
-                                        <option>FALLA LYNC</option>
-                                        <option>NO ENCIENDE</option>
-                                        <option>ALARMADA(FOCO ROJO)</option>
-                                        <option>NO TIENE RED</option>
-                                        <option>SE CONGELA LA IMAGEN</option>
+                                        <select name="problema" ng-model="forms.consulta.data.problema" class="form-control ng-dirty ng-invalid ng-valid" required>
+<!--                                        <option>SE APAGA</option>-->
+                                            <option value="" class="problema_def" selected>--------------------------------------------------------------------------------</option>
+                                            <option class="problema_def">TIENE VIRUS</option>
+    <!--                                        <option>NO INICIA SESION</option>-->
+                                            <option class="problema_def">NO SIRVE EL CD</option>
+                                            <option class="problema_def">PROBLEMA OFFICE</option>
+    <!--                                        <option>FALLA LYNC</option>-->
+    <!--                                        <option>NO ENCIENDE</option>-->
+    <!--                                        <option>ALARMADA(FOCO ROJO)</option>-->
+    <!--                                        <option>NO TIENE RED</option>-->
+    <!--                                        <option>SE CONGELA LA IMAGEN</option>-->
+                                            <option value="" ng-click="forms.click_Otro()">Otro</option>
                                         </select>
-                                        <label for="">Problema</label>
+                                        <textarea name="problema" id="otro" cols="30" rows="2" ng-model="forms.consulta.data.problema"  class="form-control ng-dirty ng-invalid ng-valid" required placeholder="Describa su problema" ></textarea>
+                                        <label for=""><span class="text-danger">* </span> Problema</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="hidden" name="ipcaptura" id="help1" ng-model="forms.consulta.data.IPADDRESS"/>
-                                    </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="ipcaptura" id="help1" ng-model="forms.equipo.data.IPADDRESS"/>
+                                        </div>
                                 </div>
                                 <br/>
                                 <div class="text-center col-sm-12">
-                                    <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
-                                    &nbsp;&nbsp; <button id="Enviar" type="submit" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
+                                    &nbsp;&nbsp; <button type="submit" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
                                 </div>
                             </form>
+                            <br><br><br>
+                            <div id="myModal" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button class="close" type='button' ng-click='on_click_cancel()'>×</button>
+                                            <h4 class="modal-title"> <h3>Reporte guardado con éxito</h3></h4>
+                                            <h5>Generando folio .......</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
-                    <br><br><br>
-                    {{forms.consulta.data}}
-                </div>
+
                     <!--Termina Reportar mi Equipo-->
+                    <div id="form2">
+<!--                    <div class="col-lg-12">
 
-                    
-
-
-                    <div ng-show="forms.isSelected(2)">
-                    <div class="col-lg-12">
-                        <p>{{equipos.equipo.data.NAME}}</p>
                         <form  action="" accept-charset="utf-8" method="post" id="formequiposip"  ng-init="equipos.init()">
                         <div class="col-lg-12"><span class="text-light text-lg">Si conoces la direccion IP del equipo que deseas reportar escribela aquí: &nbsp;&nbsp;</span>
-                        <input type="text" class="form" name="buscar"/> <span class="text-light text-lg">&nbsp; y haz click en </span>&nbsp;&nbsp;&nbsp;<button class="btn btn-raised ink-reaction btn-primary" type="submit">LLENAR DATOS</button><span class="text-light text-lg"> Sino llena los campos</span>
+                        <input type="text" class="form" name="buscar"/> <span class="text-light text-lg">&nbsp; y haz click en </span>&nbsp;&nbsp;&nbsp;<button class="btn btn-raised ink-reaction btn-primary" type="submit">LLENAR DATOS</button><span class="text-light text-lg">
+                        Sino llena los campos</span>
 
                         </form>
-                    </div>
+                    </div>-->
+                        <p class="text-light text-lg">Llena los campos del equipo que deseas reportar</p>
                         <br/>
 
                         <div ng-controller="form2Controller as Ctrl" class="col-lg-12">
@@ -173,8 +188,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                                 <i>({{match.model.unidad}})</i>
                                             </a>
                                         </script>
-                                        <input type="text" name="unidades"  ng-model="unidad_n" ng-class="{'floating-label': equipos.equipo.data.unidades}" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid " required=""/>
-                                        <label for="">* Unidad</label>
+                                        <input type="text" name="unidades"  ng-model="Ctrl.equipo.data.unidad" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid " required=""/>
+                                        <label for=""><span class="text-danger">* </span> Unidad</label>
                                     </div>
                                     <div class="form-group" ng-controller="AreaController">
                                         <script type="text/ng-template" id="customTemplate.html">
@@ -182,8 +197,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                                 <i>({{match.model.nombre}})</i>
                                             </a>
                                         </script>
-                                        <input type="text" name="areas" ng-model="equipos.equipo.data.areas" ng-class="{'floating-label': equipos.equipo.data.areas}" typeahead-editable="false" typeahead="area.nombre for area in area | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                        <label for="">* Área</label>
+                                        <input type="text" name="areas" ng-model="Ctrl.equipo.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" typeahead-editable="false" typeahead="area.nombre for area in area | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
+                                        <label for=""><span class="text-danger">* </span> Área</label>
                                     </div>
                                     <div class="form-group" ng-controller="TipoController">
                                         <script type="text/ng-template" id="customTemplate.html">
@@ -191,8 +206,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                                 <i>({{match.model.descripcion}})</i>
                                             </a>
                                         </script>
-                                        <input type="text" name="tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10"  class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                        <label for="">* Tipo</label>
+                                        <input type="text" name="tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="Ctrl.equipo.data.Tipo" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10"  class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
+                                        <label for=""><span class="text-danger">* </span> Tipo</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -202,68 +217,92 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                                 <i>({{match.model.descripcion}})</i>
                                             </a>
                                         </script>
-                                        <input type="text" name="marca" ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="marc" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                        <label for="">* Marca</label>
+                                        <input type="text" name="marca" ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="Ctrl.equipo.data.marca" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
+                                        <label for=""><span class="text-danger">* </span> Marca</label>
                                     </div>
-                                    <div class="form-group" ng-controller="ModeloController">
-                                        <script type="text/ng-template" id="customTemplate.html">
-                                            <a>
-                                                <i>({{match.model.modelo}})</i>
-                                            </a>
-                                        </script>
-                                        <input type="text" name="modelo" ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="model" typeahead-editable="false" typeahead="modelo.modelo for modelo in modelo | filter:$viewValue | limitTo:10" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                        <label for="">* Modelo</label>
+                                    <div class="form-group" >
+                                        <input type="text" name="modelo" ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="Ctrl.equipo.data.SMODEL" typeahead-editable="false" class="form-control  Sip ng-dirty ng-invalid ng-valid" />
+                                        <label for=""> Modelo</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="serie" ng-model="n_Serie" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                        <label for="">* Número de Serie</label>
+                                        <input type="text" name="serie" ng-model="Ctrl.equipo.data.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" />
+                                        <label for=""> Número de Serie</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="usuario" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">Usuario</label>
+                                    <div class="form-group">
+                                        <input type="text" name="usuario" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.USERID" required/>
+                                        <label for=""><span class="text-danger">* </span>Usuario</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="password" name="usuario_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group">
+                                        <input type="password" name="usuario_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passUSer" />
                                         <label for="">Contraseña</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="telefono" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">Telefono</label>
+                                    <div class="form-group">
+                                        <input type="text" name="telefono" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.telefono" required/>
+                                        <label for=""><span class="text-danger">* </span>Telefono</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="correo" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group">
+                                        <input type="email" name="correo" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.correo"/>
                                         <label for="">Correo</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="password" name="correo_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group">
+                                        <input type="password" name="correo_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passCorreo"/>
                                         <label for="">Contraseña Correo</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="extension" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <div class="form-group">
+                                        <input type="text" name="extension" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.extencion"/>
                                         <label for="">Extensión</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <div class="form-group floating-label">
-                                        <input type="text" name="persona_reporta" id="help1" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for="">¿Quien Reporta?</label>
+                                    <div class="form-group">
+                                        <input type="text" name="persona_reporta" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.Qreporta" required/>
+                                        <label for=""><span class="text-danger">* </span>¿Quien Reporta?</label>
                                     </div>
-                                    <div class="form-group floating-label">
-                                        <textarea name="problema" id="" cols="30" rows="3" class="form-control ng-dirty ng-invalid ng-valid" required></textarea>
-                                        <label for="">Problema</label>
+                                    <div class="form-group">
+                                        <select name="problema" ng-model="Ctrl.equipo.data.problema" class="form-control ng-dirty ng-invalid ng-valid" required>
+                                            <option value="" class="problema_def" selected>--------------------------------------------------------------------------------</option>
+                                            <option class="problema_def">SE APAGA</option>
+                                            <option class="problema_def">TIENE VIRUS</option>
+                                            <option class="problema_def">NO INICIA SESION</option>
+                                            <option class="problema_def">NO SIRVE EL CD</option>
+                                            <option class="problema_def">PROBLEMA OFFICE</option>
+                                            <option class="problema_def">FALLA LYNC</option>
+                                            <option class="problema_def">NO ENCIENDE</option>
+                                            <option class="problema_def">ALARMADA(FOCO ROJO)</option>
+                                            <option class="problema_def">NO TIENE RED</option>
+                                            <option class="problema_def">SE CONGELA LA IMAGEN</option>
+                                            <option value="" ng-click="Ctrl.click_Otro2()">OTRO</option>
+                                        </select>
+                                        <textarea name="problema" ng-model="Ctrl.equipo.data.problema" id="otro2" cols="30" rows="2"  class="form-control ng-dirty ng-invalid ng-valid" placeholder="Describa su problema" ></textarea>
+                                        <label for=""><span class="text-danger">* </span>Problema</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="ipcaptura" id="help1" ng-model="Ctrl.equipo.data.IPADDRESS"/>
                                     </div>
                                 </div>
                                 <br/>
-                                <div class="text-center">
+                                <div class="col-lg-12 text-center">
                                     <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
                                     &nbsp;&nbsp; <input type="submit" class="btn btn-raised ink-reaction btn-default-dark" value="Guardar"/>
+                                    <p class="text-light text-lg">Los campos marcados con <span class="text-danger">* </span>son de carácter obligatorio.</p>
+
                                 </div>
                             </form>
-                            <p class="text-light text-lg">Los campos marcados con * son de carácter obligatorio.</p>
+                            <div id="myModal2" class="modal fade">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button class="close" type='button' ng-click='on_click_cancel2()'>×</button>
+                                            <h4 class="modal-title"> <h3>Reporte guardado con éxito</h4>
+                                            <h5>Generando folio ........</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
             </div><!--end .section-body -->

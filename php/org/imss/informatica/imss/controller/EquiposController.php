@@ -1,24 +1,11 @@
 <?php
 
 
-include_once("/../business/Equipos/ClassEquipos.php");
+include_once("../business/Equipos/ClassEquipos.php");
 include_once("ControllerPrincipal.php");
 
 class EquiposController extends  ControllerPrincipal{
-   
-    public function saveReporte($array)
-    {
-        $saveEquipo= new ClassEquipos();
-        try{
-            if (json_encode($saveEquipo->saveReporte($array))) {
-                exit(json_encode(array("error" => false, "message" => "Se ha realizado correctamente")));
-            } else {
-                exit(json_encode(array("error" => true, "message" => "Error inesperado, verifique los datos")));
-            }
-        }catch(Exception $e) {
-            exit(json_encode(array("error" => true, "message" =>$e->getMessage())));
-        }
-    }
+
     public function saveReporteAutocomplete($data)
     {
         $saveEquipoAuto= new ClassEquipos();
@@ -34,19 +21,14 @@ class EquiposController extends  ControllerPrincipal{
         }
     }
 
+
 }
 
 $Equipospage = new EquiposController ("equipos/equipos_computo.php", "Generar Reporte - Levantamiento");
 
-
-
-if($_GET['save'])
-{
-    exit($Equipospage->saveReporte($_REQUEST));
-}
-else if($_GET['save2'])
+ if($_GET['save'])
 {
     exit($Equipospage->saveReporteAutocomplete($_REQUEST));
-}else{
-    $Equipospage->page();
 }
+    $Equipospage->page();
+
