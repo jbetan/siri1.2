@@ -1,7 +1,7 @@
 
 (function() {
     var app = angular.module("edicion-Module", ["edicion-provider"]);
-    app.controller("EdicionController", function($compile, $scope, EdicionService){
+    app.controller("EdicionController",  function($compile, $http, $scope, $routeParams, EdicionService){
         var vm = this;
         $scope.submit = undefined;
         vm.show = false;
@@ -9,8 +9,29 @@
         vm.usuario = {data:undefined};
         vm.activitiesA = {data:undefined};
 
+    
+
+        /*
+        Traer reporte obtenido de activos
+        =====================
+        */
+        vm.folio = "'"+$routeParams.folio+"'";
+        vm.folioImp = $routeParams.folio;
+        getReportes();
+        function getReportes () {
+            console.info("funcion cargar datos");
+            $promese = $http.get("edicionController?getReporteEdicion=1&folio="+vm.folio);
+            $promese.then(function(data) {
+                console.log('Actividades',data.data);
+                vm.reporte.data = data.data;
+                vm.reporte.data.id = vm.folioImp; 
+            });
+            return $promese;
+        };
+
+
         //*******************Guardar Reporte*****************
-        vm.submit = function() {
+            vm.submit = function() {
             if($scope.submit == undefined) {
                 console.info("Guardar");
                 $scope.submit = $("#formReporte").validate({
@@ -35,7 +56,7 @@
         };
 
         vm.getUsuario = function(){
-            EdicionService.findUsuariosByTipo(vm.reporte.data.nivel, vm.reporte.data.subnivel,function(){});
+            EdicionService.getUsuario(function(){});
             vm.usuario = EdicionService.usuario;
         };
 
@@ -88,3 +109,7 @@
 
     });
 })();
+
+
+
+

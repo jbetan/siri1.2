@@ -7,7 +7,7 @@
     "nombre": "Activos",
     "descripcion": "",
     "lnk": "#\/activos",
-    "icon": "md md-home",
+    "icon": "fa fa-check-square-o ",
     "id_menu": "1",
     "id_role": "1"
   },
@@ -19,8 +19,8 @@
     "nivel": "1000",
     "nombre": "Edicion",
     "descripcion": "",
-    "lnk": "#\/edicion",
-    "icon": "md md-home",
+    "lnk": "#\/edicion/0",
+    "icon": "fa fa-pencil-square-o",
     "id_menu": "1",
     "id_role": "1"
   },
@@ -33,8 +33,8 @@
     "nivel": "1000",
     "nombre": "Entrega",
     "descripcion": "",
-    "lnk": "#\/entrega",
-    "icon": "md md-web",
+    "lnk": "#\/entrega/0",
+    "icon": "fa fa-truck ",
     "id_menu": "1",
     "id_role": "1"
 

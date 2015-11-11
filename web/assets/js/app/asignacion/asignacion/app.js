@@ -1,6 +1,6 @@
 
 (function() {
-    var app = angular.module("asigmacion-Module", ["asignacion-provider"]);
+    var app = angular.module("asigmacion-Module", ["datatables", "asignacion-provider"]);
     app.controller("AsignacionController", function($compile, $scope, AsignacionService,  DTOptionsBuilder, DTColumnBuilder){
         var vm = this;
         $scope.submit = undefined;
@@ -120,74 +120,22 @@
 
         };
 
-        //***************Inicia Data-Table**************
-
-        vm.message = 'Este es un msj';
-        vm.edit = edit;
-
-        vm.dtInstance = {};
-
-        vm.dtOptions = DTOptionsBuilder.newOptions()
-            .withOption('ajax', {
-                url: 'asignacionController?getReportes=1',
-                type: 'POST'
-            })
-            // or here
-
-            .withDataProp('data')
-            .withOption('serverSide', true)
-            .withOption('createdRow', createdRow)
-            .withBootstrap()
-            .withDOM('lfrtip')
-            .withPaginationType('full_numbers')// Active ColVis plugin
-            .withColVis()
-            .withBootstrapOptions({
-                ColVis: {
-                    classes: {
-                        masterButton: 'btn btn-primary'
-                    }
-                }
-            })
-            // Add a state change function
-            .withColVisStateChange(function(iColumn, bVisible){
-                console.log('The column', iColumn, ' has changed its status to', bVisible);
-            })
-            // Exclude the last column from the list
-            .withColVisOption('aiExclude', [2]);
-
-
-        vm.dtColumns = [
-            DTColumnBuilder.newColumn('idr').withTitle('ID'),
-            DTColumnBuilder.newColumn('idat').withTitle('ID'),
-            DTColumnBuilder.newColumn('folio').withTitle('Id o'),
-            DTColumnBuilder.newColumn('finicio').withTitle('Id h'),
-            DTColumnBuilder.newColumn('tipoC').withTitle('Id Clase'),
-            DTColumnBuilder.newColumn('marca').withTitle('Id Clase'),
-            DTColumnBuilder.newColumn('modelo').withTitle('Id Clase'),
-            DTColumnBuilder.newColumn('unidad').withTitle('Id Clase'),
-            DTColumnBuilder.newColumn('area').withTitle('Id Clase'),
-            DTColumnBuilder.newColumn('serie').withTitle('Id Clase'),
-            DTColumnBuilder.newColumn('ipcaptura').withTitle('Id Clase'),
-
-            DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
-                .renderWith(actionsHtml)
-        ];
-
-        function edit (id) {
-            vm.message = 'You are trying to edit the row with ID: ' + id;
-            vm.dtInstance.reloadData();
-        }
-
-        function createdRow(row, data, dataIndex) {
-            // Recompiling so we can bind Angular directive to the DT
-            $compile(angular.element(row).contents())($scope);
-        }
-        function actionsHtml(data, type, full, meta) {
-            return '<button class="btn btn-warning" ng-click="admin.edit(' + data.id+ ')">' +
-                '   <i class="fa fa-edit"></i>' +
-                '</button>&nbsp;';
-        }
-//***************Termina Data-Table**************
+                //***************Inicia Data-Table**************
+                vm.dtOptions = DTOptionsBuilder.fromSource('asignacionController?getReportes=1')
+                .withPaginationType('full_numbers');
+                vm.dtColumns = [
+                DTColumnBuilder.newColumn('folio').withTitle('FOLIO'),
+                DTColumnBuilder.newColumn('fechaRecep').withTitle('FECHA'),
+                DTColumnBuilder.newColumn('descripcion').withTitle('TIPO'),
+                // DTColumnBuilder.newColumn('folio').withTitle('MARCA'),
+                DTColumnBuilder.newColumn('modelo').withTitle('MODELO'),
+                // DTColumnBuilder.newColumn('folio').withTitle('AREA'),
+                DTColumnBuilder.newColumn('numdeserie').withTitle('# DE SERIE'),
+                DTColumnBuilder.newColumn('ipcaptura').withTitle('DIRECCION IP'),
+                DTColumnBuilder.newColumn('problema').withTitle('PROBLEMA'),
+                DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible()
+                ];
+                //***************Termina Data-Table**************
 
         vm.init = function() {
             setTimeout(function () {

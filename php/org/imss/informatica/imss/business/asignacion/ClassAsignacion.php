@@ -149,67 +149,39 @@ class ClassAsignacion extends  class_mysqlconnector
     }
 
 
+    //Obtner lista de reportes para la tabla
+       public function getReportes() {
 
-
-    public function getDtcReportes()
-    {
-        return $this->dtcReportes;
-    }
-
-    public function  setDtcReportes()
-    {
-        $this -> dtcReportes = array(
-            array("nombre"=>"idr", "tipo"   => Utils::$TIPO_NUMERO),
-            array("nombre"=>"idat", "tipo"   => Utils::$TIPO_NUMERO),
-
-            array("nombre"=>"folio", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"finico", "tipo"=> Utils::$TIPO_FECHA),
-            array("nombre"=>"tipoC", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"marca", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"modelo", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"unidad", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"area", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"serie", "tipo" => Utils::$TIPO_TEXTO),
-            array("nombre"=>"ipcaptura", "tipo"=> Utils::$TIPO_TEXTO)
-
-
-        );
-    }
-
-    public function getReportesByDataTable($draw, $columns, $order, $start, $length, $search) {
-
-        $cols = "";
-        foreach($this->dtcReportes as $col) {
-            $cols.= ( $cols ? "," : "" ).$col["nombre"];
+        $sql = "select * ";
+        $sql .="from reporte as r ";
+        $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
+        $sql .="JOIN equiposrecibidos as er ON r.id = er.idreporte ";
+        $sql .="JOIN equipos as e ON er.idequipo = e.id ";
+        $sql .="JOIN marca as m              ON e.idmarca = m.id ";
+        $sql .="JOIN tipo as tp              ON e.idtipo = tp.id ";
+        $sql .="WHERE at.idstatus = 6  ";      
+     
+       
+        try{
+            $res = $this->EjecutarConsulta($sql);
+        }catch (Exception $e){
+            throw $e;
         }
-        //$this->EjecutarConsulta("SET NAMES 'latin1'");
-        $where = Utils::getComplementDataTableQuery($this->dtcReportes, $columns, $order, 0, -1, $search);
-        $sql = "SELECT count(*) FROM vistaasignacion WHERE 1 ".$where;
-        $res = $this->EjecutarConsulta($sql);
-        $total = mysql_result($res, 0,0);
 
-        $where = Utils::getComplementDataTableQuery($this->dtcReportes, $columns, $order, $start, $length, $search);
+        $k = 0;
+        while($fila = @mysql_fetch_assoc($res)){  
+            $valores[$k++] = $fila;                       
+         }
+       
+        if(isset($valores)) return $valores;
 
-        $sql = "SELECT $cols FROM vistaasignacion WHERE 1 ".$where;
-        $res = $this->EjecutarConsulta($sql);
-        $rows = array();
-        while($row = mysql_fetch_assoc($res)){
-            $rows[] = $row;
-        }
-        print_r($row);
-        return array(
-            "draw"=> $_REQUEST["draw"],
-            "recordsTotal"=> $total,
-            "recordsFiltered"=> $total,
-            "data"=>$rows
-        );
+      
+
     }
 
-    public function vista()
-    {
-        $res = $this -> devuelve_filas(vistaasignacion);
-        print_r($res);
-        //var_dump($res);
-    }
+
+
+
+    
 
 }//Finaliza la clase Entrega

@@ -28,5 +28,12 @@ if($_GET["getFolio"])
     }
 }
 
+ //De Activos a Entrega
+elseif($_GET['getReporteEntrega']) //Activos
+{   exit(json_encode($entrega->findReporteByFolio($_REQUEST["folio"]))); 
+}
+
+
+
 
 
