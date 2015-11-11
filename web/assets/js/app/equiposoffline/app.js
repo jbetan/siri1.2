@@ -71,21 +71,23 @@
         vm.submit = function() {
             $("#datosFormAutocomplete").validate({
                 submitHandler: function (form) {
-                    console.log(vm.equipo.data);
                     $http({
-                        url: "confirmacion?save=1",
+                        url: "confirmacion?saveform2=1",
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                         async: true,
                         method: 'POST',
                         data: $.param(vm.equipo.data)
                     }).success(function (data) {
+                        console.log("llega id del reporte",data.id);
+                        var id= data;
                         if(data.Error == true ) {
                             alert("Rellena datos")
 
                         } else {
                             $('#myModal2').modal('show');
                             setTimeout(function(){
-                                $("#contentV2").load('confirmacion');
+                                location.href=('confirmacion?id='+ id);
+                                console.log(id);
                             },2000);
                         }
                     });
@@ -152,7 +154,22 @@
         vm.submit = function() {
             $("#datosForm").validate({
                 submitHandler: function (form) {
+                    $(this).attr("disabled", true);
+                    $(this).addClass("disabled");
                     console.log("form: ",vm.consulta.data.unidad);
+                    if(vm.consulta.data.unidad == undefined)
+                    {
+                        alert("selecciona un campo del autocomplete");
+                        $("input[name='unidades']").css("border", "2px #EBCCD1 solid");
+                        $("input[name='unidades']").next( "span" ).css( "display", "block" ).fadeOut(function(){
+                                $("input[name='unidades']").click();
+                            });
+
+
+
+                        return false;
+                    }
+
                     $http({
                         url: "confirmacion?save=1",
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'},
