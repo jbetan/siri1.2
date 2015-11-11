@@ -37,6 +37,8 @@ RewriteRule ^(.*)$ /siri1.2/web/template/proveedores/proveedoresForm.html [L]
 RewriteCond $1 ^prueba
 RewriteRule ^(.*)$ /siri1.2/web/template/prueba/nuevo.html [L]
 
+RewriteCond $1 ^ComparaIP
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/reports/ocs/class_ip_ocs.php [L]
 
 RewriteCond $1 ^menu4
 RewriteRule ^(.*)$ /siri1.2/web/template/menu4/menu4.html [L]
@@ -137,6 +139,12 @@ RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AreaControl
 
 RewriteCond $1 ^confirmacion$
 RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/ConfirmacionController.php [L]
+
+RewriteCond $1 ^confirmacionModel$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/business/confirmacion/ClassConfirmacion.php [L]
+
+RewriteCond $1 ^verReporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/business/Equipos/ClassEquipos.php [L]
 
 RewriteCond $1 ^ocs$
 RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/reports/ocs/class_ocs.php [L]

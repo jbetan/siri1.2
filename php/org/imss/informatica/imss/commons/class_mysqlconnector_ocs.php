@@ -3,7 +3,7 @@ error_reporting(0);
 include_once(dirname(__FILE__)."/../src/config_ocs.inc.php");
 include_once(dirname(__FILE__)."/class_exception.php");
 // CLASE PARA EL MANEJO DE MySQL
-class class_mysqlconnector
+class class_mysqlconnector_ocs
 {
 	// VARIABLES
 	private $servidor;

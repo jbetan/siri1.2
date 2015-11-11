@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="page-module">
 <head>
     <title><?=$this->title?></title>
 
@@ -59,9 +59,12 @@
                 <div class="col-lg-12" style="">
                     <div class="col-lg-12">
 
-                        <!--Equipos de Computo-->
-                        <div class="col-lg-4">
-                            <a href="equipoReporte"><div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #2b323a solid; height:450px;width: 100%; background-color: rgb(43, 50, 58);color:white;">
+                        <!--Equipos de Computo
+
+                        href = equipoReporte-->
+
+                        <div class="col-lg-4" ng-controller="pageController as page">
+                            <a href="javascript:void(0)" id="equiposRep" ng-click="page.click()"><div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #2b323a solid; height:450px;width: 100%; background-color: rgb(43, 50, 58);color:white;">
                                 <div id="bas2">
                                     <!-- BEGIN CONTENT-->
                                     <div id="content">
@@ -160,6 +163,9 @@
 <script src="<?=$this->contextPath?>/web/assets/js/libs/spin.js/spin.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/libs/autosize/jquery.autosize.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/libs/nanoscroller/jquery.nanoscroller.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/libs/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/libs/jquery-validation/dist/localization/messages_es.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/libs/jquery-validation/dist/additional-methods.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/App.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppNavigation.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppOffcanvas.js"></script>
@@ -168,6 +174,15 @@
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppNavSearch.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppVendor.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
+
+<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-route.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-resource.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-datatables.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/css/theme-default/libs/ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/app/page/app.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/app/page/pageProvider.js"></script>
+
 <!-- END JAVASCRIPT -->
 
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="equipos-module">
+<html lang="en" ng-app="app-confirm">
 <head>
     <title><?=$this->title?></title>
 
@@ -30,59 +30,69 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 ?>
 <div id="base">
        <!-- BEGIN CONTENT-->
+    <header>
+        <div style="margin-right: 10%" class="text-lg text-right"><span class="text-bold">TU</span> DIRECCION <span class="text-bold">IP</span> es: <span class=""><?php $ip= gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
+                echo $ip ;?></span></div>
+        <br/><br/>
+        <div class="text-center" style="margin-top: -50px; position: relative">
+            <h2 style="position: relative">Atención a Usuarios
+                <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span>
+            </h2>
+        </div>
+    </header>
     <div id="contentV2">
-
         <!-- BEGIN 404 MESSAGE -->
         <section>
-            <div class="section-body contain-lg" ng-controller="EquiposController as equipos">
 
+            <div class="section-body contain-lg" ng-controller="confirmController as equipos" ng-init="equipos.init()">
+                <div><b>{{}}</b></div>
                 <div class="row" style="">
                     <div class="col-lg-12">
                         <p>Tu solicitud ha sido levantada con los siguientes datos:</p>
                         <form class="form">
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="text" name="folio" class="form-control"/>
+                                <input type="text" name="folio" id="folio" ng-model="folio" class="form-control" disabled/>
                                 <label for="folio">Folio</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="areas" class="form-control"/>
+                                <input type="text" name="areas" ng-model="unidad" class="form-control" disabled/>
                                 <label for="unidad">Unidad</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="areas" class="form-control"/>
+                                <input type="text" name="areas" ng-model="area" class="form-control" disabled/>
                                 <label for="area">Area</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="tipo" class="form-control"/>
+                                <input type="text" name="tipo" ng-model="tipo" class="form-control" disabled/>
                                 <label for="tipo">Tipo</label>
                             </div>
                         </div>
                         <div class="col-sm-3" style="margin-top: 6%;">
                             <div class="form-group">
-                                <input type="text" name="marca" class="form-control"/>
+                                <input type="text" name="marca" ng-model="marca" class="form-control" disabled/>
                                 <label for="marca">Marca</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="modelo" class="form-control"/>
+                                <input type="text" name="modelo" ng-model="modelo" class="form-control" disabled/>
                                 <label for="modelo">Modelo</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="serie" class="form-control"/>
+                                <input type="text" name="serie" ng-model="Nserie" class="form-control" disabled/>
                                 <label for="serie">Número de serie</label>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="form-group">
-                                <input type="date" name="fecha" class="form-control"/>
+                                <input type="text" name="fecha" ng-model="fecha" class="form-control" disabled/>
                                 <label for="unidad">Fecha</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="IP" class="form-control"/>
+                                <input type="text" name="IP" ng-model="ip" class="form-control" disabled/>
                                 <label for="IP">Dirección IP</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="problema" id="" class="form-control" />
+                                <input type="text" name="problema" ng-model="problema" id="" class="form-control" disabled />
                                 <label for="tipo">Descripción del problema</label>
                                 <br/>
                                 <div class="text-center"><a href="equipoReporte" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
@@ -135,6 +145,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/app.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/provider.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/app/confirmacion/app.js"></script>
 
 
 </body>
