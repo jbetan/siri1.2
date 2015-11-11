@@ -101,7 +101,7 @@
 
             vm.reporte.data.tecnico="john";
 
-            console.info("funcion buscar");
+            console.info("funcion buscar", vm.reporte.data.id);
             AsignacionService.findReporteById(vm.reporte.data.id,function() {
             });
             vm.reporte =AsignacionService.reporte;

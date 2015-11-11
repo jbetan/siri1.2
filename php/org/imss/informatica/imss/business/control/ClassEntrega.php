@@ -4,12 +4,39 @@ include_once(dirname(__FILE__)."/../../commons/class_utils.php");
 
 class ClassEntrega extends  class_mysqlconnector
 {
-    public function auto()
+    public function getFolioAutoEdicion()
     {
-        $this ->EjecutarConsulta("SET NAMES 'utf8';");
-        $data = $this->devuelve_filas_indexlabel("reporte", "id");
-        return $data;
+        
+        $sql = "SELECT r.folio ";
+        $sql .="from reporte as r ";
+        $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
+        $sql .="where at.idstatus != 6 ";
+     
+       
+        try{
+            $res = $this->EjecutarConsulta($sql);
+        }catch (Exception $e){
+            throw $e;
+        }
+
+        $k = 0;
+        while($fila = @mysql_fetch_assoc($res)){  
+            $valores[$k++] = $fila;                       
+         }
+       
+        if(isset($valores)) return $valores;
+
     }
+
+
+        public function auto()
+    {
+         $this ->EjecutarConsulta("SET NAMES 'utf8';");
+         $data = $this->devuelve_filas_indexlabel("reporte", "folio");
+         return $data;
+
+    }
+
 
     public function guardarReporteEntrega ($reporte)
     {
@@ -66,7 +93,7 @@ class ClassEntrega extends  class_mysqlconnector
         $sql .="JOIN marca as m   ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
         $sql .="JOIN usuario as us  ON r.idusuario = us.id ";
-        $sql .="WHERE r.folio = $id LIMIT 1";
+        $sql .="WHERE r.folio = $id and at.idstatus = 3  LIMIT 1";
 
         try{
             $res = $this->EjecutarConsulta($sql);
@@ -87,7 +114,7 @@ class ClassEntrega extends  class_mysqlconnector
 
     public function findReporteById($id) {
 
-        $sql = "select r.id, st.nombre as status, r.fechaRecep as finicio, at.fechaTerm as ftermino, u.nombre as unidad, a.nombre as area, e.modelo, e.numdeserie as serie, m.descripcion as marca, tp.descripcion, us.nombre as usuario ";
+        $sql = "select r.id, r.folio, st.nombre as status, r.fechaRecep as finicio, at.fechaTerm as ftermino, u.nombre as unidad, a.nombre as area, e.modelo, e.numdeserie as serie, m.descripcion as marca, tp.descripcion, us.nombre as usuario ";
        // $sql = "select *";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
@@ -99,7 +126,7 @@ class ClassEntrega extends  class_mysqlconnector
         $sql .="JOIN marca as m   ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
         $sql .="JOIN usuario as us  ON r.idusuario = us.id ";
-        $sql .="WHERE r.id = $id LIMIT 1";
+        $sql .="WHERE r.folio ='$id' and at.idstatus = 3  LIMIT 1";
 
         try{
             $res = $this->EjecutarConsulta($sql);

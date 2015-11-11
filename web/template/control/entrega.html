@@ -18,14 +18,14 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <div class="form-group" ng-controller="AutComFolioCtrl">
+                                        <div class="form-group" ng-controller="getFolioAutoEdicion">
                                             <script type="text/ng-template" id="customTemplate.html">
                                                 <a>
                                                     <i>({{match.model.id}})</i>
                                                 </a>
                                             </script>
-                                            <input  style="font-size:20px; text-align:center "  name="folio" ng-model="entrega.reporte.data.id"  typeahead-editable="false" typeahead="datos.id for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required>
-                                            <label for="folio" class="control-label">Ingresa el folio del reporte{{entrega.reporte.data.id}} </label>
+                                            <input  style="font-size:20px; text-align:center "  name="folio" ng-model="entrega.reporte.data.id"  typeahead-editable="false" typeahead="datos.folio for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required>
+                                            <label for="folio" class="control-label">Ingresa el folio del reporte </label>
                                         </div>
                                     </div>
                                     <div class="col-sm-2">
@@ -39,7 +39,7 @@
                         <!--
                          {{entrega.reporte}}
                         -->
-                        {{entrega.reporte.data}}
+                        <!-- {{entrega.reporte.data}} -->
                     </div><!--end .col -->
                 </div><!--end .row -->
                 <!-- END VALIDATION FORM WIZARD -->
@@ -59,7 +59,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td rowspan="4" style="font-size:25px; font-family: bold; text-align:center; vertical-align: middle;  ">{{entrega.reporte.data.id}}</td>
+                                    <td rowspan="4" style="font-size:25px; font-family: bold; text-align:center; vertical-align: middle;  ">{{entrega.reporte.data.folio}}</td>
                                     <td>Estatus:<strong>&nbsp;&nbsp;{{entrega.reporte.data.status}}</strong></td>
                                     <td>Tipo Equipo:<strong>&nbsp;&nbsp;{{entrega.reporte.data.descripcion}}</strong></td>
                                     <td>Asignado a:<strong>&nbsp;&nbsp;{{entrega.reporte.data.usuario}}</strong></td>
