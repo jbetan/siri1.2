@@ -10,7 +10,13 @@ $entrega = new ClassEntrega();
 if($_GET["getFolio"])
 {
     exit(json_encode($entrega->auto()));
-}elseif($_GET['buscarReporte'])
+}
+elseif($_GET['getFolioAutoEdicion'])
+{
+     exit(json_encode($entrega->getFolioAutoEdicion()));
+}
+
+elseif($_GET['buscarReporte'])
 {
     exit(json_encode($entrega->findReporteById($_REQUEST["id"])));
 }elseif($_GET["guardarRepEntrega"]){

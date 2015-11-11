@@ -7,15 +7,19 @@
             <form class="form" ng-init="control.init()" novalidate="novalidate" id="formFolio" name="formFolio">
                 <div class="row">
                     <div class="col-sm-4">
-                        <div class="form-group" ng-controller="AutComFolioCtrl">
+                        <div class="form-group" ng-controller="getFolioAutoEdicion">
                             <script type="text/ng-template" id="customTemplate.html">
                                 <a>
                                     <i>({{match.model.id}})</i>
                                 </a>
                             </script>
-                            <input type="text" style="font-size:20px; text-align:center " name="folio" ng-model="edicion.reporte.data.id"  typeahead-editable="false" typeahead="datos.id for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required />
-                            <label for="folio" class="control-label">Ingresa el folio a entregar <i class="fa fa-tag"></i>
+
+                            <input type="text" style="font-size:20px; text-align:center " name="folio" ng-model="edicion.reporte.data.id"  typeahead-editable="false" typeahead="datos.folio for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required />
+                            <label for="folio" class="control-label">
+                                <i class="fa fa-tag"></i>Ingresa el folio a entregar 
                             </label>
+
+
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -154,9 +158,8 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class=" form-group">
-                                    <select  class="form-control" ng-model="edicion.reporte.data.claseTipo" required disabled>
-                                        <option selected></option>
-                                    </select>
+
+                                    <input type="text" class="form-control" ng-model="edicion.reporte.data.claseTipo" disabled/>
                                     <label >Clase {{edicion.reporte.data.claseTipo}}</label>
                                 </div>
                             </div>

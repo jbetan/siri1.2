@@ -109,7 +109,7 @@ class ClassAsignacion extends  class_mysqlconnector
         $sql .="JOIN marca as m              ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp              ON e.idtipo = tp.id ";
         //$sql .="JOIN tiporeporte as tr       ON r.idtiporeporte = tr.id ";
-        $sql .="WHERE r.id = $id LIMIT 1";
+        $sql .="WHERE r.folio = '$id' LIMIT 1";
         try{
             $res = $this->EjecutarConsulta($sql);
         }catch (Exception $e){

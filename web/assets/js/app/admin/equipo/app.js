@@ -80,8 +80,8 @@
             DTColumnBuilder.newColumn('modelo').withTitle('Modelo'),
             DTColumnBuilder.newColumn('numdeserie').withTitle('# Serie'),
             DTColumnBuilder.newColumn('etiqueta').withTitle('Etiqueta'),
-            DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
-                .renderWith(actionsHtml)
+            //DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
+              //  .renderWith(actionsHtml)
         ];
 
         function edit (id) {
