@@ -51,7 +51,7 @@ class ClassEdicion extends  class_mysqlconnector
 
         $this->EjecutarConsulta("SET NAMES 'latin1'");
         $this->setKey("nombre", $reporte["usuarioD"]);
-        $usuario = $this->devuelve_fila_i("usuario");
+        $usuario_id = $this->devuelve_filas_indexlabel("usuario", "id");
 
         $this->EjecutarConsulta("SET NAMES 'latin1'");
         $this->setKey("nombre", $reporte["status"]);
@@ -64,15 +64,17 @@ class ClassEdicion extends  class_mysqlconnector
         $find = $this->devuelve_fila_i("atencionreportes");
         if($find) {
 
-            $this->setKey("id", $reporte["idat"]);
+           // $this->setKey("id", $reporte["idat"]);
             $this->setKey("idreporte", $reporte["idr"]);
             $this->setValue("idstatus", $status ['id']);
             $this->setValue("fechaTerm", $fecha);
             $this->setValue("horaTerm", $hora );
-            if($usuario){
-                $this->setValue("idusuarioDestino", $usuario['id']);
+             $this->setValue("solucionado", $reporte["solucionado"]);
+            if($usuario_id){
+                print_r($usuario_id);
+                $this->setValue("idusuarioDestino", $usuario_id);
             }
-            $this->setValue("solucionado", $reporte["solucionado"]);
+           
             $updateAT =$this->actualizar("atencionreportes");
 
             if($updateAT and $ban){
