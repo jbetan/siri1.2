@@ -70,7 +70,8 @@ class ClassEdicion extends  class_mysqlconnector
             $this->setValue("fechaTerm", $fecha);
             $this->setValue("horaTerm", $hora );
             if($usuario){
-                $this->setValue("idusuarioDestino", $usuario['id']);
+                $this->setValue("idusuarioOrigen", $usuario['id']);
+				$this->setValue("idusuarioDestino", $usuario['id']);
             }
             $this->setValue("solucionado", $reporte["solucionado"]);
             $updateAT =$this->actualizar("atencionreportes");
@@ -185,7 +186,7 @@ class ClassEdicion extends  class_mysqlconnector
         $sql = "select r.id as idr, r.folio, r.personaquereporta,  r.prioridad,  r.problema, ";
         $sql .="st.nombre as status,  r.fechaRecep as finicio,  at.fechaTerm as ftermino, ";
         $sql .="u.nombre as unidad,  a.nombre as area,  e.modelo,  e.numdeserie as serie, ";
-        $sql .="m.descripcion as marca,  tp.descripcion ";
+        $sql .="m.descripcion as marca,  tp.descripcion, us.nombre ";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
         $sql .="JOIN area as a    ON r.idarea = a.id ";
@@ -195,7 +196,7 @@ class ClassEdicion extends  class_mysqlconnector
         $sql .="JOIN marca as m   ON e.idmarca = m.id ";
         $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
         $sql .="JOIN status as st ON at.idstatus = st.id ";
-        //$sql .="JOIN usuario as us  ON r.idusuario = us.id ";
+        $sql .="JOIN usuario as us  ON at.idusuarioOrigen = us.id ";
         // $sql .="where at.idstatus != 6 ";
        
      
