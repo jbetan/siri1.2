@@ -15,6 +15,16 @@ app.controller('AutComFolioCtrl', function($scope, $http) {
     };
 });
 
+app.controller('getFolio-Asignacion', function($scope, $http) {
+    getFolio(); // Load all countries with capitals
+    function getFolio(){
+        $http.get("asignacionController?getFolio=1").success(function(data){
+            $scope.datos= data;
+            console.warn(data);
+        });
+    };
+});
+
 
 app.controller('getFolioAutoEdicion', function($scope, $http) {
     getFolio(); // Load all countries with capitals

@@ -9,8 +9,7 @@
        // vm.reporte ={data:"john"};
         vm.claseA = {data:undefined};
         vm.usuario = undefined;
-        vm.mes="hola";
-        vm.edit = edit;
+         
 
         //*******************Guardar Reporte*****************
         vm.submit = function() {
@@ -37,73 +36,29 @@
             }
         };
 
+        $("#clase").attr("disabled", true);
+        $("#clase").addClass("disabled");
+
+        vm.onSelect = function (){
+            $("#clase").removeAttr("disabled", true);
+            $("#clase").removeClass("disabled");
+        }
+
         vm.usuario = function(){
-            AsignacionService.findUsuariosByTipo(function() {
-            });
+            AsignacionService.findUsuariosByTipo(function() {});
             vm.usuario = AsignacionService.usuario;
         };
 
         vm.resetusuario = function() {
             vm.usuario = {data: undefined};
-
         };
-
-        vm.asignar = function()
-        {
-            switch(vm.reporte.data.asignar)
-            {
-                case "Soporte A":
-                    //vm.reporte.data.usuarioD ='';
-                    //vm.resetusuario();
-                    AsignacionService.findUsuariosByTipo('SOPORTE A',function() {
-                    });
-                    vm.usuario = AsignacionService.usuario;
-                    vm.reporte.data.usuarioD = vm.usuario.data.nombre;
-                    //$("#usuario").attr("disabled", true);
-                    //$("#usuario").addClass("disabled");
-                    break;
-                case "Soporte B":
-                    //vm.resetusuario();
-                    AsignacionService.findUsuariosByTipo('SOPORTE B',function() {
-                    });
-                    vm.usuario = AsignacionService.usuario;
-                   // $("#usuario").attr("disabled", true);
-                   // $("#usuario").addClass("disabled");
-                    break;
-                case "Telecomunicaciones":
-                    vm.resetusuario();
-                    AsignacionService.findUsuariosByTipo('TELECOM',function() {
-                    });
-                    vm.usuario = AsignacionService.usuario;
-                  //  $("#usuario").attr("disabled", true);
-                   // $("#usuario").addClass("disabled");
-                    break;
-
-                default :
-                    AsignacionService.findUsuariosByOtro(function() {
-                    });
-                    vm.usuario = AsignacionService.usuario;
-                    $("#usuario").removeAttr("disabled", true);
-                    $("#usuario").removeClass("disabled");
-                    break;
-
-            }
-        };
-
-
-
-
 
         vm.resetData = function() {
             vm.reporte= {data:undefined};
-
         };
 
         vm.buscar = function () {
-
-            vm.reporte.data.tecnico="john";
-
-            console.info("funcion buscar", vm.reporte.data.id);
+            vm.reporte.data.tecnico="john";          
             AsignacionService.findReporteById(vm.reporte.data.id,function() {
             });
             vm.reporte =AsignacionService.reporte;
@@ -122,37 +77,22 @@
 
         };
 
-                //***************Inicia Data-Table**************
-                vm.dtOptions = DTOptionsBuilder.fromSource('asignacionController?getReportes=1')
-                .withPaginationType('full_numbers');
-                vm.dtColumns = [
-                DTColumnBuilder.newColumn('folio').withTitle('FOLIO'),
-                DTColumnBuilder.newColumn('fechaRecep').withTitle('FECHA'),
-                DTColumnBuilder.newColumn('descripcion').withTitle('TIPO'),
-                // DTColumnBuilder.newColumn('folio').withTitle('MARCA'),
-                DTColumnBuilder.newColumn('modelo').withTitle('MODELO'),
-                // DTColumnBuilder.newColumn('folio').withTitle('AREA'),
-                DTColumnBuilder.newColumn('numdeserie').withTitle('# DE SERIE'),
-                DTColumnBuilder.newColumn('ipcaptura').withTitle('DIRECCION IP'),
-                DTColumnBuilder.newColumn('problema').withTitle('PROBLEMA'),
-                DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible(),
-                DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
-                .renderWith(actionsHtml)
-                ];
+        //***************Inicia Data-Table**************
 
-                function edit (id) {
-                    vm.mes = 'You are trying to edit the row with IDSSS: ';
-                   
-                      
-                }
+        vm.dtOptions = DTOptionsBuilder.fromSource('asignacionController?getReportes=1').withPaginationType('full_numbers');
+        vm.dtColumns = [
+                    DTColumnBuilder.newColumn('folio').withTitle('FOLIO'),
+                    DTColumnBuilder.newColumn('problema').withTitle('PROBLEMA'),
+                    DTColumnBuilder.newColumn('descripcion').withTitle('TIPO'),
+                    DTColumnBuilder.newColumn('modelo').withTitle('MODELO'),
+                    DTColumnBuilder.newColumn('fechaRecep').withTitle('FECHA DE REPORTE'),
+                    DTColumnBuilder.newColumn('personaquereporta').withTitle('REPORTO'),
+                    DTColumnBuilder.newColumn('ipcaptura').withTitle('DIRECCION IP'),
+                    
+                    DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible()     
+        ];
 
-
-                function actionsHtml(data, type, full, meta) {
-                 return '<button class="btn btn-warning" ng-click="as.edit()">' +
-                            '<i class="fa fa-edit"></i>' +
-                        '</button>';
-        }
-
+               
 
 
                 //***************Termina Data-Table**************

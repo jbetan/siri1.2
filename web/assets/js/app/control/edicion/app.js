@@ -8,6 +8,7 @@
         vm.reporte = {data:undefined};
         vm.usuario = {data:undefined};
         vm.activitiesA = {data:undefined};
+        //vm.reporte.data.solucionado="NO";
 
     
 
@@ -27,6 +28,11 @@
                 vm.reporte.data.id = vm.folioImp; 
             });
             return $promese;
+
+            vm.reporte.data.solucionado="NO";
+
+            EdicionService.findActivities(function(){});
+            vm.activitiesA = EdicionService.activitiesP;
         };
 
 
@@ -89,6 +95,8 @@
             EdicionService.findReporteById(vm.reporte.data.id,function() {
             });
             vm.reporte = EdicionService.reporte;
+            
+            vm.reporte.data.solucionado="NO";
 
             EdicionService.findActivities(function(){});
             vm.activitiesA = EdicionService.activitiesP;
