@@ -59,9 +59,9 @@
 					<!--	<div class="col-sm-5 col-sm-offset-1 text-center">
 							<br><br>
 								<h3 class="text-light">
-									No tienes cuenta?
+									Deseas levantar un reporte
 								</h3>
-								<a class="btn btn-block btn-raised btn-primary" href="#">Pasos para solicitarla</a>
+								<a class="btn btn-block btn-raised btn-primary" href="#">Haz click aqui para levantar un reporte</a>
 								<br><br>
 
 								</div><!--end .col
