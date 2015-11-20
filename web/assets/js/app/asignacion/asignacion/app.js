@@ -26,9 +26,11 @@
                             $("#enviar").removeClass("disabled");
                             vm.resetData();
                             if(data.error === false) {
-                                console.log('',data.message);
+                                console.log('Error',data.message);
+                                alert('EXITO '+data.message);
                             } else {
-                                console.log('',data.message);
+                                console.log('OK',data.message);
+                                alert('ERROR '+data.message);
                             }
                         });
                     }
@@ -62,13 +64,6 @@
             AsignacionService.findReporteById(vm.reporte.data.id,function() {
             });
             vm.reporte =AsignacionService.reporte;
-
-
-            //console.log('unidad App',AsignacionService.reporte.data.unidad);
-           // AsignacionService.findUsuariosByTipo('SOPORTE A',function() {
-            //});
-            //vm.usuario = AsignacionService.usuario;
-
 
             AsignacionService.findClase(function(){
             });{}

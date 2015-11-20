@@ -9,8 +9,7 @@ app.controller('AutComFolioCtrl', function($scope, $http) {
     getFolio(); // Load all countries with capitals
     function getFolio(){
         $http.get("entregaController?getFolio=1").success(function(data){
-            $scope.datos= data;
-            console.warn(data);
+            $scope.datos= data;            
         });
     };
 });
@@ -19,8 +18,7 @@ app.controller('getFolio-Asignacion', function($scope, $http) {
     getFolio(); // Load all countries with capitals
     function getFolio(){
         $http.get("asignacionController?getFolio=1").success(function(data){
-            $scope.datos= data;
-            console.warn(data);
+            $scope.datos= data;           
         });
     };
 });
@@ -31,7 +29,15 @@ app.controller('getFolioAutoEdicion', function($scope, $http) {
     function getFolio(){
         $http.get("entregaController?getFolioAutoEdicion=1").success(function(data){
             $scope.datos= data;
-            console.warn(data);
+        });
+    };
+});
+
+app.controller('getFoliosEdit', function($scope, $http) {
+    getFolio(); // Load all countries with capitals
+    function getFolio(){
+        $http.get("edicionController?getFolioEdit=1").success(function(data){
+            $scope.datos= data;
         });
     };
 });

@@ -76,46 +76,14 @@ class ClassEntrega extends  class_mysqlconnector
         return 2;
 
 
-    }
-
-    
-       public function findReporteByFolio($id) {
-
-        $sql = "select r.id, st.nombre as status, r.fechaRecep as finicio, at.fechaTerm as ftermino, u.nombre as unidad, a.nombre as area, e.modelo, e.numdeserie as serie, m.descripcion as marca, tp.descripcion, us.nombre as usuario ";
-       // $sql = "select *";
-        $sql .="from reporte as r ";
-        $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
-        $sql .="JOIN area as a    ON r.idarea = a.id ";
-        $sql .="JOIN unidad as u  ON r.id_unidad = u.id ";
-        $sql .="JOIN equiposrecibidos as er ON r.id = er.idreporte ";
-        $sql .="JOIN equipos as e ON er.idequipo = e.id ";
-        $sql .="JOIN status as st ON at.idstatus = st.id ";
-        $sql .="JOIN marca as m   ON e.idmarca = m.id ";
-        $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
-        $sql .="JOIN usuario as us  ON r.idusuario = us.id ";
-        $sql .="WHERE r.folio = $id and at.idstatus = 3  LIMIT 1";
-
-        try{
-            $res = $this->EjecutarConsulta($sql);
-        }catch (Exception $e){
-            throw $e;
-        }
-
-        $fila = @mysql_fetch_assoc($res);
-
-        if($fila) {
-            return $fila;
-        }
-        return array();
-
-    }
+    }     
 
 
 
     public function findReporteById($id) {
 
-        $sql = "
-        select r.id, r.folio,
+        $sql = "SELECT
+        r.id, r.folio,
         st.nombre as status, 
         r.fechaRecep as finicio, 
         at.fechaTerm as ftermino, 
@@ -126,32 +94,37 @@ class ClassEntrega extends  class_mysqlconnector
         m.descripcion as marca,
         tp.descripcion, 
         us.nombre as usuario 
-        ";
+        from reporte as r 
+        JOIN atencionreportes as at  ON r.id = at.idreporte 
+        JOIN area as a    ON r.idarea = a.id 
+        JOIN unidad as u  ON r.id_unidad = u.id 
+        JOIN equipos as e ON r.id = e.id_reporte 
+        JOIN status as st ON at.idstatus = st.id 
+        JOIN marca as m   ON e.idmarca = m.id 
+        JOIN tipo as tp   ON e.idtipo = tp.id 
+        JOIN usuario as us  ON at.idusuarioOrigen = us.id 
+        WHERE r.folio ='$id'  LIMIT 1";
 
-        // us.nombre as usuario 
-       // $sql = "select *"; ";
-       // $sql = "select *";
-        $sql .="from reporte as r ";
-        $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
-        $sql .="JOIN area as a    ON r.idarea = a.id ";
-        $sql .="JOIN unidad as u  ON r.id_unidad = u.id ";
-        #$sql .="JOIN equiposrecibidos as er ON r.id = er.idreporte ";
-        $sql .="JOIN equipos as e ON r.id = e.id_reporte ";
-        $sql .="JOIN status as st ON at.idstatus = st.id ";
-        $sql .="JOIN marca as m   ON e.idmarca = m.id ";
-        $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
-        $sql .="JOIN usuario as us  ON at.idusuarioOrigen = us.id ";
-        $sql .="WHERE r.folio ='$id'  LIMIT 1";
 
         try{
             $res = $this->EjecutarConsulta($sql);
         }catch (Exception $e){
             throw $e;
+            $fila['status'] = "ERROR";
+            $fila['message'] = "Error en la base de datos <br/>".$e;
+            return $fila;
         }
 
         $fila = @mysql_fetch_assoc($res);
 
+        if(!$fila) {
+             $fila['status'] = "ERROR";
+             $fila['message'] = "El folio ingresado no es correcto o el estatus del reportes es Listo";
+             return $fila;
+        }        
+
         if($fila) {
+            $fila['message'] = "El reporte fue encontrado";
             return $fila;
         }
         return array();

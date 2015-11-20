@@ -19,9 +19,14 @@
             });
         };
 
-        service.findReporteById = function(id, callback){
+        service.findReporteByFolio = function(id, callback){
             $promese = $http.get("entregaController?buscarReporte=1&id="+id);
             $promese.then(function(data) {
+                if(data.status == 'ERROR'){ 
+                    alert(data.message);
+                }else{
+                        alert(data.data.message);
+                }
                 service.reporte.data = data.data;
             });
             $promese.success(function() {

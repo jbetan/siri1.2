@@ -25,8 +25,9 @@
             console.log("provider");
             $promese = $http.get("asignacionController?buscarReporte=1&id="+id);
             $promese.then(function(data) {
-                console.log("provider");
-                console.log(data.data);
+                if(data.data.status == 'ERROR'){ 
+                    alert(data.data.message);
+                }
                 service.reporte.data = data.data;
             });
             $promese.success(function() {

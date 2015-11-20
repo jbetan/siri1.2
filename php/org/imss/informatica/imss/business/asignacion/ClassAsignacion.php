@@ -122,20 +122,17 @@ class ClassAsignacion extends  class_mysqlconnector
             $res = $this->EjecutarConsulta($sql);
         }catch (Exception $e){
             throw $e;
-             $fila['status'] = "ERROR";
-            $fila['message'] = "Error en la base de datos";
+            $fila['status'] = "ERROR";
+            $fila['message'] = "Error en la base de datos <br/>".$e;
             return $fila;
         }
 
        
         $fila = @mysql_fetch_assoc($res);
         
-        if($fila) {
-            $fila['statusReporte'] = "OK";
-            
-        }else{
-            $fila['statusReporte'] = "ERROR";
-            $fila['messageReporte'] = "El folio ingresado no es correcto";
+        if(!$fila) {
+            $fila['status'] = "ERROR";
+            $fila['message'] = "El folio ingresado no es correcto o el reporte ya ha sido asignado";
             return $fila;
         }
 
@@ -162,6 +159,7 @@ class ClassAsignacion extends  class_mysqlconnector
 
         if($fila) {
             $fila['status'] = "OK";
+            $fila['message'] = "Exito";
             return $fila;
         }else{
             $fila['status'] = "ERROR";
