@@ -13,12 +13,13 @@
     
 
         /*
-        Traer reporte obtenido de activos
+        Traer reporte por folio obtenido de activos
         =====================
         */
         vm.folio = "'"+$routeParams.folio+"'";
         vm.folioImp = $routeParams.folio;
         getReportes();
+
         function getReportes () {
             console.info("funcion cargar datos");
             $promese = $http.get("edicionController?getReporteEdicion=1&folio="+vm.folio);

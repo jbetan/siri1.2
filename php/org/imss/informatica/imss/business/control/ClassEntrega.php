@@ -128,9 +128,6 @@ class ClassEntrega extends  class_mysqlconnector
         us.nombre as usuario 
         ";
 
-        // us.nombre as usuario 
-       // $sql = "select *"; ";
-       // $sql = "select *";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
         $sql .="JOIN area as a    ON r.idarea = a.id ";
@@ -142,6 +139,7 @@ class ClassEntrega extends  class_mysqlconnector
         $sql .="JOIN tipo as tp   ON e.idtipo = tp.id ";
         $sql .="JOIN usuario as us  ON at.idusuarioOrigen = us.id ";
         $sql .="WHERE r.folio ='$id'  LIMIT 1";
+
 
         try{
             $res = $this->EjecutarConsulta($sql);

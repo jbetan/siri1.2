@@ -69,7 +69,7 @@ class ClassEdicion extends  class_mysqlconnector
             $this->setValue("idstatus", $status ['id']);
             $this->setValue("fechaTerm", $fecha);
             $this->setValue("horaTerm", $hora );
-             $this->setValue("solucionado", $reporte["solucionado"]);
+            $this->setValue("solucionado", $reporte["solucionado"]);
             if($usuario_id){
                 print_r($usuario_id);
                 $this->setValue("idusuarioDestino", $usuario_id);
@@ -169,62 +169,15 @@ class ClassEdicion extends  class_mysqlconnector
     }
 
 
-
-    public function findReporteById($id) {
-       
-    $sql = "SELECT 
-        r.id as idr, 
-        r.idusurio ,
-        r.ipcaptura,
-        r.prioridad, 
-        r.problema,  
-        r.personaquereporta,
-        r.folio, 
-        r.fechaRecep as finicio,
-        at.id as idat,
-        us.nombre,
-        tr.nombreTipo, 
-        cl.descripcion as claseTipo,         
-        st.nombre as status, 
-        at.fechaTerm as ftermino, 
-        u.nombre as unidad, 
-        a.nombre as area, 
-        e.modelo, 
-        e.numdeserie as serie, 
-        m.descripcion as marca, 
-        tp.descripcion              
-        FROM reporte as r 
-        JOIN atencionreportes as at  ON r.id = at.idreporte 
-        JOIN area as a               ON r.idarea = a.id 
-        JOIN unidad as u             ON r.id_unidad = u.id 
-        JOIN equipos as e            ON r.id = e.id_reporte 
-        JOIN status as st            ON at.idstatus = st.id 
-        JOIN marca as m              ON e.idmarca = m.id 
-        JOIN tipo as tp              ON e.idtipo = tp.id 
-        JOIN usuario as us           ON r.idusuario = us.id 
-        JOIN tiporeporte as tr       ON r.idtiporeporte = tr.id 
-        JOIN clase as cl             ON r.idClase = cl.id 
-        WHERE r.folio = '{$id}' LIMIT 1 ";
-
-        try{
-            $res = $this->EjecutarConsulta($sql);
-        }catch (Exception $e){
-            throw $e;
-        }
-
-        $fila = @mysql_fetch_assoc($res);
-
-        if($fila) {
-            return $fila;
-        }
-        return array();
-
-    }
+//diference de archivos
 
 
 
 
-    // empieza activos 1:02 am
+/*=====================================
+ *Empieza modulo de Activos
+ *=====================================
+ */ 
     public function getReportes() {
 
         $sql = "select r.id as idr, r.folio, r.personaquereporta,  r.prioridad,  r.problema, ";

@@ -4,12 +4,12 @@ session_start();
 include_once("../business/control/ClassEdicion.php");
 $edicion = new ClassEdicion();
 
+//---------
+
 if($_GET["getFolio"]){
     exit(json_encode($edicion->auto()));
 }elseif($_GET["getUsuarios"]) {
     exit(json_encode($edicion->autoNombre()));
-}elseif($_GET['buscarReporte']){
-    exit(json_encode($edicion->findReporteById($_REQUEST["id"])));
 }elseif($_GET["saveReporte"]){
     try {
         if ($edicion->guardarReporte($_REQUEST)) {
