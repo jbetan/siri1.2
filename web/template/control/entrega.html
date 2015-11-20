@@ -3,6 +3,9 @@
 <div >
    <br/><br/>
 </div>
+
+
+
 <div class="section-body" ng-controller="EntregaController as entrega" >
     <div class="row">
         <div class="card panel" id="UnidadesCardForm">
@@ -153,14 +156,26 @@
                         </div><!--end .row -->
                         <!--Termina entrega de Equipo-->
 
+
+
                     </div>
                 </div>
             </div>
             <br/><br/>
         </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="card">
+                    <div class="card-body small-padding style-warning text-center">NOTA: Solo se pueden entregar reportes que estén en ESTATUS: listos</div>
+                </div>
+
+                        </div>
+
+            <div class="toast toast-warning" style="display: none;">
+                <div class="toast-progress" style="width: 0%;"></div>
+                <button class="toast-close-button" type="button" role="button">×</button>
+                <div class="toast-message">Message sent</div>
+            </div>
+
     </div>
+
 </div>
-
-
-
-
