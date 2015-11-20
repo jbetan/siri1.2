@@ -22,10 +22,8 @@
         };
 
         service.findActivities = function ( callback){
-            console.info('Obteniendo Actividades');
             $promese = $http.get("edicionController?buscarActividad=1");
-            $promese.then(function(data) {
-                console.log('Actividades',data.data);
+            $promese.then(function(data) {                
                 service.activitiesP.data = data.data;
             });
             $promese.success(function() {
@@ -37,12 +35,14 @@
 
         };
 
-        service.findReporteById = function(id, callback){
-            console.log("provider");
-            $promese = $http.get("edicionController?buscarReporte=1&id="+id);
+        service.findReporteByFolio = function(id, callback){
+            $promese = $http.get("edicionController?getReporteEdicion=1&folio="+id);
             $promese.then(function(data) {
-                console.log("provider");
-                console.log(data.data);
+                 if(data.status == 'ERROR'){ 
+                    alert(data.message);
+                    }else{
+                        alert(data.data.message);
+                    }
                 service.reporte.data = data.data;
             });
             $promese.success(function() {
@@ -52,6 +52,7 @@
             });
             return $promese;
         };
+
 
         service.getUsuario = function(callback){
             console.log("provider");

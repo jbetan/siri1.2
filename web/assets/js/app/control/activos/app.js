@@ -14,7 +14,6 @@
             console.info("funcion cargar datos");
             $promese = $http.get("edicionController?getReporte=1");
             $promese.then(function(data) {
-                //console.log('Actividades',data.data);
                 vm.reportes.data = data.data; //my json 13
             });
             return $promese;

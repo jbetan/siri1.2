@@ -615,17 +615,10 @@
 <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/asignacion/asignacionProvider.js"></script>
 <!-- END JAVASCRIPT DEL Asignacion -->
 
-<script type="text/javascript">
+<script type="text/javascript">  
 
-    $(function(){
+        $("#fecha").datepicker();
 
-        $("#fecha").datepicker({
-            changeMonth:true,
-            changeYear:true
-        });
-
-
-    })
 
 </script>
 

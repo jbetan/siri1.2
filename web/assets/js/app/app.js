@@ -145,7 +145,7 @@
                 controller: "EntregaController"
             })
 
-            //Asigancion de Reportes
+            //Asignacion de Reportes
             .when("/nueServ", {
                 templateUrl: "nueServ",
                 controller: ""
