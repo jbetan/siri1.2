@@ -22,10 +22,10 @@
               <td>ESTATUS <i class="fa fa-heartbeat"></i>
               </td>
               <td>TIPO <i class="fa fa-laptop"></i></td>
-              <td>RESPONSABLE <i class="fa fa-user"></i>
+              <td>RESPONSABLE<i class="fa fa-user"></i>
               </td>
               <td></td>
-            </tr>  
+            </tr>   
          </thead>
 
         <tr ng-repeat-start="reporte in activos.reportes.data"><!--Aqui empieza el ng-repeat-start -->  
@@ -38,7 +38,7 @@
             <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.status}}</td>
             <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'Listo'" class="alert style-success">{{reporte.nombre}}</td>
             <!--termina Listo--> 
 
              <!--inicia Garantia-->
@@ -51,7 +51,7 @@
             <td ng-if="reporte.status == 'Garantia'" class="alert style-info">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.status}}</td>
             <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'Garantia'" class="alert style-info"> {{reporte.nombre}}</td>
             <!--termina Garantia-->
 
             <!--inicia reparacion-->
@@ -62,7 +62,7 @@
             <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.status}}</td>
             <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'En reparacion'" class="alert alert-warning"> {{reporte.nombre}}</td>
             <!--termina reparacion-->
 
             <!--inicia nuevo-->
@@ -73,7 +73,7 @@
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.status}}</td>
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.nombre}}</td>
             <!--termina nuevo-->
 
             <!--inicia reparacion-->
@@ -84,7 +84,7 @@
             <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.status}}</td>
             <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.descripcion}}</td>
-            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.usuario}}</td>
+            <td ng-if="reporte.status == 'Entregado'" class="alert alert-danger"> {{reporte.nombre}}</td>
             <!--termina reparacion-->
 
         </tr> <!--Aqui termina el ng-repeat-start -->  
@@ -135,13 +135,14 @@
                  <strong>Tipo:</strong>{{reporte.descripcion}}<br/>
                  <strong>Marca:</strong>{{reporte.marca}} <br/>
              <strong>Modelo:</strong> {{reporte.modelo}}<br/>
-                 <strong>Serie:</strong> {{reporte.serie}}
+                 <strong>Serie:</strong> {{reporte.serie}} 
              </td>
             <td>
 
-                <strong>Asignado a:</strong> {{reporte.usuario}}<br/>
+                <strong>Asignado a :</strong> {{reporte.nombre}}<br/>
                 <strong>Fecha Inicio:</strong> {{reporte.finicio}} <br/>
                 <strong>Fecha Término:</strong> {{reporte.ftermino}}
+				
            </td>
 
 

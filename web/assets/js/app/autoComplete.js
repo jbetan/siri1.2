@@ -33,6 +33,15 @@ app.controller('getFolioAutoEdicion', function($scope, $http) {
     };
 });
 
+app.controller('getFoliosEdit', function($scope, $http) {
+    getFolio(); // Load all countries with capitals
+    function getFolio(){
+        $http.get("edicionController?getFolioEdit=1").success(function(data){
+            $scope.datos= data;
+        });
+    };
+});
+
 
 
 

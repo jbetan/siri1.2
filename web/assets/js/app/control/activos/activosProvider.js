@@ -12,7 +12,6 @@
             console.info('Obteniendo Actividades');
             $promese = $http.get("edicionController?buscarActividad=1");
             $promese.then(function(data) {
-                console.log('Actividades',data.data);
                 service.activitiesP.data = data.data;
             });
             $promese.success(function() {

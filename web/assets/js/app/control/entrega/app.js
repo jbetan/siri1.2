@@ -19,14 +19,9 @@
     vm.folioImp = $routeParams.folio;
     getReportes();
     function getReportes () {
-        console.info("funcion cargar datos");
-        $promese = $http.get("entregaController?getReporteEntrega=1&folio="+f);
-        $promese.then(function(data) {
-        console.log('Actividades',data.data);
-        vm.reporte.data = data.data;
-        vm.reporte.data.id = vm.folioImp; 
+        EntregaService.findReporteByFolio(f, function() {
         });
-        return $promese;
+        vm.reporte = EntregaService.reporte;
     };
 
 
@@ -66,7 +61,7 @@
 
       
         vm.buscar = function () {
-        EntregaService.findReporteById(vm.reporte.data.id, function() {
+        EntregaService.findReporteByFolio(vm.reporte.data.id, function() {
         });
             vm.reporte = EntregaService.reporte;
         };
