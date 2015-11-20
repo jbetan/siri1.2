@@ -28,7 +28,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <div id="base">
     <header>
         <div style="margin-right: 10%" class="text-lg text-right"><span class="text-bold">TU</span> DIRECCION <span class="text-bold">IP</span> es: <span class=""><?php $ip= gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
-        echo $ip ;?></span></div>
+                echo $ip ;?></span></div>
         <br/><br/>
         <div class="text-center" style="margin-top: -50px; position: relative">
             <h2 style="position: relative">Atención a Usuarios
@@ -36,6 +36,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
             </h2>
         </div>
     </header>
+    {{}}
     <!-- BEGIN CONTENT-->
     <div id="contentV2">    
         <section ng-controller="EquiposController as equipos">
@@ -60,25 +61,29 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                         <div>
                             <form method="post" class="form" name="datosForm" id="datosForm" ng-init="forms.init()">
                                 <div class="col-sm-6">
-                                    <div class="form-group" ng-controller="UnidadesController as Ctrl_U">
-                                        <style>span{display:none}</style>
+                                    <div class="form-group" ng-controller="UnidadesController as Ctrl_U" style="position: relative">
+                                        <style>.error{display:none}</style>
                                         <input type="text" name="unidades" ng-click="Ctrl_U.getListaUnidades();" ng-model="forms.consulta.data.unidad" class="auto form-control ng-dirty ng-invalid ng-valid" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" required />
                                         <label for=""><span class="text-danger">* </span>Unidad</label>
-                                        <span class="text-danger">Debes seleccionar una unidad de la lista desplegada</span>
+                                        <span class="error text-danger" style="position:absolute;">Debes seleccionar una unidad de la lista desplegada</span>
                                     </div>
                                     <div class="form-group" ng-controller="AreaController">
-                                        <input type="text" name="areas" ng-model="forms.consulta.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" typeahead-editable="false" typeahead="area.nombre for area in area | filter:$viewValue | limitTo:10" class="form-control ng-dirty ng-invalid ng-valid" required/>
+                                        <input type="text" name="areas" ng-model="forms.consulta.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" class="form-control ng-dirty ng-invalid ng-valid" required/>
                                         <label for=""><span class="text-danger">* </span>Área</label>
                                     </div>
-                                    <div class="form-group" ng-controller="TipoController">
+                                    <div class="form-group" ng-controller="TipoController" style="position: relative">
+                                        <style>.error2{display:none}</style>
                                         <input type="text" name="tipo" ng-model="forms.consulta.data.Tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}"  typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10" class="form-control ng-dirty ng-invalid ng-valid" required/>
-                                        <label for=""><span class="text-danger">* </span>Tipo</label>
+                                        <label for=""><span class="text-danger">* </span>Tipo de equipo</label>
+                                        <span class="error2 text-danger" style="position:absolute;">Debes seleccionar un tipo de equipo de la lista desplegada</span>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="form-group " ng-controller="marcaController">
+                                    <div class="form-group " ng-controller="marcaController" style="position: relative">
+                                        <style>.error3{display:none}</style>
                                         <input type="text" name="marca" ng-model="forms.consulta.data.marca" class="form-control ng-dirty ng-invalid ng-valid" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" required />
                                         <label for=""><span class="text-danger">* </span>Marca</label>
+                                        <span class="error3 text-danger" style="position:absolute;">Debes seleccionar una marca de equipo de la lista desplegada</span>
                                     </div>
                                     <div class="form-group ">
                                         <input type="text" name="modelo" ng-model="forms.consulta.data.SMODEL" class="form-control ng-dirty ng-invalid ng-valid"  required disabled/>
@@ -94,9 +99,10 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <input type="text" name="usuario" id="help1" ng-model="forms.consulta.data.USERID" class="form-control ng-dirty ng-invalid ng-valid" required/>
                                         <label for=""><span class="text-danger">* </span>Usuario</label>
                                     </div>
-                                    <div class="form-group ">
-                                        <input type="password" name="usuario_pw" ng-model="forms.consulta.data.passUser" id="help1" class="form-control ng-dirty ng-invalid ng-valid"/>
+                                    <div class="form-group " style="position:relative">
+                                        <input type="password" name="usuario_pw" ng-model="forms.consulta.data.passUser" id="passUSER" class="form-control ng-dirty ng-invalid ng-valid"/>
                                         <label for="">Contraseña</label>
+                                        <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eye" ></span>
                                     </div>
                                     <div class="form-group ">
                                         <input type="text" name="telefono" id="help1" ng-model="forms.consulta.data.telefono" class="form-control ng-dirty ng-invalid ng-valid" required/>
@@ -105,12 +111,13 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group ">
-                                        <input type="email" name="correo" id="help1" ng-model="forms.consulta.data.correo" class="form-control ng-dirty ng-invalid ng-valid" />
+                                        <input type="email" placeholder="@imss.mx" name="correo" id="help1" ng-model="forms.consulta.data.correo" class="form-control ng-dirty ng-invalid ng-valid" />
                                         <label for="">Correo</label>
                                     </div>
-                                    <div class="form-group ">
-                                        <input type="password" name="correo_pw" id="help1" ng-model="forms.consulta.data.passCorreo" class="form-control ng-dirty ng-invalid ng-valid" />
+                                    <div class="form-group " style="position:relative">
+                                        <input type="password" name="correo_pw" id="passEMAIL" ng-model="forms.consulta.data.passCorreo" class="form-control ng-dirty ng-invalid ng-valid" />
                                         <label for="">Contraseña Correo</label>
+                                        <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eyetwo" ></span>
                                     </div>
                                     <div class="form-group ">
                                         <input type="text" name="extension" id="help1" ng-model="forms.consulta.data.extencion" class="form-control ng-dirty ng-invalid ng-valid" />
@@ -146,6 +153,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 </div>
                                 <br/>
                                 <div class="text-center col-sm-12">
+                                    <a href="page" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
                                     &nbsp;&nbsp; <button type="submit" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
                                 </div>
                             </form>
@@ -208,7 +216,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                             </a>
                                         </script>
                                         <input type="text" name="tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="Ctrl.equipo.data.Tipo" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10"  class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                        <label for=""><span class="text-danger">* </span> Tipo</label>
+                                        <label for=""><span class="text-danger">* </span> Tipo de equipo</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -226,8 +234,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <label for=""> Modelo</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="serie" ng-model="Ctrl.equipo.data.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" />
-                                        <label for=""> Número de Serie</label>
+                                        <input type="text" name="serie" ng-model="Ctrl.equipo.data.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
+                                        <label for=""><span class="text-danger">* </span> Número de Serie</label>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
@@ -235,9 +243,10 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <input type="text" name="usuario" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.USERID" required/>
                                         <label for=""><span class="text-danger">* </span>Usuario</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" name="usuario_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passUSer" />
+                                    <div class="form-group" style="position: relative;">
+                                        <input type="password" name="usuario_pw" id="passUSER2" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passUSer" />
                                         <label for="">Contraseña</label>
+                                        <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eyethree" ></span>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="telefono" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.telefono" required/>
@@ -249,9 +258,10 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <input type="email" name="correo" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.correo"/>
                                         <label for="">Correo</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input type="password" name="correo_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passCorreo"/>
+                                    <div class="form-group" style="position: relative">
+                                        <input type="password" name="correo_pw" id="passEMAIL2" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passCorreo"/>
                                         <label for="">Contraseña Correo</label>
+                                        <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eyefour" ></span>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="extension" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.extencion"/>
@@ -286,13 +296,15 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <label for=""><span class="text-danger">* </span>Problema</label>
                                     </div>
                                 </div>
-                                <br/>
+                                <p class="text-light text-lg">Los campos marcados con <span class="text-danger">* </span>son de carácter obligatorio.</p>
+
                                 <div class="col-lg-12 text-center">
                                     <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
                                     &nbsp;&nbsp; <input type="submit" class="btn btn-raised ink-reaction btn-default-dark" value="Guardar"/>
-                                    <p class="text-light text-lg">Los campos marcados con <span class="text-danger">* </span>son de carácter obligatorio.</p>
+                                    &nbsp;&nbsp; <a href="page" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
 
                                 </div>
+                                <p></p>
                             </form>
                             <div id="myModal2" class="modal fade">
                                 <div class="modal-dialog">

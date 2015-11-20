@@ -116,6 +116,9 @@ RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/PaginaContr
 RewriteCond $1 ^equipoReporte$
 RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]
 
+RewriteCond $1 ^equipo_Reporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController2.php [L]
+
 RewriteCond $1 ^saveReporte$
 RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]
 

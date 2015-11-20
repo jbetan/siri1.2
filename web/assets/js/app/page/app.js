@@ -14,7 +14,7 @@
                 vm.ip.data= ipOcs.ipComparada.data;
                 console.log("trajo dato del page-provider", vm.ip);
                 if(vm.ip.data == "false"){
-                    location.href=('javascript:void(0)')
+                    location.href=('equipo_Reporte');
                     console.log("No esta en OCS");
                 }else{
                     location.href=("equipoReporte");
