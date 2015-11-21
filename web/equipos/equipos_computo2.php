@@ -37,17 +37,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
     <div id="contentV2">
         <section ng-controller="EquiposController as equipos">
             <div class="section-body contain-lg" ng-controller="formsController as forms">
-                <div class="row text-center">
-                    <p>Elige el equipo que deseas reportar:</p>
-                    <center>
-                        <div style="width: 35%;">
-                            <ul class="nav nav-pills">
-                                <li ng-class="{active:forms.isSelected(1)}"><button class="btn btn-raised ink-reaction btn-default-light" ng-click="forms.selectTab1()" id="tab1" type="submit">REPORTAR MI EQUIPO</button></li>
-                                <li ng-class="{active:forms.isSelected(2)}"><button class="btn ink-reaction btn-default-dark" ng-click="forms.selectTab2()" id="tab2">REPORTAR OTRO EQUIPO</button></li>
-                            </ul>
-                        </div>
-                    </center>
-                </div>
+
                 <br/>
 
                 <!--Inicia Reportar mi Equipo-->
@@ -65,7 +55,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                             <i>({{match.model.unidad}})</i>
                                         </a>
                                     </script>
-                                    <input type="text" name="unidades"  ng-model="Ctrl.equipo.data.NAME" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid " required=""/>
+                                    <input type="text" name="unidades"  ng-model="Ctrl.equipo.data.unidad" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid " required=""/>
                                     <label for=""><span class="text-danger">* </span> Unidad</label>
                                 </div>
                                 <div class="form-group" ng-controller="AreaController">
@@ -83,8 +73,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                             <i>({{match.model.descripcion}})</i>
                                         </a>
                                     </script>
-                                    <input type="text" name="tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="Ctrl.equipo.data.TIPO" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10"  class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                    <label for=""><span class="text-danger">* </span> Tipo</label>
+                                    <input type="text" name="tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="Ctrl.equipo.data.Tipo" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10"  class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
+                                    <label for=""><span class="text-danger">* </span> Tipo de equipo</label>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -94,7 +84,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                             <i>({{match.model.descripcion}})</i>
                                         </a>
                                     </script>
-                                    <input type="text" name="marca" ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="Ctrl.equipo.data.SMANUFACTURER" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
+                                    <input type="text" name="marca" ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="Ctrl.equipo.data.marca" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
                                     <label for=""><span class="text-danger">* </span> Marca</label>
                                 </div>
                                 <div class="form-group" >
@@ -102,18 +92,19 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                     <label for=""> Modelo</label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="serie" ng-model="Ctrl.equipo.data.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" />
-                                    <label for=""> Número de Serie</label>
+                                    <input type="text" name="serie" ng-model="Ctrl.equipo.data.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
+                                    <label for=""><span class="text-danger">* </span> Número de Serie</label>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input type="text" name="usuario" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.usuario" required/>
+                                    <input type="text" name="usuario" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.USERID" required/>
                                     <label for=""><span class="text-danger">* </span>Usuario</label>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="usuario_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passUSer" />
+                                <div class="form-group" style="position: relative">
+                                    <input type="password" name="usuario_pw" id="passUSER" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passUSer" />
                                     <label for="">Contraseña</label>
+                                    <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eye" ></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="telefono" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.telefono" required/>
@@ -122,12 +113,13 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input type="email" name="correo" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.correo"/>
+                                    <input type="email" name="correo" id="help1" value="nombre.apellido@imss.gob.mx" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.correo"/>
                                     <label for="">Correo</label>
                                 </div>
-                                <div class="form-group">
-                                    <input type="password" name="correo_pw" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passCorreo"/>
+                                <div class="form-group" style="position: relative;">
+                                    <input type="password" name="correo_pw" id="passEMAIL" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.passCorreo"/>
                                     <label for="">Contraseña Correo</label>
+                                    <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eyetwo" ></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="extension" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.extencion"/>
@@ -135,6 +127,10 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 </div>
                             </div>
                             <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" name="ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.IP" required/>
+                                    <label for=""><span class="text-danger">* </span>Introduce el ip del equipo</label>
+                                </div>
                                 <div class="form-group">
                                     <input type="text" name="persona_reporta" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.Qreporta" required/>
                                     <label for=""><span class="text-danger">* </span>¿Quien Reporta?</label>
@@ -157,26 +153,24 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                     <textarea name="problema" ng-model="Ctrl.equipo.data.problema" id="otro2" cols="30" rows="2"  class="form-control ng-dirty ng-invalid ng-valid" placeholder="Describa su problema" ></textarea>
                                     <label for=""><span class="text-danger">* </span>Problema</label>
                                 </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="ipcaptura" id="help1" ng-model="Ctrl.equipo.data.IPADDRESS"/>
-                                </div>
                             </div>
-                            <br/>
+                            <p class="text-light text-lg">Los campos marcados con <span class="text-danger">* </span>son de carácter obligatorio.</p>
+
                             <div class="col-lg-12 text-center">
                                 <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
                                 &nbsp;&nbsp; <input type="submit" class="btn btn-raised ink-reaction btn-default-dark" value="Guardar"/>
-                                <p class="text-light text-lg">Los campos marcados con <span class="text-danger">* </span>son de carácter obligatorio.</p>
+                                &nbsp;&nbsp; <a href="page" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
 
                             </div>
+                            <p></p>
                         </form>
                         <div id="myModal2" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button class="close" type='button' ng-click='on_click_cancel2()'>×</button>
-                                        <h4 class="modal-title"> <h3>Reporte guardado con éxito</h3></h4>
-                                    </div>
-                                    <div class="modal-footer">
+                                        <h4 class="modal-title"> <h3>Reporte guardado con éxito</h4>
+                                        <h5>Generando folio ........</h5>
                                     </div>
                                 </div>
                             </div>
@@ -224,9 +218,9 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <script src="<?=$this->contextPath?>/web/assets/js/app/marca/marca.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/area/area.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/app2.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/provider2.js"></script>
-
-
+<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline2/app.js"></script>
 </body>
+<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline2/provider.js"></script>
+
+
 </html>
