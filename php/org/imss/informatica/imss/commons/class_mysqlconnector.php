@@ -20,8 +20,7 @@ class class_mysqlconnector
 	public $sql = "";
 	
 	// FUNCIONES Y PROCEDIMIENTOS
-	function __construct()
-	{
+	function __construct(){
 		$this->LeerConfiguracion();
 	}
 	
@@ -29,14 +28,11 @@ class class_mysqlconnector
 		return $this->keys;
 	}
 	
-	public function Conectar()
-	{
-
+	public function Conectar(){
 		try
 		 {
 		 	if (!isset($this->oConexion))
 			 {
-			//	echo "yyyyyyy";
 				$this->LeerConfiguracion();
 				$this->oConexion = @mysql_connect($this->servidor, $this->usuario, $this->contrasena);
 				//echo "S:".$this->servidor."U:".$this->usuario."C:".$this->contrasena."BD:".$this->basededatos;
@@ -74,7 +70,6 @@ class class_mysqlconnector
     public function EjecutarConsulta($sSQL)
     {
         $this->sql = $sSQL;
-
         try
         {
             $this->Conectar();
@@ -83,8 +78,7 @@ class class_mysqlconnector
                 throw new class_exception("No se puede ejecutar la consulta: ".mysql_error(), 8006, "EjecutarConsulta");
             return $result;
         }
-        catch (Exception $e)
-        {
+        catch (Exception $e){
             //echo $sSQL;
             if($this->hacer_throw)
                 throw $e;
@@ -476,12 +470,6 @@ class class_mysqlconnector
 		 return NULL;
 	}	
 	
-
-
-
-
-
-	
 	public function devuelve_values($obj, $separador, $opcion, $usa_utf8)
 	{
 		$sSQL = "";
@@ -646,7 +634,7 @@ class class_mysqlconnector
 	{
 		try
 		 {	
- //0=>'Inici� Sesi�n',1=>'Acces�',2=>'Cre�',3=>'Elimin�',4=>'Modific�',5=>'Cancel�',6=>'Cerr� Sesi�n',7=>'Consult�'
+            //0=>'Inici� Sesi�n',1=>'Acces�',2=>'Cre�',3=>'Elimin�',4=>'Modific�',5=>'Cancel�',6=>'Cerr� Sesi�n',7=>'Consult�'
 		 	$eventos= array('Inició Sesión','Accesó','Creó','Eliminó','Modificó','Canceló','Cerró Sesión','Consultó','Activó');
 		 	$fecha=date("Y-m-d");
 			$hora=date("H:i:s");
@@ -660,8 +648,7 @@ class class_mysqlconnector
 			$this->insertar("log");
 			return true;
 		 }
-		catch (Exception $e)
-		 {
+		catch (Exception $e){
 			 //echo $e;
 		 }		
 	}

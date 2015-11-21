@@ -68,95 +68,57 @@
         vm.click_Otro2 = function(){
             $("#otro2").css("display", "block");
         };
-
 //========== Desenmascarar contraseñas ==============
 
-        $('#eyethree').click(function(){
-            var name = $('#passUSER2').attr('name');
-            var value = $('#passUSER2').val();
-            var ngModel = $('#passUSER2').attr('ng-model');
+        $('#eye').click(function(){
+            var name = $('#passUSER').attr('name');
+            var value = $('#passUSER').val();
+            var ngModel = $('#passUSER').attr('ng-model');
             setTimeout(function(){
-                var html = '<input type="password" name="'+ name +'" ng-model="'+ ngModel +'" id="passUSER2" value="'+ value +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-                $('#passUSER2').after(html).remove();
+                var html = '<input type="password" name="'+ name +'" ng-model="'+ ngModel +'" id="passUSER" value="'+ value +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
+                $('#passUSER').after(html).remove();
             },1000);
-            var html = '<input type="text" name="'+ name +'" ng-model="'+ ngModel +'" id="passUSER2" value="'+ value +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-            $('#passUSER2').after(html).remove();
+            var html = '<input type="text" name="'+ name +'" ng-model="'+ ngModel +'" id="passUSER" value="'+ value +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
+            $('#passUSER').after(html).remove();
 
         });
 
-        $('#eyefour').click(function(){
-            var name1 = $('#passEMAIL2').attr('name');
-            var value1 = $('#passEMAIL2').val();
-            var ngModel1 = $('#passEMAIL2').attr('ng-model');
+        $('#eyetwo').click(function(){
+            var name1 = $('#passEMAIL').attr('name');
+            var value1 = $('#passEMAIL').val();
+            var ngModel1 = $('#passEMAIL').attr('ng-model');
             setTimeout(function(){
-                var html = '<input type="password" name="'+ name1 +'" ng-model="'+ ngModel1 +'" id="passEMAIL2" value="'+ value1 +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-                $('#passEMAIL2').after(html).remove();
+                var html = '<input type="password" name="'+ name1 +'" ng-model="'+ ngModel1 +'" id="passEMAIL" value="'+ value1 +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
+                $('#passEMAIL').after(html).remove();
             },1000);
-            var html = '<input type="text" name="'+ name1 +'" ng-model="'+ ngModel1 +'" id="passEMAIL2" value="'+ value1 +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-            $('#passEMAIL2').after(html).remove();
+            var html = '<input type="text" name="'+ name1 +'" ng-model="'+ ngModel1 +'" id="passEMAIL" value="'+ value1 +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
+            $('#passEMAIL').after(html).remove();
 
         });
 //==============================================
-
-
         vm.submit = function() {
             $("#datosFormAutocomplete").validate({
                 submitHandler: function (form) {
-                    $(this).attr("disabled", true);
-                    $(this).addClass("disabled");
-                    console.log("form: ", vm.consulta.data.unidad);
-                    if (vm.consulta.data.unidad == undefined || vm.consulta.data.Tipo == undefined || vm.consulta.data.marca == undefined) {
-                        if (vm.consulta.data.unidad == undefined) {
-                            alert("selecciona un campo del autocomplete");
-                            $("input[name='unidades']").css("border", "2px #EBCCD1 solid");
-                            $("input[name='unidades']").css("border-bottom", "3px #F44336 solid");
-                            $(".error").css("display", "block");
-                            $("input[name='unidades']").click(function () {
-                                $(".error").fadeOut();
-                                $("input[name='unidades']").css("border", "0");
-                            })
-                        } else if (vm.consulta.data.Tipo == undefined) {
-                            alert("selecciona un campo del autocomplete");
-                            $("input[name='tipo']").css("border", "2px #EBCCD1 solid");
-                            $("input[name='tipo']").css("border-bottom", "3px #F44336 solid");
-                            $(".error2").css("display", "block");
-                            $("input[name='tipo']").click(function () {
-                                $(".error2").fadeOut();
-                                $("input[name='tipo']").css("border", "0");
-                            });
-                        } else if (vm.consulta.data.marca == undefined) {
-                            alert("selecciona un campo del autocomplete");
-                            $("input[name='marca']").css("border", "2px #EBCCD1 solid");
-                            $("input[name='marca']").css("border-bottom", "3px #F44336 solid");
-                            $(".error3").css("display", "block");
-                            $("input[name='marca']").click(function () {
-                                $(".error3").fadeOut();
-                                $("input[name='marca']").css("border", "0");
-                            });
-                        }
-                        return false;
-                    }else {
-                        $http({
-                            url: "confirmacion?saveform2=1",
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-                            async: true,
-                            method: 'POST',
-                            data: $.param(vm.equipo.data)
-                        }).success(function (data) {
-                            console.log("llega id del reporte", data.id);
-                            var id = data;
-                            if (data.Error == true) {
-                                alert("Rellena datos")
+                    $http({
+                        url: "confirmacion?saveform2=1",
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        async: true,
+                        method: 'POST',
+                        data: $.param(vm.equipo.data)
+                    }).success(function (data) {
+                        console.log("llega id del reporte",data.id);
+                        var id= data;
+                        if(data.Error == true ) {
+                            alert("Rellena datos")
 
-                            } else {
-                                $('#myModal2').modal('show');
-                                setTimeout(function () {
-                                    location.href = ('confirmacion?id=' + id);
-                                    console.log(id);
-                                }, 2000);
-                            }
-                        });
-                    }
+                        } else {
+                            $('#myModal2').modal('show');
+                            setTimeout(function(){
+                                location.href=('confirmacion?id='+ id);
+                                console.log(id);
+                            },2000);
+                        }
+                    });
                 }
             });
         };
@@ -177,7 +139,6 @@
         $scope.error     	  = "";
         $scope.errors    	  = {};
         $scope.form      	  = {};
-
         var vm = this;
         vm.consulta= {data:{}};
         vm.consulta.data = equiposoffline.res.data;
@@ -186,6 +147,7 @@
             vm.consulta.data = equiposoffline.res.data;
             console.log("Aqui esta el ID_UNIDAD: ", vm.consulta);
         });*/
+        vm.consulta.data.correo = "@imss.mx";
 
         $("#otro").css("display", "none");
         $('#form2').hide();
@@ -199,34 +161,6 @@
                 console.log('APP',vm.consulta);
             });
         });
-//========== Desenmascarar contraseñas ==============
-
-            $('#eye').click(function(){
-                var name = $('#passUSER').attr('name');
-                var value = $('#passUSER').val();
-                var ngModel = $('#passUSER').attr('ng-model');
-                setTimeout(function(){
-                    var html = '<input type="password" name="'+ name +'" ng-model="'+ ngModel +'" id="passUSER" value="'+ value +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-                    $('#passUSER').after(html).remove();
-                },1000);
-                var html = '<input type="text" name="'+ name +'" ng-model="'+ ngModel +'" id="passUSER" value="'+ value +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-                $('#passUSER').after(html).remove();
-
-            });
-
-        $('#eyetwo').click(function(){
-            var name1 = $('#passEMAIL').attr('name');
-            var value1 = $('#passEMAIL').val();
-            var ngModel1 = $('#passEMAIL').attr('ng-model');
-            setTimeout(function(){
-                var html = '<input type="password" name="'+ name1 +'" ng-model="'+ ngModel1 +'" id="passEMAIL" value="'+ value1 +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-                $('#passEMAIL').after(html).remove();
-            },1000);
-            var html = '<input type="text" name="'+ name1 +'" ng-model="'+ ngModel1 +'" id="passEMAIL" value="'+ value1 +'" class="form-control ng-dirty ng-invalid ng-valid"/>';
-            $('#passEMAIL').after(html).remove();
-
-        });
-//==============================================
 
         vm.click_Otro = function(){
             $("#otro").css("display", "block");
@@ -282,8 +216,7 @@
                             });
                         }
                         return false;
-                    } else {
-
+                    }else {
                         $http({
                             url: "confirmacion?save=1",
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'},

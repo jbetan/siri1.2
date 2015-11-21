@@ -50,11 +50,11 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                     <div class="col-lg-12">
                         <p>Tu solicitud ha sido levantada con los siguientes datos:</p>
                         <form class="form">
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <input type="text" name="folio" id="folio" ng-model="folio" class="form-control" disabled/>
-                                <label for="folio">Folio</label>
+                            <div class="form-group col-lg-12">
+                                <style>#folio{font-size: 75px;}</style>
+                                <span>Folio: </span><div id="folio">{{folio}}</div>
                             </div>
+                        <div class="col-sm-4">
                             <div class="form-group">
                                 <input type="text" name="areas" ng-model="unidad" class="form-control" disabled/>
                                 <label for="unidad">Unidad</label>
@@ -68,7 +68,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 <label for="tipo">Tipo</label>
                             </div>
                         </div>
-                        <div class="col-sm-3" style="margin-top: 6%;">
+                        <div class="col-sm-3">
                             <div class="form-group">
                                 <input type="text" name="marca" ng-model="marca" class="form-control" disabled/>
                                 <label for="marca">Marca</label>
@@ -95,7 +95,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 <input type="text" name="problema" ng-model="problema" id="" class="form-control" disabled />
                                 <label for="tipo">Descripción del problema</label>
                                 <br/>
-                                <div class="text-center"><a href="equipoReporte" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
+                                <div class="text-center"><a href="page" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
                             </div>
                         </div>
                         </form>

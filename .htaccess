@@ -46,65 +46,67 @@ RewriteRule ^(.*)$ /siri1.2/web/template/menu4/menu4.html [L]
 RewriteCond $1 ^reporte
 RewriteRule ^(.*)$ /siri1.2/web/template/reporte/reporte.html [L]
 
+
+
 #Administracion
 
-#Administracion->Unidades
-RewriteCond $1 ^admin$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AdminController.php [L]
+	#Administracion->Unidades
+	RewriteCond $1 ^admin$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AdminController.php [L]
 
-RewriteCond $1 ^unidades
-RewriteRule ^(.*)$ /siri1.2/web/template/admin/unidades.html [L]
+	RewriteCond $1 ^unidades
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/unidades.html [L]
 
-#Administracion->Usuarios
-RewriteCond $1 ^usuariosController$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/UserController.php [L]
+	#Administracion->Usuarios
+	RewriteCond $1 ^usuariosController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/UserController.php [L]
 
-RewriteCond $1 ^usuarios
-RewriteRule ^(.*)$ /siri1.2/web/template/admin/usuarios.html [L]
+	RewriteCond $1 ^usuarios
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/usuarios.html [L]
 
-#Administracion->Equipos
-RewriteCond $1 ^equipoController$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquipoController.php [L]
+	#Administracion->Equipos
+	RewriteCond $1 ^equipoController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquipoController.php [L]
 
-RewriteCond $1 ^equipos
-RewriteRule ^(.*)$ /siri1.2/web/template/admin/equipos.html [L]
+	RewriteCond $1 ^equipos
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/equipos.html [L]
 
 
 #Control de Reportes
 
-#Control de Reportes -> Activos
-RewriteCond $1 ^activos
-RewriteRule ^(.*)$ /siri1.2/web/template/control/activos.html [L]
+	#Control de Reportes -> Activos
+	RewriteCond $1 ^activos
+	RewriteRule ^(.*)$ /siri1.2/web/template/control/activos.html [L]
 
-#Control de Reportes -> Edicion
-RewriteCond $1 ^edicionController$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EdicionController.php [L]
+	#Control de Reportes -> Edicion
+	RewriteCond $1 ^edicionController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EdicionController.php [L]
 
-RewriteCond $1 ^edicion
-RewriteRule ^(.*)$ /siri1.2/web/template/control/edicion.html [L]
+	RewriteCond $1 ^edicion
+	RewriteRule ^(.*)$ /siri1.2/web/template/control/edicion.html [L]
 
-#Control de Reportes -> Entregados
-RewriteCond $1 ^entregaController$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EntregaController.php [L]
+	#Control de Reportes -> Entregados
+	RewriteCond $1 ^entregaController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EntregaController.php [L]
 
-RewriteCond $1 ^entrega
-RewriteRule ^(.*)$ /siri1.2/web/template/control/entrega.html [L]
+	RewriteCond $1 ^entrega
+	RewriteRule ^(.*)$ /siri1.2/web/template/control/entrega.html [L]
 
 #Asignacion de Reportes
 
-#Asignacion de Reportes -> nuevos servicios
-RewriteCond $1 ^nueServController$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/NueServController.php [L]
+	#Asignacion de Reportes -> nuevos servicios
+	RewriteCond $1 ^nueServController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/NueServController.php [L]
 
-RewriteCond $1 ^nueServ
-RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/nuevo_servicios.html [L]
+	RewriteCond $1 ^nueServ
+	RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/nuevo_servicios.html [L]
 
-#Asignacion de Reportes -> asignacion
-RewriteCond $1 ^asignacionController$
-RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AsignacionController.php [L]
+	#Asignacion de Reportes -> asignacion
+	RewriteCond $1 ^asignacionController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AsignacionController.php [L]
 
-RewriteCond $1 ^asignacion
-RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/asignacion.html [L]
+	RewriteCond $1 ^asignacion
+	RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/asignacion.html [L]
 
 
 #=====================
@@ -115,6 +117,9 @@ RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/PaginaContr
 
 RewriteCond $1 ^equipoReporte$
 RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]
+
+RewriteCond $1 ^equipo_Reporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController2.php [L]
 
 RewriteCond $1 ^saveReporte$
 RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]

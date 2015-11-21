@@ -37,21 +37,25 @@ class ClassEquipos extends class_mysqlconnector
         $this->IniciarTransaccion();
          //Tabla Reporte
 
+        #====== Tabla area =====
+        $this->setValue("nombre", $array['AREA']);
+        $insert_area= $this->insertar("area");
+
         #==== id_unidad ====
         $nombre_unidad = $array['unidad'];
         $this->setKey("nombre", $nombre_unidad);
         $id_unidad= $this->devuelve_filas_indexlabel("unidad","id");
 
         #==== id_area ====
-        $nombre_area = $array['AREA'];
-        $this->setKey("nombre", $nombre_area);
-        $id_area= $this->devuelve_filas_indexlabel("area", "id");
+        $sql = "SELECT id FROM area ORDER BY id DESC LIMIT 1 C";
+        $consulta = $this->EjecutarConsulta($sql);
+        $id_area = @mysql_fetch_assoc($consulta);
 
         $this->setValue("fechaRecep", date("Y-m-d"));
         $this->setValue("horaRecep", date("H:i:s"));
         $this->setValue("ipcaptura", $array["IP"]);
         $this->setValue("id_unidad", $id_unidad[0]['id']); //Falta que lo busque en la tabla  unidad
-        $this->setValue("idarea", $id_area[0]['id']); //Falta que lo busque en la tabla area
+        $this->setValue("idarea", $id_area['id']); //Falta que lo busque en la tabla area
         $this->setValue("personaquereporta", $array["Qreporta"]);
         $this->setValue("problema", $array["problema"]);
         $this->setValue("telefono", $array["telefono"]);
@@ -123,7 +127,7 @@ class ClassEquipos extends class_mysqlconnector
         $equipos_recibidos = $this->insertar("equiposrecibidos");
       
 
-        if($T_reporte and $rep_update and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos)
+        if($T_reporte and $rep_update and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos and $insert_area)
         {
             //print_r("Transaccion completa");
             $this->CometerTransaccion();
@@ -142,21 +146,30 @@ class ClassEquipos extends class_mysqlconnector
         $this->IniciarTransaccion();
         //Tabla Reporte
 
+        #====== Tabla area =====
+        $this->setValue("nombre", $array['AREA']);
+        $insert_area= $this->insertar("area");
+
         #==== id_unidad ====
         $nombre_unidad = $array['unidad'];
         $this->setKey("nombre", $nombre_unidad);
         $id_unidad= $this->devuelve_filas_indexlabel("unidad","id");
 
         #==== id_area ====
-        $nombre_area = $array['AREA'];
-        $this->setKey("nombre", $nombre_area);
-        $id_area= $this->devuelve_filas_indexlabel("area", "id");
+        $sql = "SELECT id FROM area ORDER BY id DESC LIMIT 1 ";
+        try{
+            $consulta = $this->EjecutarConsulta($sql);
+        }catch (Exception $e){
+            throw $e;
+        }
+        $id_area = @mysql_fetch_assoc($consulta);
+        echo($id_area['id']);
 
         $this->setValue("fechaRecep", date("Y-m-d"));
         $this->setValue("horaRecep", date("H:i:s"));
         $this->setValue("ipcaptura", $array["IPADDRESS"]);
         $this->setValue("id_unidad", $id_unidad[0]['id']); //Falta que lo busque en la tabla  unidad
-        $this->setValue("idarea", $id_area[0]['id']); //Falta que lo busque en la tabla area
+        $this->setValue("idarea", $id_area['id']); //Falta que lo busque en la tabla area
         $this->setValue("personaquereporta", $array["Qreporta"]);
         $this->setValue("problema", $array["problema"]);
         $this->setValue("telefono", $array["telefono"]);
@@ -228,7 +241,7 @@ class ClassEquipos extends class_mysqlconnector
         $equipos_recibidos = $this->insertar("equiposrecibidos");
 
 
-        if($T_reporte and $rep_update and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos)
+        if($T_reporte and $rep_update and $eq_r and $atencion_reporte and $tabla_equipos and $equipos_recibidos and $insert_area)
         {
             //print_r("Transaccion completa");
             $this->CometerTransaccion();

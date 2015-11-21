@@ -31,17 +31,8 @@
     <header class="col-lg-12">
         <div style="float: right;margin-right: 10%" class="text-lg"><span class="text-bold">TU</span> DIRECCION <span class="text-bold">IP</span> es: <span class="text-lg">
                 <?php
-                function getRealIP() {
-
-                    if (!empty($_SERVER['HTTP_CLIENT_IP']))
-                        return $_SERVER['HTTP_CLIENT_IP'];
-
-                    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
-                        return $_SERVER['HTTP_X_FORWARDED_FOR'];
-
-                    return $_SERVER['REMOTE_ADDR'];
-                }
-                echo getRealIP();
+                $ip= gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
+                echo $ip ;
 
                 ?>
             </span></div>
@@ -58,13 +49,14 @@
 
                 <div class="col-lg-12" style="">
                     <div class="col-lg-12">
-
+                        <div class="col-lg-12 text-right"><a href="login" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a></div>
+                        <br/><br/>
                         <!--Equipos de Computo
 
                         href = equipoReporte-->
 
                         <div class="col-lg-4" ng-controller="pageController as page">
-                            <a href="javascript:void(0)" id="equiposRep" ng-click="page.click()"><div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #2b323a solid; height:450px;width: 100%; background-color: rgb(43, 50, 58);color:white;">
+                            <a href="javascript:void(0)" id="equiposRep" ng-click="page.click()"><div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #2b323a solid; height:400px;width: 100%; background-color: rgb(43, 50, 58);color:white;">
                                 <div id="bas2">
                                     <!-- BEGIN CONTENT-->
                                     <div id="content">
@@ -90,7 +82,7 @@
                         <!--Impresorasd-->
                         <div class="col-lg-4">
                             <a href="#">
-                                <div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #9c27b0 solid; height:450px;width: 100%; background-color: rgb(156, 39, 176);color:white;">
+                                <div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #9c27b0 solid; height:400px;width: 100%; background-color: rgb(156, 39, 176);color:white;">
                                     <div id="bas2">
                                         <!-- BEGIN CONTENT-->
                                         <div id="content">
@@ -118,7 +110,7 @@
 
                         <!--Cuentas/Correo-->
                         <div class="col-lg-4">
-                            <a href="#"><div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #0a9ea8 solid; height:450px; width: 100%; background-color: rgb(10, 158, 168);color:white;">
+                            <a href="#"><div class="col-lg-12 text-center btn btn-raised ink-reaction" style="border:2px #0a9ea8 solid; height:400px; width: 100%; background-color: rgb(10, 158, 168);color:white;">
                                     <div id="bas2">
                                         <!-- BEGIN CONTENT-->
                                         <div id="content">

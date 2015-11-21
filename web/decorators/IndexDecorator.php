@@ -616,10 +616,7 @@
 <!-- END JAVASCRIPT DEL Asignacion -->
 
 <script type="text/javascript">  
-
         $("#fecha").datepicker();
-
-
 </script>
 
 

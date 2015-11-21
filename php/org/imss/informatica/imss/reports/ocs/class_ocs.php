@@ -5,7 +5,7 @@ class class_ocs extends class_mysqlconnector_ocs
 {
     public function consulta_ip()
     {
-        //gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) )
+        //gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
         $ip="11.43.33.190";
         $this->setKey("IPADDR", $ip);
         $arreglo = $this->devuelve_filas_indexlabel("hardware");

@@ -59,16 +59,16 @@
 								</div><!--end .row -->
 							</form>
 						</div><!--end .col -->
-					<!--	<div class="col-sm-5 col-sm-offset-1 text-center">
+						<div class="col-sm-5 col-sm-offset-1 text-center" style="top:50px">
 							<br><br>
 								<h3 class="text-light">
-									Deseas levantar un reporte
+									¿Deseas levantar un reporte?
 								</h3>
-								<a class="btn btn-block btn-raised btn-primary" href="#">Haz click aqui para levantar un reporte</a>
+								<a class="btn btn-block btn-raised btn-primary" style="width: 310px" href="page">Haz click, para levantar un reporte</a>
 								<br><br>
 
-								</div><!--end .col
-							</div>--><!--end .row -->
+								</div><!--end .col -->
+							</div><!--end .row -->
 						</div><!--end .card-body -->
 					</div><!--end .card -->
 				</section>
