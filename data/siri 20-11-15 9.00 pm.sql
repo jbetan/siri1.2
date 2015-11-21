@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2015 a las 20:17:20
+-- Tiempo de generación: 21-11-2015 a las 04:00:54
 -- Versión del servidor: 5.6.14
 -- Versión de PHP: 5.5.6
 
@@ -161,7 +161,7 @@ INSERT INTO `categoriau` (`id`, `nombre`, `nivel`) VALUES
 (8, 'Call Center', 1),
 (9, 'Administrador', 7),
 (10, 'Jefe de oficina', 6),
-(11, 'nulo', 100);
+(11, 'Sin Categoria', 100);
 
 -- --------------------------------------------------------
 
@@ -1382,7 +1382,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   KEY `idcategoria_2` (`idcategoria`,`idunidad`),
   KEY `idunidad` (`idunidad`),
   KEY `subcategoria` (`subcategoria`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=43 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Volcado de datos para la tabla `usuario`
@@ -1411,7 +1411,8 @@ INSERT INTO `usuario` (`id`, `nombre`, `contrasena`, `matricula`, `tipo`, `iduni
 (39, 'Ramirez Gongora Jorge', 'prueba', 'prueba', 'soporte', 206, 201, 1, 11, 'NO', 'NO', 0),
 (40, 'Perez Carcaño Yara Cristina', 'prueba', 'prueba', 'soporte', 37, 201, 1, 11, 'NO', 'NO', 0),
 (41, 'Baas Quiñonez Braulio Raymundo', 'prueba', 'prueba', 'soporte', 37, 201, 1, 11, 'NO', 'NO', 0),
-(42, 'Ocampo Roman Cesar Augusto', 'prueba', 'prueba', 'soporte', 201, 201, 1, 11, 'SI', 'SI', 0);
+(42, 'Ocampo Roman Cesar Augusto', 'prueba', 'prueba', 'soporte', 201, 201, 1, 11, 'SI', 'SI', 0),
+(43, 'ESCAMILLA PERERA BALTAZAR', 'c893bad68927b457dbed39460e6afd62', '1M5533yuc', 'ADMIN', 1, 1, 9, 11, 'SI', 'SI', 1);
 
 -- --------------------------------------------------------
 
