@@ -26,40 +26,44 @@ class ClassMenu extends class_mysqlconnector {
     }
 
     private function setFormatMenu(){
-        $menuFinal = array();
-        $hijos = array();
-        $idpadre = null;
+        $menuFinal  = array();
+        $hijos      = array();
+        $idpadre    = null;
         $indicePapa = 0;
         foreach($this->menu as $papa){
             if($papa["id_padre"] == null){
                 $menuFinal[$indicePapa] = $papa;
                 $indicePapa++;
-            } else {
+            }else{
                 $menuFinal[$indicePapa-1]["sons"] = $this->getHijos($menuFinal[$indicePapa-1]["id"], $papa["nivel"]);
             }
         }
         $this->menu = $menuFinal;
-
     }
-
-    /**
-     * @return mixed
-     */
-    public function getUsuario()
-    {
+    
+    public function getUsuario(){
         return $this->usuario;
     }
 
-    /**
-     * @param mixed $usuario
-     */
-    public function setUsuario($usuario)
-    {
+    public function setUsuario($usuario){
         $this->usuario = $usuario;
     }
 
     public function getMenuByUsuario($menuSession, $path) {
         switch($menuSession){
+
+          
+
+            case "ADMIN":
+                $this->menu = file_get_contents($path."template/menu/Administrador_7/admin.json");
+                break;
+
+           /* 
+
+             case "ADMIN":
+                $this->menu = file_get_contents($path."template/menu/asignacion.json");
+                break;
+
             case "SOPORTEB":
             case "SOPORTEA":
                 $this->menu = file_get_contents($path."template/menu/menu2.json");
@@ -75,30 +79,11 @@ class ClassMenu extends class_mysqlconnector {
             case "ASIGNACION":
                 $this->menu = file_get_contents($path."template/menu/asignacion.json");
                 break;
-
-
+            */
             default:
                 $this->menu = file_get_contents($path."template/menu/menu.json");
                 break;
         }
-
-//        if(isset($menuSession) || $menuSession != null){
-//            $this->menu = $menuSession;
-//        } else {
-//            $this->setKey("id_usuario", $this->usuario);
-//            $roles = $this->devuelve_filas("role_usuario", "id_role");
-//            $rolesStr = "";
-//            foreach ($roles as $rol) {
-//                $rolesStr .= ($rolesStr ? "," : "") . $rol["id_role"];
-//            }
-//            $sql = "SELECT * FROM menu INNER JOIN menu_role ON menu_role.id_menu = menu.id WHERE menu_role.id_role IN (" . $rolesStr . ") ORDER BY menu.indice , menu.nivel ";
-//            $res = $this->EjecutarConsulta($sql);
-//            $this->menu = array();
-//            while ($row = mysql_fetch_assoc($res)) {
-//                $this->menu[] = $row;
-//            }
-//            $this->setFormatMenu();
-//        }
         return $this->menu;
     }
 
@@ -109,3 +94,4 @@ class ClassMenu extends class_mysqlconnector {
 
 
 }
+?>
