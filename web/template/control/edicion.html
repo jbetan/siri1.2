@@ -246,7 +246,7 @@
 
                             <div class="col-lg-4">
                                 <div class=" form-group">
-                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_uno" name="act1" required>
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_uno" name="act1" required=""  aria-required="true">
                                         <option selected></option>
                                         <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
                                     </select>
@@ -256,7 +256,7 @@
 
                             <div class="col-lg-4">
                                 <div class=" form-group">
-                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_dos" name="act2" >  
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_dos" name="act2"  required="" aria-required="true">
                                         <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
                                     </select>
                                     <label >Actividad realizada 2</label>
@@ -309,7 +309,7 @@
                     <div class="col-md-12 col-xs-6">
                         <div class="card">
 
-                            <div class="card-body small-padding style-danger text-center">NOTA:En "CONTROL " solicionamos el problema o lo escalamos a la persona asignada </div>
+                            <div class="card-body small-padding style-warning text-center">NOTA:En "CONTROL " solicionamos el problema o lo escalamos a la persona asignada </div>
                         </div>
 
 

@@ -2,6 +2,7 @@
 
 <div class="section-body" ng-controller="ActivosController as activos">
 
+
 <h1 > </h1>
 
 
@@ -12,7 +13,14 @@
         </div>
     </div>
  </br>
+    <div class="">
+        <label class="buscarLibros">Buscar:</label>
+        <input ng-model="folioBuscado"  class="form-control" type="text"> <span class="fa fa-search form-control-feedback"></span>
+        <div class="form-control-line ">
+        <br>
 
+        <!-- filtro -->
+    </div>
     <table  class="col-md-12 table no-margin table-hover" >
         <thead class="style-default-dark">
             <tr>
@@ -28,7 +36,7 @@
             </tr>   
          </thead>
 
-        <tr ng-repeat-start="reporte in activos.reportes.data"><!--Aqui empieza el ng-repeat-start -->  
+        <tr ng-repeat-start="reporte in activos.reportes.data | filter:folioBuscado "><!--Aqui empieza el ng-repeat-start -->
 
             <!--inicia Listo-->
             <td ng-if="reporte.status == 'Listo'" class="success">
