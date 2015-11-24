@@ -6,6 +6,8 @@ class ClassEdicion extends  class_mysqlconnector
 {
 
 
+    //$_SESSION["imss"]["niv_usuario"]
+    
     public function autoNombre(){
         $this ->EjecutarConsulta("SET NAMES 'utf8';");
         $data = $this->devuelve_filas_indexlabel("usuario", "nombre");
@@ -123,13 +125,19 @@ class ClassEdicion extends  class_mysqlconnector
     }
 
     public function findUsuarioByLevel($nivel, $subnivel) {
-       echo $nivel;
+       session_start();
+       $niv = $_SESSION["imss"]["nivel"];
+
+       if ($niv == 0 or $niv == 7) {
+          $niv = 2;
+       }
+            
        $sql="SELECT
              u.id,
              u.nombre
              From usuario as u
              LEFT JOIN categoriau as cu ON u.idcategoria = cu.id
-            # WHERE cu.nivel >= '{$nivel}'
+             WHERE cu.nivel >= $niv
        ";
 
        try{
@@ -146,6 +154,8 @@ class ClassEdicion extends  class_mysqlconnector
         if(isset($valores)) return $valores;
     }
     
+
+
     public function findActivities() {
         $fila = $this->devuelve_filas_indexlabel("actividades", "*");
         if($fila) {

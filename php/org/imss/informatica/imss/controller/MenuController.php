@@ -8,6 +8,8 @@ session_name("EnterAccessCFERecibos");
 session_start();
 include_once("../business/menu/ClassMenu.php");
 include_once("ControllerPrincipal.php");
+
+
 class MenuController extends ControllerPrincipal {
 
     function getMenuByUsuario($menuType){
@@ -15,7 +17,9 @@ class MenuController extends ControllerPrincipal {
         return $menu->getMenuByUsuario($menuType, $this->getAbsPath());
     }
 }
+
+
 $menu = new MenuController();
-echo $menu->getMenuByUsuario($_SESSION["imss"]["tipo"]);
+echo  $menu->getMenuByUsuario($_SESSION["imss"]["niv_usuario"]);
 session_write_close();
 //$menu->bufferMenuJSON();

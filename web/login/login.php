@@ -41,11 +41,30 @@
 							<form class="form floating-label" action="<?=$this->contextPath."/".$this->getActionForm()?>" accept-charset="utf-8" method="post">
 								<div class="form-group">
 									<input type="text" class="form-control" id="username" name="username">
-									<label for="username"><i class="fa fa-user"></i> Usuario </label>
+									<label for="username"><i class="fa fa-user"></i> Matricula</label>
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control" id="password" name="password" autocomplete="off">
 									<label for="password"><i class="fa fa-asterisk"> Contrase&ntilde;a </i></label>
+									
+								</div>
+								<div class="form-group">
+									<select name="nivel" id="nivel" class="form-control" required >
+                                        <option selected></option>
+                                        <option value="1">Call Center</option>
+                                        <option value="1">Mesa de Recepcion </option>
+                                        <option value="2">Auxiliar</option>
+                                        <option value="3">Oficial</option>
+                                        <option value="4">Especialista</option>
+                                        <option value="6">Coordinador</option>
+                                        <option value="5">Garantia</option>                                    
+                                        <option value="0">Responsable de unidad</option>
+                                        <option value="6">Jefe de Oficina</option>
+                                        <option value="7">Administrador</option>
+                                    </select>                                   
+                             
+
+									<label for="nivel"><i class="fa fa-level-up"></i> Elija su nivel </label>
 									<p class="help-block"><a href="#">Aviso de privacidad?</a></p>
 								</div>
 								<br/>

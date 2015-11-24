@@ -9,12 +9,13 @@ class class_seguridad extends class_mysqlconnector
 		$this->LeerConfiguracion();
 	}
 
-	public function getAcceso($userName, $password){
+	public function getAcceso($userName, $password, $nivel){
 		if($userName == "administrador" && md5($password) == md5("Aa12345$")){
 			$permisos = array("id_usuario" => NULL, "nombre" => "Administrador", "user_name" => "administrador", "permiso" => 10, "acceso" => 1);
 		}else{
-
-		 	$sql = "SELECT 
+			
+			//print_r("llego")
+			$sql = "SELECT 
 			us.id, 
 			us.nombre, 
 			us.tipo, 
@@ -23,7 +24,7 @@ class class_seguridad extends class_mysqlconnector
 			cu.nivel 
 			from usuario as us
 			LEFT JOIN categoriau as cu ON us.idcategoria = cu.id
-		 	WHERE matricula='$userName' and contrasena= md5('$password')";
+		 	WHERE matricula='{$userName}' and contrasena= md5('{$password}') and cu.nivel = $nivel";
 
 		 	try{
 		 		$res = $this->EjecutarConsulta($sql);
@@ -37,6 +38,7 @@ class class_seguridad extends class_mysqlconnector
 		 		$tipo      		= @mysql_result($res, 0,2); //tipo es el que va a decir el tipo de menu
 		 		$matricula 		= @mysql_result($res, 0,3); //matricula
 		 		$nivel_usuario  = @mysql_result($res, 0,4); //nivel del usuario
+		 		$nivel          = @mysql_result($res, 0,5); //nivel
 		 		$permiso   = 1;
 
 		 		$permisos = array(
@@ -44,7 +46,8 @@ class class_seguridad extends class_mysqlconnector
 		 			"nombre"       => $nombre,
 		 			"tipo"         => $tipo, 
 		 			"matricula"    => $matricula,
-		 			"niv_usuario"  => $nivel_usuario, 
+		 			"niv_usuario"  => $nivel_usuario,
+		 			"nivel"        => $nivel, 
 		 			"user_name"    => $userName, 
 		 			"permiso"      => $permiso, 
 		 			"acceso"       => 1

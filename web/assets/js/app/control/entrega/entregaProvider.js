@@ -4,7 +4,7 @@
         var service = {};
         service.reporte = {data:{}};
 
-        service.guardarUnidades = function (data, callback){
+        service.entregarReporte = function (data, callback){
             console.log('providerReporte',data);
             $http({
                 url:"entregaController?guardarRepEntrega=1",
