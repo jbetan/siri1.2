@@ -39,12 +39,21 @@
 							<span class="text-lg text-bold text-primary">ADMIN CONTRARECIBOS</span>
 							<br/><br/>
 							<form class="form floating-label" action="<?=$this->contextPath."/".$this->getActionForm()?>" accept-charset="utf-8" method="post">
+<<<<<<< HEAD
 								<div class="form-group">
 									<input type="text" class="form-control" id="username" name="username">
 									<label for="username"><i class="fa fa-user"></i> Matricula</label>
+=======
+								<div class="form-group ">
+									<input type="text" class="form-control" id="username" name="username" required="" >
+									<label for="username"><i class="fa fa-user"></i> Usuario </label>
+>>>>>>> cf5f0f27e691de33b7c1c48136b6aae6893340ed
 								</div>
+
+
+
 								<div class="form-group">
-									<input type="password" class="form-control" id="password" name="password" autocomplete="off">
+									<input type="password" class="form-control" id="password" name="password" autocomplete="off" required="">
 									<label for="password"><i class="fa fa-asterisk"> Contrase&ntilde;a </i></label>
 									
 								</div>
@@ -88,6 +97,14 @@
 						</div><!--end .card-body -->
 					</div><!--end .card -->
 				</section>
+
+        <div class="col-lg-12 ">
+
+                    <div class="card">
+
+                        <div class="card-body style-primary-light height-1">F.S. Irvin - B.L. Jossue - N.B. Brayan</div>
+
+                    </div>
 				<!-- END LOGIN SECTION -->
 
 				<!-- BEGIN JAVASCRIPT -->
