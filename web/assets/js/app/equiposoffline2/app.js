@@ -107,14 +107,13 @@
                         data: $.param(vm.equipo.data)
                     }).success(function (data) {
                         console.log("llega id del reporte",data.id);
-                        var id= data;
                         if(data.Error == true ) {
                             alert("Rellena datos")
 
                         } else {
                             $('#myModal2').modal('show');
                             setTimeout(function(){
-                                location.href=('confirmacion?id='+ id);
+                                location.href=('confirmacion?id='+data.id);
                                 console.log(id);
                             },2000);
                         }

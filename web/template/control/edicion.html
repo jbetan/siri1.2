@@ -253,20 +253,22 @@
                             </div>
 
                             <div class="col-lg-4">
-                                <div class=" form-group">
-                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_dos" name="act2" >  
+                                <div class=" form-group" style="position: relative">
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_dos" name="act2" id="act2" required>
                                         <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
                                     </select>
                                     <label >Actividad realizada 2</label>
+                                    <span class="error text-danger" style="position:absolute;display:none">Debes seleccionar una activisas de la lista</span>
                                 </div>
                             </div>
 
                             <div class="col-lg-4">
-                                <div class=" form-group">
-                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_tres" name="act3" required>                                      
+                                <div class=" form-group" style="position: relative">
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_tres" name="act3"  id="act3" required>
                                         <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
                                     </select>
                                     <label >Actividad realizada 3</label>
+                                    <span class="error2 text-danger" style="position:absolute;display:none">Debes seleccionar una activisas de la lista</span>
                                 </div>
                             </div>
 
@@ -303,6 +305,17 @@
                             </div>
 
                         </form>
+                        <div id="myModal" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="close" type='button' ng-click='on_click_cancel()'>×</button>
+                                        <h4 class="modal-title"> <h3>Reporte guardado con éxito</h3></h4>
+                                        <h5>Generando folio .......</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div><!--end .col -->
                 </div><!--end .row -->
                 <!-- END VALIDATION FORM WIZARD -->

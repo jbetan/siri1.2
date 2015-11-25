@@ -51,7 +51,7 @@
         var parametro = $.getURLParam("id");
         console.log("La id es: ", parametro);
          $http.get('confirmacionModel?id='+ parametro).success(function(data){
-        var folio = 1;
+             console.log(data);
              $scope.folio = data[2];
              $scope.unidad = data[4];
              $scope.area = data[5];

@@ -102,20 +102,19 @@
         vm.submit = function() {
             $("#datosFormAutocomplete").validate({
                 submitHandler: function (form) {
-                    $(this).attr("disabled", true);
-                    $(this).addClass("disabled");
-                    console.log("form: ", vm.consulta.data.unidad);
-                    if (vm.consulta.data.unidad == undefined || vm.consulta.data.Tipo == undefined || vm.consulta.data.marca == undefined) {
-                        if (vm.consulta.data.unidad == undefined) {
+                    $("#save").attr("disabled", true);
+                    $("#save").addClass("disabled");
+                    if (vm.equipo.data.unidad == undefined || vm.equipo.data.Tipo == undefined || vm.equipo.data.marca == undefined) {
+                        if (vm.equipo.data.unidad == undefined) {
                             alert("selecciona un campo del autocomplete");
                             $("input[name='unidades']").css("border", "2px #EBCCD1 solid");
-                            $("input[name='unidades']").css("border-bottom", "3px #F44336 solid");
+                            $("input[name='unidad']").css("border-bottom", "3px #F44336 solid");
                             $(".error").css("display", "block");
-                            $("input[name='unidades']").click(function () {
+                            $("input[name='unidad']").click(function () {
                                 $(".error").fadeOut();
-                                $("input[name='unidades']").css("border", "0");
+                                $("input[name='unidad']").css("border", "0");
                             })
-                        } else if (vm.consulta.data.Tipo == undefined) {
+                        } else if (vm.equipo.data.Tipo == undefined) {
                             alert("selecciona un campo del autocomplete");
                             $("input[name='tipo']").css("border", "2px #EBCCD1 solid");
                             $("input[name='tipo']").css("border-bottom", "3px #F44336 solid");
@@ -124,7 +123,7 @@
                                 $(".error2").fadeOut();
                                 $("input[name='tipo']").css("border", "0");
                             });
-                        } else if (vm.consulta.data.marca == undefined) {
+                        } else if (vm.equipo.data.marca == undefined) {
                             alert("selecciona un campo del autocomplete");
                             $("input[name='marca']").css("border", "2px #EBCCD1 solid");
                             $("input[name='marca']").css("border-bottom", "3px #F44336 solid");
@@ -144,14 +143,15 @@
                             data: $.param(vm.equipo.data)
                         }).success(function (data) {
                             console.log("llega id del reporte", data.id);
-                            var id = data;
+                            var id = data.id;
                             if (data.Error == true) {
+                                console.log(data.id);
                                 alert("Rellena datos")
 
                             } else {
                                 $('#myModal2').modal('show');
                                 setTimeout(function () {
-                                    location.href = ('confirmacion?id=' + id);
+                                    location.href = ('confirmacion?id='+ data.id);
                                     console.log(id);
                                 }, 2000);
                             }
@@ -249,8 +249,6 @@
         vm.submit = function() {
             $("#datosForm").validate({
                 submitHandler: function (form) {
-                    $(this).attr("disabled", true);
-                    $(this).addClass("disabled");
                     console.log("form: ", vm.consulta.data.unidad);
                     if (vm.consulta.data.unidad == undefined || vm.consulta.data.Tipo == undefined || vm.consulta.data.marca == undefined) {
                         if (vm.consulta.data.unidad == undefined) {
@@ -283,7 +281,6 @@
                         }
                         return false;
                     } else {
-
                         $http({
                             url: "confirmacion?save=1",
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
@@ -291,15 +288,15 @@
                             method: 'POST',
                             data: $.param(vm.consulta.data)
                         }).success(function (data) {
-                            console.log("llega id del reporte", data.id);
-                            var id = data;
+                            console.log("llega id del reporte", data);
+                            var id =data.id;
                             if (data.Error == true) {
                                 alert("Rellena datos")
 
                             } else {
                                 $('#myModal').modal('show');
                                 setTimeout(function () {
-                                    location.href = ('confirmacion?id=' + id);
+                                    location.href = ('confirmacion?id='+id);
                                     console.log(id);
                                 }, 2000);
                             }
