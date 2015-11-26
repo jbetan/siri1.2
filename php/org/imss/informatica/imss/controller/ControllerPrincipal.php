@@ -87,11 +87,12 @@ class ControllerPrincipal {
 
     public function fromLogin(){
         //Valida si estas logueado
-        if(isset($_REQUEST["username"]) && isset($_REQUEST["password"])) {
+        if(isset($_REQUEST["username"]) && isset($_REQUEST["password"]) && isset($_REQUEST["nivel"])) {
             //Valida en base de datos Si datos correctos
             include_once(dirname(__FILE__)."/../business/security/class_seguridad.php");    //el dirname toma la posicion del archivo que estas trabajando y el __FILE__ reconoce el archivo
             $security = new class_seguridad();
-            $_SESSION["imss"] = $security->getAcceso($_REQUEST["username"], $_REQUEST["password"]);
+            
+            $_SESSION["imss"] = $security->getAcceso($_REQUEST["username"], $_REQUEST["password"], $_REQUEST["nivel"]);
             if($_SESSION["imss"]["acceso"] == 1) {
                 return true;
             } else {

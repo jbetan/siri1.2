@@ -1,1 +1,18 @@
-Ya guarda solo que le tube q modificar las tablas "equiposrecibidos" y la tabla "equiporep" solo flata qeu levuelvan a poner  las relacionn d eclave foranea a cad atabla 
+Menu Pendientes
+ 	- responsable_unidad
+ 	- callcenter
+ 	- mesaderecepcion
+ 	
+ 	- oficial.
+ 	- especialista
+ 	- garantia
+ 	- jefedeoficina
+ 	- coordinador
+
+
+
+Menu Completos
+	- admin
+	- mesaderecepcion
+	- auxiliar
+	- oficial.

@@ -5,6 +5,7 @@
 
         <!-- BEGIN META -->
         <meta charset="utf-8">
+       <!-- <link rel="icon" type="image/png" href="./img/favicon.png"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="your,keywords">
         <meta name="description" content="Short explanation about this website">
@@ -25,8 +26,6 @@
 
         <link type="text/css" rel="stylesheet" href="<?=$this->contextPath?>/web/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css?1424887858" />
 
-
-
         <!-- END STYLESHEETS -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -35,8 +34,9 @@
         <script type="text/javascript" src="<?=$this->contextPath?>/web/assets/js/libs/utils/respond.min.js?1403934956"></script>
         <![endif]-->
     </head>
+
     <body class="menubar-hoverable header-fixed ">
-    <!-- BEGIN HEADER-->
+        <!-- BEGIN HEADER-->
         <header id="header" >
             <div class="headerbar">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,7 +45,7 @@
                         <li class="header-nav-brand" >
                             <div class="brand-holder">
                                 <a href="<?=$this->contextPath?>/">
-        							<span class="text-lg text-bold text-primary">SIRI 2.0</span>
+        									<span class="text-lg text-bold text-primary">SIRI 2.0</span>
                                 </a>
                             </div>
                         </li>
@@ -56,84 +56,72 @@
                         </li>
                     </ul>
                 </div>
-
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="headerbar-right">          
+                <div class="headerbar-right">
+                    
+                    
+
                     <ul class="header-nav header-nav-profile">
                         <li class="dropdown">
                             <a href="javascript:void(0);" class="dropdown-toggle ink-reaction" data-toggle="dropdown">
                                 <img src="<?=$this->contextPath?>/web/assets/img/avatar1.jpg?1403934956" alt="" />
         								<!-- Nombre y Perfil de usuario -->
-                                                <?php
-                                                session_start();
-                                                    echo '<span class="profile-info">';
-                                                        echo $_SESSION["imss"]["nombre"];
-                                                        echo '<small>'.$_SESSION["imss"]["niv_usuario"].'</small>';
-                                                    echo '</span>';
-                                                session_write_close();
-                                                ?>
+                                        <?php
+                                        session_start();
+                                            echo '<span class="profile-info">';
+            								    echo $_SESSION["imss"]["nombre"];
+            								    echo '<small>'.$_SESSION["imss"]["niv_usuario"].'</small>';
+            								echo '</span>';
+                                        session_write_close();
+                                        ?>
                             </a>
                             <ul class="dropdown-menu animation-dock">
-                                <li class="dropdown-header">Config</li>
-                                <li><a href="<?=$this->contextPath?>/web/html/pages/profile.html">Mi perfil</a></li>
-                                <li class="divider"></li>
-                                <li><a href="<?=$this->contextPath?>/web/html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Bloquear</a></li>
-                                <li><a href="<?=$this->contextPath?>/salir"><i class="fa fa-fw fa-power-off text-danger"></i> Salir</a></li>
+                                    <li><a href="<?=$this->contextPath?>/salir"><i class="fa fa-fw fa-power-off text-danger"></i> Salir</a></li>
                             </ul><!--end .dropdown-menu -->
                         </li><!--end .dropdown -->
                     </ul><!--end .header-nav-profile -->
-                </div><!--end #header-navbar-collapse -->
 
+                </div><!--end #header-navbar-collapse -->
             </div>
         </header>
-    <!-- END HEADER-->
+        <!-- END HEADER-->
 
-    <!-- BEGIN BASE-->
-        <div id="base">
-            <!-- BEGIN CONTENT-->
-            <div id="content" >
-                <section class="style-default-bright" ng-view>
-                    <div class="section-body" >
-                    <!-- Esto debe estar vacio -->
-        			</div><!--end .section-body -->
-        		</section>
-        	</div><!--end #content-->
-        			<!-- END CONTENT -->
+        <!-- BEGIN BASE-->
+        <div id="base">   
+            <!-- BEGIN MENUBAR-->
+            <div id="menubar" class="menubar-inverse ">
+            	<div class="menubar-fixed-panel">
+            		<div>
+            			<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
+            				<i class="fa fa-bars"></i>
+            			</a>
+            		</div>
+            		<div class="expanded">
+            			<a href="<?=$this->contextPath?>/">
+            				<span class="text-lg text-bold text-primary ">ADMIN&nbsp;CONTRARECIBOS</span>
+            			</a>
+            		</div>
+            	</div>
+            	<div class="menubar-scroll-panel">
 
-        	<!-- BEGIN MENUBAR-->
-        	<div id="menubar" class="menubar-inverse ">
-        		<div class="menubar-fixed-panel">
-        			<div>
-        				<a class="btn btn-icon-toggle btn-default menubar-toggle" data-toggle="menubar" href="javascript:void(0);">
-        					<i class="fa fa-bars"></i>
-        				</a>
-        			</div>
-        			<div class="expanded">
-        				<a href="<?=$this->contextPath?>/">
-        					<span class="text-lg text-bold text-primary ">ADMIN&nbsp;CONTRARECIBOS</span>
-        				</a>
-        			</div>
-        		</div>
-        		<div class="menubar-scroll-panel">
-        			<!-- BEGIN MAIN MENU -->
+            		<!-- BEGIN MAIN MENU -->
                     <menu-usuario menu="menuUsuario" type="<?=$_SESSION['imss']['tipo']?>" path="<?=$this->contextPath?>"></menu-usuario>
-                        <!--<?php// include_once($this->_absPath."/template/menu/MenuSide".$this->opcionMenu.".php"); ?>
-                        <!--end .main-menu -->
-        			    <!-- END MAIN MENU -->
+            <!--                    <?php// include_once($this->_absPath."/template/menu/MenuSide".$this->opcionMenu.".php"); ?>
+                    <!--end .main-menu -->
+            		<!-- END MAIN MENU -->
 
-        			<div class="menubar-foot-panel">
-        				<small class="no-linebreak hidden-folded">
-        					<span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
-        				</small>
-        			</div>
-        		</div><!--end .menubar-scroll-panel-->
-        	</div><!--end #menubar-->
-        	<!-- END MENUBAR -->
+            		<div class="menubar-foot-panel">
+            			<small class="no-linebreak hidden-folded">
+            				<span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
+            			</small>
+            		</div>
+            	</div><!--end .menubar-scroll-panel-->
+            </div><!--end #menubar-->
+            <!-- END MENUBAR -->
         </div><!--end #base-->
-    <!-- END BASE -->
+        <!-- END BASE -->
 
-    <!-- BEGIN JAVASCRIPT -->
+        <!-- BEGIN JAVASCRIPT -->
 
         <script src="<?=$this->contextPath?>/web/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/libs/jquery-ui/jquery-ui.min.js"></script>
@@ -165,7 +153,16 @@
         <script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignar/app.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignar/asignarProvider.js"></script>
- 
+
+        <!-- BRAYAN -->
+
+        <!-- BRAYAN -->
+
+
+            
+
+
+        <!-- END JAVASCRIPT -->
 
         <!-- BEGIN JAVASCRIPT DEL ADMINISTRADOR -->
         <script src="<?=$this->contextPath?>/web/assets/js/app/admin/app.js"></script>
@@ -192,7 +189,6 @@
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/asignacion/app.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/asignacion/asignacionProvider.js"></script>
         <!-- END JAVASCRIPT DEL Asignacion -->
-    <!-- END JAVASCRIPT -->
-
-	</body>
+    </body>
 </html>
+

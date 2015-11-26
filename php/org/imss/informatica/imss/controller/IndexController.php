@@ -7,7 +7,7 @@
 include_once("ControllerPrincipal.php");
 session_name("EnterAccessCFERecibos");
 session_start();
-$index = new ControllerPrincipal("decorators/IndexDecorator.php", "ADMIN CONTRARECIBOS - Index");
+$index = new ControllerPrincipal("decorators/IndexDecorator.php", "SIRI 2.0");
 $index->setOpcionMenu("Oficial");
 if($index->validaAcceso()) {
     unset($_SESSION["actionForm"]);

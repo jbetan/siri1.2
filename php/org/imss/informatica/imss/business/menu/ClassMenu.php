@@ -50,38 +50,54 @@ class ClassMenu extends class_mysqlconnector {
     }
 
     public function getMenuByUsuario($menuSession, $path) {
-        switch($menuSession){
-
+        
+        switch($menuSession){           
           
+            
 
-            case "ADMIN":
-                $this->menu = file_get_contents($path."template/menu/Administrador_7/admin.json");
+            case "Responsable de unidad": //0
+                $this->menu = file_get_contents($path."template/menu/menuSiri/responsable_unidad.json");
                 break;
 
-           /* 
-
-             case "ADMIN":
-                $this->menu = file_get_contents($path."template/menu/asignacion.json");
+            case "Call Center": // 1
+                $this->menu = file_get_contents($path."template/menu/menuSiri/callcenter.json");
                 break;
 
-            case "SOPORTEB":
-            case "SOPORTEA":
-                $this->menu = file_get_contents($path."template/menu/menu2.json");
-                break;
-            case "TELECOM":
-                $this->menu = file_get_contents($path."template/menu/menu_3.json");
+            case "Mesa de recepcion": //1
+                $this->menu = file_get_contents($path."template/menu/menuSiri/mesaderecepcion.json");
                 break;
 
-            case "OTRO":
-                $this->menu = file_get_contents($path."template/menu/control.json");
+            case "Auxiliar": //2
+                $this->menu = file_get_contents($path."template/menu/menuSiri/auxiliar.json");
                 break;
 
-            case "ASIGNACION":
-                $this->menu = file_get_contents($path."template/menu/asignacion.json");
+            case "Oficial": //3
+                $this->menu = file_get_contents($path."template/menu/menuSiri/oficial.json");
                 break;
-            */
-            default:
-                $this->menu = file_get_contents($path."template/menu/menu.json");
+
+            case "Especialista": //4
+                $this->menu = file_get_contents($path."template/menu/menuSiri/especialista.json");
+                break;
+
+            case "Garantia": //5
+                $this->menu = file_get_contents($path."template/menu/menuSiri/garantia.json");
+                break;
+            
+            case "Jefe de oficina": //6
+                $this->menu = file_get_contents($path."template/menu/menuSiri/jefedeoficina.json");
+                break;
+
+            case "Coordinador": //6
+                $this->menu = file_get_contents($path."template/menu/menuSiri/coordinador.json");
+                break;
+
+            case "Administrador": //7
+                $this->menu = file_get_contents($path."template/menu/menuSiri/admin.json");
+                break;  
+     
+                       
+            default: //jaja
+                $this->menu = file_get_contents($path."template/menu/menuSiri/admin.json");
                 break;
         }
         return $this->menu;

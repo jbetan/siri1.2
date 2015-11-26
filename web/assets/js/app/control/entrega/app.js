@@ -4,26 +4,30 @@
 (function() {
     var app = angular.module("entrega-Module", ["entrega-provider"]);
     app.controller("EntregaController", function($compile,  $http, $routeParams, $scope, EntregaService){
-    var vm = this;
-    vm.show = false;
-    vm.reporte = {data:undefined};
-    $scope.submit=undefined;
+        var vm = this;
+        vm.button = true;
+        vm.show = false;
+        vm.reporte = {data:undefined};
+        $scope.submit=undefined;
 
 
-    /*
-    Traer reporte obtenido de activos
-    =====================
-    */
-    vm.folio = "'"+$routeParams.folio+"'";
-    f = $routeParams.folio
-    vm.folioImp = $routeParams.folio;
-    getReportes();
-    function getReportes () {
-        EntregaService.findReporteByFolio(f, function() {
-        });
-        vm.reporte = EntregaService.reporte;
-    };
+        /*
+        Traer reporte obtenido de activos
+        =====================
+        */
+        vm.folio = "'"+$routeParams.folio+"'";
+        f = $routeParams.folio
+        vm.folioImp = $routeParams.folio;
 
+        if(f!=0){
+              getReportes();
+            }
+        
+        function getReportes () {
+            EntregaService.findReporteByFolio(f, function() {
+            });
+            vm.reporte = EntregaService.reporte;
+        };
 
 
         vm.submit = function() {
@@ -34,17 +38,17 @@
                         $("#enviar").attr("disabled", true);
                         $("#enviar").addClass("disabled");
                         console.log('validate',vm.reporte.data);
-                        EntregaService.guardarUnidades(vm.reporte.data, function(data){
+                        EntregaService.entregarReporte(vm.reporte.data, function(data){
                             $("#enviar").removeAttr("disabled", true);
                             $("#enviar").removeClass("disabled");
-
-                            vm.dtOptions.reloadData();
-                            if(data.error === false) {
-                                console.log('',data.message);
+                            vm.resetData();
+                            if(data.error == false) {
+                                alert('EXITO '+ data.message);
+                                console.log('Exito',data.message);
                             } else {
+                                alert('ERROR '+data.message);
                                 console.log('',data.message);
                             }
-                            vm.resetData();
                         });
                     }
                 });
