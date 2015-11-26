@@ -40,8 +40,8 @@
 
             <!--inicia Listo-->
             <td ng-if="reporte.status == 'Listo'" class="success">
-            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
-            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i> </button>
+            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i> </button>
             </td>
             <td ng-if="reporte.status == 'Listo'" class="success text-ultra-bold text-xxl ">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.status}}</td>
@@ -51,9 +51,9 @@
 
              <!--inicia Garantia-->
             <td ng-if="reporte.status == 'Garantia'" class="info">
-            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i>
+            <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle fa-2x"></i>
             </button>
-            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i>
+            <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i>
             </button>
             </td>
             <td ng-if="reporte.status == 'Garantia'" class="info text-ultra-bold text-xxl">{{reporte.folio}}</td>
@@ -64,8 +64,8 @@
 
             <!--inicia reparacion-->
             <td ng-if="reporte.status == 'En reparacion'" class="danger">
-                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
-                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i></button>
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i></button>
             </td>
             <td ng-if="reporte.status == 'En reparacion'" class="danger text-ultra-bold text-xxl">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'En reparacion'" class="danger"> {{reporte.status}}</td>
@@ -75,8 +75,8 @@
 
             <!--inicia nuevo-->
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">
-                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
-                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i></button>
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i></button>
             </td>
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent text-ultra-bold text-xxl">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.status}}</td>
@@ -86,8 +86,8 @@
 
             <!--inicia entregado-->
             <td ng-if="reporte.status == 'Entregado'" class="active">
-                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-arrow-circle-up fa-2x"></i></button>
-                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-arrow-circle-down fa-2x"></i></button>
+                <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+                <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i></button>
             </td>
             <td ng-if="reporte.status == 'Entregado'" class="active text-ultra-bold text-xxl">{{reporte.folio}}</td>
             <td ng-if="reporte.status == 'Entregado'" class="active"> {{reporte.status}}</td>
