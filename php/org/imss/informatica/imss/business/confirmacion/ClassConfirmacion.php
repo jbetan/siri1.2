@@ -29,7 +29,7 @@ class ClassConfirmacion extends  class_mysqlconnector
         }catch (Exception $e){
             throw $e;
         }
-        $arreglo2 = @mysql_fetch_array($res);
+        $arreglo2 = @mysql_fetch_row($res);
         if(is_array($arreglo2))
         {
             //print_r($arreglo2);
@@ -41,4 +41,5 @@ class ClassConfirmacion extends  class_mysqlconnector
 }
 $reporte= new ClassConfirmacion();
 $id= $_GET['id'];
+//print_r($id);
 exit (json_encode($reporte->TraeReporteGuardado($id)));

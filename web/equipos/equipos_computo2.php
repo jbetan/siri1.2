@@ -64,7 +64,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                             <i>({{match.model.nombre}})</i>
                                         </a>
                                     </script>
-                                    <input type="text" name="areas" ng-model="Ctrl.equipo.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" typeahead-editable="false" typeahead="area.nombre for area in area | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
+                                    <input type="text" name="areas" ng-model="Ctrl.equipo.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
                                     <label for=""><span class="text-danger">* </span> Área</label>
                                 </div>
                                 <div class="form-group" ng-controller="TipoController">

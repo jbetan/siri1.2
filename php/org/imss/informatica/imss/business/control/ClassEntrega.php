@@ -100,7 +100,7 @@ class ClassEntrega extends  class_mysqlconnector
         JOIN status as st ON at.idstatus = st.id 
         JOIN marca as m   ON e.idmarca = m.id 
         JOIN tipo as tp   ON e.idtipo = tp.id 
-        JOIN usuario as us  ON at.idusuarioOrigen = us.id 
+        JOIN usuario as us  ON at.idusuarioOrigen = us.id
         WHERE r.folio ='$id' and st.id = 3  LIMIT 1";
 
         try{

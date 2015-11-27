@@ -54,21 +54,46 @@
                 console.info("Guardar");
                 $scope.submit = $("#formReporte").validate({
                     submitHandler: function (form) {
-                        $("#enviar").attr("disabled", true);
-                        $("#enviar").addClass("disabled");
-                        console.log('validate',vm.reporte.data);
-                        EdicionService.guardarReporte(vm.reporte.data, function(data){
-                            $("#enviar").removeAttr("disabled", true);
-                            $("#enviar").removeClass("disabled");
-                            vm.resetData();
-                            if(data.error == false) {
-                                alert('EXITO '+ data.message);
-                                console.log('Exito',data.message);
-                            } else {
-                                alert('ERROR '+data.message);
-                                console.log('',data.message);
+                        console.log(vm.reporte.data.actividad_dos);
+                        if(vm.reporte.data.actividad_dos == undefined || vm.reporte.data.actividad_tres == undefined)
+                        {
+                            if(vm.reporte.data.actividad_dos == undefined){
+                                $("#act2").css("border", "2px #EBCCD1 solid");
+                                $("#act2").css("border-bottom", "3px #F44336 solid");
+                                $(".error").css("display", "block");
+                                $("#act2").click(function () {
+                                    $(".error").fadeOut();
+                                    $("#act2").css("border", "0");
+                                });
+                                return false;
                             }
-                        });
+                            if(vm.reporte.data.actividad_tres == undefined){
+                                $("#act3").css("border", "2px #EBCCD1 solid");
+                                $("#act3").css("border-bottom", "3px #F44336 solid");
+                                $(".error2").css("display", "block");
+                                $("#act3").click(function () {
+                                    $(".error2").fadeOut();
+                                    $("#act3").css("border", "0");
+                                });
+                                return false;
+                            }
+                        }else{
+                            $("#enviar").attr("disabled", true);
+                            $("#enviar").addClass("disabled");
+                            console.log('validate',vm.reporte.data);
+                            EdicionService.guardarReporte(vm.reporte.data, function(data){
+                                $("#enviar").removeAttr("disabled", true);
+                                $("#enviar").removeClass("disabled");
+                                vm.resetData();
+                                if(data.error == false) {
+                                    $('#myModal').modal('show');
+                                    console.log('Exito',data.message);
+                                } else {
+                                    alert('ERROR '+data.message);
+                                    console.log('',data.message);
+                                }
+                            });
+                        }
                     }
                 });
             }

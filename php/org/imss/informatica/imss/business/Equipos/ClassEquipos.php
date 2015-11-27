@@ -32,8 +32,6 @@ class ClassEquipos extends class_mysqlconnector
 
     public function saveReporteAutocomplete($array)
     {
-        //print_r($array);
-
         $this->IniciarTransaccion();
          //Tabla Reporte
 
@@ -47,7 +45,7 @@ class ClassEquipos extends class_mysqlconnector
         $id_unidad= $this->devuelve_filas_indexlabel("unidad","id");
 
         #==== id_area ====
-        $sql = "SELECT id FROM area ORDER BY id DESC LIMIT 1 C";
+        $sql = "SELECT id FROM area ORDER BY id DESC LIMIT 1 ";
         $consulta = $this->EjecutarConsulta($sql);
         $id_area = @mysql_fetch_assoc($consulta);
 
@@ -131,18 +129,16 @@ class ClassEquipos extends class_mysqlconnector
         {
             //print_r("Transaccion completa");
             $this->CometerTransaccion();
-            return $reporte_id['id'];
+
             
         }
         $this->DeshacerTransaccion();
-        return false;
+        return $reporte_id;
        
     }
 
     public function saveReporte($array)
     {
-        //print_r($array);
-
         $this->IniciarTransaccion();
         //Tabla Reporte
 
@@ -163,7 +159,7 @@ class ClassEquipos extends class_mysqlconnector
             throw $e;
         }
         $id_area = @mysql_fetch_assoc($consulta);
-        echo($id_area['id']);
+        //echo($id_area['id']);
 
         $this->setValue("fechaRecep", date("Y-m-d"));
         $this->setValue("horaRecep", date("H:i:s"));
@@ -245,11 +241,12 @@ class ClassEquipos extends class_mysqlconnector
         {
             //print_r("Transaccion completa");
             $this->CometerTransaccion();
-            return $reporte_id['id'];
+            //echo $reporte_id;
+
 
         }
         $this->DeshacerTransaccion();
-        return false;
+        return $reporte_id;
 
     }
 
