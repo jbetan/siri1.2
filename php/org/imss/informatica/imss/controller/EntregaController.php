@@ -27,7 +27,7 @@ elseif($_GET['buscarReporte'])
         }elseif ($res == 2){
             exit(json_encode(array("error" => true, "message" => "Error inesperado, verifique los datos")));
         }elseif ($res == 3){
-            exit(json_encode(array("error" => true, "message" => "El equipo ya ha sido entregado")));
+            exit(json_encode(array("error" => true, "message" => "El equipo no esta listo para entregar")));
         }
     } catch (Exception $e) {
         exit(json_encode(array("error" => true,"otro"=>"catch", "message" => $e->getMessage())));

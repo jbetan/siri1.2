@@ -10,7 +10,7 @@ class ClassEntrega extends  class_mysqlconnector
         $sql = "SELECT r.folio ";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
-        $sql .="where at.idstatus != 6 ";
+        $sql .="where at.idstatus = 3 ";
      
        
         try{
@@ -42,12 +42,13 @@ class ClassEntrega extends  class_mysqlconnector
     {
 
         //Comparamos si el equipo nno ha sido entregado
-        if(strcmp($reporte["status"], "Entregado") == 0){
+        if(strcmp($reporte["status"], "Listo") != 0){
             return 3;
         }
 
         $time = time();
         $tim = date("H:i:s",$time);
+        $fecha = date("y-m-j"); 
         $this->EjecutarConsulta("SET NAMES 'latin1'");
         $this->setKey("id", $reporte["id"]);
         $findR = $this->devuelve_fila_i("reporte");
@@ -57,17 +58,14 @@ class ClassEntrega extends  class_mysqlconnector
         if($findR && $findAR) {
 
             $this->IniciarTransaccion();
-            $this->setKey("id", $reporte["id"]);
-            $this->setValue("fechaEnt", $reporte["fecha"]);
+            $this->setKey("id", $reporte["id"]);            
             $this->setValue("recibido", $reporte["recibido"]);
+            $this->setValue("fechaEnt", $fecha);
             $this->setValue("horaEnt", $tim);
             $updateR = $this->actualizar("reporte");
 
-            $this->setKey("idreporte", $reporte["id"]);
-            $this->setValue("idstatus", 4);
-            $updateAR = $this->actualizar("atencionreportes");
 
-            if($updateAR and $updateR){
+            if($updateR){
                 $this->CometerTransaccion();
                 return 1;
             }
@@ -102,9 +100,8 @@ class ClassEntrega extends  class_mysqlconnector
         JOIN status as st ON at.idstatus = st.id 
         JOIN marca as m   ON e.idmarca = m.id 
         JOIN tipo as tp   ON e.idtipo = tp.id 
-        JOIN usuario as us  ON at.idusuarioOrigen = us.id 
-        WHERE r.folio ='$id'  LIMIT 1";
-
+        JOIN usuario as us  ON at.idusuarioOrigen = us.id
+        WHERE r.folio ='$id' and st.id = 3  LIMIT 1";
 
         try{
             $res = $this->EjecutarConsulta($sql);
@@ -119,7 +116,7 @@ class ClassEntrega extends  class_mysqlconnector
 
         if(!$fila) {
              $fila['status'] = "ERROR";
-             $fila['message'] = "El folio ingresado no es correcto o el estatus del reportes es Listo";
+             $fila['message'] = "El folio ingresado no es correcto o el estatus del reportes no esta en  Listo";
              return $fila;
         }        
 

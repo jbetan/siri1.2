@@ -20,10 +20,11 @@
         vm.folio = "'"+$routeParams.folio+"'";
         f = $routeParams.folio;
         console.log ("Parametros",f );
-        getReportes();
-
-
-
+        
+        if(f!=0){
+          getReportes();
+        }
+        
         function getReportes () {
             
             EdicionService.findReporteByFolio(f,function() {

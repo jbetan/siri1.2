@@ -7,7 +7,7 @@
     "nombre": "Nuevo Servicios",
     "descripcion": "",
     "lnk": "#\/nueServ",
-    "icon": "md md-home",
+    "icon": "glyphicon glyphicon-new-window ",
     "id_menu": "1",
     "id_role": "1"
   },
@@ -20,7 +20,7 @@
     "nombre": "Asigancion",
     "descripcion": "",
     "lnk": "#\/asignacion",
-    "icon": "md md-home",
+    "icon": "glyphicon glyphicon-check  ",
     "id_menu": "1",
     "id_role": "1"
   }

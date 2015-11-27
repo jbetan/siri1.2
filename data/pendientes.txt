@@ -1,0 +1,45 @@
+Corroborar asignación de folio
+Jossue
+================
+Estatus de NO, quitar opciones listo y entregado //Listo
+Ventana de confirmación de acción Guardar      //LISTO
+En entrega, limpiar campos y generar aviso de confirmación//Listo
+Ingresa el folio a entregar / asignar//Listo
+Hacer que le Menu sea por la tabla usuarios//Listo
+Validar el nivel de los usuarioa al momento d eesclar//Listo
+Hacer que guarde el modulo de entrega //Listo
+Irvin
+================
+Poner Iconos en todos los formularios
+Poner los iconos del lado izquierdo
+Agregar una nota de uso en cada pantalla
+Quitar comentarios componer faltas de ortografía
+Quitar Estatus, Prioridad, tipo, asignado a (recuerdo que lo comento Fredy para la tabla)
+Nuevos servicios = servicios sin asignar
+Tipo : tipo de equipo
+Incrementar tamaño de folio
+Falta pone un botón en la tabla  de activos q cuando le des click te recargue toda la tabla dicho de otra forma que haga la llamada Ajax  para volver a traer los datos de la DB
+Hacer el filtrado de botones  en  la tabla cunaod el estus sea listo solo debe aprecer le botón entregar y cuando el status sea diferente de listoponer le botón editar.
+Poner  nota sen todo los modulo y que la nota abarque toda el ancho y  que sea de un solo color.
+Recuerdo que dijo Fredy que ay que cambiar las flechas porq confunden
+
+Brayan
+================
+Numero de serie es obligatorio con *
+Cambiar término de editar / 
+Mantener palabra OTRO en problema
+Agregar validación de contraseña visual
+Campo “Area” que sea libre, es decir, no se elija de catalogo
+Cambiar todos los alert  a el modal de angular que tienes
+
+NOTA:
+
+Administrador
+         Usuario: 1M5533yuc
+Contra: prueba
+Selección : Adminstrador
+
+
+
+
+
