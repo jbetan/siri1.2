@@ -258,9 +258,11 @@ class ClassEdicion extends  class_mysqlconnector
         $sql .="JOIN usuario as us  ON at.idusuarioOrigen = us.id ";
         $sql .="JOIN usuario as usr  ON r.idusuario = usr.id ";
         // $sql .="where at.idstatus != 6 ";
-       
-     
-       
+        $sql .= "ORDER BY r.folio DESC, idr DESC " ;
+        //$sql .= "ORDER BY status " ;
+
+
+
         try{
             $res = $this->EjecutarConsulta($sql);
         }catch (Exception $e){
