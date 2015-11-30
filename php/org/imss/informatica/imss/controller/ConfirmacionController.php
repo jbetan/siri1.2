@@ -89,7 +89,6 @@ if($_GET['save'])
     $datas = $_REQUEST;
     try{
         if($response = json_encode($saveEquipoAuto->saveReporteAutocomplete($datas))) {
-            print_r($datas);
             exit($response);
         }else {
             exit(json_encode(array("Error" => true, "message" => "Error inesperado, verifique los datos")));

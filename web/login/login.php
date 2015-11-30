@@ -42,9 +42,7 @@
 								<div class="form-group">
 									<input type="text" class="form-control" id="username" name="username">
 									<label for="username"><i class="fa fa-user"></i> Matricula</label>
-								<div class="form-group ">
-									<input type="text" class="form-control" id="username" name="username" required="" >
-									<label for="username"><i class="fa fa-user"></i> Usuario </label>
+
 								</div>
 								<div class="form-group">
 									<input type="password" class="form-control" id="password" name="password" autocomplete="off" required="">

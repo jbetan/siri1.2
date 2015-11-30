@@ -34,7 +34,7 @@ class ClassEquipos extends class_mysqlconnector
     {
         $this->IniciarTransaccion();
          //Tabla Reporte
-
+        print_r($array);
         #====== Tabla area =====
         $this->setValue("nombre", $array['AREA']);
         $insert_area= $this->insertar("area");
@@ -133,7 +133,7 @@ class ClassEquipos extends class_mysqlconnector
             
         }
         $this->DeshacerTransaccion();
-        return $reporte_id;
+        return true;
        
     }
 

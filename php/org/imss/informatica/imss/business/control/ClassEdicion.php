@@ -137,7 +137,7 @@ class ClassEdicion extends  class_mysqlconnector
              u.nombre
              From usuario as u
              LEFT JOIN categoriau as cu ON u.idcategoria = cu.id
-             WHERE cu.nivel >= $niv
+             WHERE cu.nivel >= $niv and cu.nivel != 7 and cu.nivel != 6
        ";
 
        try{

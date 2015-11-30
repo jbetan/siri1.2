@@ -2317,7 +2317,7 @@ section.section-account .img-circle {
 @media (min-height: 500px) and (max-height: 700px) {
   section.section-account .img-backdrop,
   section.section-account .spacer {
-    height: 80px;
+    height: 150px;
   }
   section.section-account .img-circle {
     position: absolute;
@@ -2348,7 +2348,7 @@ section.section-account .img-circle {
 @media (min-height: 700px) {
   section.section-account .img-backdrop,
   section.section-account .spacer {
-    height: 200px;
+    height: 300px;
   }
   section.section-account .img-circle {
     position: absolute;
