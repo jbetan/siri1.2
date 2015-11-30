@@ -132,7 +132,7 @@
         };
 
     });
-    app.controller("formsController", function(equiposoffline, $scope, $http){
+   /* app.controller("formsController", function(equiposoffline, $scope, $http){
 
         $scope.title     	  = "";
         $scope.error     	  = "";
@@ -142,10 +142,10 @@
         vm.consulta= {data:{}};
         vm.consulta.data = equiposoffline.res.data;
 
-  /*      equiposoffline.DevuelveUltimoReporte(function(data){
-            vm.consulta.data = equiposoffline.res.data;
-            console.log("Aqui esta el ID_UNIDAD: ", vm.consulta);
-        });*/
+  //     equiposoffline.DevuelveUltimoReporte(function(data){
+  //          vm.consulta.data = equiposoffline.res.data;
+  //      console.log("Aqui esta el ID_UNIDAD: ", vm.consulta);
+  //      });
         vm.consulta.data.correo = "@imss.mx";
 
         $("#otro").css("display", "none");
@@ -253,5 +253,5 @@
                 vm.submit();
             }, 100);
         };
-    });
+    }); */
 })();

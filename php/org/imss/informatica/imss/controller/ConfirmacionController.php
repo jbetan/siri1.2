@@ -82,15 +82,16 @@ if($_GET['save'])
     }catch(Exception $e) {
         exit(json_encode(array("Error" => true, "message" =>$e->getMessage())));
     }
-}if($_GET['saveform2'])
+}else if($_GET['saveform2'])
 {
 
     $saveEquipoAuto= new ClassEquipos();
     $datas = $_REQUEST;
     try{
-        if ($response = json_encode($saveEquipoAuto->saveReporteAutocomplete($datas))) {
+        if($response = json_encode($saveEquipoAuto->saveReporteAutocomplete($datas))) {
+            print_r($datas);
             exit($response);
-        } else {
+        }else {
             exit(json_encode(array("Error" => true, "message" => "Error inesperado, verifique los datos")));
         }
     }catch(Exception $e) {

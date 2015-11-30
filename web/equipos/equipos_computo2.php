@@ -36,7 +36,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
     <!-- BEGIN CONTENT-->
     <div id="contentV2">
         <section ng-controller="EquiposController as equipos">
-            <div class="section-body contain-lg" ng-controller="formsController as forms">
+            <div class="section-body contain-lg">
 
                 <br/>
 
@@ -59,11 +59,6 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                     <label for=""><span class="text-danger">* </span> Unidad</label>
                                 </div>
                                 <div class="form-group" ng-controller="AreaController">
-                                    <script type="text/ng-template" id="customTemplate.html">
-                                        <a>
-                                            <i>({{match.model.nombre}})</i>
-                                        </a>
-                                    </script>
                                     <input type="text" name="areas" ng-model="Ctrl.equipo.data.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
                                     <label for=""><span class="text-danger">* </span> Área</label>
                                 </div>
