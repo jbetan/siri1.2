@@ -2,7 +2,7 @@
  * Created by Brayan on 12/07/2015.
  */
 (function(){
-    var app= angular.module("equiposoffline-provider", []);
+    var app= angular.module("equiposoffline-provider2", []);
     app.factory("equiposoffline", function($http){
         var service= {};
         service.ip = {data:{}};

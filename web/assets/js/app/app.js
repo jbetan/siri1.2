@@ -9,6 +9,7 @@
         "datatables",
         'ui.bootstrap',
         'unidades-module',
+        'equipos-module',
         'admin-Module',//apartir de aqui emmpieza mis depencias de app
         'user-Module',
         'equip-Module',

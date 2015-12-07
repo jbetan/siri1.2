@@ -18,7 +18,7 @@ class class_ip_ocs extends class_mysqlconnector_ocs
         $is_ip = $this->devuelve_filas_indexlabel("networks","IPADDRESS");
         if($ip = $is_ip)
         {
-            $messageTrue = $is_ip[0]["IPADDRESS"];
+            //$messageTrue = $is_ip[0]["IPADDRESS"];
             return true;
         }else{
             return false;

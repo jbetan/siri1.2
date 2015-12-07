@@ -24,7 +24,7 @@ class EquiposController extends  ControllerPrincipal{
 
 }
 
-$Equipospage = new EquiposController ("equipos/equipos_computo2.php", "zzGenerar Reporte - Levantamiento");
+$Equipospage = new EquiposController ("equipos/equipos_computo2.php", "Generar Reporte - Levantamiento");
 
 if($_GET['save'])
 {
