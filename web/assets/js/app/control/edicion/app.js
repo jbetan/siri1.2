@@ -1,7 +1,7 @@
 
 (function() {
     var app = angular.module("edicion-Module", ["edicion-provider"]);
-    app.controller("EdicionController",  function($compile, $http, $scope, $routeParams, EdicionService){
+    app.controller("EdicionController",  function($http, $scope, $routeParams, EdicionService){
         var vm = this;
         $scope.submit = undefined;
         vm.show = false;
@@ -18,16 +18,14 @@
         =====================
         */
         //vm.folio = "'"+$routeParams.folio+"'";
-        f = $routeParams.folio;
+        $scope.folio_ed = $routeParams.folio_ed;
        //console.log ("Parametros",f );
         
-        if(f!=0){
-          getReportes();
-        }
+        
         
         function getReportes () {
             console.log("paso");
-            EdicionService.findReporteByFolio(f);
+            EdicionService.findReporteByFolio($scope.folio_ed);
             vm.reporte = EdicionService.reporte;  
             //vm.reporte.data.solucionado="NO";
             EdicionService.findActivities();
@@ -141,7 +139,9 @@
                 window.materialadmin.AppCard.initialize();
                 window.materialadmin.AppForm.initialize();
                 vm.submit();
-
+                if($scope.folio_ed!=0){
+                    getReportes();
+                };
 
             }, 100);
         }

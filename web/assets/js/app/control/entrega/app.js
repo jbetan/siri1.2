@@ -19,9 +19,6 @@
         f = $routeParams.folio
         vm.folioImp = $routeParams.folio;
 
-        if(f!=0){
-              getReportes();
-            }
         
         function getReportes () {
             EntregaService.findReporteByFolio(f, function() {
@@ -76,6 +73,9 @@
                 window.materialadmin.AppCard.initialize();
                 window.materialadmin.AppForm.initialize();
                 vm.submit();
+                 if(f!=0){
+                    getReportes();
+                };
 
             }, 100);
         }

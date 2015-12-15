@@ -23,74 +23,7 @@
 
     app.config(function($routeProvider) {
         $routeProvider
-            .when("/proveedores", {
-                templateUrl: 'proveedoresForm',
-                controller: function($compile, $scope, DTOptionsBuilder, DTColumnBuilder, $resource){
-                    var vm = this;
-                    vm.dtOptions = DTOptionsBuilder.newOptions()
-                        .withOption('ajax', {
-                            // Either you specify the AjaxDataProp here
-                            // dataSrc: 'data',
-                            url: 'php/org/rra/contrarecibos/cfe/controller/ProveedoresController.php',
-                            type: 'POST'
-                        })
-                        // or here
-                        .withDataProp('data')
-                        .withOption('serverSide', true)
-                        .withOption('createdRow', createdRow)
-                        .withPaginationType('full_numbers')// Active ColVis plugin
-                        .withColVis()
-                        // Add a state change function
-                        .withColVisStateChange(function(iColumn, bVisible){
-                            console.log('The column', iColumn, ' has changed its status to', bVisible);
-                        })
-                        // Exclude the last column from the list
-                        .withColVisOption('aiExclude', [2]);
-
-
-                    vm.dtColumns = [
-                        DTColumnBuilder.newColumn('id').withTitle('ID'),
-                        DTColumnBuilder.newColumn('acreedor').withTitle('Acreedor'),
-                        DTColumnBuilder.newColumn('nombre').withTitle('Nombre'),
-                        DTColumnBuilder.newColumn('rfc').withTitle('RFC'),
-                        DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
-                            .renderWith(actionsHtml)
-                    ];
-                    vm.edit = function(id) {
-                        vm.message = 'You are trying to edit the row with ID: ' + id;
-                        // Edit some data and call server to make changes...
-                        // Then reload the data so that DT is refreshed
-                        vm.dtOptions.reloadData();
-                    };
-                    vm.deleteRow = function(id) {
-                        vm.message = 'You are trying to remove the row with ID: ' + id;
-                        // Delete some data and call server to make changes...
-                        // Then reload the data so that DT is refreshed
-                        vm.dtOptions.reloadData();
-                    };
-                    function createdRow(row, data, dataIndex) {
-                        // Recompiling so we can bind Angular directive to the DT
-                        $compile(angular.element(row).contents())($scope);
-                    }
-                    function actionsHtml(data, type, full, meta) {
-                        return '<button class="btn btn-warning" ng-click="tableCase.edit(' + data.id + ')">' +
-                            '   <i class="fa fa-edit"></i>' +
-                            '</button>&nbsp;' +
-                            '<button class="btn btn-danger" ng-click="tableCase.deleteRow(' + data.id + ')">' +
-                            '   <i class="fa fa-trash-o"></i>' +
-                            '</button>';
-                    }
-                    setTimeout(function() {
-                        //var card = $('#proveedoresCardForm');
-                        window.materialadmin.App.initialize();
-                        window.materialadmin.AppCard.initialize();
-                        window.materialadmin.AppForm.initialize();
-                        //window.materialadmin.AppCard.toggleCardCollapse(card);
-                    }, 1000);
-                },
-                controllerAs: "tableCase"
-            })
-
+           
             .when("/login", {
                 templateUrl: "templates/login.html",
                 controller: "loginController"
@@ -137,7 +70,7 @@
                 controller: "ActivosController"
             })
 
-            .when('/edicion/:folio', {
+            .when('/edicion/:folio_ed', {
                 templateUrl: "edicion",
                 controller: "EdicionController"
             })
