@@ -1,0 +1,179 @@
+Options All -Indexes
+ErrorDocument 404 /siri1.2/web/html/pages/404.html
+ErrorDocument 500 /siri1.2/web/html/pages/500.php
+
+
+
+RewriteEngine on
+
+RewriteCond $1 ^app$  
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/IndexController.php [L]
+
+RewriteCond $1 ^index$  
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/IndexController.php [L]
+
+RewriteCond $1 ^login$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/LoginController.php [L]
+
+
+RewriteCond $1 ^reporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/ReporteController.php [L]
+
+RewriteCond $1 ^salir$
+RewriteRule ^(.*)$ /siri1.2/web/salir.php [L]
+
+RewriteCond $1 ^menu$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/MenuController.php [L]
+
+RewriteCond $1 ^menu_2$
+RewriteRule ^(.*)$ /siri1.2/web/template/menu/menu_2.json [L]
+
+RewriteCond $1 ^menuUsuario$
+RewriteRule ^(.*)$ /siri1.2/web/template/menu/menuSide.php [L]
+
+RewriteCond $1 ^proveedoresForm
+RewriteRule ^(.*)$ /siri1.2/web/template/proveedores/proveedoresForm.html [L]
+
+RewriteCond $1 ^prueba
+RewriteRule ^(.*)$ /siri1.2/web/template/prueba/nuevo.html [L]
+
+RewriteCond $1 ^ComparaIP
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/reports/ocs/class_ip_ocs.php [L]
+
+RewriteCond $1 ^menu4
+RewriteRule ^(.*)$ /siri1.2/web/template/menu4/menu4.html [L]
+
+RewriteCond $1 ^reporte
+RewriteRule ^(.*)$ /siri1.2/web/template/reporte/reporte.html [L]
+
+
+
+#Administracion
+
+	#Administracion->Unidades
+	RewriteCond $1 ^admin$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AdminController.php [L]
+
+	RewriteCond $1 ^unidades
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/unidades.html [L]
+
+	#Administracion->Usuarios
+	RewriteCond $1 ^usuariosController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/UserController.php [L]
+
+	RewriteCond $1 ^usuarios
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/usuarios.html [L]
+
+	#Administracion->Equipos
+	RewriteCond $1 ^equipoController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquipoController.php [L]
+
+	RewriteCond $1 ^equipos
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/equipos.html [L]
+
+
+#Control de Reportes
+
+	#Control de Reportes -> Activos
+	RewriteCond $1 ^activos
+	RewriteRule ^(.*)$ /siri1.2/web/template/control/activos.html [L]
+
+	#Control de Reportes -> Edicion
+	RewriteCond $1 ^edicionController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EdicionController.php [L]
+
+	RewriteCond $1 ^edicion
+	RewriteRule ^(.*)$ /siri1.2/web/template/control/edicion.html [L]
+
+	#Control de Reportes -> Entregados
+	RewriteCond $1 ^entregaController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EntregaController.php [L]
+
+	RewriteCond $1 ^entrega
+	RewriteRule ^(.*)$ /siri1.2/web/template/control/entrega.html [L]
+
+#Asignacion de Reportes
+
+	#Asignacion de Reportes -> nuevos servicios
+	RewriteCond $1 ^nueServController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/NueServController.php [L]
+
+	RewriteCond $1 ^nueServ
+	RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/nuevo_servicios.html [L]
+
+	#Asignacion de Reportes -> asignacion
+	RewriteCond $1 ^asignacionController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AsignacionController.php [L]
+
+	RewriteCond $1 ^asignacion
+	RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/asignacion.html [L]
+
+
+#=====================
+#Brayan Inicio
+
+RewriteCond $1 ^page$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/PaginaController.php [L]
+
+RewriteCond $1 ^equipoReporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]
+
+RewriteCond $1 ^equipo_Reporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController2.php [L]
+
+RewriteCond $1 ^saveReporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]
+
+RewriteCond $1 ^saveReporteAutocomplete$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/EquiposController.php [L]
+
+RewriteCond $1 ^saveAsignacion$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AsignacionBrayanController.php [L]
+
+RewriteCond $1 ^CatalogoTipo$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/TipoController.php [L]
+
+RewriteCond $1 ^CatalogoModelo$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/ModeloController.php [L]
+
+RewriteCond $1 ^CatalogoMarca$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/MarcaController.php [L]
+
+RewriteCond $1 ^CatalogoArea$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AreaController.php [L]
+
+RewriteCond $1 ^confirmacion$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/ConfirmacionController.php [L]
+
+RewriteCond $1 ^confirmacionModel$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/business/confirmacion/ClassConfirmacion.php [L]
+
+RewriteCond $1 ^verReporte$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/business/Equipos/ClassEquipos.php [L]
+
+RewriteCond $1 ^ocs$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/reports/ocs/class_ocs.php [L]
+
+#Brayan Finaliza
+#=====================
+
+
+
+RewriteCond $1 ^imagen
+RewriteRule ^(.*)$ /siri1.2/web/template/reporte/imss2.png [L]
+
+
+
+
+RewriteCond $1 ^unidades
+RewriteRule ^(.*)$ /siri1.2/web/template/unidades/unidades.php [L]
+
+RewriteCond $1 ^script
+RewriteRule ^(.*)$ /siri1.2/web/template/unidades/example.js [L]
+
+RewriteCond $1 ^catalogoUnidad$
+RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/UnidadesController.php [L]
+
+
+
+

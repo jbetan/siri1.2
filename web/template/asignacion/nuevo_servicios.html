@@ -1,0 +1,33 @@
+<div class="section-body" ng-controller="AsignacionController as as">
+    <div class="section-header">
+        <div class="row">
+            <div class="card panel">
+                <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1-2" data-target="#accordion1-2">
+                    <header><strong> NUEVOS SERVICIOS{{}}</strong></header>
+                </div>
+                <br /><br />
+                <div class="row">
+                    <div class="col-lg-12">        
+                        <table datatable="" dt-options="as.dtOptions" dt-columns="as.dtColumns" class="table table-striped table-hover"></table>
+                                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">        
+                       *Nota                                       
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="card">
+                <div class="card-body small-padding style-warning text-center">NOTA: Solo aparecen los reportes nuevos que NO han sido asignados</div>
+            </div>
+            <div class="card">
+                <div class="card-body small-padding style-warning text-center">NOTA: es necesario asignarlos para darle seguimiento</div>
+            </div>
+
+        </div>
+    </div>
+</div>

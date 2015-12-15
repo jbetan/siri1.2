@@ -1,0 +1,143 @@
+
+[
+   
+    {   
+        "_comment": "Modulo de Asignacion de Reportes",
+        "id": "1",
+        "indice": "0",
+        "id_padre": null,
+        "nivel": "1000",
+        "nombre": "Asignacion",
+        "descripcion": "",
+        "lnk": "",
+        "icon": "fa fa-file",
+        "id_menu": "1",
+        "id_role": "1",
+        "sons": [
+            {
+            "id": "1",
+            "indice": "0",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Servicios sin Asignar ",
+            "descripcion": "",
+            "lnk": "#\/nueServ",
+            "icon": "md md-home",
+            "id_menu": "1",
+            "id_role": "1"
+            },{
+            "id": "1",
+            "indice": "0",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Asignar Reporte",
+            "descripcion": "",
+            "lnk": "#\/asignacion",
+            "icon": "md md-home",
+            "id_menu": "1",
+            "id_role": "1"
+            }
+        ]
+    },
+   
+    {   "_comment": "Modulo de Control de Reportes",
+        "id": "1",
+        "indice": "0",
+        "id_padre": null,
+        "nivel": "1000",
+        "nombre": "Control de Reportes",
+        "descripcion": "",
+        "lnk": "",
+        "icon": "fa fa-pencil-square-o",
+        "id_menu": "1",
+        "id_role": "1",
+        "sons": [
+            {
+            "id": "1",
+            "indice": "0",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Activos",
+            "descripcion": "",
+            "lnk": "#\/activos",
+            "icon": "fa fa-check-square-o",
+            "id_menu": "1",
+            "id_role": "1"
+            },{
+            "id": "2",
+            "indice": "0",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Edicion",
+            "descripcion": "",
+            "lnk": "#\/edicion/0",
+            "icon": "fa fa-pencil-square-o",
+            "id_menu": "1",
+            "id_role": "1"
+            },{
+            "id": "3",
+            "indice": "2",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Entrega",
+            "descripcion": "",
+            "lnk": "#\/entrega/0",
+            "icon": "fa fa-truck ",
+            "id_menu": "1",
+            "id_role": "1"
+          }
+        ]
+    },
+    
+    {   "_comment": "Modulo de Administracion",
+        "id": "1",
+        "indice": "0",
+        "id_padre": null,
+        "nivel": "1000",
+        "nombre": "Administracion",
+        "descripcion": "",
+        "lnk": "",
+        "icon": "fa fa-th",
+        "id_menu": "1",
+        "id_role": "1",
+        "sons": [
+            {
+            "id": "1",
+            "indice": "0",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Usuario",
+            "descripcion": "",
+            "lnk": "#\/usuarios",
+            "icon": "md md-home",
+            "id_menu": "1",
+            "id_role": "1"
+            },{
+            "id": "2",
+            "indice": "1",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Unidades",
+            "descripcion": "",
+            "lnk": "#\/unidades",
+            "icon": "fa fa-gears",
+            "id_menu": "3",
+            "id_role": "1"
+            },{
+            "id": "3",
+            "indice": "2",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Equipos",
+            "descripcion": "",
+            "lnk": "#\/equipos",
+            "icon": "md md-web",
+            "id_menu": "5",
+            "id_role": "1"           
+          }
+
+        ]
+    }
+    
+]
+

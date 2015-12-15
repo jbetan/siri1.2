@@ -1,0 +1,243 @@
+<div class="section-body" ng-controller="AsignacionController as as">
+
+    <div class="section-header">
+        <div class="col-lg-12">
+            <form class="form" ng-init="control.init()" novalidate="novalidate" id="formFolio" name="formFolio">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group" ng-controller="getFolio-Asignacion">
+                            <script type="text/ng-template" id="customTemplate.html">
+                                <a>
+                                    <i>({{match.model.id}})</i>
+                                </a>
+                            </script>
+                            <input type="text" style="font-size:25px; text-align:center " name="folio" ng-model="as.reporte.data.id"  typeahead-editable="true" typeahead="datos.folio for datos in datos | filter:$viewValue | limitTo:10"   id="folio" class="form-control" data-rule-minlength="2" required />
+
+                            <label for="folio" class="control-label">Ingresa el folio a entregar </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <button class="btn  btn-primary ink-reaction" ng-click="as.buscar()"  >Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+    <br/><br/>
+
+    <div class="row">
+        <div class="card panel">
+            <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1-2" data-target="#accordion1-2">
+                <header><strong>DESCRIPCIÓN DEL REPORTE / SOLICITUD </strong></header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div id="accordion1-2" >
+                <!-- BEGIN VALIDATION FORM WIZARD -->
+                <div class="row"><br/>
+                    <div class="col-lg-12">
+                        <form class="form">
+                            <div class="col-sm-4">
+                                <div class="form-group text-ultra-bold text-xxl ">
+                                    <input type="text" class="text-ultra-bold Text xxx-large form-control"  ng-model="as.reporte.data.folio" disabled/>
+                                    <label class"text-ultra-bold Text xxx-large">Folio</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="unidades" ng-model="as.reporte.data.unidad" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.unidades}" ng-model="equipos.equipo.data.unidades"required   disabled/>
+                                    <label>Unidad</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="areas" ng-model="as.reporte.data.area" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !as.reporte.data.area}" required  disabled/>
+                                    <label>Área</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="tipo" ng-model="as.reporte.data.personaquereporta" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo"required  disabled/>
+                                    <label>Persona que reporto:</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group ">
+                                    <input type="text" name="tipo" ng-model="as.reporte.data.descripcion" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="equipos.equipo.data.tipo"required  disabled/>
+                                    <label>Tipo</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="marca" ng-model="as.reporte.data.marca" class="form-control ng-dirty ng-invalid ng-valid"  ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="equipos.equipo.data.marca" required disabled/>
+                                    <label>Marca</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="modelo" ng-model="as.reporte.data.modelo" class="form-control ng-dirty ng-invalid ng-valid"  ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="equipos.equipo.data.modelo" required disabled/>
+                                    <label>Modelo</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="serie" ng-model="as.reporte.data.serie" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.serie}" ng-model="equipos.equipo.data.serie" required  disabled/>
+                                    <label>Número de Serie</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="as.reporte.data.finicio" disabled/>
+                                    <label>Fecha</label>
+                                </div>
+                                <div class="form-group ">
+                                    <input type="text" name="IP" ng-model="as.reporte.data.ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-class="{'floating-label': !equipos.equipo.data.IP}" ng-model="equipos.equipo.data.IP" required disabled/>
+                                    <label>Dirección IP</label>
+                                </div>
+                                <div class="form-group">
+                                    <textarea name="desc_problema" ng-model="as.reporte.data.problema" id="textarea1" ng-model="equipos.equipo.data.desc_problema" class="form-control ng-dirty ng-valid" rows="6"  required=""></textarea>
+                                    <label for="textarea1">* Descripción del problema</label>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div><!--end .col -->
+                    <div class="col-md-12 col-xs-6">
+
+                                                <div class="card">
+                                                  <div class="card-body small-padding style-warning text-center">NOTA: en "DESCRIPCIÓN DEL REPORTE / SOLICITUD" solo muestra la informacion del reporte levantado </div>
+                                                                                        </div>
+
+
+
+
+                                            </div>
+
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div><!--end .panel -->
+    </div>
+
+    <div class="row">
+        <div class="card panel">
+            <div class="card-head card-head-sm collapsed style-accent text-center" data-toggle="collapse" data-parent="#accordion1-3" data-target="#accordion1-3">
+                <header>CONTROL DEL REPORTE  </header>
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+            <div id="accordion1-3" >
+                <!-- BEGIN VALIDATION FORM WIZARD -->
+                <div class="row" ><br/>
+                    <div class="col-lg-12">
+                        <form class="form" ng-init="as.init()"  novalidate="novalidate" id="formReporte" name="formReporte" >
+                            <!---->
+                            <div class="col-lg-12 form-group">
+                                <p>Clasificar</p>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  ng-model="as.reporte.data.clasificar"  name="clasificar" value="Reporte" />
+                                        <span>Reporte</span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  ng-model="as.reporte.data.clasificar"  name="clasificar" value="Solicitud"/>
+                                        <span>Solicitud</span>
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <!-- -->
+                            <div class="col-lg-6">
+                                <div class=" form-group" >
+                                    <select  name="tipo" id="tipo" class="form-control  tabs-accent" ng-model="as.reporte.data.nombretipo" required>
+                                        <option selected></option>
+                                        <option ng-click="as.onSelect()" value="1">Soporte Técnico</option>
+                                        <option ng-click="as.onSelect()" value="2">Antivirus y Seguridad</option>
+                                        <option ng-click="as.onSelect()" value="3">Telecomunicaciones</option>
+                                        <option ng-click="as.onSelect()" value="4">Correo / Cuenta</option>
+                                        <option ng-click="as.onSelect()"  value="5">Información General</option>
+                                        <option ng-click="as.onSelect()" value="6">Video-Conferencia</option>
+                                        <option ng-click="as.onSelect()" value="7">Call Center</option>
+                                    </select>
+                                    <label for="tipo">Tipo</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class=" form-group">
+                                    <select name="clase" id="clase" class="form-control" ng-model="as.reporte.data.clase" required>
+                                        <option selected></option>
+                                        <option ng-repeat="cl in as.claseA.data | filter:as.reporte.data.nombretipo"  name="clase" >{{cl.descripcion}}</option>
+                                    </select>
+                                    <label for="clase" >Clase</label>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class=" form-group">
+                                    <select name="prioridad" id="prioridad" class="form-control" ng-model="as.reporte.data.prioridad" required >
+                                       <option value="Unidad">Unidad</option>
+                                        <option value="Oficina">Oficina</option>
+                                        <option value="Usuario">Usuario</option>
+                                    </select>
+                                    <label for="prioridad">Prioridad</label>
+                                </div>
+                            </div>
+                         
+                           
+
+                            <div class="col-lg-6">
+                                <div class=" form-group">
+                                   <input type="text" name="unidades"  ng-model="as.reporte.data.unidad" class="form-control ng-dirty ng-invalid ng-valid"  required   disabled/>
+                                   <label>Unidad</label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <div class=" form-group">
+
+                                    <input type="text"    name="nombreTecnico"  ng-model="as.reporte.data.tecnico" class="form-control ng-dirty ng-invalid ng-valid"  required   disabled   />
+                                    <label>Nombre Tecnico</label>
+                                </div>
+                            </div>                 
+
+
+                            <div class="col-lg-12">
+                                <div class="col-lg-3">
+                                <div class=" form-group">
+                                    <select name="estatus" id="estatus" class="form-control" ng-model="as.reporte.data.status" required>     
+                                        <option value="En reparacion">Reparación</option>                                   
+                                        <option value="Garantia">Garantía</option>
+                                        
+                                    </select>
+                                    <label for="estatus">Estatus</label>
+                                </div>
+                            </div>
+
+                                <div class="col-lg-6">
+
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <div class="card-actionbar-row"><br/>
+                                        <button type="reset" class="btn btn-raised ink-reaction btn-default" >Cancelar</button>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="submit" name="enviar" id="enviar" class="btn btn-raised ink-reaction btn-default-dark">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="col-md-9 col-xs-6">
+                                                    <div class="card">
+
+                                                        <div class="card-body small-padding style-warning text-center">NOTA:En "CONTROL DEL REPORTE" es necesario llenar el formulario para asignarle el reporte a un TECNICO </div>
+                                                    </div>
+
+
+
+                                                </div>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div><!--end .panel -->
+
+
+    </div>
+</div>
