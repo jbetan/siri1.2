@@ -36,7 +36,7 @@ class ClassEdicion extends  class_mysqlconnector
         $k = 0;
         while($fila = @mysql_fetch_assoc($res)){  
             $valores[$k++] = $fila;                       
-         }
+        }
        
         if(isset($valores)) return $valores;
 
@@ -157,11 +157,23 @@ class ClassEdicion extends  class_mysqlconnector
 
 
     public function findActivities() {
-        $fila = $this->devuelve_filas_indexlabel("actividades", "*");
-        if($fila) {
-            return $fila;
+        $sql = "SELECT * ";
+        $sql .="from actividades ";
+   
+           
+       
+        try{
+            $res = $this->EjecutarConsulta($sql);
+        }catch (Exception $e){
+            throw $e;
         }
-        return array();
+
+        $k = 0;
+        while($fila = @mysql_fetch_assoc($res)){  
+            $valores[$k++] = $fila;                       
+        }
+       
+        if(isset($valores)) return $valores;
     }
 
     public function getReporteByFolio($folio) {

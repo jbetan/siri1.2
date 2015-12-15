@@ -165,6 +165,7 @@
         <script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignar/app.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignar/asignarProvider.js"></script>
+
  
 
         <!-- BEGIN JAVASCRIPT DEL ADMINISTRADOR -->
@@ -190,9 +191,12 @@
 
         <!-- BEGIN JAVASCRIPT DEL Asignacion -->
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/asignacion/app.js"></script>
+
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/asignacion/asignacionProvider.js"></script>
+        <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/nueServ/app.js"></script>
         <!-- END JAVASCRIPT DEL Asignacion -->
     <!-- END JAVASCRIPT -->
 
 	</body>
 </html>
+

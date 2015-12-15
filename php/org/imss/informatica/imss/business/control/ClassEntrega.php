@@ -88,7 +88,7 @@ class ClassEntrega extends  class_mysqlconnector
         r.id, r.folio,
         st.nombre as status, 
         r.fechaRecep as finicio, 
-        at.fechaTerm as ftermino, 
+        DATE_FORMAT(at.fechaTerm, '%d-%m-%Y') as ftermino, 
         u.nombre as unidad, 
         a.nombre as area,
         e.modelo, 

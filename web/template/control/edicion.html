@@ -26,7 +26,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <button class="btn  btn-primary ink-reaction" ng-click="edicion.buscar()"  >Buscar <i class="fa fa-search"></i>
+                            <button class="btn  btn-primary ink-reaction" ng-click="edicion.buscar()"  ><i class="fa fa-search"></i> Buscar 
                             </button>
                         </div>
                     </div>
@@ -246,9 +246,11 @@
 
                             <div class="col-lg-4">
                                 <div class=" form-group">
-                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_uno" name="act1" required=""  aria-required="true">
-                                        <option selected></option>
-                                        <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
+                                    <select   class="form-control" ng-model="edicion.reporte.data.actividad_uno" name="act1" required=""  aria-required="true" >
+                                     <option value="">Elija una actividad</option>
+                                     <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
+
+                                         
                                     </select>
                                     <label >Actividad realizada 1</label>
                                 </div>
@@ -257,6 +259,7 @@
                             <div class="col-lg-4">
                                 <div class=" form-group" style="position: relative">
                                     <select   class="form-control" ng-model="edicion.reporte.data.actividad_dos" name="act2" id="act2" required>
+                                        <option value="">Elija una actividad</option> 
                                         <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
                                     </select>
                                     <label >Actividad realizada 2</label>
@@ -267,6 +270,7 @@
                             <div class="col-lg-4">
                                 <div class=" form-group" style="position: relative">
                                     <select   class="form-control" ng-model="edicion.reporte.data.actividad_tres" name="act3"  id="act3" required>
+                                        <option value="">Elija una actividad</option>
                                         <option  ng-repeat="activities in edicion.activitiesA.data " value="{{activities.id}}">{{activities.descripcion}}</option>
                                     </select>
                                     <label >Actividad realizada 3</label>
@@ -276,7 +280,7 @@
 
                             <div class="col-lg-6">
                                 <div class=" form-group">
-                                    <textarea  name="comentario" ng-model="edicion.reporte.data.comentario" id="comentario" class="form-control" data-rule-minlength="2"  rows="1" required ></textarea>
+                                    <textarea  name="comentario" ng-model="edicion.reporte.data.comentario" id="comentario" class="form-control" data-rule-minlength="2"  rows="1" required="" ></textarea>
                                     <label for="folio" class="control-label">Comentario <i class="fa fa-sticky-note-o"> </i>
                                     </label>
                                 </div>
@@ -307,6 +311,7 @@
                             </div>
 
                         </form>
+                        <!-- Modal de guardado -->
                         <div id="myModal" class="modal fade">
                             <div class="modal-dialog">
                                 <div class="modal-content">

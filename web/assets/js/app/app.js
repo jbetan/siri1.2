@@ -17,6 +17,7 @@
         "edicion-Module",
         "activos-Module",
         "asigmacion-Module",
+        "nuevosReportes-Module",
         "Asignar-Module"
     ]);
 
@@ -148,10 +149,10 @@
             //Asignacion de Reportes
             .when("/nueServ", {
                 templateUrl: "nueServ",
-                controller: ""
+                controller: "nuevosRepController"
             })
 
-            .when("/asignacion", {
+            .when("/asignacion/:folio", {
                 templateUrl: "asignacion",
                 controller: "AsignacionController"
             })

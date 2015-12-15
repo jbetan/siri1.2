@@ -17,7 +17,7 @@
 	    "nivel": "1000",
 	    "nombre": "Asignar Reporte",
 	    "descripcion": "",
-	    "lnk": "#\/asignacion",
+	    "lnk": "#\/asignacion/0",
 	    "icon": "md md-home",
 	    "id_menu": "1",
 	    "id_role": "1"

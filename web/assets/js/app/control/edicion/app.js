@@ -17,21 +17,20 @@
         Traer reporte por folio obtenido de activos
         =====================
         */
-        vm.folio = "'"+$routeParams.folio+"'";
+        //vm.folio = "'"+$routeParams.folio+"'";
         f = $routeParams.folio;
-        console.log ("Parametros",f );
+       //console.log ("Parametros",f );
         
         if(f!=0){
           getReportes();
         }
         
         function getReportes () {
-            
-            EdicionService.findReporteByFolio(f,function() {
-            });
+            console.log("paso");
+            EdicionService.findReporteByFolio(f);
             vm.reporte = EdicionService.reporte;  
-            vm.reporte.data.solucionado="NO";
-            EdicionService.findActivities(function(){});
+            //vm.reporte.data.solucionado="NO";
+            EdicionService.findActivities();
             vm.activitiesA = EdicionService.activitiesP;
         };
 
