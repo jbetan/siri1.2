@@ -34,7 +34,7 @@ class ClassEquipos extends class_mysqlconnector
     {
         $this->IniciarTransaccion();
          //Tabla Reporte
-
+        //print_r($array);
         #====== Tabla area =====
         $this->setValue("nombre", $array['AREA']);
         $insert_area= $this->insertar("area");
@@ -292,5 +292,4 @@ class ClassEquipos extends class_mysqlconnector
     }
 }
 $reporte= new ClassEquipos();
-$id= $_GET['id'];
-return (json_encode($reporte->TraeReporteGuardado($id)));
+

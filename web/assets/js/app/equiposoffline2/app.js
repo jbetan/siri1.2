@@ -135,11 +135,19 @@
 
 
         $scope.on_click_save = function(){
+<<<<<<< HEAD
             //alert($scope.form.correo);
             $("#save").attr("disabled", true);
             $("#save").addClass("disabled");
             if ($scope.form.unidad == undefined || $scope.form.Tipo == undefined || $scope.form.marca == undefined) {
                 if ($scope.form.unidad == undefined) {
+=======
+            alert($scope.form.correo);
+            $("#save").attr("disabled", true);
+            $("#save").addClass("disabled");
+            if (vm.equipo.data.unidad == undefined || vm.equipo.data.Tipo == undefined || vm.equipo.data.marca == undefined) {
+                if (vm.equipo.data.unidad == undefined) {
+>>>>>>> 381bbc652954b346a7864d61dec7d7be1bd12757
                     alert("selecciona un campo del autocomplete");
                     $("input[name='unidad']").css("border", "2px #EBCCD1 solid");
                     $("input[name='unidad']").css("border-bottom", "3px #F44336 solid");
@@ -148,7 +156,11 @@
                         $(".error").fadeOut();
                         $("input[name='unidad']").css("border", "0");
                     })
+<<<<<<< HEAD
                 } else if ($scope.form.Tipo == undefined) {
+=======
+                } else if (vm.equipo.data.Tipo == undefined) {
+>>>>>>> 381bbc652954b346a7864d61dec7d7be1bd12757
                     alert("selecciona un campo del autocomplete");
                     $("input[name='tipo']").css("border", "2px #EBCCD1 solid");
                     $("input[name='tipo']").css("border-bottom", "3px #F44336 solid");
@@ -157,7 +169,11 @@
                         $(".error2").fadeOut();
                         $("input[name='tipo']").css("border", "0");
                     });
+<<<<<<< HEAD
                 } else if ($scope.form.marca == undefined) {
+=======
+                } else if (vm.equipo.data.marca == undefined) {
+>>>>>>> 381bbc652954b346a7864d61dec7d7be1bd12757
                     alert("selecciona un campo del autocomplete");
                     $("input[name='marca']").css("border", "2px #EBCCD1 solid");
                     $("input[name='marca']").css("border-bottom", "3px #F44336 solid");
@@ -187,7 +203,7 @@
                         $('#myModal2').modal('show');
                         setTimeout(function () {
                             location.href = ('confirmacion?id='+ id);
-                            console.log(data);
+
                         }, 2000);
                     }
                 });

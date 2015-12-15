@@ -281,25 +281,47 @@
                         }
                         return false;
                     } else {
-                        $http({
-                            url: "confirmacion?save=1",
-                            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                        var array = [vm.equipo.data.unidad];
+                        $.ajax({
+                            url: "confirmacion",
+                            type: 'POST',
+                            data: $.param(array),
+                            dataType: 'json',
                             async: true,
-                            method: 'POST',
-                            data: $.param(vm.consulta.data)
-                        }).success(function (data) {
-                            console.log("llega id del reporte", data);
-                            var id =data.id;
-                            if (data.Error == true) {
-                                alert("Rellena datos")
+                            success: function(data){
+                                console.log("llega id del reporte", data);
+                                var id =data.id;
+                                if (data.Error == true) {
+                                    alert("Rellena datos")
 
-                            } else {
-                                $('#myModal').modal('show');
-                                setTimeout(function () {
-                                    location.href = ('confirmacion?id='+id);
-                                    console.log(id);
-                                }, 2000);
+                                } else {
+                                    $('#myModal').modal('show');
+                                    setTimeout(function () {
+                                        location.href = ('confirmacion?id='+id);
+                                        console.log(id);
+                                    }, 2000);
+                                }
                             }
+
+                       // $http({
+                       //     url: "confirmacion?save=1",
+                       //     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                       //     async: true,
+                       //     method: 'POST',
+                       //     data: $.param(vm.consulta.data)
+                       // }).success(function (data) {
+                       //     console.log("llega id del reporte", data);
+                       //     var id =data.id;
+                       //     if (data.Error == true) {
+                       //         alert("Rellena datos")
+                       //
+                       //     } else {
+                       //         $('#myModal').modal('show');
+                       //         setTimeout(function () {
+                       //             location.href = ('confirmacion?id='+id);
+                       //             console.log(id);
+                       //         }, 2000);
+                       //     }
                             //if(data = true){
                             //    console.log("es falso");
                             //}else{

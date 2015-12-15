@@ -39,17 +39,14 @@
 							<span class="text-lg text-bold text-primary">ADMIN CONTRARECIBOS</span>
 							<br/><br/>
 							<form class="form floating-label" action="<?=$this->contextPath."/".$this->getActionForm()?>" accept-charset="utf-8" method="post">
-
 								<div class="form-group">
 									<input type="text" class="form-control" id="username" name="username">
 									<label for="username"><i class="fa fa-user"></i> Matricula</label>
 
 								</div>
-
 								<div class="form-group">
 									<input type="password" class="form-control" id="password" name="password" autocomplete="off" required="">
 									<label for="password"><i class="fa fa-asterisk"> Contrase&ntilde;a </i></label>
-									
 								</div>
 								<div class="form-group">
 									<select name="nivel" id="nivel" class="form-control" required >
@@ -64,14 +61,11 @@
                                         <option value="0">Responsable de unidad</option>
                                         <option value="6">Jefe de Oficina</option>
                                         <option value="7">Administrador</option>
-                                    </select>                                   
-                             
-
+                                    </select>
 									<label for="nivel"><i class="fa fa-level-up"></i> Elija su nivel </label>
 									<p class="help-block"><a href="#">Aviso de privacidad?</a></p>
 								</div>
-								<br/>
-								<div class="row">
+								<div class="">
 									<div class="col-xs-6 text-right">
 										<button class="btn btn-primary btn-raised" type="submit">Login <i class="fa fa-unlock-alt"></i></button>
 									</div><!--end .col -->

@@ -37,9 +37,11 @@ class class_ocs extends class_mysqlconnector_ocs
     public function consulta_solo_ip(){
 
             $ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']));
+
 			//print_r ($ip);
-			
-		   // $ip="11.105.33.32";
+
+            //$ip="11.105.33.32";
+
             $this->setKey("IPADDRESS", $ip);
             $arreglo = $this->devuelve_filas_indexlabel("networks","IPADDRESS");
             if(is_array($arreglo))
