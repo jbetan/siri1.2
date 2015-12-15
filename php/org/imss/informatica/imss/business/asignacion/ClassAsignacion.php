@@ -178,16 +178,18 @@ class ClassAsignacion extends  class_mysqlconnector
         $sql  = "select ";
         $sql .= "r.folio, ";
         $sql .= "r.fechaRecep, ";
-        $sql .= "r.ipcaptura, ";
+        $sql .= "r.ipcaptura as ip, ";
         $sql .= "r.problema, ";
         $sql .= "r.personaquereporta, ";
         $sql .= "tp.descripcion, ";
+        $sql .= "u.nombre as unidad, ";
         $sql .= "e.modelo ";
         $sql .="from reporte as r ";
         $sql .="JOIN atencionreportes as at  ON r.id = at.idreporte ";
         $sql .="JOIN equiposrecibidos as er ON r.id = er.idreporte ";
         $sql .="JOIN equipos as e ON er.idequipo = e.id ";
         $sql .="JOIN marca as m              ON e.idmarca = m.id ";
+        $sql .="JOIN unidad as u              ON r.id_unidad = u.id ";
         $sql .="JOIN tipo as tp              ON e.idtipo = tp.id ";
         $sql .="WHERE at.idstatus = 6  ";      
             

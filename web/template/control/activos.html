@@ -6,17 +6,18 @@
 <h1 > </h1>
 
 
-    <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2" >
-        <header> REPORTES ABIERTOS Y ASIGNADOS</header>
+    <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1-2" data-target="#accordion1-2">
+        <header><strong>REPORTES EN REPARACIÓN Y GARANTIA </strong></header>
         <div class="tools">
-            <a class="btn btn-icon-toggle"><i class="cart-plus "></i></a>
+            <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
         </div>
     </div>
  </br>
-    <div class="">
+    <div id="accordion1-2" >
+    <div >
         <label class="buscarLibros">Buscar:</label>
         <input ng-model="folioBuscado"  class="form-control" type="text"> <span class="fa fa-search form-control-feedback"></span>
-        <div class="form-control-line ">
+        <div class="form-control-line "> </div>
         <br>
 
         <!-- filtro -->
@@ -39,6 +40,7 @@
         <tr ng-repeat-start="reporte in activos.reportes.data | filter:folioBuscado "><!--Aqui empieza el ng-repeat-start -->
 
             <!--inicia Listo-->
+            <!--
             <td ng-if="reporte.status == 'Listo'" class="success">
             <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
             <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i> </button>
@@ -47,6 +49,7 @@
             <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.status}}</td>
             <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.descripcion}}</td>
             <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.nombre}}</td>
+
             <!--termina Listo--> 
 
              <!--inicia Garantia-->
@@ -85,6 +88,7 @@
             <!--termina nuevo-->
 
             <!--inicia entregado-->
+            <!--
             <td ng-if="reporte.status == 'Entregado'" class="active">
                 <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
                 <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i></button>
@@ -163,6 +167,152 @@
 
    
     </table>
+    </div>
+
+        <!-- entregados y listos  -->>
+<br> <br>
+    <div class="card-head card-head-sm collapsed style-accent text-center" data-toggle="collapse" data-parent="#accordion1-3" data-target="#accordion1-3">
+        <header>LISTOS Y ENTREGADOS  </header>
+        <div class="tools">
+            <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+        </div>
+    </div>
+
+
+    <div id="accordion1-3">
+        <div id="">
+            <label class="buscarLibros">Buscar:</label>
+            <input ng-model="folioBuscado2"  class="form-control" type="text"> <span class="fa fa-search form-control-feedback"></span>
+            <div class="form-control-line ">
+                <br>
+
+                <!-- filtro -->
+            </div>
+
+        <table  class="col-md-12 table no-margin table-hover" >
+            <thead class="style-default-dark">
+            <tr>
+                <td style="width: 200px;"></td>
+                <td>FOLIO <i class="fa fa-tag"></i>
+                </td>
+                <td>ESTATUS <i class="fa fa-heartbeat"></i>
+                </td>
+                <td>TIPO <i class="fa fa-laptop"></i></td>
+                <td>RESPONSABLE<i class="fa fa-user"></i>
+                </td>
+                <td></td>
+            </tr>
+            </thead>
+
+            <tr ng-repeat-start="reporte in activos.reportes.data | filter:folioBuscado2 "><!--Aqui empieza el ng-repeat-start -->
+
+                <!--inicia Listo-->
+                <td ng-if="reporte.status == 'Listo'" class="success">
+                    <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+                    <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i> </button>
+                </td>
+                <td ng-if="reporte.status == 'Listo'" class="success text-ultra-bold text-xxl ">{{reporte.folio}}</td>
+                <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.status}}</td>
+                <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.descripcion}}</td>
+                <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.nombre}}</td>
+                <!--termina Listo-->
+
+
+
+
+
+                <!--inicia nuevo-->
+                <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent">
+                    <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+                    <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i></button>
+                </td>
+                <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent text-ultra-bold text-xxl">{{reporte.folio}}</td>
+                <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.status}}</td>
+                <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.descripcion}}</td>
+                <td ng-if="reporte.status == 'nuevo'" class="alert alert-accent"> {{reporte.nombre}}</td>
+                <!--termina nuevo-->
+
+                <!--inicia entregado-->
+                <td ng-if="reporte.status == 'Entregado'" class="active">
+                    <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
+                    <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i></button>
+                </td>
+                <td ng-if="reporte.status == 'Entregado'" class="active text-ultra-bold text-xxl">{{reporte.folio}}</td>
+                <td ng-if="reporte.status == 'Entregado'" class="active"> {{reporte.status}}</td>
+                <td ng-if="reporte.status == 'Entregado'" class="active"> {{reporte.descripcion}}</td>
+                <td ng-if="reporte.status == 'Entregado'" class="active"> {{reporte.nombre}}</td>
+                <!--termina entregado-->
+
+            </tr> <!--Aqui termina el ng-repeat-start -->
+
+
+
+            <tr ng-if="reporte.post.expanded" ng-repeat-end>
+                <td colspan="1"> <div class="col-sm-1">
+                    <div class="btn-group open">
+                        <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
+                            <i class="fa fa-plus-square fa-2x"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu" role="menu">
+                            <li>
+
+                              <!--  <a class="ink-reaction" href="app#/edicion/{{reporte.folio}}">editar <i class="fa fa-pencil-square-o fa-2x"></i></a>-->
+
+                               <!-- <a class="btn btn-warning" href="app#/edicion/{{reporte.folio}}"> </a>-->
+
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a class="ink-reaction" href="app#/entrega/{{reporte.folio}}">Entregar <i class="fa fa-check-square-o fa-2x"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                </td>
+
+                <td  colspan="1" >
+
+                    <strong>Unidad:</strong> {{reporte.unidad}} <br/>
+                    <strong>Fecha de Recepción:</strong><br/>
+                    <strong>Persona </strong> {{reporte.personaquereporta}}
+                </td>
+                <td>
+
+                    <strong>Prioridad </strong> {{reporte.prioridad}}</br>
+
+                    <strong class=" style-dange">Problema
+                    </strong> {{reporte.problema}} <br/>
+                    <strong>Área:</strong> {{reporte.area}} <br>
+
+
+                </td>
+                <td>
+
+                    <strong>Marca:</strong>{{reporte.marca}} <br/>
+                    <strong>Modelo:</strong> {{reporte.modelo}}<br/>
+                    <strong>Serie:</strong> {{reporte.serie}}
+                </td>
+                <td>
+
+
+                    <strong>Fecha Inicio:</strong> {{reporte.finicio}} <br/>
+                    <strong>Fecha Término:</strong> {{reporte.ftermino}}
+
+                </td>
+
+
+                <td colspan="2">   </td>
+            </tr>
+
+
+
+
+
+
+        </table>
+        </div>
+
  <div class="text-default-bright">
     {{activos.reportes.data}}
 </div>

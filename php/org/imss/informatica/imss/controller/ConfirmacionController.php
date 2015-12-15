@@ -67,8 +67,9 @@ class ConfirmacionController extends  ControllerPrincipal{
 }
 
 $confirmacionpage= new ConfirmacionController("confirmacion/confirmacion.php", "Generar Reporte - Confirmacion");
+
 //else haciendo el guardado
-if($_GET['save'])
+if($_GET['save'] == 1)
 {
     $saveEquipoAuto= new ClassEquipos();
     $data = $_REQUEST;
@@ -82,19 +83,22 @@ if($_GET['save'])
     }catch(Exception $e) {
         exit(json_encode(array("Error" => true, "message" =>$e->getMessage())));
     }
-}if($_GET['saveform2'])
-{
+}else if($_GET['id']){
 
+}
+else{
     $saveEquipoAuto= new ClassEquipos();
     $datas = $_REQUEST;
+    //print_r($datas);
     try{
-        if ($response = json_encode($saveEquipoAuto->saveReporteAutocomplete($datas))) {
-            exit($response);
-        } else {
+        if($response = json_encode($saveEquipoAuto->saveReporteAutocomplete($datas))) {
+        exit($response);
+        }else {
             exit(json_encode(array("Error" => true, "message" => "Error inesperado, verifique los datos")));
         }
     }catch(Exception $e) {
         exit(json_encode(array("Error" => true, "message" =>$e->getMessage())));
     }
 }
-    $confirmacionpage->page();
+
+$confirmacionpage->page();

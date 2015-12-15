@@ -63,9 +63,13 @@ class ClassEntrega extends  class_mysqlconnector
             $this->setValue("fechaEnt", $fecha);
             $this->setValue("horaEnt", $tim);
             $updateR = $this->actualizar("reporte");
+			
+			
+            $this->setKey("idreporte",         $reporte["id"]);
+            $this->setValue("idstatus",        4);                                
+            $updateAT =$this->actualizar("atencionreportes");
 
-
-            if($updateR){
+            if($updateR and $updateAT){
                 $this->CometerTransaccion();
                 return 1;
             }

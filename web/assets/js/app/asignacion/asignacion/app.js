@@ -1,11 +1,15 @@
 
 (function() {
     var app = angular.module("asigmacion-Module", ["datatables", "asignacion-provider"]);
-    app.controller("AsignacionController", function($compile, $scope, AsignacionService,  DTOptionsBuilder, DTColumnBuilder){
+    app.controller("AsignacionController",  function($compile, $scope, $http, AsignacionService,  DTOptionsBuilder, DTColumnBuilder){
         var vm = this;
         $scope.submit = undefined;
         vm.show = false;
         vm.reporte = {data:undefined};
+         vm.rep = {data:undefined};
+        
+
+
        // vm.reporte ={data:"john"};
         vm.claseA = {data:undefined};
         vm.usuario = undefined;
@@ -38,8 +42,8 @@
             }
         };
 
-        $("#clase").attr("disabled", true);
-        $("#clase").addClass("disabled");
+        //$("#clase").attr("disabled", true);
+       // $("#clase").addClass("disabled");
 
         vm.onSelect = function (){
             $("#clase").removeAttr("disabled", true);
@@ -73,24 +77,50 @@
         };
 
         //***************Inicia Data-Table**************
+       // AngularWayCtrl();
+        
 
-        vm.dtOptions = DTOptionsBuilder.fromSource('asignacionController?getReportes=1').withPaginationType('full_numbers');
-        vm.dtColumns = [
-                    DTColumnBuilder.newColumn('folio').withTitle('FOLIO'),
-                    DTColumnBuilder.newColumn('problema').withTitle('PROBLEMA'),
-                    DTColumnBuilder.newColumn('descripcion').withTitle('TIPO'),
-                    DTColumnBuilder.newColumn('modelo').withTitle('MODELO'),
-                    DTColumnBuilder.newColumn('fechaRecep').withTitle('FECHA DE REPORTE'),
-                    DTColumnBuilder.newColumn('personaquereporta').withTitle('REPORTO'),
-                    DTColumnBuilder.newColumn('ipcaptura').withTitle('DIRECCION IP'),
+        // function AngularWayCtrl() {
+           
+        //     $resource('asignacionController?getReportes=1').query().$promise.then(function(rep) {
+        //         vm.rep = rep;
+        //         console.log(vm.rep);
+        //     });
+        // }
+
+        getReportes();
+
+
+
+
+        function getReportes () {
+            console.info("funcion cargar datos");
+            $promese = $http.get("asignacionController?getReportes=1");
+            $promese.then(function(data) {
+                vm.rep.data = data.data; //my json 13
+            });
+            return $promese;
+        };
+        vm.asig = asig;
+         function asig(id) {
+            console.log("paso",id);
+         };
+
+        // vm.dtOptions = DTOptionsBuilder.fromSource('asignacionController?getReportes=1').withPaginationType('full_numbers');
+        // vm.dtColumns = [
+        //             DTColumnBuilder.newColumn('folio').withTitle('FOLIO'),
+        //             DTColumnBuilder.newColumn('problema').withTitle('PROBLEMA'),
+        //             DTColumnBuilder.newColumn('descripcion').withTitle('TIPO'),
+        //             DTColumnBuilder.newColumn('modelo').withTitle('MODELO'),
+        //             DTColumnBuilder.newColumn('fechaRecep').withTitle('FECHA DE REPORTE'),
+        //             DTColumnBuilder.newColumn('personaquereporta').withTitle('REPORTO'),
+        //             DTColumnBuilder.newColumn('ipcaptura').withTitle('DIRECCION IP'),
+
                     
-                    DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible()     
-        ];
+        //             DTColumnBuilder.newColumn('problema').withTitle('Last name').notVisible()     
+        // ];              
 
-               
-
-
-                //***************Termina Data-Table**************
+       //***************Termina Data-Table**************
 
         vm.init = function() {
             setTimeout(function () {
@@ -98,6 +128,7 @@
                 window.materialadmin.AppCard.initialize();
                 window.materialadmin.AppForm.initialize();
                 vm.submit();
+
 
 
             }, 100);
