@@ -16,25 +16,23 @@ class ClassUser extends  class_mysqlconnector
 
 
         $this->dtcUsuarios = array (
-            array("nombre"=>"id", "tipo"=> Utils::$TIPO_NUMERO),
-            array("nombre"=>"nombre", "tipo"=>Utils::$TIPO_TEXTO),
-            array("nombre"=>"contrasena", "tipo"=>Utils::$TIPO_TEXTO),
-            array("nombre"=>"matricula", "tipo"=>Utils::$TIPO_TEXTO),
-            array("nombre"=>"tipo", "tipo"=>Utils::$TIPO_TEXTO),
-            array("nombre"=>"idunidad", "tipo"=> Utils::$TIPO_NUMERO),
-            array("nombre"=>"idcategoria", "tipo"=> Utils::$TIPO_NUMERO),
-            array("nombre"=>"subcategoria", "tipo"=> Utils::$TIPO_TEXTO),
-            array("nombre"=>"esCDI", "tipo"=>Utils::$TIPO_TEXTO),
-            array("nombre"=>"esCOORDINAD", "tipo"=>Utils::$TIPO_TEXTO)
+            array("nombre"=>"id",           "tipo"=> Utils::$TIPO_NUMERO),
+            array("nombre"=>"nombre",       "tipo"=> Utils::$TIPO_TEXTO),
+            array("nombre"=>"contrasena",   "tipo"=> Utils::$TIPO_TEXTO),
+            array("nombre"=>"matricula",    "tipo"=> Utils::$TIPO_TEXTO),
+            array("nombre"=>"tipo",         "tipo"=> Utils::$TIPO_TEXTO),
+            array("nombre"=>"idunidad",     "tipo"=> Utils::$TIPO_NUMERO),
+            array("nombre"=>"idcategoria",  "tipo"=> Utils::$TIPO_NUMERO),
+            array("nombre"=>"subcategoria", "tipo"=> Utils::$TIPO_TEXTO),           
+            array("nombre"=>"esCDI",        "tipo"=> Utils::$TIPO_TEXTO),
+            array("nombre"=>"esCOORDINAD",  "tipo"=> Utils::$TIPO_TEXTO)
 
         );
 
 
     }
 
-
-
-
+    
     public function getUsuariosByDataTable($draw, $columns, $order, $start, $length, $search) {
 
         $cols = "";
@@ -62,6 +60,9 @@ class ClassUser extends  class_mysqlconnector
             "data"=>$rows
         );
     }
+    
+    
+
 
     //Usuarios
     public function guardarUsuarios($usuario) {
@@ -69,6 +70,10 @@ class ClassUser extends  class_mysqlconnector
         //Buscando el id de la unidad
         $this->setKey("nombre", $usuario["unidad"]);
         $unidad = $this->devuelve_fila_i("unidad");
+
+        $this->setKey("nombre", $usuario["subunidad"]);
+        $subunidad = $this->devuelve_fila_i("unidad");
+
         //Encriptando la contraseña
         $contra = md5($usuario['contrasena']);
         //Buscando el id de categoria
@@ -89,6 +94,7 @@ class ClassUser extends  class_mysqlconnector
             $this->setValue("matricula", $usuario["matricula"]);
             $this->setValue("tipo", $usuario["tipo"]);
             $this->setValue("idunidad", $unidad['id']);
+            $this->setValue("idSubUnidad", $subunidad['id']);
             $this->setValue("idcategoria", $cat['id']);
             $this->setValue("subcategoria", $subCat['id']);
             $this->setValue("esCDI", $usuario["esCDI"]);
@@ -105,6 +111,7 @@ class ClassUser extends  class_mysqlconnector
             $this->setValue("matricula", $usuario["matricula"]);
             $this->setValue("tipo", $usuario["tipo"]);
             $this->setValue("idunidad", $unidad['id']);
+            $this->setValue("idSubUnidad", $subunidad['id']);
             $this->setValue("idcategoria", $cat['id']);
             $this->setValue("subcategoria", $subCat['id']);
             $this->setValue("esCDI", $usuario["esCDI"]);
@@ -121,13 +128,34 @@ class ClassUser extends  class_mysqlconnector
     }
 
     public function findUserById($id) {
-        //$this->EjecutarConsulta("SET NAMES 'latin1'");
-        $this->setKey("id", $id);
-        $fila = $this->devuelve_fila_i("usuario");
-        if($fila) {
-            return $fila;
+        $sql = "SELECT 
+                us.nombre,
+                us.matricula,
+                us.tipo,
+                cu.nombre as categoria,
+                cus.nombre as subcategoria,
+                u.nombre as unidad,
+                un.nombre as subunidad,
+                us.esCDI,
+                us.esCOORDINAD as escoordinador
+                FROM usuario as us
+                LEFT JOIN unidad as u ON (us.idunidad = u.id )
+                LEFT JOIN unidad as un ON (us.idSubUnidad = un.id )
+                LEFT JOIN categoriau as cu ON (us.idcategoria = cu.id )
+                LEFT JOIN categoriau as cus ON (us.subcategoria = cus.id )
+                WHERE us.id = {$id}";     
+            
+        try{
+            $res = $this->EjecutarConsulta($sql);
+        }catch (Exception $e){
+            throw $e;
         }
-        return array();
+
+        
+       $fila = @mysql_fetch_assoc($res);
+       return $fila;
+         
+        
     }
 
     public function autoUnidades ()

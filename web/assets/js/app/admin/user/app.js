@@ -24,9 +24,9 @@
                             vm.dtOptions.reloadData();
                             vm.resetData();
                             if(data.error === false) {
-                                console.log('',data.message);
+                                alert(data.message);
                             } else {
-                                console.log('',data.message);
+                                alert(data.message);
                             }
                         });
                     }
@@ -75,23 +75,15 @@
 
 
         vm.dtColumns = [
-            /*
-            DTColumnBuilder.newColumn('id_unidad').withTitle('ID'),
-            DTColumnBuilder.newColumn('nombre').withTitle('Nombre unidad'),
-            DTColumnBuilder.newColumn('direccion').withTitle('Direccion'),
-            DTColumnBuilder.newColumn('areasoporte').withTitle('Area'),
-             */
+           
 
             DTColumnBuilder.newColumn('id').withTitle('ID'),
-            DTColumnBuilder.newColumn('nombre').withTitle('Nombre Usuario'),
-            DTColumnBuilder.newColumn('contrasena').withTitle('Password'),
+            DTColumnBuilder.newColumn('nombre').withTitle('Nombre Usuario'),           
             DTColumnBuilder.newColumn('matricula').withTitle('Matricula'),
-            DTColumnBuilder.newColumn('tipo').withTitle('Tipo'),
-            DTColumnBuilder.newColumn('idunidad').withTitle('Unidad'),
-            DTColumnBuilder.newColumn('idcategoria').withTitle('Categaria'),
-            DTColumnBuilder.newColumn('subcategoria').withTitle('Subcategoria'),
+            DTColumnBuilder.newColumn('tipo').withTitle('Tipo'),       
             DTColumnBuilder.newColumn('esCDI').withTitle('CDI'),
-            DTColumnBuilder.newColumn('esCOORDINAD').withTitle('Coor'),
+
+            DTColumnBuilder.newColumn('esCOORDINAD').withTitle('COOR'),
 
 
             DTColumnBuilder.newColumn(null).withTitle('Actions').notSortable()
@@ -109,15 +101,16 @@
                     card.find(".card-head").find("A").trigger("click");
                 }
             });
-            console.info('fomulario',UserService.user);
+            
             vm.user = UserService.usuario;
+
             setTimeout(function(){
                 $scope.$apply();
                 console.info('fomulario',vm.user.data);
                 window.materialadmin.AppForm._initFloatingLabels();
             }, 200);
 
-            vm.dtInstance.reloadData();
+           
         }
         function deleteRow(id) {
            // vm.message = 'You are trying to remove the row with IDOOO: ' + id;
