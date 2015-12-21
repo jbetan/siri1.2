@@ -70,7 +70,9 @@
                                                     echo '<span class="profile-info">';
                                                         echo $_SESSION["imss"]["nombre"];
                                                         echo '<small>'.$_SESSION["imss"]["niv_usuario"].'</small>';
-                                                    echo '</span>';
+                                                        echo date("d") . " del " . date("M") . " de " . date("Y")."<br>";
+                                                    echo '</span> <br/>';
+
                                                 session_write_close();
                                                 ?>
                             </a>
@@ -88,19 +90,223 @@
             </div>
         </header>
     <!-- END HEADER-->
-
+    
     <!-- BEGIN BASE-->
         <div id="base">
             <!-- BEGIN CONTENT-->
             <div id="content" >
                 <section class="style-default-bright" ng-view>
                     <div class="section-body" >
-                    <!-- Esto debe estar vacio -->
+                    <!-- Esto debe estar vacio -->                   
         			</div><!--end .section-body -->
         		</section>
         	</div><!--end #content-->
         			<!-- END CONTENT -->
 
+            <!-- Empieza Avisos -->
+            <div id="content" class = "page_body" style="margin-top:-87px;">
+                <section class="style-default-bright" >
+                    <div class="section-body" >
+                    <br>
+                    <br>
+                     <div class="row">
+                        <div class="col-md-12 text-center">
+                             <img src= "<?=$this->contextPath?>/web/assets/img/avatar1.jpg?1403934956"  width = "225px" height = "225" alt="" class="img-rounded">
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-2">
+                         </div>
+                        <div class="col-md-8 text-justify">
+                             <h3>Hola, te damos la más cordial bienvenida al Sistema SIRI 2.0. Te sugerimos que para una mejor experiencia instales  <a href="">INTENER EXPLORER 10</a>  </h3>
+                        </div>
+                        <div class="col-md-2">
+                         </div>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Navidad</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="<?=$this->contextPath?>/web/files/nav.jpg" alt="" class="img-circle">
+                                
+                            </div>
+                            <div class="col-md-9">
+                                Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+
+                                 Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+                            </div>
+                        </div>      
+                      </div>
+                    </div>
+
+                    <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Año Nuevo</h3>
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="<?=$this->contextPath?>/web/files/ano.jpg" width = "225px" height = "225" alt="" class="img-rounded">
+                                
+                            </div>
+                            <div class="col-md-9">
+                                Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+
+                            </div>
+                        </div>      
+                      </div>
+                    </div>
+
+                    <div class="panel panel-success">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Panel success</h3>
+                      </div>
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="<?=$this->contextPath?>/web/files/nav.jpg" alt="" class="img-circle">
+                                
+                            </div>
+                            <div class="col-md-9">
+                                Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+
+                                 Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+                            </div>
+                        </div> 
+                      </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Panel Info</h3>
+                      </div>
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="<?=$this->contextPath?>/web/files/nav.jpg" alt="" class="img-circle">
+                                
+                            </div>
+                            <div class="col-md-9">
+                                Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+
+                                 Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+                            </div>
+                        </div> 
+                      </div>
+                    </div>  
+
+                    <div class="panel panel-warning">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Panel warning</h3>
+                      </div>
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="<?=$this->contextPath?>/web/files/nav.jpg" alt="" class="img-circle">
+                                
+                            </div>
+                            <div class="col-md-9">
+                                Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+
+                                 Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+                            </div>
+                        </div> 
+                      </div>
+                    </div>  
+
+                    <div class="panel panel-danger">
+                      <div class="panel-heading">
+                        <h3 class="panel-title">Panel Danger</h3>
+                      </div>
+                      <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-3">
+
+                                <img src="<?=$this->contextPath?>/web/files/urg.png" width = "225px" height = "225" alt="" class="img-rounded">
+                                
+                            </div>
+                            <div class="col-md-9">
+                                Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+
+                                 Cuando se acerca el fin del año, comienzan a desfilar varios días festivos tradicionales como son Thanksgiving (El Día de Acción de Gracias), Navidad, la Nochebuena, la Noche Vieja y el año nuevo.
+                                <br>Particularmente diciembre es un mes mágico y festivo, lleno de celebraciones y de motivos por los que felicitar.
+                                <br>En muchas ocasiones necesitamos una frase agradable con la que acompañar un presente, regalo o simplemente una tarjeta que deseamos hacer llegar a un miembro de nuestra familia, un amigo o compañero de trabajo, en una fecha señalada o en cualquiera ocasión especial.
+                                <br>Para eso compartimos en esta página como cada año, mensajes de felicitación, frases emotivas en las que inspirarse y muchas imágenes.
+                                <br>No obstante mucho del contenido es válido para cualquier fecha del año.
+                                De antemano ¡Muchas Felicidades! para todo el que lea esta página. 
+                            </div>
+                        </div> 
+                      </div>
+                    </div>                              
+                                           
+
+                    </div><!--end .section-body -->
+                </section>
+            </div>
+            <!-- Termina Avisos -->
+       
         	<!-- BEGIN MENUBAR-->
         	<div id="menubar" class="menubar-inverse ">
         		<div class="menubar-fixed-panel">
