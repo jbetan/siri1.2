@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="keywords" content="your,keywords">
         <meta name="description" content="Short explanation about this website">
+        <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico" />
         <!-- END META -->
 
         <!-- BEGIN STYLESHEETS -->
@@ -70,7 +71,9 @@
                                                     echo '<span class="profile-info">';
                                                         echo $_SESSION["imss"]["nombre"];
                                                         echo '<small>'.$_SESSION["imss"]["niv_usuario"].'</small>';
-                                                    echo '</span>';
+                                                        echo date("d") . " del " . date("M") . " de " . date("Y")."<br>";
+                                                    echo '</span> <br/>';
+
                                                 session_write_close();
                                                 ?>
                             </a>
@@ -88,19 +91,16 @@
             </div>
         </header>
     <!-- END HEADER-->
-
+    
     <!-- BEGIN BASE-->
         <div id="base">
             <!-- BEGIN CONTENT-->
             <div id="content" >
-                <section class="style-default-bright" ng-view>
-                    <div class="section-body" >
-                    <!-- Esto debe estar vacio -->
-        			</div><!--end .section-body -->
-        		</section>
-        	</div><!--end #content-->
-        			<!-- END CONTENT -->
+                <section class="style-default-bright" ng-view> </section>                
+        	</div>
+        	<!-- END CONTENT -->
 
+       
         	<!-- BEGIN MENUBAR-->
         	<div id="menubar" class="menubar-inverse ">
         		<div class="menubar-fixed-panel">
@@ -124,7 +124,7 @@
 
         			<div class="menubar-foot-panel">
         				<small class="no-linebreak hidden-folded">
-        					<span class="opacity-75">Copyright &copy; 2014</span> <strong>CodeCovers</strong>
+        					<span class="opacity-75">IMSS &copy; <?=date("Y")?></span> <strong>SIRI 2.0</strong>
         				</small>
         			</div>
         		</div><!--end .menubar-scroll-panel-->
@@ -200,3 +200,7 @@
 	</body>
 </html>
 
+
+<!--
+
+-->
