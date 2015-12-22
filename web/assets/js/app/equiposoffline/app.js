@@ -96,8 +96,7 @@
             $('#passEMAIL2').after(html).remove();
 
         });
-//==============================================
-
+//=============================================
 
         vm.submit = function() {
             $("#datosFormAutocomplete").validate({
@@ -246,6 +245,7 @@
             $('#form2').show();
             $("#form1").hide();
         };
+
         vm.submit = function() {
             $("#datosForm").validate({
                 submitHandler: function (form) {

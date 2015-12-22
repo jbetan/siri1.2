@@ -48,11 +48,11 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                 <div><b>{{}}</b></div>
                 <div class="row" style="">
                     <div class="col-lg-12">
-                        <p>Tu solicitud ha sido levantada con los siguientes datos:</p>
+                        <h3>Tu solicitud ha sido levantada con los siguientes datos:</h3>
                         <form class="form">
                             <div class="form-group col-lg-12">
                                 <style>#folio{font-size: 75px;}</style>
-                                <span>Folio: </span><div id="folio">{{folio}}</div>
+                                <h4><span>Folio: </span></h4><div id="folio">{{folio}}</div>
                             </div>
                         <div class="col-sm-4">
                             <div class="form-group">
@@ -95,7 +95,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 <input type="text" name="problema" ng-model="problema" id="" class="form-control" disabled />
                                 <label for="tipo">Descripción del problema</label>
                                 <br/>
-                                <div class="text-center"><a href="page" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
+                                <div class="text-center"><a href="login" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
                             </div>
                         </div>
                         </form>

@@ -230,8 +230,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <label for=""><span class="text-danger">* </span> Marca</label>
                                     </div>
                                     <div class="form-group" >
-                                        <input type="text" name="modelo" ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="Ctrl.equipo.data.SMODEL" typeahead-editable="false" class="form-control  Sip ng-dirty ng-invalid ng-valid" />
-                                        <label for=""> Modelo</label>
+                                        <input type="text" name="modelo" ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="Ctrl.equipo.data.SMODEL" typeahead-editable="false" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
+                                        <label for=""><span class="text-danger">* </span> Modelo</label>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="serie" ng-model="Ctrl.equipo.data.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
@@ -270,8 +270,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input type="text" name="ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.IP" required/>
-                                        <label for=""><span class="text-danger">* </span>Introduce el ip del equipo</label>
+                                        <input type="text" name="ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.IP" />
+                                        <label for="">Introduce el ip del equipo</label>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="persona_reporta" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="Ctrl.equipo.data.Qreporta" required/>
@@ -279,7 +279,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                     </div>
                                     <div class="form-group">
                                         <select name="problema" ng-model="Ctrl.equipo.data.problema" class="form-control ng-dirty ng-invalid ng-valid" required>
-                                            <option value="" class="problema_def" selected>--------------------------------------------------------------------------------</option>
+                                            <option value="" class="problema_def" selected>ELIGE UNO</option>
                                             <option class="problema_def">SE APAGA</option>
                                             <option class="problema_def">TIENE VIRUS</option>
                                             <option class="problema_def">NO INICIA SESION</option>
@@ -290,7 +290,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                             <option class="problema_def">ALARMADA(FOCO ROJO)</option>
                                             <option class="problema_def">NO TIENE RED</option>
                                             <option class="problema_def">SE CONGELA LA IMAGEN</option>
-                                            <option value="" ng-click="Ctrl.click_Otro2()">OTRO</option>
+                                            <option value="" id="otrooo" ng-click="Ctrl.click_Otro2()">OTRO</option>
                                         </select>
                                         <textarea name="problema" ng-model="Ctrl.equipo.data.problema" id="otro2" cols="30" rows="2"  class="form-control ng-dirty ng-invalid ng-valid" placeholder="Describa su problema" ></textarea>
                                         <label for=""><span class="text-danger">* </span>Problema</label>
