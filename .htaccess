@@ -108,6 +108,10 @@ RewriteRule ^(.*)$ /siri1.2/web/template/reporte/reporte.html [L]
 	RewriteCond $1 ^asignacion
 	RewriteRule ^(.*)$ /siri1.2/web/template/asignacion/asignacion.html [L]
 
+#Home
+	RewriteCond $1 ^home
+	RewriteRule ^(.*)$ /siri1.2/web/template/home.html [L]
+
 
 #=====================
 #Brayan Inicio
