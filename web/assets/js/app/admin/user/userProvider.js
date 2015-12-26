@@ -15,8 +15,10 @@
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                 async: true,
                 method: 'POST'
-            }).success(function(data){
-                console.log("exito Privider");
+            }).success(function(data){     
+
+                console.log("OK",data);
+
                 if(typeof (callback) != "undefined") {
                     callback(data);
                 }

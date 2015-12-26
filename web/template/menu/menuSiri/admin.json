@@ -134,6 +134,17 @@
             "icon": "md md-web",
             "id_menu": "5",
             "id_role": "1"           
+          },{
+            "id": "3",
+            "indice": "2",
+            "id_padre": null,
+            "nivel": "1000",
+            "nombre": "Avisos",
+            "descripcion": "",
+            "lnk": "#\/avisos",
+            "icon": "md md-web",
+            "id_menu": "5",
+            "id_role": "1"           
           }
 
         ]

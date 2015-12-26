@@ -21,13 +21,17 @@
                         UserService.guardarUsuario(vm.user.data, function(data){
                             $("#enviar").removeAttr("disabled", true);
                             $("#enviar").removeClass("disabled");
-                            vm.dtOptions.reloadData();
-                            vm.resetData();
+                           
                             if(data.error === false) {
+                                console.log("OK",data.message);
                                 alert(data.message);
                             } else {
                                 alert(data.message);
+                                console.log("ERROR",data.message);
                             }
+
+                             vm.dtOptions.reloadData();
+                            vm.resetData();
                         });
                     }
                 });

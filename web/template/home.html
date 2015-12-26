@@ -1,6 +1,6 @@
 
-
-                    <div class="section-body" >
+                      <div class="section-body" ng-controller="HomeController as home" > 
+                    
                     <br>
                     <br>
                      <div class="row">
@@ -13,7 +13,7 @@
                         <div class="col-md-2">
                          </div>
                         <div class="col-md-8 text-justify">
-                             <h3>Hola, te damos la más cordial bienvenida al SIRI 2.0. Este es un aplicacion para el gestionamiento de reportes. Te sugerimos que para una mejor experiencia instales el navegador <a href="">INTENER EXPLORER 10</a>  </h3>
+                             <h3>Hola, te damos la más cordial bienvenida al SIRI 2.0. Este es un aplicacion para el gestionamiento de reportes. Te sugerimos que para una mejor experiencia instales el navegador <a href="">INTENER EXPLORER 10</a>  </h3> 
                         </div>
                         <div class="col-md-2">
                          </div>
@@ -21,24 +21,21 @@
                     <br>
                     <br>
 
-                    <div class="panel panel-default">
+                    <div class="{{home.tipo_aviso}}" ng-repeat="home in home.avisos.data" >
                       <div class="panel-heading">
-                        <h3 class="panel-title">Feliz Navidad</h3>
+                        <h3 class="panel-title">{{home.titulo}}</h3>
                       </div>
                       <div class="panel-body">
                         <div class="row">
                             <div class="col-md-3">
 
-                                <img src="./web/files/nav.jpg" alt="" class="img-circle">
+                                <img src="./web/files/{{home.imagen}}" width = "175px" height = "175" alt="" class="{{home.tipo_img}}">
                                 
                             </div>
                             <div class="col-md-9">
-                           <strong> Feliz Navidad </strong> que hace que nos acordemos de las ilusiones de nuestra infancia, que le recuerda al abuelo las alegrías de la juventud, y que le trasnporta al viajero a su Hogar, dulce Hogar.
-                           <br>
-                           <br>
-                           Amigos …. la Navidad es más que suntuosos adornos, o complicadas decoraciones, antes que nada, la Navidad es el recordar lo que significa Natividad, el nacimiento, cuánta alegría envuleve el corazón para quienes creemos en nuestro señor Jesús…pues la Navidad tienen un significado sublime.
-                           <br><br>
-                           Amigos …. la Navidad es más que suntuosos adornos, o complicadas decoraciones, antes que nada, la Navidad es el recordar lo que significa Natividad, el nacimiento, cuánta alegría envuleve el corazón para quienes creemos en nuestro señor Jesús…pues la Navidad tienen un significado sublime.
+                              <p ng-bind-html="home.aviso"></p>
+                             
+
                             </div>
                         </div>      
                       </div>

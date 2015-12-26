@@ -155,10 +155,11 @@
         <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppNavSearch.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppVendor.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
-        <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>
+        <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>        
         <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-route.min.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-resource.min.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-datatables.min.js"></script>
+        <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-sanitize.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/css/theme-default/libs/ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/app.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/unidades/unidades.js"></script>
@@ -176,6 +177,7 @@
         <script src="<?=$this->contextPath?>/web/assets/js/app/admin/equipo/app.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/admin/equipo/equipoProvider.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/autoComplete.js"></script>
+        <script src="<?=$this->contextPath?>/web/assets/js/app/admin/avisos/app.js"></script>
         <!--<script src="<?=$this->contextPath?>/web/assets/js/app/admin/equipo/autoComplete.js"></script> -->
         <!-- END JAVASCRIPT DEL ADMINISTRADOR -->
 
@@ -194,11 +196,17 @@
 
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/asignacion/asignacionProvider.js"></script>
         <script src="<?=$this->contextPath?>/web/assets/js/app/asignacion/nueServ/app.js"></script>
+        <script src="<?=$this->contextPath?>/web/assets/js/app/home/app.js"></script>
         <!-- END JAVASCRIPT DEL Asignacion -->
+
+         <!-- BEGIN CKEditor -->
+       <script src="<?=$this->contextPath?>/web/assets/js/libs/ckeditor/ckeditor.js"></script>
+        <!-- END CKEditor -->
+
+
     <!-- END JAVASCRIPT -->
 
-	</body>
-</html>
+	</body> </html>
 
 
 <!--
