@@ -46,6 +46,9 @@ RewriteRule ^(.*)$ /siri1.2/web/template/menu4/menu4.html [L]
 RewriteCond $1 ^reporte
 RewriteRule ^(.*)$ /siri1.2/web/template/reporte/reporte.html [L]
 
+RewriteCond $1 ^consultareporte
+RewriteRule ^(.*)$ /siri1.2/web/login/prueba.php [L]
+
 
 
 #Administracion
@@ -70,6 +73,13 @@ RewriteRule ^(.*)$ /siri1.2/web/template/reporte/reporte.html [L]
 
 	RewriteCond $1 ^equipos
 	RewriteRule ^(.*)$ /siri1.2/web/template/admin/equipos.html [L]
+
+	#Administracion->Avisos
+	RewriteCond $1 ^avisosController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/AvisosController.php [L]
+
+	RewriteCond $1 ^avisos
+	RewriteRule ^(.*)$ /siri1.2/web/template/admin/avisos.html [L]
 
 
 #Control de Reportes

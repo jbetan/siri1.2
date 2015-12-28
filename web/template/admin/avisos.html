@@ -1,0 +1,204 @@
+
+<div class="section-body" ng-controller="AvisosController as aviso" >
+    <div class="row">
+        <div class="card panel" id="userCardForm">
+            <div class="card-head card-head-sm collapsed style-primary-light" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
+                <header>Agregar Nuevo  Aviso  </header> 
+                <div class="tools">
+                    <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+                </div>
+            </div>
+
+            <div id="accordion1-2" class="collapse">
+                <!-- BEGIN VALIDATION FORM WIZARD -->
+                <div class="row" >
+                    <div class="col-lg-12">
+                        <form class="form" ng-submit="uploadFile()"  novalidate="novalidate" id="form_aviso" name="upload">
+                            <div class="card-body">
+
+                                <div class="row">
+
+                                     <div class="col-sm-1">                                     
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <input type="file" name="file" uploader-model="file" id="firstname" class="form-control ng-dirty ng-invalid ng-valid" data-rule-minlength="2" required>
+                                            <label for="firstname" class="control-label">Seleccione una imagen </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">                                       
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                     
+                                    </div>
+
+                                </div>
+                                
+                                <div class="row">
+
+                                    <div class="col-sm-1">              
+                                    </div>
+
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control ng-dirty ng-invalid ng-valid" ng-model="titulo" required>
+                                            <label for="Age2">Titulo</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">                      
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                     <div class="col-sm-1">                                     
+                                    </div>
+
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <select ng-model="tipo" class="form-control ng-dirty ng-invalid ng-valid" required >                                               
+                                                <option value="img-rounded">Redonda</option>
+                                                <option value="img-circle">Cuadrada</option>
+                                                <option value="img-thumbnail">Con bordes</option>                                                
+                                            </select>
+                                            <label for="Age2">Forma de la imagen</label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">   
+                                    	<div class="card-actionbar">
+			                                <div class="card-actionbar-row"> 
+
+                                            <input class="btn  btn-primary ink-reaction" type="submit" value="GUARDAR"> 
+			                               
+			                                    
+			                                </div>
+			                            </div>                                    
+                                    </div>
+
+                                    <div class="col-sm-4">                                     
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-sm-1">                                     
+                                    </div>
+
+                                    <div class="col-sm-5">
+                                        <div class="form-group">
+                                            <select ng-model="tipo_aviso" class="form-control ng-dirty ng-invalid ng-valid" required >                                               
+                                                <option value="panel panel-default">Default</option>
+                                                <option value="panel panel-primary">Primario</option>
+                                                <option value="panel panel-success">Exito</option>
+                                                <option value="panel panel-info">Informativo</option>
+                                                <option value="panel panel-danger">Urgente</option>                                                
+                                            </select>
+                                            <label for="Age2">Categoria de Aviso</label>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-2">   
+                                    	<div class="card-actionbar">
+			                                <div class="card-actionbar-row">
+			                                  
+
+                                                <input class="btn btn-flat btn-primary ink-reaction" type="reset" value="CANCELAR"> 			                                    
+			                                </div>
+			                            </div>                                    
+                                    </div>
+
+                                    <div class="col-sm-4">                                     
+                                    </div>
+                                </div> 
+
+
+                                <div class="row">
+                                    <div class="col-sm-1">                                     
+                                    </div>
+
+                                    <div class="col-sm-10">
+                                         <label >* Aviso </label>
+                                        <div class="form-group">
+		                                    <textarea name="editor1" data-ng-model="aviso_des"   data-ck-editor class="form-control ng-dirty ng-valid" rows="5"  >
+                                            </textarea> 
+                                           
+		                                                              
+                                        </div>           
+                                    </div>
+
+                                    <div class="col-sm-1">                                     
+                                    </div>
+                                </div>
+                            </div>
+                           
+                         
+                        </form>
+                    </div><!--end .col -->
+                </div><!--end .row -->
+                <!-- END VALIDATION FORM WIZARD -->
+            </div>
+        </div>
+        <br/><br/>
+        <div class="card-head card-head-sm collapsed style-primary-light" data-toggle="collapse" data-parent="#accordion2" data-target="#accordion2-3">
+            <header>Ver Avisos</header>
+            <div class="tools">
+                <a class="btn btn-icon-toggle"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
+
+        <div id="accordion2-3" class="collapse">
+            <!-- BEGIN VALIDATION FORM WIZARD -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="col-md-12 col-sm-12">
+                        <div >
+                        <table datatable="ng" class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>FOLIO</th>
+                                <th>IMAGEN</th>
+                                <th>TITULO</th>
+                                <th>AVISO</th> 
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="aviso in aviso.avisos.data">
+                                <td>{{ aviso.id }}</td>
+
+                                <td >
+                                    <img style="vertical-align:text-bottom;" src="./web/files/{{ aviso.imagen }}" class="{{aviso.tipo_img}}" width="80px" height="80px">
+                                </td>
+
+                                <td>{{ aviso.titulo }}</td>
+
+                                <td style="width: 2250px;">
+                                    <p ng-bind-html="aviso.aviso"></p>
+                                   </td>
+                               
+                                <td>
+                                  <button class="btn btn-danger" ng-click="delete(aviso.id)">
+                                    <i class="fa fa-trash-o"></i>
+                                  </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                     
+                    </div>
+
+                </div><!--end .row -->
+            </div>
+        </div>
+    </div>
+
+</div>

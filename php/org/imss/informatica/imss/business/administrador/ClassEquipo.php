@@ -52,6 +52,32 @@ class ClassEquipo extends  class_mysqlconnector
         );
     }
 
+    public function get_equipos()
+    {
+
+        $sql  = "SELECT 
+        e.id,
+        e.modelo,
+        e.numdeserie,
+        e.etiqueta,
+        t.descripcion as tipo,
+        m.descripcion as marca 
+        FROM equipos e
+        LEFT JOIN tipo t ON (e.idtipo = t.id)
+        LEFT JOIN marca m ON (e.idmarca = m.id )
+        ORDER BY id ASC";  
+     
+        $res = $this->EjecutarConsulta($sql);
+        
+        $k = 0;
+        while($fila = @mysql_fetch_assoc($res)){  
+            $valores[$k++] = $fila; 
+        }
+       
+        if(isset($valores)) return $valores;
+
+    }
+
     public function guardarEquipos($equipo) {
 
         $this->setKey("descripcion",$equipo["idmarca"] );
@@ -61,10 +87,7 @@ class ClassEquipo extends  class_mysqlconnector
         $this->setKey("id", $equipo["id"]);
         $find = $this->devuelve_fila_i("equipos");
 
-       print_r($tipo['id']);
-
-        echo ' ';
-    print_r($marca['id']);
+     
 
 
         if($find) {
@@ -103,12 +126,27 @@ class ClassEquipo extends  class_mysqlconnector
 
     public function findEquipoById($id) {
         //$this->EjecutarConsulta("SET NAMES 'latin1'");
-        $this->setKey("id", $id);
-        $fila = $this->devuelve_fila_i("equipos");
-        if($fila) {
-            return $fila;
+       
+        $sql  = "SELECT 
+        e.id ,
+        e.modelo,
+        e.numdeserie,
+        e.etiqueta,
+        t.descripcion as idtipo,
+        m.descripcion as idmarca 
+        FROM equipos e
+        LEFT JOIN tipo t ON (e.idtipo = t.id)
+        LEFT JOIN marca m ON (e.idmarca = m.id )
+        WHERE e.id = '{$id}' ";  
+     
+        $res = $this->EjecutarConsulta($sql);
+        
+        $k = 0;
+        while($fila = @mysql_fetch_assoc($res)){  
+           return $fila; 
         }
-        return array();
+       
+        //if(isset($valores)) return $valores;
     }
 
     public function deleteEquipos($id) {

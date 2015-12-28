@@ -66,16 +66,26 @@ class ClassUser extends  class_mysqlconnector
 
     //Usuarios
     public function guardarUsuarios($usuario) {
-        print_r($usuario);
+        
         //Buscando el id de la unidad
-        $this->setKey("nombre", $usuario["unidad"]);
-        $unidad = $this->devuelve_fila_i("unidad");
+        if (empty($usuario["unidad"]) || $usuario["unidad"] == "" || !isset($usuario['unidad'])) {
+           $unidad = " ";
+        }else{
+           $this->setKey("nombre", $usuario["unidad"]);
+           $unidad = $this->devuelve_fila_i("unidad"); 
+        }
+        
+        if (empty($usuario["subunidad"]) || $usuario["subunidad"] == "" || !isset($usuario['subunidad'])) {
+            $subunidad = " ";
+        }else{
+           $this->setKey("nombre", $usuario["subunidad"]);
+           $subunidad = $this->devuelve_fila_i("unidad"); 
+        }
 
-        $this->setKey("nombre", $usuario["subunidad"]);
-        $subunidad = $this->devuelve_fila_i("unidad");
+        
 
         //Encriptando la contraseña
-        $contra = md5($usuario['contrasena']);
+       
         //Buscando el id de categoria
         $this->setKey("nombre", $usuario["categoria"]);
         $cat = $this->devuelve_fila_i("categoriau");
@@ -83,6 +93,7 @@ class ClassUser extends  class_mysqlconnector
         $this->setKey("nombre", $usuario["subcategoria"]);
         $subCat = $this->devuelve_fila_i("categoriau");
 
+        $contra = md5($usuario['contrasena']);
 
         $this->EjecutarConsulta("SET NAMES 'latin1'");
         $this->setKey("id", $usuario["id"]);
@@ -90,7 +101,10 @@ class ClassUser extends  class_mysqlconnector
         if($find) {
             $this->setKey("id", $usuario["id"]);
             $this->setValue("nombre", $usuario["nombre"]);
-            $this->setValue("contrasena", $contra);
+             if (isset($usuario['contrasena'])) {
+                 
+                $this->setValue("contrasena", $contra);
+                }
             $this->setValue("matricula", $usuario["matricula"]);
             $this->setValue("tipo", $usuario["tipo"]);
             $this->setValue("idunidad", $unidad['id']);

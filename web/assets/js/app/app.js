@@ -17,6 +17,8 @@
         "edicion-Module",
         "activos-Module",
         "asigmacion-Module",
+        "aviso-module",
+        "home-Module",
         "nuevosReportes-Module",
         "Asignar-Module"
     ]);
@@ -92,9 +94,13 @@
 
             .when("/home", {
                 templateUrl: "home",
-                controller: ""
+                controller: "HomeController"
             })
 
+            .when("/avisos", {
+                templateUrl: "avisos",
+                controller: "AvisosController"
+            })
 
            
             //*********************Aqui termino mi parte

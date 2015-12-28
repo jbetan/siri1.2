@@ -103,7 +103,7 @@
                                             <i>({{match.model.unidad}})</i>
                                         </a>
                                     </script>
-                                    <input type="text" name="firstname" ng-model="admin.user.data.unidad" typeahead-editable="false" typeahead="datos.nombre for datos in datos | filter:$viewValue | limitTo:10" id="unidad" class="form-control" data-rule-minlength="2" required>
+                                    <input type="text" name="firstname" ng-model="admin.user.data.unidad" typeahead-editable="false" typeahead="datos.nombre for datos in datos | filter:$viewValue | limitTo:10" id="unidad" class="form-control" data-rule-minlength="2" >
                                     <label for="unidad" class="control-label">Unidad</label>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@
                                             <i>({{match.model.unidad}})</i>
                                         </a>
                                     </script>
-                                    <input type="text" name="firstname" ng-model="admin.user.data.subunidad" typeahead-editable="false" typeahead="datos.nombre for datos in datos | filter:$viewValue | limitTo:10" id="unidad" class="form-control" data-rule-minlength="2" required>
+                                    <input type="text" name="firstname" ng-model="admin.user.data.subunidad" typeahead-editable="false" typeahead="datos.nombre for datos in datos | filter:$viewValue | limitTo:10" id="unidad" class="form-control" data-rule-minlength="2" >
                                     <label for="unidad" class="control-label">Sub-Unidad</label>
                                 </div>
                             </div>
@@ -126,13 +126,13 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="password" name="contrasena" ng-model="admin.user.data.contrasena" id="password1" class="form-control ng-dirty ng-invalid ng-valid" required="" data-rule-minlength="5">
+                                            <input type="password" name="contrasena" ng-model="admin.user.data.contrasena" id="password1" class="form-control ng-dirty ng-invalid ng-valid"  data-rule-minlength="5">
                                             <label for="password1" class="control-label">Contraseña</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="password" name="contrasena"  ng-model="admin.user.data.repcontrasena" id="passwordrepeat" class="form-control ng-dirty ng-invalid ng-valid" data-rule-equalto="#password1" required="">
+                                            <input type="password" name="contrasena"  ng-model="admin.user.data.repcontrasena" id="passwordrepeat" class="form-control ng-dirty ng-invalid ng-valid" data-rule-equalto="#password1" >
                                             <label for="passwordrepeat" class="control-label">Repetir contraseña</label>
                                         </div>
                                     </div>
