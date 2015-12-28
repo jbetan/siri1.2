@@ -137,6 +137,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
     <!--                                        <option>NO INICIA SESION</option>-->
                                             <option class="problema_def">NO SIRVE EL CD</option>
                                             <option class="problema_def">PROBLEMA OFFICE</option>
+                                            <option class="problema_def">PROBLEMA CON RH2000</option>
     <!--                                        <option>FALLA LYNC</option>-->
     <!--                                        <option>NO ENCIENDE</option>-->
     <!--                                        <option>ALARMADA(FOCO ROJO)</option>-->
@@ -153,7 +154,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 </div>
                                 <br/>
                                 <div class="text-center col-sm-12">
-                                    <a href="page" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
+                                    <a href="login" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
                                     &nbsp;&nbsp; <button type="submit" class="btn btn-raised ink-reaction btn-default-dark" id="save">Guardar</button>
                                 </div>
                             </form>
@@ -281,6 +282,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <select name="problema" ng-model="Ctrl.equipo.data.problema" class="form-control ng-dirty ng-invalid ng-valid" required>
                                             <option value="" class="problema_def" selected>ELIGE UNO</option>
                                             <option class="problema_def">SE APAGA</option>
+                                            <option class="problema_def">PROBLEMA CON RH2000</option>
                                             <option class="problema_def">TIENE VIRUS</option>
                                             <option class="problema_def">NO INICIA SESION</option>
                                             <option class="problema_def">NO SIRVE EL CD</option>
@@ -301,7 +303,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                 <div class="col-lg-12 text-center">
                                     <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
                                     &nbsp;&nbsp; <input type="submit" class="btn btn-raised ink-reaction btn-default-dark" value="Guardar"/>
-                                    &nbsp;&nbsp; <a href="page" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
+                                    &nbsp;&nbsp; <a href="login" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
 
                                 </div>
                                 <p></p>

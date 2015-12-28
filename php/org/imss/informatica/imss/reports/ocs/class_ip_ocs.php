@@ -20,7 +20,7 @@ class class_ip_ocs extends class_mysqlconnector_ocs
         }else{
             return true;
         }
-        print_r($is_ip);
+        //print_r($is_ip);
 
     }
 

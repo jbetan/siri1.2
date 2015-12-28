@@ -138,6 +138,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                                         <option class="problema_def">NO INICIA SESION</option>
                                         <option class="problema_def">NO SIRVE EL CD</option>
                                         <option class="problema_def">PROBLEMA OFFICE</option>
+                                        <option class="problema_def">PROBLEMA CON RH2000</option>
                                         <option class="problema_def">FALLA LYNC</option>
                                         <option class="problema_def">NO ENCIENDE</option>
                                         <option class="problema_def">ALARMADA(FOCO ROJO)</option>
@@ -154,7 +155,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                             <div class="col-lg-12 text-center">
                                 <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
                                 &nbsp;&nbsp; <input ng-click='on_click_save()' class="btn btn-raised ink-reaction btn-default-dark" value="Guardar"/>
-                                &nbsp;&nbsp; <a href="page" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
+                                &nbsp;&nbsp; <a href="login" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
 
                             </div>
                             <p></p>
