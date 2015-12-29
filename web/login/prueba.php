@@ -68,7 +68,7 @@
     <div id="accordion1-2" >
         <div class="col-sm-6">
             <label class="buscarLibros"> Ingresa el FOLIO, número de SERIE de tu equipo o tu NOMBRE:</label>
-            <input ng-model="folioBuscado"  class="form-control" type="text"> <span class=" form-control-feedback"></span>
+            <input ng-model="folioBuscado" placeholder="Irvin Franco" class="form-control" type="text"> <span class=" form-control-feedback" ></span>
 
             <div class="form-control-line "> </div>
 
@@ -77,7 +77,10 @@
             <!-- filtro -->
         </div >
         <div class="col-sm-3">
-        <button ng-click="ShowForm()" ng-hide="formVisibility"  class="btn btn-block btn-raised btn-info text-xxxl" style="width: 410px" > <i class="fa fa-search "></i> buscar</button>
+        <button ng-click="ShowForm()" ng-hide="formVisibility"  class="btn btn-block btn-raised btn-info text-xxxl" style="width:210px" > <i class="fa fa-search "></i> buscar</button>
+        </div>
+        <div class="col-sm-3">
+            <a href="consultareporte" class="btn btn-block btn-raised btn-success text-xxxl" style="width:210px" > <i class="fa fa-search "></i> buscar otra vez</a>
         </div>
             <!-- <div >
             <label class="buscarLibros">INGRESA TU NOMBRE:</label>

@@ -17,6 +17,8 @@
         "edicion-Module",
         "activos-Module",
         "asigmacion-Module",
+        "aviso-module",
+        "home-Module",
         "nuevosReportes-Module",
         "Asignar-Module"
     ]);
@@ -89,11 +91,23 @@
                 templateUrl: "asignacion",
                 controller: "AsignacionController"
             })
+
+            .when("/home", {
+                templateUrl: "home",
+                controller: "HomeController"
+            })
+
+            .when("/avisos", {
+                templateUrl: "avisos",
+                controller: "AvisosController"
+            })
+
+           
             //*********************Aqui termino mi parte
 
             //este es digamos, al igual que en un switch el default, en caso que
             //no hayamos concretado que nos redirija a la página principal
-            .otherwise({reditrectTo: "/dataTable"});
+            .otherwise({redirectTo: "/home"});
     });
 })();
 

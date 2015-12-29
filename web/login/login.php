@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="page-module">
 	<head>
 		<title><?=$this->title?></title>
 
@@ -37,12 +37,16 @@
 							<br/>
 							<br>
 							<span class="text-lg text-bold text-primary">Instituto Mexicano del Seguro Social</span>
+
+							<br><br>
+							<span class="text-lg text-bold text-primary">Uso Informática</span>
+
 							<br/><br/>
 							<form class="form floating-label" action="<?=$this->contextPath."/".$this->getActionForm()?>" accept-charset="utf-8" method="post">
 
 								<div class="form-group">
 									<input type="text" class="form-control" id="username" name="username">
-									<label for="username"><i class="fa fa-user"></i> Matricula</label>
+									<label for="username"><i class="fa fa-user"></i> Usuario</label>
 
 								</div>
 
@@ -73,17 +77,20 @@
 								<br/>
 								<div class="row">
 									<div class="col-xs-6 text-right">
-										<button class="btn btn-primary btn-raised" type="submit">Login <i class="fa fa-unlock-alt"></i></button>
+										<button class="btn btn-primary btn-raised" type="submit">Entrar <i class="fa fa-unlock-alt"></i></button>
 									</div><!--end .col -->
 								</div><!--end .row -->
 							</form>
 						</div><!--end .col -->
-						<div class="col-sm-5 col-sm-offset-1 text-center" style="top:50px">
+						<div class="col-sm-5 col-sm-offset-1 text-center" style="top:50px" ng-controller="pageController as page">
 							<br><br>
 								<h3 class="text-light">
 									¿Deseas levantar un reporte?
 								</h3>
+
 								<a class="btn btn-block btn-raised btn-success text-xxxl" style="width: 310px"  href="equipoReporte"> <i class="fa fa-file-text-o"></i> Haz click, para levantar un reporte</a>
+
+
 								<br><br>
                             <a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consultareporte"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
 
@@ -118,6 +125,13 @@
 				<script src="<?=$this->contextPath?>/web/assets/js/core/source/AppNavSearch.js"></script>
 				<script src="<?=$this->contextPath?>/web/assets/js/core/source/AppVendor.js"></script>
 				<script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-route.min.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-resource.min.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-datatables.min.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/css/theme-default/libs/ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/js/app/page/app.js"></script>
+                <script src="<?=$this->contextPath?>/web/assets/js/app/page/pageProvider.js"></script>
 				<!-- END JAVASCRIPT -->
 
 			</body>

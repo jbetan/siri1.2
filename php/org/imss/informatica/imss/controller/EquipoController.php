@@ -37,9 +37,11 @@ if($_GET["saveEquipos"]){
 {
     exit(json_encode( $equipo->auto()));
 
-}elseif($_GET["getTipo"])
-{
+}elseif($_GET["getTipo"]){
     exit(json_encode( $equipo->autoTipo()));
+}
+elseif($_GET["get_equipos"]){
+    exit(json_encode( $equipo->get_equipos()));
 }
 
 

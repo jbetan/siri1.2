@@ -135,22 +135,21 @@
                         return false;
                     }else {
                         $http({
-                            url: "confirmacion?saveform2=1",
+                            url: "confirmacion?save=1",
                             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
                             async: true,
                             method: 'POST',
                             data: $.param(vm.equipo.data)
                         }).success(function (data) {
-                            console.log("llega id del reporte", data.id);
-                            var id = data.id;
+                            console.log("llega id del reporte", data);
+                            var id =data.id;
                             if (data.Error == true) {
-                                console.log(data.id);
                                 alert("Rellena datos")
 
                             } else {
                                 $('#myModal2').modal('show');
                                 setTimeout(function () {
-                                    location.href = ('confirmacion?id='+ data.id);
+                                    location.href = ('confirmacion?id='+id);
                                     console.log(id);
                                 }, 2000);
                             }

@@ -29,12 +29,14 @@ getReportes();
             }, 100);
         }
 
+
         $scope.formVisibility=false;
         $scope.ShowForm=function(){
 
             $scope.formVisibility=true;
             console.log($scope.formVisibility);
         }
+
 
     });
 })();
