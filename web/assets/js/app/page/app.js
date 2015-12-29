@@ -13,6 +13,7 @@
             ipOcs.CompararIP(function(data, callback){
                 vm.ip.data= ipOcs.ipComparada.data;
                 console.log("trajo dato del page-provider", vm.ip);
+                console.log(vm.ip.data);
                 if(vm.ip.data == "false"){
                     location.href=('equipo_Reporte');
                     console.log("No esta en OCS");

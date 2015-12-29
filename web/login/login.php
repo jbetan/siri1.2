@@ -35,8 +35,8 @@
 					<div class="row">
 						<div class="col-sm-6">
 							<br/>
-							<br><br>
-							<span class="text-lg text-bold text-primary">ADMIN CONTRARECIBOS</span>
+							<br>
+							<span class="text-lg text-bold text-primary">Instituto Mexicano del Seguro Social</span>
 							<br/><br/>
 							<form class="form floating-label" action="<?=$this->contextPath."/".$this->getActionForm()?>" accept-charset="utf-8" method="post">
 
@@ -83,20 +83,22 @@
 								<h3 class="text-light">
 									¿Deseas levantar un reporte?
 								</h3>
-								<a class="btn btn-block btn-raised btn-primary" style="width: 310px" href="page">Haz click, para levantar un reporte</a>
+								<a class="btn btn-block btn-raised btn-success text-xxxl" style="width: 310px"  href="equipoReporte"> <i class="fa fa-file-text-o"></i> Haz click, para levantar un reporte</a>
 								<br><br>
+                            <a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consultareporte"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
 
-								</div><!--end .col -->
+                        </div><!--end .col -->
 							</div><!--end .row -->
 						</div><!--end .card-body -->
 					</div><!--end .card -->
+
 				</section>
 
         <div class="col-lg-12 ">
 
                     <div class="card">
 
-                        <div class="card-body style-primary-light height-1">F.S. Irvin - B.L. Jossue - N.B. Brayan</div>
+                        <div class="card-body style-primary-light height-1 "> Irvin Franco -  Jossue Betancourt-  Brayan Novelo  <i class="fa fa-spinner fa-pulse"></i>    IMSS, Yucatán,México - Algunos derechos reservados 2015</div>
 
                     </div>
 				<!-- END LOGIN SECTION -->
