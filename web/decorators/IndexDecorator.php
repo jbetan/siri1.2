@@ -79,9 +79,9 @@
                             </a>
                             <ul class="dropdown-menu animation-dock">
                                 <li class="dropdown-header">Config</li>
-                                <li><a href="<?=$this->contextPath?>/web/html/pages/profile.html">Mi perfil</a></li>
+                                
                                 <li class="divider"></li>
-                                <li><a href="<?=$this->contextPath?>/web/html/pages/locked.html"><i class="fa fa-fw fa-lock"></i> Bloquear</a></li>
+                                
                                 <li><a href="<?=$this->contextPath?>/salir"><i class="fa fa-fw fa-power-off text-danger"></i> Salir</a></li>
                             </ul><!--end .dropdown-menu -->
                         </li><!--end .dropdown -->
@@ -95,7 +95,7 @@
     <!-- BEGIN BASE-->
         <div id="base">
             <!-- BEGIN CONTENT-->
-            <div id="content" >
+            <div id="content" style="padding-top: 42px;" >
                 <section class="style-default-bright" ng-view> </section>                
         	</div>
         	<!-- END CONTENT -->
