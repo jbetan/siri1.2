@@ -52,9 +52,9 @@
 
 								<div class="form-group">
 									<input type="password" class="form-control" id="password" name="password" autocomplete="off" required="">
-									<label for="password"><i class="fa fa-asterisk"> Contrase&ntilde;a </i></label>
-									
+									<label for="password"><i class="fa fa-asterisk"> Contrase&ntilde;a </i></label>									
 								</div>
+								<?= $_SESSION["imss"]["acceso"] ?>
 								<div class="form-group">
 									<select name="nivel" id="nivel" class="form-control" required >
                                         <option selected></option>

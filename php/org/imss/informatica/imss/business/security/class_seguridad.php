@@ -14,17 +14,18 @@ class class_seguridad extends class_mysqlconnector
 			$permisos = array("id_usuario" => NULL, "nombre" => "Administrador", "user_name" => "administrador", "permiso" => 10, "acceso" => 1);
 		}else{
 			
-			//print_r("llego")
 			$sql = "SELECT 
-			us.id, 
-			us.nombre, 
-			us.tipo, 
-			us.matricula,
-			cu.nombre as tipoNivel,
-			cu.nivel 
-			from usuario as us
-			LEFT JOIN categoriau as cu ON us.idcategoria = cu.id
-		 	WHERE matricula='{$userName}' and contrasena= md5('{$password}') and cu.nivel = $nivel";
+					us.id, 
+					us.nombre, 
+					us.tipo, 
+					us.matricula,
+					cu.nombre as tipoNivel,
+					cu.nivel 
+					from usuario as us
+					LEFT JOIN categoriau as cu ON us.idcategoria = cu.id
+				 	WHERE us.matricula='{$userName}' and us.contrasena = md5('{$password}') and cu.nivel = $nivel";
+				 	//echo $sql;
+				 	//exit();
 
 		 	try{
 		 		$res = $this->EjecutarConsulta($sql);

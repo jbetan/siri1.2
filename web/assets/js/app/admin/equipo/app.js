@@ -117,6 +117,7 @@
             });
             console.info('fomulario',EquipService.equipo);
            vm.equipos = EquipService.equipo;
+           
             setTimeout(function(){
                 $scope.$apply();
                 console.info('fomulario',vm.equipos.data);
