@@ -18,7 +18,7 @@
                     location.href=('equipo_Reporte');
                     console.log("No esta en OCS");
                 }else{
-                    location.href=("equipoReporte");
+                    location.href=("");
                     console.log("Si esta en OCS");
                 }
             });
