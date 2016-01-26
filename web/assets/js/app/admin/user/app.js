@@ -12,6 +12,7 @@
 
         //***********************Guardar Usuario*************************
         vm.submit = function() {
+
             if($scope.submit == undefined) {
                 $scope.submit = $("#formUsuarios").validate({
                     submitHandler: function (form) {
@@ -25,13 +26,14 @@
                             if(data.error === false) {
                                 console.log("OK",data.message);
                                 alert(data.message);
+                                 vm.dtOptions.reloadData();
+                                 vm.resetData();
                             } else {
                                 alert(data.message);
                                 console.log("ERROR",data.message);
                             }
 
-                             vm.dtOptions.reloadData();
-                            vm.resetData();
+                            
                         });
                     }
                 });
@@ -98,6 +100,7 @@
             //vm.message = 'You are trying to edit the row with IDSSS: ' + id;
             //ServiceApp.loadingAction("active");
             setTimeout(function(){window.materialadmin.AppForm._initFloatingLabels();}, 200);
+
             UserService.findUserById(id, function() {
                 //ServiceApp.loadingAction("close");
                 var card = $('#userCardForm');
@@ -120,14 +123,16 @@
            // vm.message = 'You are trying to remove the row with IDOOO: ' + id;
             if(confirm("Confirmar eliminar la unidad ?")) {
                 //ServiceApp.loadingAction("active");
+
                 UserService.deleteUser(id, function(data) {
                     //ServiceApp.loadingAction("close");
                     if(data.error === false) {
                         //ServiceApp.notification('', data.message, ServiceApp.typeNotification.SUCCESS);
-                        console.log('',data.message);
+                       alert(data.message);
                         vm.dtOptions.reloadData();
                     } else {
-                        console.log('',data.message);
+                        alert(data.message + " o el usuario tiene relacion con un reporte");
+                       // console.log('',);
                         //ServiceApp.notification('', data.message, ServiceApp.typeNotification.ERROR);
                     }
                 });

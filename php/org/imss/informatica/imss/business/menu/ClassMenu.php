@@ -51,9 +51,7 @@ class ClassMenu extends class_mysqlconnector {
 
     public function getMenuByUsuario($menuSession, $path) {
         
-        switch($menuSession){           
-          
-            
+        switch($menuSession){   
 
             case "Responsable de unidad": //0
                 $this->menu = file_get_contents($path."template/menu/menuSiri/responsable_unidad.json");
@@ -96,7 +94,8 @@ class ClassMenu extends class_mysqlconnector {
                 break;  
      
                        
-            default: //jaja
+            default: //Yonhy
+               // $this->menu = file_get_contents($path."template/menu/menuSiri/mesaderecepcion.json");
                 $this->menu = file_get_contents($path."template/menu/menuSiri/admin.json");
                 break;
         }

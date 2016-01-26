@@ -79,15 +79,20 @@ class ClassEdicion extends  class_mysqlconnector
             $this->setValue("comentario",         $reporte["comentario"]);
             $insert_ha = $this->insertar("historialatencion");
 
-            if($updateAT AND $insert_ha){
+            $this->setKey("id",                  $reporte["idr"]);           
+            $this->setValue("method_solution",   $reporte["method_solution"]);
+            $update_report =$this->actualizar("reporte");
+
+            if($updateAT AND $insert_ha AND $update_report){
                 $this->CometerTransaccion();
                 return true;
             }      
            
         }else{
             /*Cambiamos el usuario actual por el usuario escalado*/
-            $this->setKey("id",            $reporte["idr"]);
-            $this->setValue("idusuario",   $reporte["usuarioD_id"]);
+            $this->setKey("id",                  $reporte["idr"]);
+            $this->setValue("idusuario",         $reporte["usuarioD_id"]);
+            $this->setValue("method_solution",   $reporte["method_solution"]);
             $update_report =$this->actualizar("reporte");
 
 

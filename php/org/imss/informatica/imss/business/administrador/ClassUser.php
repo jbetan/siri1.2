@@ -82,18 +82,24 @@ class ClassUser extends  class_mysqlconnector
            $subunidad = $this->devuelve_fila_i("unidad"); 
         }
 
+        //Obtnemos la subcategoria
+        if (empty($usuario["subcategoria"]) || $usuario["subcategoria"] == "" || !isset($usuario['subcategoria'])) {
+            $subCat = " ";
+        }else{
+            $this->setKey("nombre", $usuario["subcategoria"]);
+            $subCat = $this->devuelve_fila_i("categoriau");
+        }
+
         
 
         //Encriptando la contraseña
+         $contra = md5($usuario['contrasena']);
        
         //Buscando el id de categoria
         $this->setKey("nombre", $usuario["categoria"]);
         $cat = $this->devuelve_fila_i("categoriau");
-        //Buscando el id de subcategoria
-        $this->setKey("nombre", $usuario["subcategoria"]);
-        $subCat = $this->devuelve_fila_i("categoriau");
-
-        $contra = md5($usuario['contrasena']);
+      
+       
 
         $this->EjecutarConsulta("SET NAMES 'latin1'");
         $this->setKey("id", $usuario["id"]);
@@ -101,24 +107,25 @@ class ClassUser extends  class_mysqlconnector
         if($find) {
             $this->setKey("id", $usuario["id"]);
             $this->setValue("nombre", $usuario["nombre"]);
-             if (isset($usuario['contrasena'])) {
-                 
+
+            if (isset($usuario['contrasena'])) { 
                 $this->setValue("contrasena", $contra);
-                }
-            $this->setValue("matricula", $usuario["matricula"]);
-            $this->setValue("tipo", $usuario["tipo"]);
-            $this->setValue("idunidad", $unidad['id']);
-            $this->setValue("idSubUnidad", $subunidad['id']);
-            $this->setValue("idcategoria", $cat['id']);
+            }
+            $this->setValue("matricula",    $usuario["matricula"]);
+            $this->setValue("tipo",         $usuario["tipo"]);
+            $this->setValue("idunidad",     $unidad['id']);
+            $this->setValue("idSubUnidad",  $subunidad['id']);
+            $this->setValue("idcategoria",  $cat['id']);
             $this->setValue("subcategoria", $subCat['id']);
-            $this->setValue("esCDI", $usuario["esCDI"]);
-            $this->setValue("esCOORDINAD", $usuario["escoordinador"]);
+            $this->setValue("esCDI",        $usuario["esCDI"]);
+            $this->setValue("esCOORDINAD",  $usuario["escoordinador"]);
             $this->IniciarTransaccion();
             $update = $this->actualizar("usuario");
             if($update and $cat and $subCat and $unidad){
                 $this->CometerTransaccion();
                 return true;
             }
+
         } else {
             $this->setValue("nombre", $usuario["nombre"]);
             $this->setValue("contrasena", $contra);
@@ -143,6 +150,7 @@ class ClassUser extends  class_mysqlconnector
 
     public function findUserById($id) {
         $sql = "SELECT 
+                us.id,
                 us.nombre,
                 us.matricula,
                 us.tipo,
@@ -182,10 +190,15 @@ class ClassUser extends  class_mysqlconnector
         //$this->EjecutarConsulta("SET NAMES 'latin1'");
         $this->setKey("id", $id);
         $find = $this->devuelve_fila_i("usuario");
+
         if($find) {
+           
             $this->IniciarTransaccion();
             $this->setKey("id", $id);
-            if($this->eliminar("usuario")){
+            $delete = $this->eliminar("usuario");
+
+            if($delete){
+               
                 $this->CometerTransaccion();
                 return true;
             }

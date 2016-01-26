@@ -120,17 +120,11 @@
 
                         </form>
                     </div><!--end .col -->
-                    <div class="col-md-12 col-xs-6">
+                 <!--    <div class="col-md-12 col-xs-6">
                         <div class="card">
-
                             <div class="card-body small-padding style-warning text-center">NOTA: en "DESCRIPCIÓN DEL REPORTE / SOLICITUD" solo muestra la informacion del reporte levantado </div>
-
-
-
-
-
                         </div>
-                        </di>
+                    </div> -->
                 </div><!--end .row -->
                 <!-- END VALIDATION FORM WIZARD -->
             </div>
@@ -212,9 +206,27 @@
                                 </div>
                                 <div class="col-sm-2">
                                     <label class="radio-inline radio-styled" >
-                                        <input type="radio"  ng-click="edicion.no()"  name="sol" value="NO"/>
+                                        <input type="radio"  ng-click="edicion.no()" checked  name="sol" value="NO"/>
                                         <span>NO <i class="fa fa-times"></i>
 </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 form-group" ng-hide="edicion.show">
+                                <p>Metodo de solucion</p>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  
+                                        ng-model="edicion.reporte.data.method_solution"  name="method_solution" value="En sitio"/>
+                                        En sitio
+                                    </label>
+                                </div>
+                                <div class="col-sm-2">
+                                    <label class="radio-inline radio-styled" >
+                                        <input type="radio"  
+                                         ng-model="edicion.reporte.data.method_solution"  name="method_solution" value="Remoto"/>
+                                        Remoto
                                     </label>
                                 </div>
                             </div>
@@ -242,6 +254,8 @@
                                     </div>
                                 </div>
                             </div><!--end .row -->
+
+
                             <!--Termina Escalar de Equipo-->
 
                             <div class="col-lg-4">
@@ -324,34 +338,16 @@
                             </div>
                         </div>
                     </div><!--end .col -->
-                    <div class="col-md-12 col-xs-6">
+
+                   <!--  <div class="col-md-12 col-xs-6">
                         <div class="card">
 
                             <div class="card-body small-padding style-warning text-center">NOTA:En "CONTROL " solicionamos el problema o lo escalamos a la persona asignada </div>
                         </div>
-
-
-
-                    </div>
+                    </div> -->
                 </div><!--end .row -->
                 <!-- END VALIDATION FORM WIZARD -->
             </div>
-        </div><!--end .panel -->
-
-
-
-
-        <div class="text-default-bright">
-        {{edicion.mensaje}}
-        <br>
-        <br>
-        <br>
-        {{edicion.reporte.data}}
-         {{edicion.folio}}
-        <br/>
-        {{edicion.usuario.data}}
-            </div>
+        </div><!--end .panel -->     
     </div>
-
-</div><div >
 </div>

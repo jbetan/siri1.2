@@ -13,7 +13,7 @@ include_once("ControllerPrincipal.php");
 class MenuController extends ControllerPrincipal {
 
     function getMenuByUsuario($menuType){
-        $menu = new ClassMenu();
+        $menu = new ClassMenu();       
         return $menu->getMenuByUsuario($menuType, $this->getAbsPath());
     }
 }

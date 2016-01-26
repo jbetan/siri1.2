@@ -100,7 +100,7 @@
                                 <div class="form-group"  ng-controller="AuComUnidades">
                                     <script type="text/ng-template" id="customTemplateTipo.html">
                                         <a>
-                                            <i>({{match.model.unidad}})</i>
+                                            <i>({{match.model.id}})</i>
                                         </a>
                                     </script>
                                     <input type="text" name="firstname" ng-model="admin.user.data.unidad" typeahead-editable="false" typeahead="datos.nombre for datos in datos | filter:$viewValue | limitTo:10" id="unidad" class="form-control" data-rule-minlength="2" >
@@ -126,13 +126,13 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="password" name="contrasena" ng-model="admin.user.data.contrasena" id="password1" class="form-control ng-dirty ng-invalid ng-valid"  data-rule-minlength="5">
-                                            <label for="password1" class="control-label">Contraseña</label>
+                                            <input type="password" name="password" ng-model="admin.user.data.contrasena" id="password" class="form-control ng-dirty ng-invalid ng-valid"  data-rule-minlength="5">
+                                            <label for="password" class="control-label">Contraseña</label>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="password" name="contrasena"  ng-model="admin.user.data.repcontrasena" id="passwordrepeat" class="form-control ng-dirty ng-invalid ng-valid" data-rule-equalto="#password1" >
+                                            <input type="password" name="contrasena"  ng-model="admin.user.data.repcontrasena" id="passwordrepeat" class="form-control ng-dirty ng-invalid ng-valid" data-rule-equalto="#password" >
                                             <label for="passwordrepeat" class="control-label">Repetir contraseña</label>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@
             </div>
         </div>
 
-        <div id="accordion2-3" class="collapse">
+        <div id="accordion2-3" class="">
             <!-- BEGIN VALIDATION FORM WIZARD -->
             <div class="row">
                 <div class="col-lg-12">

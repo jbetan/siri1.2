@@ -46,7 +46,7 @@
                         <li class="header-nav-brand" >
                             <div class="brand-holder">
                                 <a href="<?=$this->contextPath?>/">
-        							<span class="text-lg text-bold text-primary">SIRI 2.0</span>
+        							<span class="text-lg text-bold text-primary">SIRI 2.0 <?= $_SESSION["imss"]["niv_usuario"] ?></span>
                                 </a>
                             </div>
                         </li>
