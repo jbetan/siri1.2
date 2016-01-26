@@ -83,6 +83,8 @@ RewriteRule ^(.*)$ /siri1.2/web/login/prueba.php [L]
 
 
 #Control de Reportes
+RewriteCond $1 ^consultareporte
+	RewriteRule ^(.*)$ /siri1.2/web/login/prueba.php [L]
 
 	#Control de Reportes -> Activos
 	RewriteCond $1 ^activos

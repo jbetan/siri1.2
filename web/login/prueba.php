@@ -57,22 +57,32 @@
     
 
     <div class="card-head card-head-sm collapsed style-primary-light text-center" data-toggle="collapse" data-parent="#accordion1-2" data-target="#">
-        <header><strong> BUSCA TU REPORTE  {{5+5}} </strong></header>
+        <header><strong> Atención a usuarios
+                Consultar reporte o solicitud
+                {{5+5}} </strong></header>
         <div class="tools">
             <a class="btn btn-icon-toggle"></a>
         </div>
     </div>
     </br>
     <div id="accordion1-2" >
-        <div >
-            <label class="buscarLibros"> INGRESA TU FOLIO:</label>
-            <input ng-model="folioBuscado"  class="form-control" type="text"> <span class="fa fa-search form-control-feedback"></span>
+        <div class="col-sm-6">
+            <label class="buscarLibros"> Ingresa el FOLIO, número de SERIE de tu equipo o tu NOMBRE:</label>
+            <input ng-model="folioBuscado" placeholder="Irvin Franco" class="form-control" type="text"> <span class=" form-control-feedback" ></span>
+
             <div class="form-control-line "> </div>
+
             <br>
 
             <!-- filtro -->
+        </div >
+        <div class="col-sm-3">
+        <button ng-click="ShowForm()" ng-hide="formVisibility"  class="btn btn-block btn-raised btn-info text-xxxl" style="width:210px" > <i class="fa fa-search "></i> buscar</button>
         </div>
-         <div >
+        <div class="col-sm-3">
+            <a href="consultareporte" class="btn btn-block btn-raised btn-success text-xxxl" style="width:210px" > <i class="fa fa-search "></i> buscar otra vez</a>
+        </div>
+            <!-- <div >
             <label class="buscarLibros">INGRESA TU NOMBRE:</label>
             <input ng-model="folioBuscado2"  class="form-control" type="text"> <span class="fa fa-search form-control-feedback"></span>
             <div class="form-control-line "> </div>
@@ -80,7 +90,8 @@
 
             <!-- filtro -->
         </div>
-        <table  class="col-md-12 table no-margin table-hover    " >
+        <div ng-show="formVisibility">
+        <table   class="col-md-12 table no-margin table-hover    " >
             <thead class="style-default-dark">
             <tr >
                 <td style="width: 200px;"></td>
@@ -188,23 +199,9 @@
             <tr ng-if="reporte.post.expanded" ng-repeat-end>
                 <td colspan="1"> <div class="col-sm-1">
                     <div class="btn-group open">
-                        <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
-                            <i class="fa fa-plus-square fa-2x"></i>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu" role="menu">
-                            <li>
 
-                                
 
-                                <a class="btn btn-warning" href="app#/edicion/{{reporte.folio}}"> </a>
 
-                            </li>
-                            
-                            <li>
-                               
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
                 </td>
@@ -250,11 +247,15 @@
 
         </table>
     </div>
+        <br>
+        <br>
+        <div class="col-sm-3">
 
-  
-    
 
+            <a class="btn btn-block btn-raised btn-primary-light text-xxxl" style="width: 310px" href="login"> <i class="fa fa-arrow-circle-o-left "></i> Regresar</a>
+    </div>
 
+    {{reporte.status}}
     
 
 
