@@ -8,7 +8,7 @@ class ClassUnidades extends class_mysqlconnector
         $this->Conectar();
     }
 
-    public function getListas($arr)
+    public function getListas()
     {
 
         //$this->setValue("areasoporte",$arr["direccion"]);
@@ -23,7 +23,7 @@ class ClassUnidades extends class_mysqlconnector
                 return array();
             }
     }
-    public function getListasTipo($arr)
+    public function getListasTipo()
     {
 
         //$this->setValue("areasoporte",$arr["direccion"]);
@@ -38,7 +38,7 @@ class ClassUnidades extends class_mysqlconnector
             return array();
         }
     }
-    public function getListasMarca($arr)
+    public function getListasMarca()
     {
 
         //$this->setValue("areasoporte",$arr["direccion"]);
@@ -83,4 +83,16 @@ class ClassUnidades extends class_mysqlconnector
             return array();
         }
     }
+}
+
+$autocomplete = new ClassUnidades();
+if($_POST['send'] == "unidad"){
+    $unidad_array = $autocomplete->getListas();
+    exit(json_encode($unidad_array));
+}else if($_POST['send'] == "tipo"){
+    $tipo_array = $autocomplete->getListasTipo();
+    exit(json_encode($tipo_array));
+}else if($_POST['send'] == "marca"){
+    $marca_array = $autocomplete->getListasMarca();
+    exit(json_encode($marca_array));
 }

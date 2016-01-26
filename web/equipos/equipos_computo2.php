@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="equipos-module">
+<html lang="en">
 <head>
     <title><?=$this->title?></title>
     <!-- BEGIN META -->
@@ -20,6 +20,7 @@
     <script type="text/javascript" src="<?= $this->contextPath?>/web/assets/js/libs/utils/html5shiv.js?1403934957"></script>
     <script type="text/javascript" src="<?= $this->contextPath?>/web/assets/js/libs/utils/respond.min.js?1403934956"></script>
     <![endif]-->
+    <style>.typeahead{width: 100%}</style>
 </head>
 <body class="menubar-hoverable header-fixed " >
 <!-- BEGIN BASE--><?php
@@ -35,7 +36,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
     </header>
     <!-- BEGIN CONTENT-->
     <div id="contentV2">
-        <section ng-controller="EquiposController as equipos">
+        <section>
             <div class="section-body contain-lg">
 
                 <br/>
@@ -45,116 +46,117 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                     <p class="text-light text-lg">Llena los campos del equipo que deseas reportar</p>
                     <br/>
 
-                    <div ng-controller="forms3Controller as Ctrl" class="col-lg-12">
-                        <form role="form" class="form" id="datosFormAutocomplete">
+                    <div class="col-lg-12">
+                        <form name="Form" class="form" id="datosForm2">
                             <div class="col-sm-6">
+                                <div class="form-group"style="position: relative">
+                                    <style>.error9{display:none}</style>
+                                    <input type="text" autocomplete="off" name="unidades" class="unidades2 form-control ng-dirty ng-invalid ng-valid" required />
+                                    <label for=""><span class="text-danger">* </span>Unidad</label>
+                                    <span class="error9 text-danger" style="position:absolute;">Debes seleccionar una unidad de la lista desplegada</span>
+                                </div>
+                                <div class="form-group" style="position: relative">
+                                    <style>.error12{display:none}</style>
+                                    <input type="text" name="areas" class="areas2 form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <label for=""><span class="text-danger">* </span>Área</label>
+                                    <span class="error12 text-danger" style="position:absolute;">favor de llenar el campo vacio</span>
 
-                                <div class="form-group" ng-controller="UnidadesController">
-                                    <script type="text/ng-template" id="customTemplate.html">
-                                        <a>
-                                            <i>({{match.model.unidad}})</i>
-                                        </a>
-                                    </script>
-                                    <input type="text" name="unidad"  ng-model="form.unidad" typeahead-editable="false" typeahead="unidad.nombre for unidad in unidad | filter:$viewValue | limitTo:10" class="form-control Sip ng-dirty ng-invalid ng-valid " required=""/>
-                                    <label for=""><span class="text-danger">* </span> Unidad</label>
                                 </div>
-                                <div class="form-group" ng-controller="AreaController">
-                                    <input type="text" name="areas" ng-model="form.AREA" ng-class="{'floating-label': equipos.equipo.data.areas}" class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                    <label for=""><span class="text-danger">* </span> Área</label>
-                                </div>
-                                <div class="form-group" ng-controller="TipoController">
-                                    <script type="text/ng-template" id="customTemplate.html">
-                                        <a>
-                                            <i>({{match.model.descripcion}})</i>
-                                        </a>
-                                    </script>
-                                    <input type="text" name="tipo" ng-class="{'floating-label': !equipos.equipo.data.tipo}" ng-model="form.Tipo" typeahead-editable="false" typeahead="tipo.descripcion for tipo in tipo | filter:$viewValue | limitTo:10"  class="form-control Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                    <label for=""><span class="text-danger">* </span> Tipo de equipo</label>
+                                <div class="form-group" style="position: relative">
+                                    <style>.error10{display:none}</style>
+                                    <input type="text" name="tipo" autocomplete="off" class="tipo2 form-control ng-dirty ng-invalid ng-valid" required/>
+                                    <label for=""><span class="text-danger">* </span>Tipo de equipo</label>
+                                    <span class="error10 text-danger" style="position:absolute;">Debes seleccionar un tipo de equipo de la lista desplegada</span>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <div class="form-group" ng-controller="marcaController">
-                                    <script type="text/ng-template" id="customTemplate.html">
-                                        <a>
-                                            <i>({{match.model.descripcion}})</i>
-                                        </a>
-                                    </script>
-                                    <input type="text" name="marca" ng-class="{'floating-label': !equipos.equipo.data.marca}" ng-model="form.marca" typeahead-editable="false" typeahead="marca.descripcion for marca in marca | filter:$viewValue | limitTo:10" class="form-control  Sip ng-dirty ng-invalid ng-valid" required=""/>
-                                    <label for=""><span class="text-danger">* </span> Marca</label>
+                                <div class="form-group " style="position: relative">
+                                    <style>.error11{display:none}</style>
+                                    <input type="text" name="marca" autocomplete="off" class="form-control marca2 ng-dirty ng-invalid ng-valid" required />
+                                    <label for=""><span class="text-danger">* </span>Marca</label>
+                                    <span class="error11 text-danger" style="position:absolute;">Debes seleccionar una marca de equipo de la lista desplegada</span>
                                 </div>
                                 <div class="form-group" >
-                                    <input type="text" name="modelo" ng-class="{'floating-label': !equipos.equipo.data.modelo}" ng-model="form.SMODEL" typeahead-editable="false" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
+                                    <input type="text" name="modelo" id="" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
                                     <label for=""><span class="text-danger">* </span> Modelo</label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="serie" ng-model="form.ASSETTAG" ng-class="{'floating-label': !equipos.equipo.data.ASSETTAG}" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
+                                    <input type="text" name="serie" id="" class="form-control  Sip ng-dirty ng-invalid ng-valid" required/>
                                     <label for=""><span class="text-danger">* </span> Número de Serie</label>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                            <div class="col-sm-4" style="position: relative">
                                 <div class="form-group">
-                                    <input type="text" name="usuario" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.USERID" required/>
+                                    <style>.error13{display:none}</style>
+                                    <input type="text" name="usuario" id="" class="usuario2 form-control ng-dirty ng-invalid ng-valid" required/>
                                     <label for=""><span class="text-danger">* </span>Usuario</label>
+                                    <span class="error13 text-danger" style="position:absolute;">favor de llenar el campo vacio</span>
+                                </div>
+                                <div class="form-group" style="position: relative;">
+                                    <input type="password" name="usuario_pw" id="passUSER2" class="form-control ng-dirty ng-invalid ng-valid"/>
+                                    <label for="">Contraseña</label>
+                                    <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eye2" ></span>
                                 </div>
                                 <div class="form-group" style="position: relative">
-                                    <input type="password" name="usuario_pw" id="passUSER" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.passUSer" />
-                                    <label for="">Contraseña</label>
-                                    <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eye" ></span>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="telefono" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.telefono" required/>
+                                    <style>.error14{display:none}</style>
+                                    <input type="text" name="telefono" id="help1" class="telefono2 form-control ng-dirty ng-invalid ng-valid" required/>
                                     <label for=""><span class="text-danger">* </span>Telefono</label>
+                                    <span class="error14 text-danger" style="position:absolute;">favor de llenar el campo vacio</span>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input type="email" name="correo" id="help1" value="@imss.gob.mx" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.correo"/>
+                                    <input type="email" name="correo" value="ejemplo@imss.mx" id="help1" class="form-control ng-dirty ng-invalid ng-valid"/>
                                     <label for="">Correo</label>
                                 </div>
-                                <div class="form-group" style="position: relative;">
-                                    <input type="password" name="correo_pw" id="passEMAIL" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.passCorreo"/>
+                                <div class="form-group" style="position: relative">
+                                    <input type="password" name="correo_pw" id="passEMAIL2" class="form-control ng-dirty ng-invalid ng-valid"/>
                                     <label for="">Contraseña Correo</label>
-                                    <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eyetwo" ></span>
+                                    <span class="glyphicon glyphicon-eye-open text-right" style="position: absolute;right: 0;top: 30px;cursor: pointer " id="eyetwo2" ></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="extension" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.extencion"/>
+                                    <input type="text" name="extension" id="help1" class="form-control ng-dirty ng-invalid ng-valid"/>
                                     <label for="">Extensión</label>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <input type="text" name="ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.IP"/>
+                                    <input type="text" name="ipcaptura" id="help1" class="form-control ng-dirty ng-invalid ng-valid" />
                                     <label for="">Introduce el ip del equipo</label>
                                 </div>
-                                <div class="form-group">
-                                    <input type="text" name="persona_reporta" id="help1" class="form-control ng-dirty ng-invalid ng-valid" ng-model="form.Qreporta" required/>
+                                <div class="form-group" style="position: relative">
+                                    <style>.error15{display:none}</style>
+                                    <input type="text" name="persona_reporta" id="help1" class="persona_reporta2 form-control ng-dirty ng-invalid ng-valid" required/>
                                     <label for=""><span class="text-danger">* </span>¿Quien Reporta?</label>
+                                    <span class="error15 text-danger" style="position:absolute;">favor de llenar el campo vacio</span>
                                 </div>
-                                <div class="form-group">
-                                    <select name="problema" ng-model="form.problema" class="form-control ng-dirty ng-invalid ng-valid" required>
-                                        <option value="" class="problema_def" selected>--------------------------------------------------------------------------------</option>
-                                        <option class="problema_def">SE APAGA</option>
-                                        <option class="problema_def">TIENE VIRUS</option>
-                                        <option class="problema_def">NO INICIA SESION</option>
-                                        <option class="problema_def">NO SIRVE EL CD</option>
-                                        <option class="problema_def">PROBLEMA OFFICE</option>
-                                        <option class="problema_def">PROBLEMA CON RH2000</option>
-                                        <option class="problema_def">FALLA LYNC</option>
-                                        <option class="problema_def">NO ENCIENDE</option>
-                                        <option class="problema_def">ALARMADA(FOCO ROJO)</option>
-                                        <option class="problema_def">NO TIENE RED</option>
-                                        <option class="problema_def">SE CONGELA LA IMAGEN</option>
-                                        <option value="" ng-click="Ctrl.click_Otro2()">OTRO</option>
+                                <div class="form-group" style="position: relative">
+                                    <style>.error16{display:none}</style>
+                                    <select name="problema_select" class="select_problem2 problema_select2 form-control ng-dirty ng-invalid ng-valid" required>
+                                        <option value="" selected>ELIGE UNO</option>
+                                        <option value="SE APAGA">SE APAGA</option>
+                                        <option value="PROBLEMA CON RH2000">PROBLEMA CON RH2000</option>
+                                        <option value="TIENE VIRUS">TIENE VIRUS</option>
+                                        <option value="NO INICIA SESION">NO INICIA SESION</option>
+                                        <option value="NO SIRVE EL CD">NO SIRVE EL CD</option>
+                                        <option value="PROBLEMA OFFICE">PROBLEMA OFFICE</option>
+                                        <option value="FALLA LYNC">FALLA LYNC</option>
+                                        <option value="NO ENCIENDE">NO ENCIENDE</option>
+                                        <option value="ALARMADA(FOCO ROJO)">ALARMADA(FOCO ROJO)</option>
+                                        <option value="NO TIENE RED">NO TIENE RED</option>
+                                        <option value="SE CONGELA LA IMAGEN">SE CONGELA LA IMAGEN</option>
+                                        <option value="otro" class="option_otro2">OTRO</option>
                                     </select>
-                                    <textarea name="problema" ng-model="Ctrl.equipo.data.problema" id="otro2" cols="30" rows="2"  class="form-control ng-dirty ng-invalid ng-valid" placeholder="Describa su problema" ></textarea>
+                                    <textarea name="otro" id="otro2" cols="30" rows="2"  class="otro2 select_problem form-control ng-dirty ng-invalid ng-valid" placeholder="Describa su problema" ></textarea>
                                     <label for=""><span class="text-danger">* </span>Problema</label>
+                                    <span class="error16 text-danger" style="position:absolute;">favor de seleccionar un problema</span>
                                 </div>
                             </div>
                             <p class="text-light text-lg">Los campos marcados con <span class="text-danger">* </span>son de carácter obligatorio.</p>
 
                             <div class="col-lg-12 text-center">
                                 <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
-                                &nbsp;&nbsp; <input ng-click='on_click_save()' class="btn btn-raised ink-reaction btn-default-dark" value="Guardar"/>
+                                &nbsp;&nbsp; <input type="button" class="btn btn-raised ink-reaction btn-default-dark" id="save2" value="Guardar"/>
                                 &nbsp;&nbsp; <a href="login" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
 
                             </div>
@@ -164,7 +166,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button class="close" type='button' ng-click='on_click_cancel2()'>×</button>
+                                        <button class="close" type='button'>×</button>
                                         <h4 class="modal-title"> <h3>Reporte guardado con éxito</h4>
                                         <h5>Generando folio ........</h5>
                                     </div>
@@ -202,20 +204,9 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppVendor.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
 <!-- END JAVASCRIPT -->
-<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-route.min.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-resource.min.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-datatables.min.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/css/theme-default/libs/ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/app.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/unidades/unidades.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/tipo/tipo.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/modelo/modelo.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/marca/marca.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/area/area.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline2/app.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline2/provider2.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/libs/bootstrap_typeahead/bootstrap-typeahead.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/main.js"></script>
+
 </body>
 
 

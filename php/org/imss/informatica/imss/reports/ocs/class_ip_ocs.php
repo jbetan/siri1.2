@@ -30,7 +30,11 @@ class class_ip_ocs extends class_mysqlconnector_ocs
 
 }
 $report = new class_ip_ocs();
-$dato = $report->comparar_ip();
+if(isset($_POST['send'])){
+    $dato = $report->comparar_ip();
+    exit(json_encode($dato));
+}
+
 $report->Desconectar();
-exit(json_encode($dato));
+
 

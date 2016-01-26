@@ -14,7 +14,7 @@ class ClassConfirmacion extends  class_mysqlconnector
         $this->setKey("id", $id);
 
         $sql = "SELECT reporte.ipcaptura, reporte.fechaRecep, reporte.folio, reporte.problema, unidad.nombre,area.nombre,
-                equipos.modelo, equipos.numdeserie,tipo.descripcion, marca.descripcion FROM reporte
+                equipos.modelo, equipos.numdeserie,tipo.descripcion, marca.descripcion, reporte.personaquereporta FROM reporte
                 JOIN unidad ON reporte.id_unidad = unidad.id
                 JOIN area ON reporte.idarea = area.id
                 JOIN equipos ON reporte.id = equipos.id_reporte
@@ -42,4 +42,4 @@ class ClassConfirmacion extends  class_mysqlconnector
 $reporte= new ClassConfirmacion();
 $id= $_GET['id'];
 //print_r($id);
-exit (json_encode($reporte->TraeReporteGuardado($id)));
+exit (json_encode($data = $reporte->TraeReporteGuardado($id)));

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="page-module">
+<html lang="en">
 	<head>
 		<title><?=$this->title?></title>
 
@@ -82,19 +82,20 @@
 								</div><!--end .row -->
 							</form>
 						</div><!--end .col -->
-						<div class="col-sm-5 col-sm-offset-1 text-center" style="top:50px" ng-controller="pageController as page">
+						<div class="col-sm-5 col-sm-offset-1 text-center" style="top:50px">
 							<br><br>
 								<h3 class="text-light">
 									¿Deseas levantar un reporte?
 								</h3>
-
-								<a class="btn btn-block btn-raised btn-success text-xxxl" style="width: 310px"  href="equipoReporte"> <i class="fa fa-file-text-o"></i> Haz click, para levantar un reporte</a>
-
+								<a id="reporte" class="btn btn-block btn-raised btn-primary" style="width: 310px" href="javascript:void(0)">Haz click aquí</a>
 
 								<br><br>
                             <a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consultareporte"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
 
+
+								</div><!--end .col -->
                         </div><!--end .col -->
+
 							</div><!--end .row -->
 						</div><!--end .card-body -->
 					</div><!--end .card -->
@@ -125,14 +126,30 @@
 				<script src="<?=$this->contextPath?>/web/assets/js/core/source/AppNavSearch.js"></script>
 				<script src="<?=$this->contextPath?>/web/assets/js/core/source/AppVendor.js"></script>
 				<script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-route.min.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-resource.min.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-datatables.min.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/css/theme-default/libs/ui-bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/js/app/page/app.js"></script>
-                <script src="<?=$this->contextPath?>/web/assets/js/app/page/pageProvider.js"></script>
 				<!-- END JAVASCRIPT -->
 
+            <script>
+                $(document).ready(function(){
+                    $('#reporte').click(function(){
+
+                        $.ajax({
+                            url: "ComparaIP",
+                            type: 'POST',
+                            data: 'send=comparacion',
+                            dataType: 'json',
+                            async: true,
+                            success: function(data){
+                            console.log(data);
+                                if(data == true){
+                                    document.location.href = "equipoReporte";
+                                }else{
+                                    document.location.href = "equipo_Reporte";
+                                }
+                            }
+
+                        })
+                    })
+                })
+            </script>
 			</body>
 		</html>

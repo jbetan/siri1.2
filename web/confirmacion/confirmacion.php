@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="app-confirm">
+<html lang="en">
 <head>
     <title><?=$this->title?></title>
 
@@ -34,68 +34,70 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
         <div style="margin-right: 10%" class="text-lg text-right"><span class="text-bold">TU</span> DIRECCION <span class="text-bold">IP</span> es: <span class=""><?php $ip= gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
                 echo $ip ;?></span></div>
         <br/><br/>
-        <div class="text-center" style="margin-top: -50px; position: relative">
-            <h2 style="position: relative">Atención a Usuarios
-                <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span>
-            </h2>
-        </div>
+
     </header>
     <div id="contentV2">
         <!-- BEGIN 404 MESSAGE -->
-        <section>
-
-            <div class="section-body contain-lg" ng-controller="confirmController as equipos" ng-init="equipos.init()">
-                <div><b>{{}}</b></div>
+        <section id="print_area">
+            <div class="text-center" style="margin-top: -50px; position: relative">
+                <h2 style="position: relative">Atención a Usuarios
+                    <br/><span style="" class="text-bold">Levantar reporte o Solicitud</span>
+                </h2>
+            </div>
+            <div class="section-body contain-lg">
                 <div class="row" style="">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <h3>Tu solicitud ha sido levantada con los siguientes datos:</h3>
                         <form class="form">
                             <div class="form-group col-lg-12">
                                 <style>#folio{font-size: 75px;}</style>
-                                <h4><span>Folio: </span></h4><div id="folio">{{folio}}</div>
+                                <h4><span>Folio: </span></h4><div id="folio"></div>
                             </div>
-                        <div class="col-sm-4">
+                        <div class="col-xs-4">
                             <div class="form-group">
-                                <input type="text" name="areas" ng-model="unidad" class="form-control" disabled/>
+                                <input type="text" name="areas" id="unidad" class="form-control" disabled/>
                                 <label for="unidad">Unidad</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="areas" ng-model="area" class="form-control" disabled/>
+                                <input type="text" name="areas" id="area" class="form-control" disabled/>
                                 <label for="area">Area</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="tipo" ng-model="tipo" class="form-control" disabled/>
+                                <input type="text" name="tipo" id="tipo" class="form-control" disabled/>
                                 <label for="tipo">Tipo</label>
                             </div>
-                        </div>
-                        <div class="col-sm-3">
                             <div class="form-group">
-                                <input type="text" name="marca" ng-model="marca" class="form-control" disabled/>
+                                <input type="text" name="user_report" id="user_report" class="form-control" disabled/>
+                                <label for="tipo">Persona que reporta</label>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group">
+                                <input type="text" name="marca" id="marca" class="form-control" disabled/>
                                 <label for="marca">Marca</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="modelo" ng-model="modelo" class="form-control" disabled/>
+                                <input type="text" name="modelo" id="modelo" class="form-control" disabled/>
                                 <label for="modelo">Modelo</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="serie" ng-model="Nserie" class="form-control" disabled/>
+                                <input type="text" name="serie" id="Nserie" class="form-control" disabled/>
                                 <label for="serie">Número de serie</label>
                             </div>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-xs-4">
                             <div class="form-group">
-                                <input type="text" name="fecha" ng-model="fecha" class="form-control" disabled/>
+                                <input type="text" name="fecha" id="fecha" class="form-control" disabled/>
                                 <label for="unidad">Fecha</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="IP" ng-model="ip" class="form-control" disabled/>
+                                <input type="text" name="IP" id="ip" class="form-control" disabled/>
                                 <label for="IP">Dirección IP</label>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="problema" ng-model="problema" id="" class="form-control" disabled />
+                                <input type="text" name="problema" id="problema" class="form-control" disabled />
                                 <label for="tipo">Descripción del problema</label>
                                 <br/>
-                                <div class="text-center"><a href="login" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a></div>
                             </div>
                         </div>
                         </form>
@@ -104,6 +106,13 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
                 </div><!--end .row -->
             </div><!--end .section-body -->
         </section>
+        <div class="container text-right" style="margin-bottom: 30px;">
+            <div class="col-lg-12 hidden-xs">
+                <a href="javascript:void(0)" id="imprimir" class="btn btn-raised ink-reaction btn-primary-dark">Imprimir Folio</a>
+                <a href="login" class="btn btn-raised ink-reaction btn-default-dark">Regresar</a>
+            </div>
+
+        </div>
         <!-- END 404 MESSAGE -->
 
     </div><!--end #content-->
@@ -115,6 +124,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <!-- BEGIN JAVASCRIPT -->
 <script src="<?=$this->contextPath?>/web/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/libs/jquery/jquery-migrate-1.2.1.min.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/libs/PrintArea/jquery.PrintArea.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/libs/bootstrap/bootstrap.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/libs/spin.js/spin.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/libs/autosize/jquery.autosize.min.js"></script>
@@ -143,9 +153,8 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <script src="<?=$this->contextPath?>/web/assets/js/app/marca/marca.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/area/area.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/app.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/equiposoffline/provider.js"></script>
-<script src="<?=$this->contextPath?>/web/assets/js/app/confirmacion/app.js"></script>
+<script src="<?=$this->contextPath?>/web/assets/js/app/confirmacion/main.js"></script>
+
 
 
 </body>

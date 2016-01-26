@@ -5,12 +5,12 @@ class class_ocs extends class_mysqlconnector_ocs
 {
     public function consulta_ip()
     {
-        $ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
-        //$ip="11.43.33.190";
+        //$ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
+        $ip="172.23.137.210";
         $this->setKey("IPADDR", $ip);
         $arreglo = $this->devuelve_filas_indexlabel("hardware");
         $id= $arreglo[0]['ID'];
-        $sql="SELECT bios.SMANUFACTURER, bios.SMODEL, bios.TYPE, bios.ASSETTAG, subnet.NAME, networks.IPADDRESS, networks.MACADDR, hardware.USERID ";
+        $sql="SELECT bios.SMANUFACTURER, bios.SMODEL, bios.TYPE, bios.SSN, subnet.NAME, networks.IPADDRESS, networks.MACADDR, hardware.USERID ";
         $sql .="from bios  ";
 
         $sql .="JOIN hardware ON bios.HARDWARE_ID = hardware.ID ";
@@ -29,6 +29,7 @@ class class_ocs extends class_mysqlconnector_ocs
         $arreglo2 = @mysql_fetch_assoc($res);
         if(is_array($arreglo2))
         {
+            //print_r($arreglo2);
             return $arreglo2;
         }else{
             return array();
@@ -36,7 +37,8 @@ class class_ocs extends class_mysqlconnector_ocs
     }
     public function consulta_solo_ip(){
 
-            $ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']));
+            //$ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']));
+        $ip="11.1.33.58";
 			//print_r ($ip);
 			
 		   // $ip="11.105.33.32";
@@ -82,6 +84,12 @@ class class_ocs extends class_mysqlconnector_ocs
 
 $ip_get = $_GET['buscar'];
 $report = new class_ocs();
+if($_POST['send'] == "datos"){
+    $array_ocs = $report->consulta_ip();
+    exit(json_encode($array_ocs));
+}
+
+
 if($ip_get !=""){
     echo json_encode($report->buscar_ip($ip_get));
 } else if($_GET["ver_ip"]){

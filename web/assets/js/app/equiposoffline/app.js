@@ -22,7 +22,7 @@
                             $scope.unidad_n = data.data.NAME;
                             $scope.marc = data.data.SMANUFACTURER;
                             $scope.model = data.data.SMODEL;
-                            $scope.n_Serie = data.data.ASSETTAG;
+                            $scope.n_Serie = data.data.SSN;
                             $scope.IP = data.data.IPADDRESS;
                             //service.ip.data= data.data;
                             //console.log(service.ip);
