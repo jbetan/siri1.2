@@ -33,21 +33,15 @@
 	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/font-awesome.css" />
 	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/material-design-iconic-font.css" />
 	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/rickshaw/rickshaw.css" />
-		<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/morris/morris.core.css" />
+	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/morris/morris.core.css" />
 	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/DataTables/jquery.dataTables.css" />
-		<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
-		<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
-		<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/wizard/wizard.css" />
-		<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
-
-
-
-
-
+	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/DataTables/extensions/dataTables.colVis.css" />
+	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/DataTables/extensions/dataTables.tableTools.css" />
+	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/wizard/wizard.css" />
+	<link type="text/css" rel="stylesheet" href="web/assets/css/theme-default/libs/bootstrap-datepicker/datepicker3.css" />
 	
 </head>
-<body class="row">
-                    
+<body class="row">                 
    
 
 	

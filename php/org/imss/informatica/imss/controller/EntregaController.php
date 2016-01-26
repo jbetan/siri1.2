@@ -33,6 +33,10 @@ elseif($_GET['buscarReporte'])
         exit(json_encode(array("error" => true,"otro"=>"catch", "message" => $e->getMessage())));
     }
 }
+elseif($_GET['consulta'])
+{
+    exit(json_encode($entrega->consulta($_REQUEST["id"])));
+}
 
 
 
