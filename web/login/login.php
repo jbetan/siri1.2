@@ -90,7 +90,7 @@
 								<a id="reporte" class="btn btn-block btn-raised btn-primary" style="width: 310px" href="javascript:void(0)">Haz click aquí</a>
 
 								<br><br>
-                            <a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consultareporte"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
+                            <a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consulta_enlinea"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
 
 
 								</div><!--end .col -->
