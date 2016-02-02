@@ -1,25 +1,42 @@
 [
+{
+  "_comment": "Modulo de Asignacion de Reportes",
+  "id": "1",
+  "indice": "0",
+  "id_padre": null,
+  "nivel": "1000",
+  "nombre": "Asignación",
+  "descripcion": "",
+  "lnk": "",
+  "icon": "fa fa-file",
+  "id_menu": "1",
+  "id_role": "1",
+  "sons": [
     {
-	    "id": "1",
-	    "indice": "0",
-	    "id_padre": null,
-	    "nivel": "1000",
-	    "nombre": "Nuevos Reportes",
-	    "descripcion": "",
-	    "lnk": "#\/nueServ",
-	    "icon": "md md-home",
-	    "id_menu": "1",
-	    "id_role": "1"
+      "id": "1",
+      "indice": "0",
+      "id_padre": null,
+      "nivel": "1000",
+      "nombre": "Servicios sin Asignar ",
+      "descripcion": "",
+      "lnk": "#\/nueServ",
+      "icon": "md md-home",
+      "id_menu": "1",
+      "id_role": "1"
     },{
-	    "id": "1",
-	    "indice": "0",
-	    "id_padre": null,
-	    "nivel": "1000",
-	    "nombre": "Asignar Reporte",
-	    "descripcion": "",
-	    "lnk": "#\/asignacion/0",
-	    "icon": "md md-home",
-	    "id_menu": "1",
-	    "id_role": "1"
+      "id": "1",
+      "indice": "0",
+      "id_padre": null,
+      "nivel": "1000",
+      "nombre": "Asignar Reporte",
+      "descripcion": "",
+      "lnk": "#\/asignacion/0",
+      "icon": "md md-home",
+      "id_menu": "1",
+      "id_role": "1"
     }
+  ]
+}
+
 ]
+

@@ -29,28 +29,34 @@
 </head>
 <body class="row">                 
    
-    <!-- ################################### -->
+    
 	
 	<div class="section-body"  >
         <div class="row">
             <div class="card panel" id="UnidadesCardForm">
                 <div class="card-head card-head-sm collapsed style-primary-light" align="center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
-                    <h3 >CONSUTA TU EQUIPO</h3>
+                     <h3 >CONSULTA DE EQUIPO</h3>
                 </div>
+
             </div>
+
         </div>
+        <a class="btn btn-raised ink-reaction btn-warning" href="login">
+            <b><</b>
+            Regresar
+        </a>
         <!-- BEGIN VALIDATION FORM WIZARD -->
         <div class="row" >
             <div class="col-lg-12">
                 <form class="form" novalidate="novalidate" id="formFolio" name="formFolio">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <div class="form-group" >
                                   
                                     <input  style="font-size:20px; text-align:center "  name="folio"    id="folio" class="form-control" data-rule-minlength="2" required>
                                     <label for="folio" class="control-label">
-                                       <i class="fa fa-tag"></i> Ingresa el folio de tu reporte 
+                                       <i class="fa fa-tag"></i> Por favor, captura el folio del reporte
                                     </label>
 
                                 </div>
@@ -58,7 +64,7 @@
                             <div class="col-sm-2">
                                 <div class="form-group">
                                      
-                                    <a id = "folio_bus" class="btn  btn-primary ink-reaction"  > <i class="fa fa-search"></i>&nbsp;&nbsp;Buscar 
+                                    <a id = "folio_bus" class="btn  btn-success ink-reaction"  > <i class="fa fa-search"></i>&nbsp;&nbsp;Buscar
                                     </a>
                                 </div>
                             </div>
@@ -129,8 +135,53 @@
             </div>
         </div>            
     </div>
+                 <div class="row">
+                     <div class="card panel" id="UnidadesCardForm">
+                         <div class="card-head card-head-sm collapsed style-primary-light" align="center" data-toggle="collapse" data-parent="#accordion1" data-target="#accordion1-2">
+                             <h3 >CONSULTA POR UNIDAD</h3>
+                         </div>
+                     </div>
+                 </div>
 
-    <!-- ################################### -->
+                 <div class="row" >
+                     <div class="col-lg-12">
+                         <form class="form" novalidate="novalidate" id="formFolio" name="formFolio">
+                             <div class="card-body">
+                                 <div class="row">
+                                     <div class="col-sm-3">
+                                         <div class="form-group" >
+
+                                             <div class="form-group floating-label">
+                                                 <select id="select2" class="form-control dirty" name="select2">
+                                                     <option value=""> </option>
+                                                     <option value="30">30</option>
+                                                     <option value="40">40</option>
+                                                     <option value="50">50</option>
+                                                     <option value="60">60</option>
+                                                     <option value="70">70</option>
+                                                 </select>
+                                                 <label for="select2"> <i class="fa fa-tag"></i> Seleciona el Nombre de una Unidad</label>
+                                             </div>
+
+
+
+                                         </div>
+                                     </div>
+                                     <div class="col-sm-2">
+                                         <div class="form-group">
+
+                                             <a id = "folio_bus" class="btn  btn-success ink-reaction"  > <i class="fa fa-search"></i>&nbsp;&nbsp;Buscar
+                                             </a>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </form>
+                         <div >
+                             <div >
+
+
+  
     <script src="./web/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
     
     
