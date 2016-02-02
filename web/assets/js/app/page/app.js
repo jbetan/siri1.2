@@ -12,14 +12,14 @@
         vm.click = function(){
             ipOcs.CompararIP(function(data, callback){
                 vm.ip.data= ipOcs.ipComparada.data;
-                console.log("trajo dato del page-provider", vm.ip);
-                console.log(vm.ip.data);
+                //console.log("trajo dato del page-provider", vm.ip);
+                //console.log(vm.ip.data);
                 if(vm.ip.data == "false"){
                     location.href=('equipo_Reporte');
-                    console.log("No esta en OCS");
+                    //console.log("No esta en OCS");
                 }else{
                     location.href=("");
-                    console.log("Si esta en OCS");
+                    //console.log("Si esta en OCS");
                 }
             });
 

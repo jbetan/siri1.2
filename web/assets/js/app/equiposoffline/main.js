@@ -2,7 +2,7 @@
  * Created by Brayan on 04/01/2016.
  */
 $(document).ready(function(){
-    $.ajaxSetup({ cache: false });
+    $.ajaxSetup({ cache:false });
     // ====== AUTOCOMPLETE'S ===== //
     $.ajax({
         url: "catalogoUnidad",
@@ -10,6 +10,7 @@ $(document).ready(function(){
         data: 'send=unidad',
         dataType: 'json',
         async: true,
+        cache: false,
         success: function(data){            //unidad
             $('.unidades').typeahead({
                 source: data,
@@ -25,6 +26,7 @@ $(document).ready(function(){
         data: 'send=tipo',
         dataType: 'json',
         async: true,
+        cache: false,
         success: function(data){            //tipo
             $('.tipo').typeahead({
                 source: data,
@@ -115,8 +117,8 @@ $(document).ready(function(){
         dataType: 'json',
         async: true,
         success: function(data){
-            console.log(data);
-            console.log(data.SSN);
+            //console.log(data);
+            //console.log(data.SSN);
             $("#modelo").val(data.SMODEL);
             $("#nserie").val(data.SSN);
             $("#usuario").val(data.USERID);
@@ -311,14 +313,14 @@ $(document).ready(function(){
                                 $(".problema_select").css("border", "2px #EBCCD1 solid");
                                 $(".problema_select").css("border-bottom", "3px #F44336 solid");
                                 $(".error8").css("display", "block");
-                                $(".problema_select").change(function () {
+                                $(".problema_select").keydown(function () {
                                     $(".error8").fadeOut();
                                     $(".problema_select").css("border", "0");
                                 });
                             }
                         }
                     }else{
-                        console.log(data.id);
+                        //console.log(data.id);
                         var id = data.id;
                         $('#myModal').modal('show');
                         setTimeout(function () {
@@ -329,13 +331,14 @@ $(document).ready(function(){
 
                 }
 
-            }
+           }
 
         });
     });
+    
 
     $("#save2").click(function(e){
-        e.preventDefault();
+    e.preventDefault();
         if($("select.select_problem2").val() == "otro"){
             var otro_dato = $(".otro2").val();
             $(".option_otro2").val(otro_dato);
@@ -435,7 +438,7 @@ $(document).ready(function(){
                             }
                         }
                     }else{
-                        console.log(data.id);
+                        //console.log(data.id);
                         var id = data.id;
                         //alert(id);
                         $('#myModal2').modal('show');

@@ -171,10 +171,10 @@
     });
     app.controller("formsController", function(equiposoffline, $scope, $http){
 
-        $scope.title     	  = "";
-        $scope.error     	  = "";
-        $scope.errors    	  = {};
-        $scope.form      	  = {};
+        $scope.title          = "";
+        $scope.error          = "";
+        $scope.errors         = {};
+        $scope.form           = {};
 
         var vm = this;
         vm.consulta= {data:{}};

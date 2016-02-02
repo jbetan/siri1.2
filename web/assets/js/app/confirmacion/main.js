@@ -2,8 +2,8 @@
  * Created by Brayan on 07/01/2016.
  */
 $(document).ready(function(){
-    $.ajaxSetup({ cache: false });
 // ========= METODO PARA RECOGER EL ID POR GET ========= //
+    $.ajaxSetup({ cache:false });
     jQuery.extend({
         /**
          * Returns get parameters.
@@ -45,8 +45,9 @@ $(document).ready(function(){
         data: 'send=id',
         dataType: 'json',
         async: true,
+    cache:false,
         success: function(data){
-            console.log(data);
+            //console.log(data);
             if(data[0] == "NULL"){
                 $("#ip").val("---.---.---.---");
             }else{
@@ -62,7 +63,7 @@ $(document).ready(function(){
             $("#tipo").val(         data[8]);
             $("#marca").val(        data[9]);
             $("#user_report").val(  data[10]);
-            console.log(            data[0]);
+            //console.log(            data[0]);
         }
 
     });

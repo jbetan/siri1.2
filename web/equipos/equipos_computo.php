@@ -302,7 +302,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 
                                 <div class="col-lg-12 text-center">
                                     <input type="reset" class="btn btn-raised ink-reaction btn-default-light" value="Cancelar"/>
-                                    &nbsp;&nbsp; <input type="button" class="btn btn-raised ink-reaction btn-default-dark" id="save2" value="Guardar"/>
+                                    &nbsp;&nbsp; <button type="button" class="btn btn-raised ink-reaction btn-default-dark" id="save2">Guardar</button>
                                     &nbsp;&nbsp; <a href="login" class="btn btn-raised ink-reaction btn-primary-dark"><b><</b> Regresar</a>
 
                                 </div>
