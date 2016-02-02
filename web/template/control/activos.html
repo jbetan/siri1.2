@@ -151,14 +151,11 @@
                <div class="btn-group open">
                   &nbsp;&nbsp;
                   <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true"> <i class="fa fa-th-list fa-2x"></i> </button>
+                  
                    <ul class="dropdown-menu dropdown-menu text-center" role="menu" >
-
-                        <div ng-if = "  
-                                        global_user_category != 2 
-                                        or global_user_category != 3 
-                                        or global_user_category != 5 
-                                        or global_user_category != 6 
-                        ">
+                      
+                        <!-- FIX para las opciones -->
+                        <div ng-if = "global_user_category != 2 && global_user_category != 3 && global_user_category != 5 && global_user_category != 6 && global_user_category != 0">
                             <li class = "text-center" >
                                 <a class="ink-reaction " href="app#/edicion/{{reporte.folio}}"><i class="fa fa-pencil-square-o fa-2x"></i> &nbsp;Editar</a>  
                             </li>
@@ -169,9 +166,7 @@
                         </div>
 
 
-                        <div ng-if = "
-                                      global_user_category == 2
-                        ">
+                        <div ng-if = "global_user_category == 2 || global_user_category == 3 || global_user_category == 5 || global_user_category == 6 ">
                             <li class = "text-center" >
                                 <a class="ink-reaction" href="app#/edicion/{{reporte.folio}}"><i class="fa fa-pencil-square-o fa-2x"></i> &nbsp;Editar</a>  
                             </li>                           
@@ -267,22 +262,7 @@
 
                 <tr class="text-lg"  ng-repeat-start="reporte2 in activos.reportes.data | filter:folioBuscado2 "><!--Aqui empieza el ng-repeat-start -->
 
-                    <!--inicia Listo-->
-                    <!--
-                    <td ng-if="reporte.status == 'Listo'" class="success">
-                    <button ng-if="reporte.post.expanded" ng-click="reporte.post.expanded = false" class="btn ink-reaction btn-raised btn-primary"><i class="fa fa-minus-circle  fa-2x"></i></button>
-                    <button  class="btn ink-reaction btn-raised btn-primary" type="button"  ng-if="!reporte.post.expanded" ng-click="reporte.post.expanded = true"><i class="fa fa-plus-circle fa-2x"></i> </button>
-                    </td>
-                    <td ng-if="reporte.status == 'Listo'" class="success text-ultra-bold text-xxl ">{{reporte.folio}}</td>
-                    <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.status}}</td>
-                    <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.descripcion}}</td>
-                    <td ng-if="reporte.status == 'Listo'" class="success">{{reporte.nombre}}</td>
-
-                    <!--termina Listo-->
-
-
-
-
+                
 
 
                     </h3>
@@ -308,19 +288,26 @@
                             <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
                                 <i class="fa fa-plus-square fa-2x"></i>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu" role="menu">
-                                <li>
+                            <ul class="dropdown-menu dropdown-menu" role="menu">                
+                               
+                                    <!-- FIX para las opciones -->
+                                <div ng-if = "global_user_category != 2 && global_user_category != 3 && global_user_category != 5 && global_user_category != 6 && global_user_category != 0">
+                                    <li class = "text-center" >
+                                        <a class="ink-reaction " href="app#/edicion/{{reporte.folio}}"><i class="fa fa-pencil-square-o fa-2x"></i> &nbsp;Editar</a>  
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li class = "text-center" >
+                                        <a class="ink-reaction" href="app#/entrega/{{reporte.folio}}"><i class="fa fa-check-square-o fa-2x"></i> &nbsp;Entregar</a>
+                                    </li>
+                                </div>
 
-                                    <a class="ink-reaction" href="app#/edicion/{{reporte2.folio}}">editar <i class="fa fa-pencil-square-o fa-2x"></i></a>
 
-                                    <a class="btn btn-warning" href="app#/edicion/{{reporte2.folio}}"> </a>
+                                <div ng-if = "global_user_category == 2 || global_user_category == 3 || global_user_category == 5 || global_user_category == 6  ">
+                                    <li class = "text-center" >
+                                        <a class="ink-reaction" href="app#/edicion/{{reporte.folio}}"><i class="fa fa-pencil-square-o fa-2x"></i> &nbsp;Editar</a>  
+                                    </li>                           
+                                </div>
 
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a class="ink-reaction" href="app#/entrega/{{reporte.folio}}">Entregar <i class="fa fa-check-square-o fa-2x"></i>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
