@@ -5,8 +5,8 @@ class class_ocs extends class_mysqlconnector_ocs
 {
     public function consulta_ip()
     {
-        //$ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
-        $ip="172.23.137.210";
+        $ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
+       // $ip="172.23.137.210";
         $this->setKey("IPADDR", $ip);
         $arreglo = $this->devuelve_filas_indexlabel("hardware");
         $id= $arreglo[0]['ID'];
@@ -37,8 +37,8 @@ class class_ocs extends class_mysqlconnector_ocs
     }
     public function consulta_solo_ip(){
 
-            //$ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']));
-        $ip="11.1.33.58";
+        $ip = gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']));
+        //$ip="11.1.33.58";
 			//print_r ($ip);
 			
 		   // $ip="11.105.33.32";

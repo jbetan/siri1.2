@@ -11,8 +11,8 @@ class class_ip_ocs extends class_mysqlconnector_ocs
 {
     public function comparar_ip()
     {
-        $ip="11.105.33.32";
-        //$ip=gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
+       // $ip="11.105.33.32";
+        $ip=gethostbyname(gethostbyaddr($_SERVER['REMOTE_ADDR']) );
         $this->setKey("IPADDRESS", $ip);
         $is_ip = $this->devuelve_filas_indexlabel("networks");
         if($is_ip == null){
@@ -20,7 +20,7 @@ class class_ip_ocs extends class_mysqlconnector_ocs
         }else{
             return true;
         }
-        print_r($is_ip);
+       // print_r($is_ip);
     }
 
 }

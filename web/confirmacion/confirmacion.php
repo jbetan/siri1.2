@@ -140,7 +140,9 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppNavSearch.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/source/AppVendor.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
-<!-- END JAVASCRIPT -->
+<!-- END JAVASCRIPT 
+
+
 <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-route.min.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/core/angular/angular-resource.min.js"></script>
@@ -153,6 +155,7 @@ $_SESSION["VISIT_user"] = $_SERVER['REMOTE_ADDR']
 <script src="<?=$this->contextPath?>/web/assets/js/app/marca/marca.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/area/area.js"></script>
 <script src="<?=$this->contextPath?>/web/assets/js/app/menu/menu.js"></script>
+-->
 <script src="<?=$this->contextPath?>/web/assets/js/app/confirmacion/main.js"></script>
 
 

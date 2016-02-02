@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- <html lang="en"> -->
+<html lang="en" ng-app="page-module">
 	<head>
 		<title><?=$this->title?></title>
 
@@ -87,10 +88,10 @@
 								<h3 class="text-light">
 									¿Deseas levantar un reporte?
 								</h3>
-								<a id="reporte" class="btn btn-block btn-raised btn-primary" style="width: 310px" href="javascript:void(0)">Haz click aquí</a>
-
+								<!-- <a id="reporte" class="btn btn-block btn-raised btn-primary" style="width: 310px" href="javascript:void(0)">Haz click aquí</a> -->
+						   		<button id="reporte" class="btn btn-block btn-raised btn-primary" style="width: 310px" >Haz click aquí</button>
 								<br><br>
-                            <a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consulta_enlinea"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
+                           		<a class="btn btn-block btn-raised btn-warning text-xxxl" style="width: 310px" href="consulta_enlinea"> <i class="fa fa-folder-open"></i> Consulta tu reporte</a>
 
 
 								</div><!--end .col -->
@@ -128,28 +129,32 @@
 				<script src="<?=$this->contextPath?>/web/assets/js/core/demo/Demo.js"></script>
 				<!-- END JAVASCRIPT -->
 
-            <script>
-                $(document).ready(function(){
-                    $('#reporte').click(function(){
+            	<script>
+					$.ajaxSetup({ cache:false });
 
-                        $.ajax({
-                            url: "ComparaIP",
-                            type: 'POST',
-                            data: 'send=comparacion',
-                            dataType: 'json',
-                            async: true,
-                            success: function(data){
-                            console.log(data);
-                                if(data == true){
-                                    document.location.href = "equipoReporte";
-                                }else{
-                                    document.location.href = "equipo_Reporte";
-                                }
-                            }
+	                $(document).ready(function(){
+	                    $('#reporte').click(function(){
+				
+	                        $.ajax({
+	                            url: "ComparaIP",
+	                            type: 'POST',
+	                            data: 'send=comparacion',
+	                            dataType: 'json',
+	                            async: true,
+				    		  cache: false,
+	                            success: function(data){
+	                            //console.log(data);
+	//alert(data);
+	                                if(data == true){
+	                                    document.location.href = "equipoReporte";
+	                                }else{
+	                                    document.location.href = "equipo_Reporte";
+	                                }
+	                            }
 
-                        })
-                    })
-                })
-            </script>
+	                        })
+	                    })
+	                });
+				</script>
 			</body>
 		</html>
