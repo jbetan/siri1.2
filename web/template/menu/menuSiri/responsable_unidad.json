@@ -26,28 +26,6 @@
         "icon": "fa fa-check-square-o",
         "id_menu": "0",
         "id_role": "0"
-      },{
-        "id": "2",
-        "indice": "0",
-        "id_padre": null,
-        "nivel": "1000",
-        "nombre": "Edicion",
-        "descripcion": "",
-        "lnk": "#\/edicion/0",
-        "icon": "fa fa-pencil-square-o",
-        "id_menu": "0",
-        "id_role": "0"
-      },{
-        "id": "3",
-        "indice": "2",
-        "id_padre": null,
-        "nivel": "1000",
-        "nombre": "Entrega",
-        "descripcion": "",
-        "lnk": "#\/entrega/0",
-        "icon": "fa fa-truck ",
-        "id_menu": "0",
-        "id_role": "0"
       }
     ]
   }
