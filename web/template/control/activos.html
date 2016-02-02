@@ -149,23 +149,36 @@
         <tr ng-if="reporte.post.expanded" ng-repeat-end>
            <td colspan="1"> <div class="col-sm-1">
                <div class="btn-group open">
-                  <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true">
-                       <i class="fa fa-plus-square fa-2x"></i>
-                   </button>
-                   <ul class="dropdown-menu dropdown-menu" role="menu">
-                     <li>
+                  &nbsp;&nbsp;
+                  <button class="btn ink-reaction btn-floating-action btn-sm btn-primary" data-toggle="dropdown" type="button" aria-expanded="true"> <i class="fa fa-th-list fa-2x"></i> </button>
+                   <ul class="dropdown-menu dropdown-menu text-center" role="menu" >
 
-                        <a class="ink-reaction" href="app#/edicion/{{reporte.folio}}">editar <i class="fa fa-pencil-square-o fa-2x"></i></a>
+                        <div ng-if = "  
+                                        global_user_category != 2 
+                                        or global_user_category != 3 
+                                        or global_user_category != 5 
+                                        or global_user_category != 6 
+                        ">
+                            <li class = "text-center" >
+                                <a class="ink-reaction " href="app#/edicion/{{reporte.folio}}"><i class="fa fa-pencil-square-o fa-2x"></i> &nbsp;Editar</a>  
+                            </li>
+                            <li class="divider"></li>
+                            <li class = "text-center" >
+                                <a class="ink-reaction" href="app#/entrega/{{reporte.folio}}"><i class="fa fa-check-square-o fa-2x"></i> &nbsp;Entregar</a>
+                            </li>
+                        </div>
 
-                        <a class="btn btn-warning" href="app#/edicion/{{reporte.folio}}"> </a>
 
-                     </li>
-                     <li class="divider"></li>
-                       <li>
-                        <a class="ink-reaction" href="app#/entrega/{{reporte.folio}}">Entregar <i class="fa fa-check-square-o fa-2x"></i>
-                        </a>
-                       </li>
-                   </ul>
+                        <div ng-if = "
+                                      global_user_category == 2
+                        ">
+                            <li class = "text-center" >
+                                <a class="ink-reaction" href="app#/edicion/{{reporte.folio}}"><i class="fa fa-pencil-square-o fa-2x"></i> &nbsp;Editar</a>  
+                            </li>                           
+                        </div>
+
+
+                    </ul>
                </div>
            </div>
            </td>

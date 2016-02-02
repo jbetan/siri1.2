@@ -1,11 +1,13 @@
 
 (function() {
     var app = angular.module("activos-Module", []);
-    app.controller("ActivosController", function($compile, $scope, $http){
+    app.controller("ActivosController", function($compile, $scope, $http, $rootScope){
         var vm = this;
         vm.reportes = {data:undefined};
         vm.posts=[];
         getReportes();
+
+        $scope.nivel = 'prueba';
 
 
 

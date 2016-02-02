@@ -11,7 +11,7 @@ class class_seguridad extends class_mysqlconnector
 
 	public function getAcceso($userName, $password, $nivel){
 		if($userName == "administrador" && md5($password) == md5("Aa12345$")){
-			$permisos = array("id_usuario" => NULL, "nombre" => "Administrador", "user_name" => "administrador", "permiso" => 10, "acceso" => 1);
+			$permisos = array("id_usuario" => NULL, "nombre" => "Administrador", "tipo" => NULL, "matricula" => NULL, "niv_usuario" => "Administrador",  "nivel" => 7, "user_name" => "administrador", "permiso" => 10, "acceso" => 1);
 		}else{
 			
 			$sql = "SELECT 
@@ -40,7 +40,7 @@ class class_seguridad extends class_mysqlconnector
 		 		$matricula 		= @mysql_result($res, 0,3); //matricula
 		 		$nivel_usuario  = @mysql_result($res, 0,4); //nivel del usuario
 		 		$nivel          = @mysql_result($res, 0,5); //nivel
-		 		$permiso   = 1;
+		 		$permiso        = 1;
 
 		 		$permisos = array(
 		 			"id_usuario"   => $id,

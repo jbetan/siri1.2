@@ -23,6 +23,30 @@
         "Asignar-Module"
     ]);
 
+    //Llamamos las configuraciones
+    app.run(function ($rootScope, $http) {
+       
+        
+        $promese = $http.get("configController?get_data_user=1");
+        $promese.then(function(data) {            
+          
+            $rootScope.global_user_id      = data.data.acceso.id_usuario;
+            $rootScope.global_name_user    = data.data.acceso.nombre;
+            $rootScope.global_user_tipo    = data.data.acceso.tipo; 
+            $rootScope.global_user_matri   = data.data.acceso.matricula;
+            $rootScope.global_user_nivel   = data.data.acceso.niv_usuario; 
+            $rootScope.global_user_category= data.data.acceso.nivel;                           
+            $rootScope.global_user_user    = data.data.acceso.user_name;
+            $rootScope.global_user_permiso = data.data.acceso.permiso;
+
+        });
+
+        
+        
+
+    });
+
+  
     app.config(function($routeProvider) {
         $routeProvider
            
@@ -109,5 +133,8 @@
             //no hayamos concretado que nos redirija a la página principal
             .otherwise({redirectTo: "/home"});
     });
+
+    
+    
 })();
 

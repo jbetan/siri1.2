@@ -50,6 +50,11 @@ RewriteCond $1 ^consulta_enlinea
 RewriteRule ^(.*)$ /siri1.2/web/login/consulta_enlinea.php [L]
 
 
+#Configuraciones
+	#Configuraciones->Obtenes Datos
+	RewriteCond $1 ^configController$
+	RewriteRule ^(.*)$ /siri1.2/php/org/imss/informatica/imss/controller/ConfigController.php [L]
+
 
 #Administracion
 
