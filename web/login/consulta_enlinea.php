@@ -29,7 +29,7 @@
 </head>
 <body class="row">                 
    
-    <!-- ################################### -->
+    
 	
 	<div class="section-body"  >
         <div class="row">
@@ -181,7 +181,7 @@
                              <div >
 
 
-    <!-- ################################### -->
+  
     <script src="./web/assets/js/libs/jquery/jquery-1.11.2.min.js"></script>
     
     
